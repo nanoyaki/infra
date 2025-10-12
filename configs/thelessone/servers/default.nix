@@ -1,0 +1,19 @@
+{
+  imports = [
+    ./arr-stack
+    ./caddy.nix
+    ./media
+    ./user-services
+    ./ssh.nix
+    ./minecraft
+    ./domains.nix
+    ./syncthing.nix
+    ./headscale.nix
+    ./metrics.nix
+    ./shoko.nix
+    ./homepage.nix
+    ./valheim.nix
+    ./mail.nix
+    ./immich.nix
+  ];
+}

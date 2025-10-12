@@ -1,0 +1,79 @@
+on:
+  schedule:
+    - cron: '0 2 * * *' # 4 AM
+  workflow_dispatch:
+
+# Not implemented yet, keep for the future
+permissions:
+  pull-requests: write
+
+jobs:
+  check-branch:
+    runs-on: native
+    steps:
+      - name: Check branch
+        if: forge.event_name == 'workflow_dispatch' && forge.ref != 'refs/heads/main'
+        run: exit 1
+
+  update:
+    runs-on: native
+    needs: check-branch
+    steps:
+      - name: Checkout repo
+        uses: https://code.forgejo.org/actions/checkout@v4
+
+      - name: Setup git
+        run: |
+          git config --local user.name "forgejo-actions[bot]"
+          git config --local user.email "forgejo@nanoyaki.space"
+          git checkout -b chore/auto-update
+
+      - name: Update flake
+        env:
+          ID_OWNED_MATERIAL: ${{ secrets.ID_OWNED_MATERIAL }}
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add <(echo "$ID_OWNED_MATERIAL")
+
+          nix flake update --commit-lock-file
+
+      - name: Push commit
+        run: git push -u origin chore/auto-update -f
+
+      - name: Create Forgejo Pull Request
+        id: create-pr
+        env:
+          FORGEJO_LOGIN: nanoyaki
+          FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}
+        run: >
+          tea login delete "$FORGEJO_LOGIN" || true
+            tea login add --name "$FORGEJO_LOGIN" --url "$FORGEJO_SERVER_URL" --token "$FORGE_TOKEN" || true
+
+          PR_NUMBER="$(
+          tea pr create
+          -l "$FORGEJO_LOGIN"
+          -t "chore: update locks"
+          -d "Automated pull request to update locks for maintained programs"
+          -r "$FORGEJO_REPOSITORY"
+          | tail
+          | grep -oP '/\K\d+'
+          )"
+
+          echo "pr=${PR_NUMBER}" >> $FORGEJO_OUTPUT
+
+      - name: Enable Auto-Merge
+        env:
+          FORGE_TOKEN: ${{ secrets.FORGE_TOKEN }}
+          PR_NUMBER: ${{ steps.create-pr.outputs.pr }}
+          FORGEJO_API_URL: ${{ forge.api_url }}
+        run: >
+          curl -X POST
+          -H "Authorization: token $FORGE_TOKEN"
+          -H "Content-Type: application/json"
+          -d '{
+            "Do": "merge",
+            "delete_branch_after_merge": true,
+            "merge_when_checks_succeed": true,
+            "force_merge": false
+          }'
+          "${FORGEJO_API_URL}/repos/${FORGEJO_REPOSITORY}/pulls/${PR_NUMBER}/merge"
