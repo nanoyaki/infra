@@ -613,10 +613,10 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1760299584,
-        "narHash": "sha256-xCoHxxSDsJq2px7dG1AUOZfGhhB0Ck/q0d7LbvlWz6M=",
+        "lastModified": 1760313535,
+        "narHash": "sha256-GDerNKIp65zNEVZ4IqCpen7itAU2GrN3CnHoEvowa/0=",
         "ref": "refs/heads/main",
-        "rev": "27ea7d01773f13ce39ea39ed3689848d28ff4dc2",
+        "rev": "116f3005567ef2d643c8b5dd26e3cdb663567284",
         "revCount": 31,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nanomodules.git"
