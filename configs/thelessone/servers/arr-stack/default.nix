@@ -48,7 +48,7 @@ in
 
         [Peer]
         PublicKey = ${wireguard-public}
-        AllowedIps = 0.0.0.0/0,::0/0
+        AllowedIPs = 0.0.0.0/0,::0/0
         Endpoint = ${wireguard-endpoint}
       '';
     };
@@ -56,6 +56,7 @@ in
     services.vopono = {
       enable = true;
 
+      interface = "enp6s0";
       configFile = config.sops.templates."wireguard.conf".path;
       protocol = "Wireguard";
       namespace = "vp0";
