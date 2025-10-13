@@ -1,7 +1,11 @@
 { pkgs, config, ... }:
 
 {
-  boot.blacklistedKernelModules = [ "nouveau" ];
+  boot.blacklistedKernelModules = [
+    "nouveau"
+    "amdgpu"
+    "kvm_intel"
+  ];
 
   hardware.graphics = {
     enable = true;

@@ -10,7 +10,7 @@
                 "expr": "import (builtins.getFlake \"/home/hana/infra\").inputs.nixpkgs { }"
             },
             "formatting": {
-                "command": [ "nix fmt" ]
+                "command": [ "nixfmt" ]
             },
         }
     },

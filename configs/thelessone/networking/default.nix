@@ -1,7 +1,6 @@
 {
   imports = [
     ./deployment.nix
-    ./fireqos.nix
     ./firewall.nix
     ./interface.nix
   ];

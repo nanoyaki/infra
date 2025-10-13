@@ -661,11 +661,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756921756,
-        "narHash": "sha256-SRWOe4Vo97tPLMe+VJjrG76JPZ5oBV+BvBXmRD21vvc=",
+        "lastModified": 1760324419,
+        "narHash": "sha256-VHhYOctEKrqwUH81nwUloKSfje7OyQT/D60RXJUEqfE=",
         "owner": "nanoyaki",
         "repo": "nix-minecraft",
-        "rev": "bc010dd1423ac046ce736e8489dc3dc8fc2b690b",
+        "rev": "7298e2095c61fb6750f93c7af48c466c4e575216",
         "type": "github"
       },
       "original": {

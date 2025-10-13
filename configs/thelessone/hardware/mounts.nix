@@ -7,8 +7,8 @@
     options = [
       "nfsvers=4.2"
       "_netdev"
-      "x-systemd.before=local-fs.target"
-      "x-systemd.after=network.target"
+      "nofail"
+      "x-systemd.device-timeout=60s"
     ];
   };
 
