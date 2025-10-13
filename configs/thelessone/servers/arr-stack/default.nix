@@ -48,7 +48,7 @@ in
 
         [Peer]
         PublicKey = ${wireguard-public}
-        AllowedIps = 0.0.0.0/0, ::0/0
+        AllowedIps = 0.0.0.0/0,::0/0
         Endpoint = ${wireguard-endpoint}
       '';
     };
@@ -58,6 +58,7 @@ in
 
       configFile = config.sops.templates."wireguard.conf".path;
       protocol = "Wireguard";
+      namespace = "vp0";
     };
 
     users.groups.${config.arr.group} = { };
