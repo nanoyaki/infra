@@ -4,7 +4,12 @@
   fileSystems."/mnt/raid" = {
     device = "10.0.0.6:/moon";
     fsType = "nfs";
-    options = [ "nfsvers=4.2" ];
+    options = [
+      "nfsvers=4.2"
+      "_netdev"
+      "x-systemd.before=local-fs.target"
+      "x-systemd.after=network.target"
+    ];
   };
 
   fileSystems."/" = {
