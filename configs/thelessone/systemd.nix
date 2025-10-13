@@ -1,6 +1,6 @@
 _:
 
-# lib.filterAttrs (_: cfg: cfg ? serviceConfig.Type && cfg.serviceConfig.Type != "oneshot" || (!(cfg ? serviceConfig.Type))) config.systemd.services
+# i really have to learn more about systemd...
 
 {
   systemd.services.rspamd = {
@@ -23,6 +23,4 @@ _:
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
   };
-
-  services.rspamd.enable = true;
 }
