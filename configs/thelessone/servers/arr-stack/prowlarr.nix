@@ -14,7 +14,7 @@ in
 
   config'.caddy.vHost.${domain}.proxy = {
     inherit (config.services.prowlarr.settings.server) port;
-    inherit (config.services.vopono) host;
+    host = config.services.vopono.voponoHost;
   };
 
   config'.homepage.categories.Arr.services.Prowlarr = {
