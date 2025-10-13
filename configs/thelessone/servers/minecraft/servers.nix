@@ -325,7 +325,7 @@ in
           };
         in
         {
-          enable = true;
+          enable = false;
           package = pkgs.neoforgeServers.neoforge-21_1_194;
 
           autoStart = true;
