@@ -18,6 +18,8 @@ in
     theming.enable = true;
   };
 
+  services.no-rgb.enable = lib.mkForce false;
+
   environment.systemPackages = with pkgs; [
     vesktop
     vscodium
