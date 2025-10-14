@@ -12,7 +12,10 @@ in
     inherit (arr) group;
   };
 
-  config'.caddy.vHost.${domain}.proxy.port = config.services.bazarr.listenPort;
+  config'.caddy.vHost.${domain} = {
+    proxy.port = config.services.bazarr.listenPort;
+    useMtls = true;
+  };
 
   config'.homepage.categories.Arr.services.Bazarr = {
     icon = "bazarr.svg";

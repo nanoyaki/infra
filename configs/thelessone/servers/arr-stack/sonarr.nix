@@ -13,7 +13,10 @@ in
     inherit (config.arr) group;
   };
 
-  config'.caddy.vHost.${domain}.proxy = { inherit (config.services.sonarr.settings.server) port; };
+  config'.caddy.vHost.${domain} = {
+    proxy = { inherit (config.services.sonarr.settings.server) port; };
+    useMtls = true;
+  };
 
   config'.homepage.categories.Arr.services.Sonarr = {
     icon = "sonarr.svg";

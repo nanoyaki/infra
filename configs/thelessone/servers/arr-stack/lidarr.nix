@@ -13,7 +13,10 @@ in
     inherit (config.arr) group;
   };
 
-  config'.caddy.vHost.${domain}.proxy = { inherit (config.services.lidarr.settings.server) port; };
+  config'.caddy.vHost.${domain} = {
+    proxy = { inherit (config.services.lidarr.settings.server) port; };
+    useMtls = true;
+  };
 
   config'.homepage.categories.Arr.services.Lidarr = {
     icon = "lidarr.svg";

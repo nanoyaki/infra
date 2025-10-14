@@ -15,7 +15,10 @@ in
   };
   systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "nvidia";
 
-  config'.caddy.vHost.${domain}.proxy.port = 8096;
+  config'.caddy.vHost.${domain} = {
+    proxy.port = 8096;
+    useMtls = true;
+  };
   config'.caddy.vHost.${vpnDomain} = {
     vpnOnly = true;
     proxy.port = 8096;

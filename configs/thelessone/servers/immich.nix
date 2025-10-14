@@ -26,7 +26,10 @@ in
     inherit (config.services.immich-public-proxy) port;
   };
 
-  config'.caddy.vHost.${domain}.proxy = { inherit (config.services.immich) port; };
+  config'.caddy.vHost.${domain} = {
+    proxy = { inherit (config.services.immich) port; };
+    useMtls = true;
+  };
 
   config'.homepage.categories.Media.services.Immich = {
     icon = "immich.svg";

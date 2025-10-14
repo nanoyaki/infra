@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, ... }:
 
 let
   inherit (lib) listToAttrs map;
@@ -13,7 +13,7 @@ in
   // listToAttrs (
     map
       (service: {
-        name = config.config'.caddy.genDomain "${service}.vpn";
+        name = "https://${service}.vpn.theless.one";
         value.extraConfig = ''
           redir https://${service}.theless.one 301
         '';

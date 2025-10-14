@@ -13,7 +13,10 @@ in
     inherit (config.arr) group;
   };
 
-  config'.caddy.vHost.${domain}.proxy.port = 8080;
+  config'.caddy.vHost.${domain} = {
+    proxy.port = 8080;
+    useMtls = true;
+  };
 
   config'.homepage.categories.Arr.services.Sabnzbd = {
     icon = "sabnzbd.svg";

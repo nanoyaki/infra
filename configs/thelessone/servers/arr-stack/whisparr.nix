@@ -13,7 +13,10 @@ in
     inherit (config.arr) group;
   };
 
-  config'.caddy.vHost.${domain}.proxy.port = config.services.whisparr.settings.server.port;
+  config'.caddy.vHost.${domain} = {
+    proxy.port = config.services.whisparr.settings.server.port;
+    useMtls = true;
+  };
 
   config'.homepage.categories.Arr.services.Whisparr = {
     icon = "whisparr.svg";

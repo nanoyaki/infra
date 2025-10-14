@@ -12,9 +12,12 @@ in
     openFirewall = true;
   };
 
-  config'.caddy.vHost.${domain}.proxy = {
-    inherit (config.services.prowlarr.settings.server) port;
-    host = config.services.vopono.voponoHost;
+  config'.caddy.vHost.${domain} = {
+    proxy = {
+      inherit (config.services.prowlarr.settings.server) port;
+      host = config.services.vopono.voponoHost;
+    };
+    useMtls = true;
   };
 
   config'.homepage.categories.Arr.services.Prowlarr = {
