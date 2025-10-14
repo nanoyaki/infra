@@ -69,6 +69,7 @@ in
     baseDomain = mkDefault "home.local" mkStrOption;
     email = mkDefault "hanakretzer@gmail.com" mkStrOption;
     vpnHost = mkDefault "100.64.64.1" mkStrOption;
+    authentikPort = mkDefault 9000 mkPortOption;
 
     vHost = mkAttrsOf (mkSubmoduleOption {
       enable = mkTrueOption;
@@ -81,6 +82,7 @@ in
       serverAliases = mkListOf mkStrOption;
       vpnOnly = mkFalseOption;
       useMtls = mkFalseOption;
+      useAuthentik = mkFalseOption;
     });
 
     genDomain = mkFunctionTo mkStrOption;
@@ -125,6 +127,33 @@ in
         auto_https disable_redirects
       '';
 
+      extraConfig = ''
+        (error_handling) {
+          handle_errors {
+            root * ${pkgs.error-pages}/share/error-pages
+            rewrite * /{http.error.status_code}.html
+            file_server
+          }
+        }
+
+        (vpn_only) {
+          @outside-local not client_ip private_ranges ${vpnV4Subnet} ${vpnV6Subnet}
+          abort @outside-local
+        }
+
+        (acme) {
+          tls /var/lib/acme/${cfg.baseDomain}/cert.pem /var/lib/acme/${cfg.baseDomain}/key.pem
+        }
+
+
+        (authentik) {
+          forward_auth http://127.0.0.1:${toString cfg.authentikPort}/outpost.goauthentik.io/auth/caddy {
+            uri /outpost.goauthentik.io/auth/caddy
+            copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Email X-Authentik-Name X-Authentik-Uid
+          }
+        }
+      '';
+
       virtualHosts = mapAttrs' (
         domain: vhost:
         nameValuePair domain {
@@ -135,17 +164,12 @@ in
               }
             ''}
 
-            ${optionalString vhost.vpnOnly ''
-              @outside-local not client_ip private_ranges ${vpnV4Subnet} ${vpnV6Subnet}
-              abort @outside-local
-            ''}
+            ${optionalString vhost.vpnOnly "import vpn_only"}
 
-            ${optionalString
-              (!vhost.useMtls && config.security.acme.certs ? ${cfg.baseDomain} && hasInfix cfg.baseDomain domain)
-              ''
-                tls /var/lib/acme/${cfg.baseDomain}/cert.pem /var/lib/acme/${cfg.baseDomain}/key.pem
-              ''
-            }
+            ${optionalString (
+              !vhost.useMtls && config.security.acme.certs ? ${cfg.baseDomain} && hasInfix cfg.baseDomain domain
+            ) "import acme"}
+
             ${optionalString vhost.useMtls ''
               tls {
                 client_auth {
@@ -163,20 +187,15 @@ in
               }
             ''}
 
+            ${optionalString vhost.useAuthentik "import authentik"}
+
             ${vhost.extraConfig}
 
-            ${optionalString (vhost.proxy.port != 0) ''
-              reverse_proxy ${vhost.proxy.host}:${toString vhost.proxy.port} localhost:3133/503.html {
-                lb_policy first
+            ${optionalString (
+              vhost.proxy.port != 0
+            ) "reverse_proxy ${vhost.proxy.host}:${toString vhost.proxy.port}"}
 
-                health_method GET
-                health_status 2xx
-                health_follow_redirects
-
-                fail_duration 30s
-                max_fails 1
-              }
-            ''}
+            import error_handling
           '';
           inherit (vhost) serverAliases;
         }

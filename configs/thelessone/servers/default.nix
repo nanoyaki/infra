@@ -15,5 +15,6 @@
     ./valheim.nix
     ./mail.nix
     ./immich.nix
+    ./authentik.nix
   ];
 }

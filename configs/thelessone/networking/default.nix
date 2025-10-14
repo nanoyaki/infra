@@ -7,6 +7,7 @@
 
   networking.useDHCP = true;
   networking.networkmanager.enable = false;
+  networking.domain = "theless.one";
 
   networking.nameservers = [
     "1.1.1.1"
