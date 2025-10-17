@@ -233,6 +233,14 @@ in
       enable = true;
       host = "0.0.0.0";
       port = 24325;
+      package = pkgs.flood.overrideAttrs (prevAttrs: {
+        patches = (prevAttrs.patches or [ ]) ++ [
+          (pkgs.fetchpatch {
+            url = "https://github.com/AllySummers/flood-deluge/commit/50b3aa96bc97200678a00e92252e8b10cb821360.patch";
+            hash = "sha256-B9bqWTfxDsGSSZsZ/wXQ07e8nTsPjBxKj6KIYPkkkYI=";
+          })
+        ];
+      });
     };
 
     config'.caddy.vHost.${domain} = {
