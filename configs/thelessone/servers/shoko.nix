@@ -55,7 +55,7 @@
     ];
 
     script = ''
-      WATCH_DIR="/mnt/raid/arr-stack/downloads/transmission/complete/shoko"
+      WATCH_DIR="/mnt/raid/arr-stack/downloads/deluge/hentai"
       DEST_DIR="/mnt/raid/arr-stack/downloads/shoko"
       STATE_FILE="/var/lib/torrent-copy/processed.log"
 
