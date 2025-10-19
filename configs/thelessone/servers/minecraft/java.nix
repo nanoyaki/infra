@@ -6,11 +6,20 @@ in
 
 {
   environment.systemPackages = [
-    (pkgs.writeShellScriptBin "java" ''${getJava pkgs.jdk21} "$@"'')
-    (pkgs.writeShellScriptBin "java21" ''${getJava pkgs.jdk21} "$@"'')
-    (pkgs.writeShellScriptBin "java17" ''${getJava pkgs.jdk17} "$@"'')
-    (pkgs.writeShellScriptBin "java8" ''${getJava pkgs.openjdk8-bootstrap} "$@"'')
-  ];
+    (pkgs.writeShellScriptBin "java" ''
+      JAVA_HOME=${pkgs.zulu21} ${getJava pkgs.zulu21} "$@"
+    '')
 
-  environment.variables.JAVA_HOME = "${pkgs.jdk21}/lib/openjdk";
+    (pkgs.writeShellScriptBin "java21" ''
+      JAVA_HOME=${pkgs.zulu21} ${getJava pkgs.zulu21} "$@"
+    '')
+
+    (pkgs.writeShellScriptBin "java17" ''
+      JAVA_HOME=${pkgs.zulu17} ${getJava pkgs.zulu17} "$@"
+    '')
+
+    (pkgs.writeShellScriptBin "java8" ''
+      JAVA_HOME=${pkgs.zulu8} ${getJava pkgs.zulu8} "$@"
+    '')
+  ];
 }
