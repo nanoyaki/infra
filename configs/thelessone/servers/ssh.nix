@@ -33,4 +33,8 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICuNzYml4oUphZrlPy97cthsJj8WLBBN4FGEEGuf9RJY"
     "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIGTdis9sEaWC/dHRq6a5sTrcBQmQuDQ+OxzJQuhnx/daAAAABHNzaDo= hana@shirayuri"
   ];
+
+  users.users.root.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPf2wnZdqHtSGs36Lmz5jfOA1FnDGsRdd40t/JkTklTe"
+  ];
 }

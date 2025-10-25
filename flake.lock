@@ -112,11 +112,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761352777,
-        "narHash": "sha256-KYEBm2tnk+gCVTn1MFlP1bjYbPzK4En8XF10tlW6Zfc=",
+        "lastModified": 1761418926,
+        "narHash": "sha256-ANdTQHaJZ15Y6lFkiBPveyuFJ7dLANPRK7qckmt4r78=",
         "owner": "9001",
         "repo": "copyparty",
-        "rev": "a325353b1b97b95e81853dfff17b1935d26d5916",
+        "rev": "e3524d85bdb8745aa0fb1fc22e8093faa2bc2afc",
         "type": "github"
       },
       "original": {
@@ -587,11 +587,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1759512275,
-        "narHash": "sha256-hES6B/G6TKdJTXITK0Kyw8EObPVhgzRY+CfmGrcQYCs=",
+        "lastModified": 1761406098,
+        "narHash": "sha256-y2RS0+gxeiJmxYoEyrsz98tlJpTsCyvdkambYGMXfac=",
         "ref": "refs/heads/main",
-        "rev": "5227120185b3b65876b5f8277fa64eed9cf32a83",
-        "revCount": 11,
+        "rev": "5cc85b07db0974252a1ef07f494cff7f2000260e",
+        "revCount": 12,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nanolib.git"
       },
@@ -614,11 +614,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1760462158,
-        "narHash": "sha256-B0kJhsCne31jfuT4r2aD22U3b9kem104AQ+A7neAC/0=",
+        "lastModified": 1761419854,
+        "narHash": "sha256-2v/onLaJI5gQriM77vKLCtIln9IREmw0N6GDHvkNt7Y=",
         "ref": "refs/heads/main",
-        "rev": "66abd0cf96e9ab693b904d86bcd01e29182c15e5",
-        "revCount": 32,
+        "rev": "8897ebcc16c322d689f906df544622e87fd1a2f2",
+        "revCount": 35,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nanomodules.git"
       },
@@ -770,11 +770,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761396527,
-        "narHash": "sha256-86jWYn1TEJ9q0zNXlp2DXDObhkwSO9zYYxLieWyoAJA=",
+        "lastModified": 1761416274,
+        "narHash": "sha256-IGQ77xugmfQ6VxIfSCGkrn+qZW8izxI7ibhCn0Chswo=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6906bd47fb1936409260a576f16513bec30f1e11",
+        "rev": "18b2d9fa4f3e1a724f23b2d00266e23635315488",
         "type": "github"
       },
       "original": {

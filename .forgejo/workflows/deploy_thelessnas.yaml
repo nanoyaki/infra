@@ -15,24 +15,21 @@ jobs:
       generation: ${{ steps.build.outputs.path }}
     steps:
       - name: Checkout repo
-        uses: https://code.forgejo.org/actions/checkout@v4
+        uses: actions/checkout@v4
+
       - name: Build generation
         id: build
         run: >
-          nix-fast-build
-          -f .#nixosConfigurations.thelessnas.config.system.build.toplevel
-          --no-nom -j 12 --eval-workers 1
+          nix build .#nixosConfigurations.thelessnas.config.system.build.toplevel
 
-          echo "path=$(readlink -f ./result-)" >> $FORGEJO_OUTPUT
+          echo "path=$(readlink -f ./result)" >> $FORGEJO_OUTPUT
 
   diff:
     runs-on: native
     needs: build
     steps:
-      - name: Full diff
+      - name: Diff
         run: dix -v /etc/systems/thelessnas "${{ needs.build.outputs.generation }}"
-      - name: Direct dependency diff
-        run: dix /etc/systems/thelessnas "${{ needs.build.outputs.generation }}"
 
   deployment:
     runs-on: native
@@ -40,9 +37,12 @@ jobs:
     env:
       DEPLOYMENT_KEY_THELESSNAS: ${{ secrets.DEPLOYMENT_KEY_THELESSNAS }}
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - name: Deploy
         run: |
           eval "$(ssh-agent -s)"
           ssh-add <(echo "$DEPLOYMENT_KEY_THELESSNAS")
 
-          nix run self#deploy-10-0-0-6 -- "${{ needs.build.outputs.generation }}"
+          nh os switch . -H thelessnas --target-host root@10.0.0.6 --no-nom -R

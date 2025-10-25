@@ -29,6 +29,7 @@ in
     "forgejo/kikyo" = { };
     "forgejo/syakuyaku" = { };
     "forgejo/botan" = { };
+    "forgejo/kigiku" = { };
   };
 
   sops.templates."kikyo.env".content = ''
@@ -41,6 +42,10 @@ in
 
   sops.templates."botan.env".content = ''
     TOKEN=${config.sops.placeholder."forgejo/botan"}
+  '';
+
+  sops.templates."kigiku.env".content = ''
+    TOKEN=${config.sops.placeholder."forgejo/kigiku"}
   '';
 
   systemd.services.gitea-runner-kikyo.environment = {
@@ -80,7 +85,6 @@ in
           nix
           openssh
           statix
-          nix-fast-build
           dix
           inotify-tools
           nh
@@ -90,6 +94,11 @@ in
       syakuyaku = kikyo // {
         name = "syakuyaku";
         tokenFile = config.sops.templates."syakuyaku.env".path;
+      };
+
+      kigiku = kikyo // {
+        name = "kigiku";
+        tokenFile = config.sops.templates."kigiku.env".path;
       };
 
       botan = {
