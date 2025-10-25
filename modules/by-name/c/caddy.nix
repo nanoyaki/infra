@@ -69,7 +69,6 @@ in
     baseDomain = mkDefault "home.local" mkStrOption;
     email = mkDefault "hanakretzer@gmail.com" mkStrOption;
     vpnHost = mkDefault "100.64.64.1" mkStrOption;
-    authentikPort = mkDefault 9000 mkPortOption;
 
     vHost = mkAttrsOf (mkSubmoduleOption {
       enable = mkTrueOption;
@@ -82,7 +81,6 @@ in
       serverAliases = mkListOf mkStrOption;
       vpnOnly = mkFalseOption;
       useMtls = mkFalseOption;
-      useAuthentik = mkFalseOption;
     });
 
     genDomain = mkFunctionTo mkStrOption;
@@ -144,14 +142,6 @@ in
         (acme) {
           tls /var/lib/acme/${cfg.baseDomain}/cert.pem /var/lib/acme/${cfg.baseDomain}/key.pem
         }
-
-
-        (authentik) {
-          forward_auth http://127.0.0.1:${toString cfg.authentikPort}/outpost.goauthentik.io/auth/caddy {
-            uri /outpost.goauthentik.io/auth/caddy
-            copy_headers X-Authentik-Username X-Authentik-Groups X-Authentik-Email X-Authentik-Name X-Authentik-Uid
-          }
-        }
       '';
 
       virtualHosts = mapAttrs' (
@@ -186,8 +176,6 @@ in
                 }
               }
             ''}
-
-            ${optionalString vhost.useAuthentik "import authentik"}
 
             ${vhost.extraConfig}
 

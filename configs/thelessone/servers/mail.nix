@@ -10,7 +10,6 @@
     "mailserver/vaultwarden" = { };
     "mailserver/calendar" = { };
     "mailserver/git" = { };
-    "mailserver/authentik" = { };
   };
 
   mailserver = {
@@ -64,11 +63,6 @@
       "git@theless.one" = {
         sendOnly = true;
         hashedPasswordFile = config.sops.secrets."mailserver/git".path;
-      };
-
-      "authentik@theless.one" = {
-        sendOnly = true;
-        hashedPasswordFile = config.sops.secrets."mailserver/authentik".path;
       };
     };
 
