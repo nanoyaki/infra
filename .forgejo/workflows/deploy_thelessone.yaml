@@ -62,11 +62,10 @@ jobs:
           eval "$(ssh-agent -s)"
             ssh-add /root/.ssh/id_thelessone_deployment
 
-          nh os switch ./infra
-          -H thelessone
+          nixos-rebuild switch
+          --flake ./infra#thelessone
           --build-host root@10.0.0.5
           --target-host root@10.0.0.5
-          --no-nom -R
           '
           "
 

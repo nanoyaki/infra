@@ -38,14 +38,14 @@ in
   };
 
   systemd.services.copyparty.unitConfig.RequiresMountsFor = "/mnt/raid";
-  systemd.services.copyparty.serviceConfig.BindPaths = [ "/run/sockets" ];
+  systemd.services.copyparty.serviceConfig.RuntimeDirectoryMode = lib.mkForce "0770";
   services.copyparty = {
     enable = true;
     package = pkgs.copyparty.override { inherit (pkgs) partftpy; };
     mkHashWrapper = true;
     settings = {
       # Server options
-      i = "unix:770:${cfg.group}:/run/sockets/copyparty.sock";
+      i = "unix:770:${cfg.group}:/run/copyparty/copyparty.sock";
       hist = "/var/cache/copyparty";
       shr = "/share";
       no-reload = true;
@@ -135,15 +135,10 @@ in
     ) cfg.accounts;
   };
 
-  systemd.tmpfiles.settings.sockets-dir."/run/sockets".d = {
-    inherit (cfg) user group;
-    mode = "770";
-  };
-
-  systemd.services.caddy.serviceConfig.BindPaths = [ "/run/sockets/copyparty.sock" ];
+  systemd.services.caddy.serviceConfig.BindPaths = [ "/run/copyparty/copyparty.sock" ];
   users.users.${config.services.caddy.user}.extraGroups = [ cfg.group ];
   config'.caddy.vHost.${config.config'.caddy.genDomain "files"}.extraConfig = ''
-    reverse_proxy unix//run/sockets/copyparty.sock
+    reverse_proxy unix//run/copyparty/copyparty.sock
   '';
 
   config'.homepage.categories.Services.services.Copyparty = rec {
