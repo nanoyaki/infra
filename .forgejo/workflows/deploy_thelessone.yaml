@@ -46,40 +46,24 @@ jobs:
           echo "previous=$CURRENT_GEN" >> $FORGEJO_OUTPUT
 
       - name: Kickstart deployment
-        env:
-          GENERATION_PATH: ${{ needs.build.outputs.generation }}
-        run: >
+        run: |
           eval "$(ssh-agent -s)"
-            ssh-add <(echo "$DEPLOYMENT_KEY_THELESSNAS")
+          ssh-add <(echo "$DEPLOYMENT_KEY_THELESSNAS")
 
-          ssh -T root@10.0.0.6
-          "
-          tmux new -d -s remote-switch-thelessone-local
-          '
-          rm -rf ./infra
+          ssh -T root@10.0.0.6 << 'EOF'
+            set -e
+
+            rm -rf ./infra
             git clone https://git.theless.one/nanoyaki/infra.git
 
-          eval "$(ssh-agent -s)"
+            eval "$(ssh-agent -s)"
             ssh-add /root/.ssh/id_thelessone_deployment
 
-          nixos-rebuild switch
-          --flake ./infra#thelessone
-          --build-host root@10.0.0.5
-          --target-host root@10.0.0.5
-          '
-          "
-
-      - name: Wait for deployment
-        continue-on-error: true
-        run: >
-          inotifywait
-          -e create,delete,move
-          -r
-          --include '^system-\d+-link$'
-          -t 300
-          /nix/var/nix/profiles
-
-          sleep 1
+            nixos-rebuild switch \
+            --flake ./infra#thelessone \
+            --build-host root@10.0.0.5 \
+            --target-host root@10.0.0.5
+          EOF
 
       - name: Check generation deployed
         env:
