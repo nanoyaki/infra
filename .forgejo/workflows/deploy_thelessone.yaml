@@ -45,24 +45,28 @@ jobs:
           CURRENT_GEN="$(readlink /nix/var/nix/profiles/system | grep -oP 'system-\K\d+')"
           echo "previous=$CURRENT_GEN" >> $FORGEJO_OUTPUT
 
-      - name: Kickstart deployment
+      - name: Deploy
         run: |
           eval "$(ssh-agent -s)"
           ssh-add <(echo "$DEPLOYMENT_KEY_THELESSNAS")
 
           ssh -T root@10.0.0.6 << 'EOF'
-            set -e
+            tmux new-session -d -s deploy '
+              set -e;
 
-            rm -rf ./infra
-            git clone https://git.theless.one/nanoyaki/infra.git
+              rm -rf ./infra;
+              git clone https://git.theless.one/nanoyaki/infra.git;
 
-            eval "$(ssh-agent -s)"
-            ssh-add /root/.ssh/id_thelessone_deployment
+              eval "$(ssh-agent -s)";
+              ssh-add /root/.ssh/id_thelessone_deployment;
 
-            nixos-rebuild switch \
-            --flake ./infra#thelessone \
-            --build-host root@10.0.0.5 \
-            --target-host root@10.0.0.5
+              nixos-rebuild switch --flake ./infra#thelessone \
+                --build-host root@10.0.0.5 --target-host root@10.0.0.5;
+
+              tmux wait -S deployment
+            '
+
+            tmux wait deployment
           EOF
 
       - name: Check generation deployed
