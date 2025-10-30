@@ -50,7 +50,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     valheim-server = {
-      url = "github:hamburger1984/valheim-server-flake/beta";
+      url = "github:hamburger1984/valheim-server-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     snm = {

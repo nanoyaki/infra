@@ -24,7 +24,7 @@ in
       };
 
   services.valheim = {
-    enable = false;
+    enable = true;
     openFirewall = true;
     passwordEnvFile = config.sops.templates."valheim-password.env".path;
 
