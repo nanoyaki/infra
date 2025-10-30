@@ -57,7 +57,7 @@ in
   };
 
   services.gitea-actions-runner = {
-    package = pkgs.forgejo-actions-runner;
+    package = pkgs.forgejo-runner;
 
     instances = rec {
       kikyo = {
