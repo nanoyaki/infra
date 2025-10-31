@@ -37,9 +37,8 @@
           "nano@nanoyaki.space"
           "contact@nanoyaki.space"
         ];
-        aliasesRegexp = [
-          ''/^nano(\.|\+).*@nanoyaki\.space$/''
-        ];
+        aliasesRegexp = [ ''/^.*(\.|\+).*@nanoyaki\.space$/'' ];
+        catchAll = [ "nanoyaki.space" ];
       };
 
       "thelessone@theless.one" = {
