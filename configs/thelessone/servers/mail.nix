@@ -82,6 +82,20 @@
     ];
   };
 
+  services.rspamd.locals."multimap.conf".text = ''
+    NIXOS_CONFIG_WHITELIST {
+      type = "from";
+      filter = "email:domain";
+      map = "/etc/rspamd/local.d/domain_whitelist.map";
+      action = "accept";
+      description = "Whitelisted domains in the nixos configuration";
+    }
+  '';
+
+  services.rspamd.locals."domain_whitelist.map".text = ''
+    gryphline.com
+  '';
+
   sops.secrets = {
     "restic/mail-local" = { };
     "restic/mail-remote" = { };
