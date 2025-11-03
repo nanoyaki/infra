@@ -74,8 +74,8 @@ in
       og-ua = "Discordbot";
       fk = 24;
       dk = 48;
-      chmod-f = 640;
-      chmod-d = 750;
+      chmod-f = "640";
+      chmod-d = "750";
       ban-pw = "5,60,1440";
       grp-all = "acct";
       no-dupe = true;
