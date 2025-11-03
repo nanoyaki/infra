@@ -23,12 +23,12 @@
     timerConfig.OnCalendar = "*:0/30";
   };
 
-  config'.restic.backups.beyond-depth = {
-    repository = "/mnt/raid/backups/beyond-depth";
-    passwordFile = config.sops.secrets."restic/beyond-depth".path;
+  # config'.restic.backups.beyond-depth = {
+  #   repository = "/mnt/raid/backups/beyond-depth";
+  #   passwordFile = config.sops.secrets."restic/beyond-depth".path;
 
-    basePath = "/home/thelessone/Dokumente/MinecraftServers/Niklas/niklas3";
+  #   basePath = "/home/thelessone/Dokumente/MinecraftServers/Niklas/niklas3";
 
-    timerConfig.OnCalendar = "*:0/30";
-  };
+  #   timerConfig.OnCalendar = "*:0/30";
+  # };
 }
