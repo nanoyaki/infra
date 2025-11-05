@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 {
   boot = {
@@ -15,6 +15,8 @@
       "usb_storage"
       "sd_mod"
     ];
+
+    kernelPackages = pkgs.linuxPackages_latest;
 
     kernelParams = [
       "acpi_enforce_resources=lax"

@@ -13,7 +13,7 @@ in
     };
     inherit (config.arr) group;
   };
-  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "nvidia";
+  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
 
   config'.caddy.vHost.${domain} = {
     proxy.port = 8096;
@@ -35,8 +35,6 @@ in
     "video"
     "render"
   ];
-
-  systemd.services.jellyfin.restartTriggers = [ config.hardware.nvidia.package ];
 
   sops.secrets."restic/jellyfin" = { };
 
