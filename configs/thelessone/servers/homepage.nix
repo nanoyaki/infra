@@ -16,7 +16,7 @@
     glances.widgets = [
       { "CPU usage".metric = "cpu"; }
       { "Memory usage".metric = "memory"; }
-      { "Network usage".metric = "network:enp6s0"; }
+      { "Network usage".metric = "network:enp5s0"; }
       { "VPN Network usage".metric = "network:tailscale0"; }
       { "Storage usage NVMe".metric = "fs:/"; }
       { "Disk I/O NVMe".metric = "disk:nvme0n1"; }
