@@ -3,6 +3,7 @@
     ./deployment.nix
     ./firewall.nix
     ./interface.nix
+    ./wireguard.nix
   ];
 
   networking.useDHCP = true;
@@ -19,11 +20,5 @@
   services.iperf3 = {
     enable = true;
     openFirewall = true;
-  };
-
-  services.tailscale = {
-    enable = true;
-    openFirewall = true;
-    useRoutingFeatures = "both";
   };
 }

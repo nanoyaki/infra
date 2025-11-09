@@ -4,6 +4,5 @@
     ./stash.nix
     ./audiobookshelf.nix
     ./deluge.nix
-    ./mtls-migration.nix
   ];
 }

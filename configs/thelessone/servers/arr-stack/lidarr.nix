@@ -1,10 +1,12 @@
 { config, ... }:
 
 let
-  domain = "https://lidarr.theless.one";
+  domain = "lidarr.theless.one";
 in
 
 {
+  sops.secrets."restic/lidarr" = { };
+
   services.vopono.allowedTCPPorts = [ config.services.lidarr.settings.server.port ];
 
   systemd.services.lidarr.unitConfig.RequiresMountsFor = "/mnt/raid";
@@ -15,13 +17,15 @@ in
 
   config'.caddy.vHost.${domain} = {
     proxy = { inherit (config.services.lidarr.settings.server) port; };
-    useMtls = true;
+    useVpn = true;
   };
 
-  config'.homepage.categories.Arr.services.Lidarr = {
-    icon = "lidarr.svg";
-    href = domain;
-    siteMonitor = domain;
-    description = "Music manager";
+  config'.restic.backups.lidarr = {
+    repository = "/mnt/raid/backups/lidarr";
+    passwordFile = config.sops.secrets."restic/lidarr".path;
+
+    basePath = "/var/lib/lidarr";
+
+    timerConfig.OnCalendar = "daily";
   };
 }

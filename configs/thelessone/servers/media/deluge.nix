@@ -8,7 +8,7 @@
 let
   inherit (lib) mkOption types getExe;
 
-  domain = "https://flood.theless.one";
+  domain = "flood.theless.one";
   cfg = config.services.deluge;
 
   configDir = "${cfg.dataDir}/.config/deluge";
@@ -245,14 +245,18 @@ in
 
     config'.caddy.vHost.${domain} = {
       proxy = { inherit (config.services.flood) port; };
-      useMtls = true;
+      useVpn = true;
     };
 
-    config'.homepage.categories."Services".services.Flood = {
-      icon = "flood.svg";
-      href = domain;
-      siteMonitor = domain;
-      description = "WebUI for torrenting clients";
+    sops.secrets."restic/deluge" = { };
+
+    config'.restic.backups.deluge = {
+      repository = "/mnt/raid/backups/deluge";
+      passwordFile = config.sops.secrets."restic/deluge".path;
+
+      basePath = "/var/lib/deluge/.config/deluge";
+
+      timerConfig.OnCalendar = "daily";
     };
   };
 }

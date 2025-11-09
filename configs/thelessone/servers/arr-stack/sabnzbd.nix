@@ -1,10 +1,12 @@
 { config, ... }:
 
 let
-  domain = "https://sabnzbd.theless.one";
+  domain = "sabnzbd.theless.one";
 in
 
 {
+  sops.secrets."restic/sabnzbd" = { };
+
   services.vopono.allowedTCPPorts = [ 8080 ];
 
   systemd.services.sabnzbd.unitConfig.RequiresMountsFor = "/mnt/raid";
@@ -15,13 +17,15 @@ in
 
   config'.caddy.vHost.${domain} = {
     proxy.port = 8080;
-    useMtls = true;
+    useVpn = true;
   };
 
-  config'.homepage.categories.Arr.services.Sabnzbd = {
-    icon = "sabnzbd.svg";
-    href = domain;
-    siteMonitor = domain;
-    description = "Usenet binary downloader";
+  config'.restic.backups.sabnzbd = {
+    repository = "/mnt/raid/backups/sabnzbd";
+    passwordFile = config.sops.secrets."restic/sabnzbd".path;
+
+    basePath = "/var/lib/sabnzbd";
+
+    timerConfig.OnCalendar = "daily";
   };
 }

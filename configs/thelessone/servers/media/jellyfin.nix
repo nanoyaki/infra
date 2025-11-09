@@ -1,8 +1,7 @@
 { pkgs, config, ... }:
 
 let
-  domain = "https://jellyfin.theless.one";
-  vpnDomain = "https://jellyfin.vpn.theless.one";
+  domain = "jellyfin.theless.one";
 in
 
 {
@@ -17,18 +16,7 @@ in
 
   config'.caddy.vHost.${domain} = {
     proxy.port = 8096;
-    useMtls = true;
-  };
-  config'.caddy.vHost.${vpnDomain} = {
-    vpnOnly = true;
-    proxy.port = 8096;
-  };
-
-  config'.homepage.categories.Media.services.Jellyfin = {
-    icon = "jellyfin.svg";
-    href = domain;
-    siteMonitor = domain;
-    description = "Server for archived media";
+    useVpn = true;
   };
 
   users.users.${config.services.jellyfin.user}.extraGroups = [

@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  domain = "https://immich.theless.one";
+  domain = "immich.theless.one";
 in
 
 {
@@ -28,14 +28,7 @@ in
 
   config'.caddy.vHost.${domain} = {
     proxy = { inherit (config.services.immich) port; };
-    useMtls = true;
-  };
-
-  config'.homepage.categories.Media.services.Immich = {
-    icon = "immich.svg";
-    href = domain;
-    siteMonitor = domain;
-    description = "Image backup service";
+    useVpn = true;
   };
 
   sops.secrets."restic/immich" = { };

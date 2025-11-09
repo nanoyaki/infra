@@ -108,10 +108,8 @@ in
     )
   );
 
-  config'.caddy.vHost.${config.config'.caddy.genDomain "calendar"}.extraConfig = ''
-    redir https://dav.theless.one 301
-  '';
-  config'.caddy.vHost.${config.config'.caddy.genDomain "dav"}.proxy.port = 5232;
+  config'.caddy.vHost."calendar.theless.one".proxy.port = 5232;
+  config'.caddy.vHost."dav.theless.one".proxy.port = 5232;
 
   sops.secrets = {
     "restic/dav-local" = { };

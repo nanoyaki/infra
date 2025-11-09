@@ -23,7 +23,6 @@ let
     };
   };
 
-  icon = "suwayomi-light.svg";
   cfg = config.services.suwayomi.instances;
 in
 
@@ -42,58 +41,32 @@ in
   };
 
   config'.caddy.vHost = {
-    "https://manga.theless.one" = {
+    "manga.theless.one" = {
       proxy = { inherit (cfg.thomas.settings.server) port; };
-      useMtls = true;
+      useVpn = true;
     };
-    "https://nik-manga.theless.one" = {
+    "nik-manga.theless.one" = {
       proxy = { inherit (cfg.niklas.settings.server) port; };
-      useMtls = true;
+      useVpn = true;
     };
-    "https://hana-manga.theless.one" = {
+    "hana-manga.theless.one" = {
       proxy = { inherit (cfg.hana.settings.server) port; };
-      useMtls = true;
+      useVpn = true;
     };
-    "https://mei-manga.theless.one" = {
+    "mei-manga.theless.one" = {
       proxy = { inherit (cfg.mei.settings.server) port; };
-      useMtls = true;
+      useVpn = true;
     };
   };
 
-  config'.homepage.categories.Suwayomi = {
-    layout = {
-      style = "row";
-      columns = 4;
-    };
+  sops.secrets."restic/suwayomi" = { };
 
-    services = {
-      "Thomas Suwayomi" = rec {
-        description = "Thomas' suwayomi instance";
-        inherit icon;
-        href = "https://manga.theless.one";
-        siteMonitor = href;
-      };
+  config'.restic.backups.suwayomi = {
+    repository = "/mnt/raid/backups/suwayomi";
+    passwordFile = config.sops.secrets."restic/suwayomi".path;
 
-      "Nik Suwayomi" = rec {
-        description = "Nik's suwayomi instance";
-        inherit icon;
-        href = "https://nik-manga.theless.one";
-        siteMonitor = href;
-      };
+    basePath = config.services.suwayomi.dataDir;
 
-      "Hana Suwayomi" = rec {
-        description = "Hana's suwayomi instance";
-        inherit icon;
-        href = "https://hana-manga.theless.one";
-        siteMonitor = href;
-      };
-
-      "Mei Suwayomi" = rec {
-        description = "Meilyne's suwayomi instance";
-        inherit icon;
-        href = "https://mei-manga.theless.one";
-        siteMonitor = href;
-      };
-    };
+    timerConfig.OnCalendar = "daily";
   };
 }

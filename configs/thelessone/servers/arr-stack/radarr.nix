@@ -1,9 +1,11 @@
 { config, ... }:
 let
-  domain = "https://radarr.theless.one";
+  domain = "radarr.theless.one";
 in
 
 {
+  sops.secrets."restic/radarr" = { };
+
   services.vopono.allowedTCPPorts = [ config.services.radarr.settings.server.port ];
 
   systemd.services.radarr.unitConfig.RequiresMountsFor = "/mnt/raid";
@@ -14,13 +16,15 @@ in
 
   config'.caddy.vHost.${domain} = {
     proxy = { inherit (config.services.radarr.settings.server) port; };
-    useMtls = true;
+    useVpn = true;
   };
 
-  config'.homepage.categories.Arr.services.Radarr = {
-    icon = "radarr.svg";
-    href = domain;
-    siteMonitor = domain;
-    description = "Movie manager";
+  config'.restic.backups.radarr = {
+    repository = "/mnt/raid/backups/radarr";
+    passwordFile = config.sops.secrets."restic/radarr".path;
+
+    basePath = "/var/lib/radarr";
+
+    timerConfig.OnCalendar = "daily";
   };
 }

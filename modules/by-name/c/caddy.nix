@@ -17,31 +17,28 @@ let
     mkPortOption
     mkSubmoduleOption
     mkStrOption
-    mkFunctionTo
+    mkPathOption
     ;
 
   inherit (lib)
     mkIf
-    replaceStrings
     mkRenamedOptionModule
+    elemAt
     ;
-  inherit (lib.strings) optionalString hasInfix;
-  inherit (lib.lists) all;
+  inherit (lib.strings)
+    optionalString
+    hasInfix
+    hasPrefix
+    removeSuffix
+    splitString
+    ;
   inherit (lib.attrsets)
-    attrNames
     filterAttrs
-    mapAttrsToList
     nameValuePair
     mapAttrs'
     ;
 
   cfg = config.config'.caddy;
-
-  vpnDomain = config.services.headscale.settings.dns.base_domain;
-  vpnV4Subnet = config.services.headscale.settings.prefixes.v4;
-  vpnV6Subnet = config.services.headscale.settings.prefixes.v6;
-
-  sanitizeDomain = domain: builtins.replaceStrings [ "." ":" "/" ] [ "_" "-" "-" ] domain;
 
   deprecatedPath = [
     "config'"
@@ -65,10 +62,11 @@ in
     enable = mkFalseOption;
 
     openFirewall = mkFalseOption;
-    useHttps = mkTrueOption;
-    baseDomain = mkDefault "home.local" mkStrOption;
+    baseDomain = mkStrOption;
     email = mkDefault "hanakretzer@gmail.com" mkStrOption;
-    vpnHost = mkDefault "100.64.64.1" mkStrOption;
+    porkbunCreds = mkPathOption;
+    vpnServerV4 = mkDefault "100.64.64.1" mkStrOption;
+    vpnServerV6 = mkDefault "fd64::1" mkStrOption;
 
     vHost = mkAttrsOf (mkSubmoduleOption {
       enable = mkTrueOption;
@@ -79,11 +77,8 @@ in
       userEnvVar = mkNullOr mkStrOption;
       extraConfig = mkStrOption;
       serverAliases = mkListOf mkStrOption;
-      vpnOnly = mkFalseOption;
-      useMtls = mkFalseOption;
+      useVpn = mkFalseOption;
     });
-
-    genDomain = mkFunctionTo mkStrOption;
   };
 
   imports = [
@@ -93,20 +88,10 @@ in
     (mkVHostRenamedOpt [ "userEnvVar" ] [ "userEnvVar" ])
     (mkVHostRenamedOpt [ "extraConfig" ] [ "extraConfig" ])
     (mkVHostRenamedOpt [ "serverAliases" ] [ "serverAliases" ])
-    (mkVHostRenamedOpt [ "vpnOnly" ] [ "vpnOnly" ])
-    (mkVHostRenamedOpt [ "useMtls" ] [ "useMtls" ])
+    (mkVHostRenamedOpt [ "vpnOnly" ] [ "useVpn" ])
   ];
 
   config = mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = all (domain: (hasInfix vpnDomain domain) || (hasInfix "100.64.64" domain)) (
-          attrNames (filterAttrs (_: hostCfg: hostCfg.enable && hostCfg.vpnOnly) cfg.vHost)
-        );
-        message = "VPN only virtual hosts must use the headscale dns base domain in them";
-      }
-    ];
-
     networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall [
       80
       443
@@ -114,15 +99,12 @@ in
 
     services.caddy = {
       enable = true;
+      enableReload = true;
       inherit (cfg) email;
 
       logFormat = ''
         format console
         level INFO
-      '';
-
-      globalConfig = mkIf (!cfg.useHttps) ''
-        auto_https disable_redirects
       '';
 
       extraConfig = ''
@@ -132,15 +114,6 @@ in
             rewrite * /{http.error.status_code}.html
             file_server
           }
-        }
-
-        (vpn_only) {
-          @outside-local not client_ip private_ranges ${vpnV4Subnet} ${vpnV6Subnet}
-          abort @outside-local
-        }
-
-        (acme) {
-          tls /var/lib/acme/${cfg.baseDomain}/cert.pem /var/lib/acme/${cfg.baseDomain}/key.pem
         }
       '';
 
@@ -154,29 +127,6 @@ in
               }
             ''}
 
-            ${optionalString vhost.vpnOnly "import vpn_only"}
-
-            ${optionalString (
-              !vhost.useMtls && config.security.acme.certs ? ${cfg.baseDomain} && hasInfix cfg.baseDomain domain
-            ) "import acme"}
-
-            ${optionalString vhost.useMtls ''
-              tls {
-                client_auth {
-                  mode require_and_verify
-                  trust_pool file ${config.config'.mtls.dataDir}/ca.crt
-                  verifier revocation {
-                    mode crl_only
-                    crl_config {
-                      work_dir ${config.services.caddy.dataDir}/.cache/${sanitizeDomain domain}
-                      crl_file ${config.config'.mtls.dataDir}/ca.crl
-                      trusted_signature_cert_file ${config.config'.mtls.dataDir}/ca.crt
-                    }
-                  }
-                }
-              }
-            ''}
-
             ${vhost.extraConfig}
 
             ${optionalString (
@@ -186,8 +136,171 @@ in
             import error_handling
           '';
           inherit (vhost) serverAliases;
+          useACMEHost = mkIf (hasInfix cfg.baseDomain domain) cfg.baseDomain;
+          listenAddresses = mkIf vhost.useVpn (
+            map (
+              cidrSuffixed:
+
+              let
+                address = elemAt (splitString "/" cidrSuffixed) 0;
+              in
+
+              if hasInfix ":" address then "[${address}]" else address
+            ) config.networking.wg-quick.interfaces.wg0.address
+          );
         }
       ) enabledHosts;
+    };
+
+    systemd.services.porkbun-vpn-records = {
+      description = "Create Porkbun records for VPN only endpoints";
+
+      path = with pkgs; [
+        jq
+        curl
+      ];
+      script = ''
+        is_successful() {
+          local response="''${1:-'{ "status": "ERROR" }'}"
+          echo "$response" | jq -r '.status == "SUCCESS"'
+        }
+
+        has_valid_record() {
+          local response="''${1:-'{ "records": [ ] }'}"
+          echo "$response" | jq -r '
+            .records[0]
+            | .content == ({ A: "${cfg.vpnServerV4}", AAAA: "${cfg.vpnServerV6}" }[.type])
+          '
+        }
+
+        has_empty_record() {
+          local response="''${1:-'{ "records": [ ] }'}"
+          echo "$response" | jq -r '.records == [ ]'
+        }
+
+        update_record() {
+          local domain="$1"
+          local subdomain="$2"
+          local type="$3"
+
+          local response
+          response="$(curl -L \
+            -H "Content-Type: application/json" \
+            --data "@${cfg.porkbunCreds}" \
+            "https://api.porkbun.com/api/json/v3/dns/retrieveByNameType/$domain/$type/$subdomain"
+          )"
+
+          sleep 1
+
+          if [ "$(is_successful "$response")" == "false" ]; then
+            echo "Api retrieve request was unsuccessful. Assuming API rate limited."
+            return 1
+          fi
+
+          if [ "$(has_empty_record "$response")" == "true" ]; then
+            create_record "$domain" "$subdomain" "$type"
+          elif [ "$(has_valid_record "$response")" == "false" ]; then
+            modify_record "$domain" "$subdomain" "$type"
+          fi
+
+          echo "Updated $type record for $subdomain.$domain"
+          return 0
+        }
+
+        modify_record() {
+          local domain="$1"
+          local subdomain="$2"
+          local type="$3"
+
+          echo "Modifying record for $subdomain.$domain"
+
+          local request_data
+          request_data="$(
+            jq \
+              --arg t "$type" \
+              -r '{
+                ttl: 900,
+                content: {
+                  A: "${cfg.vpnServerV4}",
+                  AAAA: "${cfg.vpnServerV6}"
+                }[$t]
+              } * .' \
+              "${cfg.porkbunCreds}"
+          )"
+
+          local response
+          response="$(curl -L \
+            -H "Content-Type: application/json" \
+            --data "$request_data" \
+            "https://api.porkbun.com/api/json/v3/dns/editByNameType/$domain/$type/$subdomain"
+          )"
+
+          sleep 1
+
+          if [ "$(is_successful "$response")" == "false" ]; then
+            echo "Api edit request was unsuccessful. Assuming API rate limited."
+            return 1
+          fi
+
+          return 0
+        }
+
+        create_record() {
+          local domain="$1"
+          local subdomain="$2"
+          local type="$3"
+
+          echo "Creating record for $subdomain.$domain"
+
+          local request_data
+          request_data="$(
+            jq \
+              --arg t "$type" \
+              --arg s "$subdomain" \
+              -r '{
+                name: $s,
+                type: $t,
+                ttl: 900,
+                content: {
+                  A: "${cfg.vpnServerV4}",
+                  AAAA: "${cfg.vpnServerV6}"
+                }[$t]
+              } * .' \
+              "${cfg.porkbunCreds}"
+          )"
+
+          local response
+          response="$(curl -L \
+            -H "Content-Type: application/json" \
+            --data "$request_data" \
+            "https://api.porkbun.com/api/json/v3/dns/create/$domain"
+          )"
+
+          sleep 1
+
+          if [ "$(is_successful "$response")" == "false" ]; then
+            echo "Api create request was unsuccessful. Assuming API rate limited."
+            return 1
+          fi
+
+          return 0
+        }
+      ''
+      + lib.concatMapAttrsStringSep "\n" (
+        fqdn: vhost:
+        lib.optionalString
+          (vhost.useVpn && hasInfix cfg.baseDomain fqdn && !(hasPrefix "http" cfg.baseDomain))
+          ''
+            echo "Processing records for ${fqdn}"
+            update_record "${cfg.baseDomain}" "${removeSuffix ".${cfg.baseDomain}" fqdn}" "A"
+            update_record "${cfg.baseDomain}" "${removeSuffix ".${cfg.baseDomain}" fqdn}" "AAAA"
+          ''
+      ) cfg.vHost;
+
+      serviceConfig = {
+        Restart = "no";
+        Type = "oneshot";
+      };
     };
 
     config'.caddy.vHost."localhost:3133".extraConfig = ''
@@ -195,34 +308,10 @@ in
       file_server
     '';
 
-    services.headscale.settings.dns.extra_records = mapAttrsToList (domain: _: {
-      name = replaceStrings [ "http://" "https://" ] [ "" "" ] domain;
-      type = "A";
-      value = cfg.vpnHost;
-    }) (filterAttrs (_: hostCfg: hostCfg.vpnOnly) enabledHosts);
-
-    systemd.services.caddy.path = [ pkgs.nssTools ];
-
-    systemd.tmpfiles.settings.caddy-mtls = {
-      "${config.services.caddy.dataDir}/.cache".d = {
-        inherit (config.services.caddy) user group;
-        mode = "750";
-      };
-    }
-    // mapAttrs' (
-      domain: _:
-      nameValuePair "${config.services.caddy.dataDir}/.cache/${sanitizeDomain domain}" {
-        d = {
-          inherit (config.services.caddy) user group;
-          mode = "700";
-        };
-      }
-    ) (filterAttrs (_: hostCfg: hostCfg.useMtls) enabledHosts);
-
-    config'.caddy.genDomain =
-      name:
-      "http${optionalString cfg.useHttps "s"}://${
-        optionalString (name != "") "${name}."
-      }${cfg.baseDomain}";
+    systemd.services.caddy = {
+      wants = [ "porkbun-vpn-records.service" ];
+      after = [ "porkbun-vpn-records.service" ];
+      path = [ pkgs.nssTools ];
+    };
   };
 }

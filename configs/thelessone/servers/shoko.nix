@@ -28,16 +28,20 @@
     homeMode = builtins.toString config.systemd.services.shoko.serviceConfig.StateDirectoryMode;
   };
 
-  config'.caddy.vHost."https://shoko.theless.one" = {
+  config'.caddy.vHost."shoko.theless.one" = {
     proxy.port = 8111;
-    useMtls = true;
+    useVpn = true;
   };
 
-  config'.homepage.categories."Media services".services.Shoko = rec {
-    description = "Anime manager";
-    icon = "shoko.svg";
-    href = "https://shoko.theless.one";
-    siteMonitor = href;
+  sops.secrets."restic/shoko" = { };
+
+  config'.restic.backups.shoko = {
+    repository = "/mnt/raid/backups/shoko";
+    passwordFile = config.sops.secrets."restic/shoko".path;
+
+    basePath = "/var/lib/shoko";
+
+    timerConfig.OnCalendar = "daily";
   };
 
   users.users.torrent-copy = {

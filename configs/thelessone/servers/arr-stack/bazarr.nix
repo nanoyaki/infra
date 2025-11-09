@@ -3,10 +3,12 @@
 let
   inherit (config) arr;
 
-  domain = "https://bazarr.theless.one";
+  domain = "bazarr.theless.one";
 in
 
 {
+  sops.secrets."restic/bazarr" = { };
+
   services.bazarr = {
     enable = true;
     inherit (arr) group;
@@ -14,13 +16,15 @@ in
 
   config'.caddy.vHost.${domain} = {
     proxy.port = config.services.bazarr.listenPort;
-    useMtls = true;
+    useVpn = true;
   };
 
-  config'.homepage.categories.Arr.services.Bazarr = {
-    icon = "bazarr.svg";
-    href = domain;
-    siteMonitor = domain;
-    description = "Subtitle manager";
+  config'.restic.backups.bazarr = {
+    repository = "/mnt/raid/backups/bazarr";
+    passwordFile = config.sops.secrets."restic/bazarr".path;
+
+    basePath = "/var/lib/bazarr";
+
+    timerConfig.OnCalendar = "daily";
   };
 }

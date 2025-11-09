@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 let
-  domain = "https://vaultwarden.theless.one";
+  domain = "vaultwarden.theless.one";
 in
 
 {
@@ -23,7 +23,7 @@ in
     backupDir = "/var/backup/vaultwarden";
 
     config = {
-      DOMAIN = domain;
+      DOMAIN = "https://${domain}";
 
       ROCKET_ADDRESS = "127.0.0.1";
       ROCKET_PORT = 8222;
@@ -48,13 +48,6 @@ in
   };
 
   config'.caddy.vHost.${domain}.proxy.port = config.services.vaultwarden.config.ROCKET_PORT;
-
-  config'.homepage.categories.Enduser.services.Vaultwarden = {
-    icon = "bitwarden.svg";
-    href = domain;
-    siteMonitor = domain;
-    description = "Private instance of the Bitwarden password manager";
-  };
 
   sops.secrets = {
     "restic/100-64-64-3" = { };

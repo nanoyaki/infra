@@ -1,22 +1,25 @@
 { config, ... }:
 
 let
-  domain = "https://jellyseerr.theless.one";
+  domain = "jellyseerr.theless.one";
 in
 
 {
+  sops.secrets."restic/jellyseerr" = { };
 
   services.jellyseerr.enable = true;
 
   config'.caddy.vHost.${domain} = {
     proxy = { inherit (config.services.jellyseerr) port; };
-    useMtls = true;
+    useVpn = true;
   };
 
-  config'.homepage.categories.Arr.services.Jellyseerr = {
-    icon = "jellyseerr.svg";
-    href = domain;
-    siteMonitor = domain;
-    description = "Media request manager";
+  config'.restic.backups.jellyseerr = {
+    repository = "/mnt/raid/backups/jellyseerr";
+    passwordFile = config.sops.secrets."restic/jellyseerr".path;
+
+    basePath = "/var/lib/private/jellyseerr";
+
+    timerConfig.OnCalendar = "daily";
   };
 }

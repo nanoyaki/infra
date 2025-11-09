@@ -77,6 +77,4 @@
       environmentFile = config.sops.templates."acme.env".path;
     };
   };
-
-  systemd.services.caddy.after = [ "acme-theless.one.service" ];
 }

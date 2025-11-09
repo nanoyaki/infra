@@ -137,16 +137,9 @@ in
 
   systemd.services.caddy.serviceConfig.BindPaths = [ "/run/copyparty/copyparty.sock" ];
   users.users.${config.services.caddy.user}.extraGroups = [ cfg.group ];
-  config'.caddy.vHost.${config.config'.caddy.genDomain "files"}.extraConfig = ''
+  config'.caddy.vHost."files.theless.one".extraConfig = ''
     reverse_proxy unix//run/copyparty/copyparty.sock
   '';
-
-  config'.homepage.categories.Services.services.Copyparty = rec {
-    description = "File server like dropbox/google drive";
-    icon = "copyparty.svg";
-    href = "https://files.theless.one";
-    siteMonitor = href;
-  };
 
   sops.secrets."restic/copyparty" = { };
 

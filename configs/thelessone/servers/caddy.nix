@@ -6,23 +6,7 @@
 }:
 
 let
-  inherit (lib)
-    genAttrs
-    nameValuePair
-    mapAttrs'
-    filterAttrs
-    ;
-
-  excludes = [
-    "uptimekuma"
-    "vaultwarden"
-    "homepage-images"
-    "homepage"
-  ];
-
-  privateServices = filterAttrs (
-    name: cfg: cfg ? enable && cfg.enable && !(lib.elem name excludes) && cfg ? subdomain
-  ) config.config';
+  inherit (lib) genAttrs;
 
   # String -> String
   mkFileServer = directory: ''
@@ -53,7 +37,6 @@ in
 
   services.caddy = {
     enable = true;
-    enableReload = false;
     package = lib.mkForce (
       pkgs.caddy.withPlugins {
         plugins = [
@@ -75,48 +58,22 @@ in
     };
   };
 
-  config'.mtls = {
-    enable = true;
-
-    clients = {
-      nano = { };
-      ashley = { };
-      maru = { };
-      nik = { };
-      vapper = { };
-      thomas = { };
-      koko = { };
-      juli = { };
-      dowo = { };
-      pascal = { };
-      daniel = { };
-      sebi = { };
-      uptimekuma = { };
-    };
+  sops.templates."porkbun.json".content = builtins.toJSON {
+    secretapikey = config.sops.placeholder."porkbun/secret-api-key";
+    apikey = config.sops.placeholder."porkbun/api-key";
   };
 
   config'.caddy = {
     enable = true;
     openFirewall = true;
     baseDomain = "theless.one";
+    porkbunCreds = config.sops.templates."porkbun.json".path;
 
-    vHost =
-      (mapAttrs' (
-        service: _:
-        nameValuePair (config.config'.caddy.genDomain config.config'.${service}.subdomain) {
-          useMtls = true;
-        }
-      ) privateServices)
-      // {
-        # Restic
-        "https://100.64.64.1:8123" = {
-          proxy = {
-            port = 8000;
-            host = "10.0.0.6";
-          };
-          useMtls = true;
-        };
-      };
+    vHost."restic.theless.one" = {
+      proxy.host = "10.0.0.6";
+      proxy.port = 8000;
+      useVpn = true;
+    };
   };
 
   users.users.${config.services.caddy.user}.extraGroups = [ "mtls" ];
@@ -134,4 +91,20 @@ in
           mode = "2770";
         };
       });
+
+  sops.secrets."restic/caddy" = { };
+
+  config'.restic.backups.caddy = {
+    repository = "/mnt/raid/backups/caddy";
+    passwordFile = config.sops.secrets."restic/caddy".path;
+
+    basePath = "/var";
+    paths = [
+      "www/theless.one"
+      "lib/caddy/files"
+      "lib/caddy/nanoyaki-files"
+    ];
+
+    timerConfig.OnCalendar = "daily";
+  };
 }

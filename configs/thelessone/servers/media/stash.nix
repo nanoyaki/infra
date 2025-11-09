@@ -337,16 +337,9 @@ in
 
     environment.systemPackages = [ pkgs.chromium ];
 
-    config'.caddy.vHost."https://stash.theless.one" = {
+    config'.caddy.vHost."stash.theless.one" = {
       proxy = { inherit (cfg.settings) port; };
-      useMtls = true;
-    };
-
-    config'.homepage.categories.Media.services.Stash = rec {
-      description = "Adult video server";
-      icon = "stash.svg";
-      href = "https://stash.theless.one";
-      siteMonitor = href;
+      useVpn = true;
     };
   };
 }

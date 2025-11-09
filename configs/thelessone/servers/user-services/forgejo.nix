@@ -214,6 +214,7 @@ in
     "restic/100-64-64-3" = { };
     "restic/forgejo-local" = { };
     "restic/forgejo-remote" = { };
+    "restic/forgejo-everything" = { };
   };
 
   sops.templates."restic-forgejo-repo.txt".content = ''
@@ -238,17 +239,19 @@ in
       repositoryFile = config.sops.templates."restic-forgejo-repo.txt".path;
       passwordFile = config.sops.secrets."restic/forgejo-remote".path;
     };
+
+    forgejo-everything = {
+      repository = "/mnt/raid/backups/forgejo-everything";
+      passwordFile = config.sops.secrets."restic/forgejo-everything".path;
+
+      basePath = config.services.forgejo.stateDir;
+
+      timerConfig.OnCalendar = "*-*-* *:05:00";
+    };
   };
 
   config'.caddy.vHost."git.theless.one".proxy.port =
     config.services.forgejo.settings.server.HTTP_PORT;
-
-  config'.homepage.categories.Code.services.Forgejo = rec {
-    description = "Code forge";
-    icon = "forgejo.svg";
-    href = "https://git.theless.one";
-    siteMonitor = href;
-  };
 
   sops.secrets."forgejo/users/nanoyaki".owner = cfg.user;
   systemd.services.forgejo.preStart =

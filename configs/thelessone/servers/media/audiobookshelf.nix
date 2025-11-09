@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  domain = "https://audiobookshelf.theless.one";
+  domain = "audiobookshelf.theless.one";
 in
 
 {
@@ -16,8 +16,7 @@ in
     repository = "/mnt/raid/backups/audiobookshelf";
     passwordFile = config.sops.secrets."restic/audiobookshelf".path;
 
-    basePath = "/mnt/raid";
-    paths = [ "audiobookshelf" ];
+    basePath = "/mnt/raid/audiobookshelf";
 
     timerConfig.OnCalendar = "daily";
   };
@@ -32,18 +31,6 @@ in
 
   config'.caddy.vHost.${domain} = {
     proxy = { inherit (config.services.audiobookshelf) port; };
-    useMtls = true;
-  };
-
-  config'.caddy.vHost."https://audiobookshelf.vpn.theless.one" = {
-    proxy = { inherit (config.services.audiobookshelf) port; };
-    vpnOnly = true;
-  };
-
-  config'.homepage.categories.Media.services.Audiobookshelf = {
-    icon = "audiobookshelf.svg";
-    href = domain;
-    siteMonitor = domain;
-    description = "Audiobook archive";
+    useVpn = true;
   };
 }

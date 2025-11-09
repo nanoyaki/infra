@@ -1,10 +1,12 @@
 { config, ... }:
 
 let
-  domain = "https://prowlarr.theless.one";
+  domain = "prowlarr.theless.one";
 in
 
 {
+  sops.secrets."restic/prowlarr" = { };
+
   services.vopono.systemd.services.prowlarr = [ config.services.prowlarr.settings.server.port ];
 
   services.prowlarr = {
@@ -17,13 +19,15 @@ in
       inherit (config.services.prowlarr.settings.server) port;
       host = config.services.vopono.voponoHost;
     };
-    useMtls = true;
+    useVpn = true;
   };
 
-  config'.homepage.categories.Arr.services.Prowlarr = {
-    icon = "prowlarr.svg";
-    href = domain;
-    siteMonitor = domain;
-    description = "Indexer manager";
+  config'.restic.backups.prowlarr = {
+    repository = "/mnt/raid/backups/prowlarr";
+    passwordFile = config.sops.secrets."restic/prowlarr".path;
+
+    basePath = "/var/lib/prowlarr";
+
+    timerConfig.OnCalendar = "daily";
   };
 }

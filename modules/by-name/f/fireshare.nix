@@ -23,7 +23,6 @@ let
     mkPackageOption
     concatMapStringsSep
     attrNames
-    mkForce
     mkMerge
     ;
 
@@ -111,8 +110,7 @@ in
         hash = "sha256-yWHaTI5jto7x27NzBMtnM47Y0wZ9zt1M0IHSeNOOUvM=";
       };
 
-      globalConfig = mkForce ''
-        ${lib.optionalString (!config.config'.caddy.useHttps) "auto_https disable_redirects"}
+      globalConfig = ''
         cache
       '';
 

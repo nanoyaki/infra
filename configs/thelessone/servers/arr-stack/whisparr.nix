@@ -1,10 +1,12 @@
 { config, ... }:
 
 let
-  domain = "https://whisparr.theless.one";
+  domain = "whisparr.theless.one";
 in
 
 {
+  sops.secrets."restic/whisparr" = { };
+
   services.vopono.allowedTCPPorts = [ config.services.whisparr.settings.server.port ];
 
   systemd.services.whisparr.unitConfig.RequiresMountsFor = "/mnt/raid";
@@ -15,13 +17,15 @@ in
 
   config'.caddy.vHost.${domain} = {
     proxy.port = config.services.whisparr.settings.server.port;
-    useMtls = true;
+    useVpn = true;
   };
 
-  config'.homepage.categories.Arr.services.Whisparr = {
-    icon = "whisparr.svg";
-    href = domain;
-    siteMonitor = domain;
-    description = "Adult video manager";
+  config'.restic.backups.whisparr = {
+    repository = "/mnt/raid/backups/whisparr";
+    passwordFile = config.sops.secrets."restic/whisparr".path;
+
+    basePath = "/var/lib/whisparr";
+
+    timerConfig.OnCalendar = "daily";
   };
 }

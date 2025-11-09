@@ -52,9 +52,9 @@ in
     };
   };
 
-  config'.caddy.vHost."https://grafana.theless.one" = {
+  config'.caddy.vHost."grafana.theless.one" = {
     proxy.port = config.services.grafana.settings.server.http_port;
-    useMtls = true;
+    useVpn = true;
   };
 
   services.prometheus = {

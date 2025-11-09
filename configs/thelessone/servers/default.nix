@@ -7,13 +7,11 @@
     ./ssh.nix
     ./minecraft
     ./domains.nix
-    ./syncthing.nix
-    ./headscale.nix
     ./metrics.nix
     ./shoko.nix
-    ./homepage.nix
     ./valheim.nix
     ./mail.nix
     ./immich.nix
+    ./postgresql.nix
   ];
 }

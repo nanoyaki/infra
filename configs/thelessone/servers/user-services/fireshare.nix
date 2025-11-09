@@ -24,13 +24,6 @@
     environmentFile = config.sops.templates."fireshare.env".path;
   };
 
-  config'.homepage.categories.Media.services.Fireshare = rec {
-    description = "Clip sharing application";
-    icon = "fireshare.png";
-    href = "https://fireshare.theless.one";
-    siteMonitor = href;
-  };
-
   sops.secrets."restic/fireshare" = { };
 
   config'.restic.backups.fireshare = {
