@@ -49,6 +49,14 @@
     inherit (config.arr) group;
   };
 
+  systemd.services.shoko.environment.DOTNET_ROOT = "${
+    with pkgs.dotnetCorePackages;
+    combinePackages [
+      sdk_8_0
+      sdk_9_0
+    ]
+  }";
+
   systemd.services.torrent-copy = {
     description = "Copies completed torrents once for shoko.";
     wantedBy = [ "multi-user.target" ];
