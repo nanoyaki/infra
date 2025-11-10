@@ -5,13 +5,13 @@
 
 {
   sops.secrets = {
-    "restic/smp" = { };
+    "restic/minecraft-servers" = { };
     "restic/beyond-depth" = { };
   };
 
-  config'.restic.backups.smp = {
-    repository = "/mnt/raid/backups/smp";
-    passwordFile = config.sops.secrets."restic/smp".path;
+  config'.restic.backups.minecraft-servers = {
+    repository = "/mnt/raid/backups/minecraft-servers";
+    passwordFile = config.sops.secrets."restic/minecraft-servers".path;
 
     basePath = config.services.minecraft-servers.dataDir;
     paths = [

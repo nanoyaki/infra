@@ -212,42 +212,16 @@ in
 
   sops.secrets = {
     "restic/100-64-64-3" = { };
-    "restic/forgejo-local" = { };
-    "restic/forgejo-remote" = { };
-    "restic/forgejo-everything" = { };
+    "restic/forgejo" = { };
   };
 
-  sops.templates."restic-forgejo-repo.txt".content = ''
-    rest:http://restic:${
-      config.sops.placeholder."restic/100-64-64-3"
-    }@100.64.64.3:8000/forgejo-thelessone
-  '';
+  config'.restic.backups.forgejo = {
+    repository = "/mnt/raid/backups/forgejo";
+    passwordFile = config.sops.secrets."restic/forgejo".path;
 
-  config'.restic.backups = rec {
-    forgejo-local = {
-      repository = "/mnt/raid/backups/forgejo";
-      passwordFile = config.sops.secrets."restic/forgejo-local".path;
+    basePath = config.services.forgejo.stateDir;
 
-      basePath = config.services.forgejo.dump.backupDir;
-      paths = [ "forgejo-backup-dump.tar" ];
-
-      timerConfig.OnCalendar = "*-*-* *:05:00";
-    };
-
-    forgejo-remote = forgejo-local // {
-      repository = null;
-      repositoryFile = config.sops.templates."restic-forgejo-repo.txt".path;
-      passwordFile = config.sops.secrets."restic/forgejo-remote".path;
-    };
-
-    forgejo-everything = {
-      repository = "/mnt/raid/backups/forgejo-everything";
-      passwordFile = config.sops.secrets."restic/forgejo-everything".path;
-
-      basePath = config.services.forgejo.stateDir;
-
-      timerConfig.OnCalendar = "*-*-* *:05:00";
-    };
+    timerConfig.OnCalendar = "daily";
   };
 
   config'.caddy.vHost."git.theless.one".proxy.port =

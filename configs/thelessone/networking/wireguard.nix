@@ -80,6 +80,76 @@
           "fd64::10/128"
         ];
       }
+      {
+        publicKey = "e6Tljsbi7xecHcJedb2Ol53S+WSKBT4TdmtieiaVsnc=";
+        allowedIPs = [
+          "100.64.64.11/32"
+          "fd64::11/128"
+        ];
+      }
+      {
+        publicKey = "WuoSvbuy3JORoxG2hNvPGHnqdjhwHHLuIN/3OGocNjw=";
+        allowedIPs = [
+          "100.64.64.12/32"
+          "fd64::12/128"
+        ];
+      }
+      {
+        publicKey = "CTr84xrlw5Uty6DFA57qppId1r84CrEApXnj684iA24=";
+        allowedIPs = [
+          "100.64.64.13/32"
+          "fd64::13/128"
+        ];
+      }
+      {
+        publicKey = "kOTQYfbXu1BTe1euqwbpvMCWcKRwsf7q5SVvwc9wvA4=";
+        allowedIPs = [
+          "100.64.64.14/32"
+          "fd64::14/128"
+        ];
+      }
+      {
+        publicKey = "qGBp/URd4sWxSFElseVjz4nb9z6vIMGu5/uBg+dCLCE=";
+        allowedIPs = [
+          "100.64.64.15/32"
+          "fd64::15/128"
+        ];
+      }
+      {
+        publicKey = "39sH3nUD/i8iacdsEtqhuSGnSbXkFi9kqIGVlfbqWjo=";
+        allowedIPs = [
+          "100.64.64.16/32"
+          "fd64::16/128"
+        ];
+      }
+      {
+        publicKey = "P2fahjhqvpkuH7JdrViC33uh5wNTxOjfTocrR9OsKAk=";
+        allowedIPs = [
+          "100.64.64.17/32"
+          "fd64::17/128"
+        ];
+      }
+      {
+        publicKey = "xebzRJd4kSo+RYyOt1Rffqon5h/Xm02MNt0WadaJuj4=";
+        allowedIPs = [
+          "100.64.64.18/32"
+          "fd64::18/128"
+        ];
+      }
+      {
+        publicKey = "y6A8tqZap9cMdGhEurTDLStdjE/BwcGEtksnHA5Xm08=";
+        allowedIPs = [
+          "100.64.64.19/32"
+          "fd64::19/128"
+        ];
+      }
+      {
+        publicKey = "Hm8YfOPG+hOmHhmvF7dBKcX5+TnVPDK/PCGuo+VjUAs=";
+        allowedIPs = [
+          "100.64.64.20/32"
+          "fd64::20/128"
+        ];
+      }
     ];
   };
 
