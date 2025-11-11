@@ -80,14 +80,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
-    killheal.url = "git+https://git.theless.one/thelessone/KillHeal.git";
+    # killheal.url = "git+https://git.theless.one/thelessone/KillHeal.git";
     nanolib = {
-      url = "git+https://git.theless.one/nanoyaki/nanolib.git";
+      url = "github:nanoyaki/nanolib";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
     nanomodules = {
-      url = "git+https://git.theless.one/nanoyaki/nanomodules.git";
+      url = "github:nanoyaki/nanomodules";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
       inputs.nanolib.follows = "nanolib";

@@ -542,21 +542,6 @@
         "type": "github"
       }
     },
-    "killheal": {
-      "locked": {
-        "lastModified": 1753886080,
-        "narHash": "sha256-qUhzQr7CL7U8nUQAuGx3lq9IfCbzg5OGy6hINIMZbyQ=",
-        "ref": "refs/heads/main",
-        "rev": "49aea84f759c8bc1971757b15fb999d1a781afe9",
-        "revCount": 21,
-        "type": "git",
-        "url": "https://git.theless.one/thelessone/KillHeal.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.theless.one/thelessone/KillHeal.git"
-      }
-    },
     "lib-aggregate": {
       "inputs": {
         "flake-utils": "flake-utils_3",
@@ -589,15 +574,15 @@
       "locked": {
         "lastModified": 1761406098,
         "narHash": "sha256-y2RS0+gxeiJmxYoEyrsz98tlJpTsCyvdkambYGMXfac=",
-        "ref": "refs/heads/main",
+        "owner": "nanoyaki",
+        "repo": "nanolib",
         "rev": "5cc85b07db0974252a1ef07f494cff7f2000260e",
-        "revCount": 12,
-        "type": "git",
-        "url": "https://git.theless.one/nanoyaki/nanolib.git"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "https://git.theless.one/nanoyaki/nanolib.git"
+        "owner": "nanoyaki",
+        "repo": "nanolib",
+        "type": "github"
       }
     },
     "nanomodules": {
@@ -616,15 +601,15 @@
       "locked": {
         "lastModified": 1761419619,
         "narHash": "sha256-PkdnS6AI8nFVvg7DuyvWrVR1jsVVQk3Tf+VZ36Niw0s=",
-        "ref": "refs/heads/main",
+        "owner": "nanoyaki",
+        "repo": "nanomodules",
         "rev": "38a8cd98ac6e4c188a452e7c1f58c0414ba5f692",
-        "revCount": 34,
-        "type": "git",
-        "url": "https://git.theless.one/nanoyaki/nanomodules.git"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "https://git.theless.one/nanoyaki/nanomodules.git"
+        "owner": "nanoyaki",
+        "repo": "nanomodules",
+        "type": "github"
       }
     },
     "nanopkgs": {
@@ -817,7 +802,6 @@
         "flake-parts": "flake-parts",
         "git-hooks-nix": "git-hooks-nix",
         "home-manager": "home-manager",
-        "killheal": "killheal",
         "nanolib": "nanolib",
         "nanomodules": "nanomodules",
         "nanopkgs": "nanopkgs",

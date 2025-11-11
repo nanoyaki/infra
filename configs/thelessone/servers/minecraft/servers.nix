@@ -312,7 +312,7 @@ in
             spawnRadius = 32;
           };
 
-          "world/datapacks/killheal" = inputs.killheal.packages.x86_64-linux.killheal;
+          # "world/datapacks/killheal" = inputs.killheal.packages.x86_64-linux.killheal;
         };
       };
 
