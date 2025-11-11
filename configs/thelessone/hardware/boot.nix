@@ -2,10 +2,12 @@
 
 {
   boot = {
-    loader.grub = {
+    loader.systemd-boot = {
       enable = true;
-      device = "/dev/nvme0n1p1";
     };
+
+    loader.efi.canTouchEfiVariables = true;
+    loader.efi.efiSysMountPoint = "/boot";
 
     initrd.availableKernelModules = [
       "xhci_pci"
