@@ -13,7 +13,16 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/711ead47-e4f7-4ef4-b7bf-daac6220243a";
-    fsType = "ext4";
+    device = "/dev/nvme0n1p1";
+    fsType = "btrfs";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/nvme0n1p2";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 }
