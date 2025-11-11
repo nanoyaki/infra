@@ -50,15 +50,15 @@ in
   config'.caddy.vHost.${domain}.proxy.port = config.services.vaultwarden.config.ROCKET_PORT;
 
   sops.secrets = {
-    "restic/100-64-64-3" = { };
+    "restic/100-64-64-6" = { };
     "restic/vaultwarden-local" = { };
     "restic/vaultwarden-remote" = { };
   };
 
   sops.templates."restic-vauldwarden-repo.txt".content = ''
-    rest:http://restic:${
-      config.sops.placeholder."restic/100-64-64-3"
-    }@100.64.64.3:8000/vaultwarden-thelessone
+    rest:https://restic:${
+      config.sops.placeholder."restic/100-64-64-6"
+    }@restic.hanakretzer.de/vaultwarden-thelessone
   '';
 
   config'.restic.backups = rec {
