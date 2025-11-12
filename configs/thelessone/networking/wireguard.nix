@@ -161,7 +161,7 @@
   networking.nat = {
     enable = true;
     enableIPv6 = true;
-    externalInterface = "enp5s0";
+    externalInterface = "enp9s0";
     internalInterfaces = [ "wg0" ];
   };
 

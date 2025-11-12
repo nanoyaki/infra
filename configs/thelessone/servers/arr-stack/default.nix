@@ -56,7 +56,7 @@ in
     services.vopono = {
       enable = true;
 
-      interface = "enp5s0";
+      interface = "enp9s0";
       configFile = config.sops.templates."wireguard.conf".path;
       protocol = "Wireguard";
       namespace = "vp0";
