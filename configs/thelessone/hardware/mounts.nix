@@ -13,7 +13,7 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/nvme0n1p1";
+    device = "/dev/nvme0n1p2";
     fsType = "vfat";
     options = [
       "fmask=0077"
@@ -22,7 +22,7 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/nvme0n1p2";
+    device = "/dev/nvme0n1p1";
     fsType = "btrfs";
   };
 }
