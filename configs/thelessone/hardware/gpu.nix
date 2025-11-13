@@ -5,6 +5,9 @@
     "amdgpu"
   ];
 
+  boot.kernelModules = [ "xe" ];
+  boot.kernelParams = [ "xe.force_probe=6021" ];
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -17,8 +20,6 @@
     vaapiDriver = null; # use vaapi and media driver
     enableHybridCodec = true;
   };
-
-  environment.variables.LIBVA_DRIVER_NAME = "iHD";
 
   services.xserver.videoDrivers = [ "modesetting" ];
 }
