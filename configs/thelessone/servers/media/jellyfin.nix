@@ -12,7 +12,6 @@ in
     };
     inherit (config.arr) group;
   };
-  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
 
   config'.caddy.vHost.${domain} = {
     proxy.port = 8096;
