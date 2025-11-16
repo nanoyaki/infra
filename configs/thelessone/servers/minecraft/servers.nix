@@ -351,11 +351,19 @@ in
           ]
         );
 
-        files."world/datapacks/declarative_gamerules" = pkgs.datapackSet.gamerules {
-          locatorBar = false;
-          disableElytraMovementCheck = true;
-          disablePlayerMovementCheck = true;
-          playersSleepingPercentage = 33;
+        files = {
+          "world/datapacks/declarative_gamerules" = pkgs.datapackSet.gamerules {
+            locatorBar = false;
+            disableElytraMovementCheck = true;
+            disablePlayerMovementCheck = true;
+            playersSleepingPercentage = 33;
+          };
+
+          "world/datapacks/timer" = pkgs.fetchzip {
+            url = "https://cdn.modrinth.com/data/biXJOpKz/versions/auk9B0OQ/MTimer.zip";
+            stripRoot = false;
+            hash = "sha256-qwmMECpNyjSaVm/njGQyw08hpTmT8EKFxC4tpSfXotE=";
+          };
         };
 
         operators = {
