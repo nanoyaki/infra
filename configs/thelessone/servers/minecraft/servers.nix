@@ -312,58 +312,57 @@ in
             spawnRadius = 32;
           };
 
-          # "world/datapacks/killheal" = inputs.killheal.packages.x86_64-linux.killheal;
+          "world/datapacks/killheal" = inputs.killheal.packages.x86_64-linux.killheal;
         };
       };
 
-      oceanBlock2 =
-        let
-          modpack = pkgs.fetchFtbServer {
-            pack = "128";
-            version = "100123";
-            hash = "sha256-OvaiPvpCJQBBtP2Gs8g8HIXMgHCgT2VHs0IKaB+ZD4U=";
-          };
-        in
-        {
-          enable = false;
-          package = pkgs.neoforgeServers.neoforge-21_1_194;
+      smp2 = mkServer 30053 {
+        enable = true;
+        enableReload = true;
+        package = pkgs.fabricServers.fabric-1_21_8;
+        jvmOpts = "-Xms2G -Xmx16G ${aikarsFlags}";
 
-          autoStart = true;
-          jvmOpts = "-Xms20G -Xmx20G ${aikarsFlags}";
+        serverProperties = {
+          difficulty = "hard";
 
-          serverProperties = {
-            # server-ip = "127.0.0.1";
-            server-port = 25566;
-
-            spawn-protection = 0;
-            view-distance = 32;
-            simulation-distance = 32;
-
-            gamemode = "survival";
-            difficulty = "hard";
-
-            white-list = true;
-          };
-
-          operators.nanoyaki = "433b63b5-5f77-4a9f-b834-8463d520500c";
-
-          whitelist = import ./whitelist.nix;
-
-          symlinks = {
-            "server-icon.png" = ./icon.png;
-
-            mods = "${modpack}/mods";
-            defaultconfigs = "${modpack}/defaultconfigs";
-          };
-
-          files = {
-            config = "${modpack}/config";
-            kubejs = "${modpack}/kubejs";
-            ftbteambases = "${modpack}/ftbteambases";
-            resourcepacks = "${modpack}/resourcepacks";
-            shaderpacks = "${modpack}/shaderpacks";
-          };
+          spawn-protection = 0;
+          view-distance = 32;
+          simulation-distance = 32;
         };
+
+        symlinks.mods = pkgs.linkFarmFromDrvs "mods" (
+          with pkgs.fabricMods.v1_21_8;
+
+          [
+            fabric-api
+            fabricproxy-lite
+            lithium
+            no-chat-reports
+            krypton
+            c2me-fabric
+            balm
+            ferrite-core
+            scalablelux
+            cicada
+            servux
+            rei
+            architectury-api
+            cloth-config
+          ]
+        );
+
+        files."world/datapacks/declarative_gamerules" = pkgs.datapackSet.gamerules {
+          locatorBar = false;
+          disableElytraMovementCheck = true;
+          disablePlayerMovementCheck = true;
+          playersSleepingPercentage = 33;
+        };
+
+        operators = {
+          Angreiferr = "885ca84d-669f-4cd7-a7a8-273d94fb7cd4";
+          einfach_calle = "3210afd0-4620-4120-9f49-d5379bf8e0b2";
+        };
+      };
 
       proxy = {
         enable = true;
@@ -394,6 +393,7 @@ in
               smp = "127.0.0.1:30050";
               creative = "127.0.0.1:30051";
               lobby = "127.0.0.1:30052";
+              smp2 = "127.0.0.1:30053";
 
               try = [
                 "smp"
@@ -405,6 +405,7 @@ in
               "theless.one" = [ "smp" ];
               "creative.theless.one" = [ "creative" ];
               "lobby.theless.one" = [ "lobby" ];
+              "nik.theless.one" = [ "smp2" ];
             };
 
             query.enabled = false;

@@ -542,6 +542,21 @@
         "type": "github"
       }
     },
+    "killheal": {
+      "locked": {
+        "lastModified": 1753886080,
+        "narHash": "sha256-qUhzQr7CL7U8nUQAuGx3lq9IfCbzg5OGy6hINIMZbyQ=",
+        "ref": "refs/heads/main",
+        "rev": "49aea84f759c8bc1971757b15fb999d1a781afe9",
+        "revCount": 21,
+        "type": "git",
+        "url": "https://git.theless.one/thelessone/KillHeal.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.theless.one/thelessone/KillHeal.git"
+      }
+    },
     "lib-aggregate": {
       "inputs": {
         "flake-utils": "flake-utils_3",
@@ -802,6 +817,7 @@
         "flake-parts": "flake-parts",
         "git-hooks-nix": "git-hooks-nix",
         "home-manager": "home-manager",
+        "killheal": "killheal",
         "nanolib": "nanolib",
         "nanomodules": "nanomodules",
         "nanopkgs": "nanopkgs",

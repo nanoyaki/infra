@@ -80,7 +80,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
-    # killheal.url = "git+https://git.theless.one/thelessone/KillHeal.git";
+    killheal.url = "git+https://git.theless.one/thelessone/KillHeal.git";
     nanolib = {
       url = "github:nanoyaki/nanolib";
       inputs.nixpkgs.follows = "nixpkgs";
