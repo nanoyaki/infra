@@ -39,11 +39,8 @@ in
     enable = true;
     package = lib.mkForce (
       pkgs.caddy.withPlugins {
-        plugins = [
-          "github.com/caddyserver/cache-handler@v0.16.0"
-          "github.com/gr33nbl00d/caddy-revocation-validator@v1.0.5"
-        ];
-        hash = "sha256-dzmdZIP426n/nr1110ah4Z2+r4q/nlyk/a1PXMElXNs=";
+        plugins = [ "github.com/caddyserver/cache-handler@v0.16.0" ];
+        hash = "sha256-ETn3ScqluCZi88E60K/XsFAqCIVbjECnsEowRiYjhhE=";
       }
     );
     environmentFile = config.sops.templates."caddy-users.env".path;
