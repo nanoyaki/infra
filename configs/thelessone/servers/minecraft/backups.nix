@@ -13,16 +13,9 @@
     repository = "/mnt/raid/backups/minecraft-servers";
     passwordFile = config.sops.secrets."restic/minecraft-servers".path;
 
-    basePath = config.services.minecraft-servers.dataDir;
-    paths = [
-      "smp/world"
-      "oceanBlock2/world"
-      "smp-creative/world"
-      "lobby/world"
-    ];
+    basePath = "${config.services.minecraft-servers.dataDir}/*/world";
     exclude = [
-      "**/data/DistantHorizons*"
-      "smp/world/datapacks"
+      "datapacks"
       "**/*.bak"
     ];
 
