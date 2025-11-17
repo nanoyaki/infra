@@ -10,6 +10,8 @@ let
 
   user = "git";
   group = "git";
+
+  env = (pkgs.formats.keyValue { }).generate "sopstemplate.env";
 in
 
 {
@@ -32,21 +34,22 @@ in
     "forgejo/kigiku" = { };
   };
 
-  sops.templates."kikyo.env".content = ''
-    TOKEN=${config.sops.placeholder."forgejo/kikyo"}
-  '';
+  sops.templates."kikyo.env".file = env {
+    TOKEN = config.sops.placeholder."forgejo/kikyo";
+  };
 
-  sops.templates."syakuyaku.env".content = ''
-    TOKEN=${config.sops.placeholder."forgejo/syakuyaku"}
-  '';
+  sops.templates."syakuyaku.env".file = env {
+    TOKEN = config.sops.placeholder."forgejo/syakuyaku";
+  };
 
-  sops.templates."botan.env".content = ''
-    TOKEN=${config.sops.placeholder."forgejo/botan"}
-  '';
+  sops.templates."botan.env".file = env {
+    TOKEN = config.sops.placeholder."forgejo/botan";
+    REGISTRY_AUTH_FILE = config.sops.templates."auth.json".path;
+  };
 
-  sops.templates."kigiku.env".content = ''
-    TOKEN=${config.sops.placeholder."forgejo/kigiku"}
-  '';
+  sops.templates."kigiku.env".file = env {
+    TOKEN = config.sops.placeholder."forgejo/kigiku";
+  };
 
   systemd.services.gitea-runner-kikyo.environment = {
     inherit (config.environment.sessionVariables) NIX_PATH;
@@ -122,6 +125,20 @@ in
       };
     };
   };
+
+  sops.secrets."containers/docker" = { };
+  sops.templates."auth.json" = {
+    content = builtins.toJSON {
+      auths."docker.io".auth = config.sops.placeholder."containers/docker";
+    };
+
+    path = "/etc/containers/auth.json";
+    mode = "440";
+    group = "podman";
+  };
+
+  systemd.tmpfiles.settings.podman."/root/.config/containers/auth.json"."L+".argument =
+    config.sops.templates."auth.json".path;
 
   # Use podman instead since rootless docker
   # isn't supported by the forgejo nixos module
