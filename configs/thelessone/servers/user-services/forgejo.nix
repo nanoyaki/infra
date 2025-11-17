@@ -136,11 +136,6 @@ in
   };
   networking.firewall.interfaces."\"podman*\"".allowedUDPPorts = [ 53 ];
 
-  systemd.tmpfiles.settings."10-forgejo"."/etc/forgejo".d = {
-    inherit (cfg) user group;
-    mode = "500";
-  };
-
   sops.secrets = {
     "forgejo/signing".owner = cfg.user;
     "forgejo/signing.pub".owner = cfg.user;
