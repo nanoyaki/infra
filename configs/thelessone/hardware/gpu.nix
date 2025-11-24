@@ -25,7 +25,7 @@
   };
 
   services.xserver.videoDrivers = [
-    "xe"
     "modesetting"
+    "xe"
   ];
 }
