@@ -24,5 +24,8 @@
     enableHybridCodec = true;
   };
 
-  services.xserver.videoDrivers = [ "modesetting" ];
+  services.xserver.videoDrivers = [
+    "xe"
+    "modesetting"
+  ];
 }

@@ -42,6 +42,8 @@
           locale = "de_AT.UTF-8";
         };
         sops.defaultSopsFile = ./secrets/host.yaml;
+        desktop.cosmic.enable = false;
+        desktop.gnome.enable = true;
       };
 
       networking.hostId = "f617b7b6";
