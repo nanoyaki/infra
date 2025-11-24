@@ -399,15 +399,15 @@
       "locked": {
         "lastModified": 1761406098,
         "narHash": "sha256-y2RS0+gxeiJmxYoEyrsz98tlJpTsCyvdkambYGMXfac=",
-        "owner": "nanoyaki",
-        "repo": "nanolib",
+        "ref": "refs/heads/main",
         "rev": "5cc85b07db0974252a1ef07f494cff7f2000260e",
-        "type": "github"
+        "revCount": 12,
+        "type": "git",
+        "url": "https://git.theless.one/nanoyaki/nanolib.git"
       },
       "original": {
-        "owner": "nanoyaki",
-        "repo": "nanolib",
-        "type": "github"
+        "type": "git",
+        "url": "https://git.theless.one/nanoyaki/nanolib.git"
       }
     },
     "nanomodules": {
@@ -426,17 +426,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1763566282,
-        "narHash": "sha256-fpYjByfnBtgrN0Uu+cxhOhZa5+qV+FNsAH5Y4Vh3bmI=",
-        "owner": "nanoyaki",
-        "repo": "nanomodules",
-        "rev": "09d02e8df2d2b515317f7aff014c7c97dc0623ce",
-        "type": "github"
+        "lastModified": 1763944516,
+        "narHash": "sha256-q6aUiOzi9qZs1T34LhEB/fKYh/kZbRAmYV5l8+XqqtY=",
+        "ref": "refs/heads/main",
+        "rev": "097683f754f9acf63abf1b29c19e30ac878c9ccf",
+        "revCount": 37,
+        "type": "git",
+        "url": "https://git.theless.one/nanoyaki/nanomodules.git"
       },
       "original": {
-        "owner": "nanoyaki",
-        "repo": "nanomodules",
-        "type": "github"
+        "type": "git",
+        "url": "https://git.theless.one/nanoyaki/nanomodules.git"
       }
     },
     "nanopkgs": {
@@ -458,15 +458,15 @@
       "locked": {
         "lastModified": 1763393627,
         "narHash": "sha256-tOEIcqv2sEbz9M3Tg6ERXmE1zWQZER+3p/qHzXjdkIQ=",
-        "owner": "nanoyaki",
-        "repo": "nanopkgs",
+        "ref": "refs/heads/main",
         "rev": "8fe3a5838f24ff6e2a675ab948678fdfac41c544",
-        "type": "github"
+        "revCount": 257,
+        "type": "git",
+        "url": "https://git.theless.one/nanoyaki/nanopkgs.git"
       },
       "original": {
-        "owner": "nanoyaki",
-        "repo": "nanopkgs",
-        "type": "github"
+        "type": "git",
+        "url": "https://git.theless.one/nanoyaki/nanopkgs.git"
       }
     },
     "nix-minecraft": {
