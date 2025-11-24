@@ -54,4 +54,9 @@ in
     user = "root";
     group = "wheel";
   };
+
+  # Disable sleep targets
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.sleep.enable = false;
 }
