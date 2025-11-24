@@ -75,11 +75,17 @@
 
     dmarcReporting.enable = true;
 
-    fullTextSearch.substringSearch = true;
-    fullTextSearch.languages = [
-      "en"
-      "de"
-    ];
+    fullTextSearch = {
+      substringSearch = true;
+      languages = [
+        "en"
+        "de"
+      ];
+      filters = [
+        "normalizer-icu"
+        "snowball"
+      ];
+    };
   };
 
   services.rspamd.locals."multimap.conf".text = ''
