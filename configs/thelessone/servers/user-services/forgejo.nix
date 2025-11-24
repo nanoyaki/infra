@@ -142,7 +142,15 @@ in
 
   # Use podman instead since rootless docker
   # isn't supported by the forgejo nixos module
-  virtualisation.containers.enable = true;
+  virtualisation.containers = {
+    enable = true;
+    registries.search = [
+      "quay.io"
+      "ghcr.io"
+      "docker.io"
+    ];
+  };
+
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
@@ -151,6 +159,7 @@ in
       ipv6_enabled = true;
     };
   };
+
   networking.firewall.interfaces."\"podman*\"".allowedUDPPorts = [ 53 ];
 
   sops.secrets = {
