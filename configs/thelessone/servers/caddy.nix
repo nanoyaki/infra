@@ -40,7 +40,7 @@ in
     package = lib.mkForce (
       pkgs.caddy.withPlugins {
         plugins = [ "github.com/caddyserver/cache-handler@v0.16.0" ];
-        hash = "sha256-ETn3ScqluCZi88E60K/XsFAqCIVbjECnsEowRiYjhhE=";
+        hash = "sha256-Oq79YKHMd2sZVapTYqoe/xlZuyTL0JBpUIRnKL+bOFI=";
       }
     );
     environmentFile = config.sops.templates."caddy-users.env".path;
