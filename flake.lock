@@ -114,11 +114,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763901903,
-        "narHash": "sha256-w7YsxTjldwhUBP5ypbcZvWyZgRQqp3NBfyk5BAfrFjQ=",
+        "lastModified": 1764155739,
+        "narHash": "sha256-WVhJZiZ8VsTMAYYPYO0MpvMt2h2wgge15MLDZUrRMWE=",
         "owner": "9001",
         "repo": "copyparty",
-        "rev": "fb9f0441c99833ab7bc035d76b9a89021270675a",
+        "rev": "c7345308f5ef0e4375c9d6a305d4b8e14c9d7a5a",
         "type": "github"
       },
       "original": {
@@ -332,11 +332,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764075860,
-        "narHash": "sha256-KYEIHCBBw+/lwKsJNRNoUxBB4ZY2LK0G0T8f+0i65q0=",
+        "lastModified": 1764135300,
+        "narHash": "sha256-5xOuutXM7UPTUcn3uDAD8UlPQsXmqPrX81cXoDOAGcA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "295d90e22d557ccc3049dc92460b82f372cd3892",
+        "rev": "f4cb25928fafa9ae68660fe71f730fc820a59028",
         "type": "github"
       },
       "original": {
@@ -426,10 +426,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1764124297,
-        "narHash": "sha256-32F+giDF+lJsM9VmUMLCJMHQI/hePMktB6KE1KbFeGk=",
+        "lastModified": 1764160858,
+        "narHash": "sha256-EMmw/uCak2ctTdQ9DfHCiny+UTbEdhAC2fXornwUypo=",
         "ref": "refs/heads/main",
-        "rev": "d28be0076d5d9d2ca96a2d5f7ec55ce981382022",
+        "rev": "6a83f35b16abd5fab54605bafb282dbb1cea89f0",
         "revCount": 37,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nanomodules.git"
@@ -579,11 +579,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764123065,
-        "narHash": "sha256-CgN6wQxiTtZiIq+SlFLa9pB1ps0tFwtp1NIDE7zUsQo=",
+        "lastModified": 1764153242,
+        "narHash": "sha256-gnIuGwTHfeT8FkGUL8pGRdZ8gxjh7iuW/j52YJo+nzg=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "03295536ac80064c58abb3d86864a1d85e28040f",
+        "rev": "8e323526cf2c1251e65fe5b99881fdc2187c530f",
         "type": "github"
       },
       "original": {
