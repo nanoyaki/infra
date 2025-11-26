@@ -6,13 +6,15 @@
   ...
 }:
 
-let
-  inherit (config.hm.lib.cosmic) mkRON;
-  Some = mkRON "optional";
-  None = mkRON "optional" null;
-in
-
 {
+  nixpkgs.overlays = [
+    (_: prev: {
+      weston = prev.weston.overrideAttrs (prevAttrs: {
+        mesonFlags = prevAttrs.mesonFlags or [ ] ++ [ (prev.lib.mesonBool "backend-vnc" false) ];
+      });
+    })
+  ];
+
   config' = {
     librewolf.enable = true;
     theming.enable = true;
@@ -37,14 +39,6 @@ in
     }
   ];
 
-  hms = lib.singleton {
-    wayland.desktopManager.cosmic.idle = {
-      screen_off_time = lib.mkForce (Some 90000);
-      suspend_on_ac_time = lib.mkForce None;
-      suspend_on_battery_time = lib.mkForce None;
-    };
-  };
-
   # for deployment
   environment.etc."systems/thelessnas".source =
     self.nixosConfigurations.thelessnas.config.system.build.toplevel;
@@ -59,4 +53,10 @@ in
   systemd.targets.hibernate.enable = false;
   systemd.targets.suspend.enable = false;
   systemd.targets.sleep.enable = false;
+
+  environment.shells = with pkgs; [ zsh ];
+
+  services.displayManager.gdm.enable = lib.mkForce false;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
 }
