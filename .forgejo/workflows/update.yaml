@@ -13,14 +13,14 @@ env:
 
 jobs:
   check-branch:
-    runs-on: nixos/nix
+    runs-on: nix
     steps:
       - name: Check branch
         if: forge.event_name == 'workflow_dispatch' && forge.ref != 'refs/heads/main'
         run: exit 1
 
   update:
-    runs-on: nixos/nix
+    runs-on: nix
     needs: check-branch
     steps:
       - name: Install dependencies

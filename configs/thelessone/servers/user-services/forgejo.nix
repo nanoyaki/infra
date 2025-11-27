@@ -119,7 +119,7 @@ in
           "ubuntu-latest:docker://ubuntu:latest"
           "ubuntu-22.04:docker://ubuntu:jammy"
 
-          "nix:docker://nix:latest"
+          "nix:docker://ghcr.io/nixos/nix:latest"
           "rust:docker://rust:latest"
         ];
       };
