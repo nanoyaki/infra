@@ -150,6 +150,13 @@
           "fd64::20/128"
         ];
       }
+      {
+        publicKey = "VAr+LSpaI4VSjytBpSTjtLzbnQbepRUPcHbBmMwaJXo=";
+        allowedIPs = [
+          "100.64.64.21/32"
+          "fd64::21/128"
+        ];
+      }
     ];
   };
 
