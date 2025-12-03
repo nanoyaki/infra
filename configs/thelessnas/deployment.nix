@@ -7,7 +7,7 @@
   services.openssh.knownHosts = {
     # Thelessone
     "10.0.0.5".publicKey =
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPkogFEPPOMfkRsBgyuHDQeWQMetWCZbkTpnfajTbu7t";
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAMMGaMOd8S0N/fUetBkdMehGP47/88C8LDjobmuvwjS";
 
     # Self
     "10.0.0.6".publicKey =
