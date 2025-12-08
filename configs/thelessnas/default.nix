@@ -32,6 +32,7 @@
         ./zfs.nix
         ./restic.nix
         ./borg.nix
+        ./wireguard.nix
       ];
 
       nanoSystem.sops.defaultSopsFile = ./secrets/host.yaml;
