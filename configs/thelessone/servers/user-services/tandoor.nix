@@ -8,11 +8,11 @@
 
   services.tandoor-recipes = {
     enable = true;
+    port = 45530;
     database.createLocally = true;
 
     extraConfig = {
       SECRET_KEY_FILE = config.sops.secrets.tandoor.path;
-      TANDOOR_PORT = 45530;
 
       DB_ENGINE = "django.db.backends.postgresql";
       POSTGRES_HOST = "/run/postgresql";
@@ -35,7 +35,7 @@
   };
 
   config'.caddy.vHost."recipes.theless.one" = {
-    proxy.port = config.services.tandoor-recipes.extraConfig.TANDOOR_PORT;
+    proxy.port = config.services.tandoor-recipes.port;
     useVpn = true;
   };
 }
