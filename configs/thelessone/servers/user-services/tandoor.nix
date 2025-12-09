@@ -42,15 +42,16 @@ in
     proxy.port = config.services.tandoor-recipes.port;
     useVpn = true;
     extraConfig = ''
-      handle /static/* {
-      	root * ${cfg.package}/lib/tandoor-recipes/staticfiles
-      	file_server
-      }
-
       handle /media/* {
       	root * /var/lib/tandoor-recipes/mediafiles
       	file_server
       }
     '';
+  };
+
+  users.users.caddy.extraGroups = [ cfg.group ];
+  systemd.tmpfiles.settings.tandoor."/var/lib/tandoor-recipes/mediafiles".d = {
+    inherit (cfg) user group;
+    mode = "750";
   };
 }
