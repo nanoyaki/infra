@@ -6,5 +6,6 @@
     ./radicale.nix
     ./suwayomi.nix
     ./vaultwarden.nix
+    ./tandoor.nix
   ];
 }
