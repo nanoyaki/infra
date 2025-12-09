@@ -41,5 +41,16 @@ in
   config'.caddy.vHost."recipes.theless.one" = {
     proxy.port = config.services.tandoor-recipes.port;
     useVpn = true;
+    extraConfig = ''
+      handle /static/* {
+      	root * /var/lib/tandoor-recipes/staticfiles
+      	file_server
+      }
+
+      handle /media/* {
+      	root * /var/lib/tandoor-recipes/mediafiles
+      	file_server
+      }
+    '';
   };
 }
