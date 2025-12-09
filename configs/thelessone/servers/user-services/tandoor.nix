@@ -38,6 +38,10 @@ in
     };
   };
 
+  systemd.tmpfiles.settings.tandoor-recipes."/var/lib/tandoor-recipes".Z = {
+    inherit (cfg) user group;
+    mode = "750";
+  };
   users.users.caddy.extraGroups = [ cfg.group ];
   config'.caddy.vHost."recipes.theless.one" = {
     proxy.port = config.services.tandoor-recipes.port;
