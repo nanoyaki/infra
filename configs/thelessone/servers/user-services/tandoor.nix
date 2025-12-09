@@ -43,7 +43,7 @@ in
     proxy.port = config.services.tandoor-recipes.port;
     useVpn = true;
     extraConfig = ''
-      handle /media/* {
+      handle_path /media/* {
       	root * /var/lib/tandoor-recipes
       	file_server
       }
