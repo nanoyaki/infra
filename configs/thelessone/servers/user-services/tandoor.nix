@@ -38,20 +38,15 @@ in
     };
   };
 
+  users.users.caddy.extraGroups = [ cfg.group ];
   config'.caddy.vHost."recipes.theless.one" = {
     proxy.port = config.services.tandoor-recipes.port;
     useVpn = true;
     extraConfig = ''
       handle /media/* {
-      	root * /var/lib/tandoor-recipes/mediafiles
+      	root * /var/lib/tandoor-recipes
       	file_server
       }
     '';
-  };
-
-  users.users.caddy.extraGroups = [ cfg.group ];
-  systemd.tmpfiles.settings.tandoor."/var/lib/tandoor-recipes/mediafiles".d = {
-    inherit (cfg) user group;
-    mode = "750";
   };
 }
