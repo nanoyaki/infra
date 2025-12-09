@@ -43,7 +43,7 @@ in
     useVpn = true;
     extraConfig = ''
       handle /static/* {
-      	root * ${cfg.package}/staticfiles
+      	root * ${cfg.package}/lib/tandoor-recipes/staticfiles
       	file_server
       }
 
