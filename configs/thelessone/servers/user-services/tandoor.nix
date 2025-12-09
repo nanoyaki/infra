@@ -1,9 +1,13 @@
 { config, ... }:
 
+let
+  cfg = config.services.tandoor-recipes;
+in
+
 {
   sops.secrets = {
-    tandoor = { };
-    tandoor_email = { };
+    tandoor.owner = cfg.user;
+    tandoor_email.owner = cfg.user;
   };
 
   services.tandoor-recipes = {
