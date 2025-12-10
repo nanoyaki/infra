@@ -11,6 +11,7 @@
     "mailserver/calendar" = { };
     "mailserver/git" = { };
     "mailserver/recipes" = { };
+    "mailserver/forgejo-bot" = { };
   };
 
   mailserver = {
