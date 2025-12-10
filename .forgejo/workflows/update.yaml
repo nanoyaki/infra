@@ -15,7 +15,6 @@ env:
 jobs:
   update:
     runs-on: nix
-    needs: check-branch
     if: forge.ref == 'refs/heads/main' || forge.event_name != 'workflow_dispatch'
     steps:
       - name: Install dependencies
