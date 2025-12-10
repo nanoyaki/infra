@@ -39,7 +39,7 @@ jobs:
         run: git push -u origin chore/auto-update -f
 
       - name: Create Forgejo Pull Request
-        uses: https://git.theless.one/actions/create-pr@4a216b0949
+        uses: https://git.theless.one/actions/create-pr@4a216b094938f3f7d35a00445e92a74ca2b8f374
         with:
           source-branch: chore/auto-update
           title: 'chore: update flake.lock'
