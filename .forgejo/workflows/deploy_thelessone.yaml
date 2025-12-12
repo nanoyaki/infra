@@ -70,7 +70,7 @@ jobs:
             cp recent.txt prev.txt
             ssh -T root@10.0.0.6 tmux capture-pane -pS - > recent.txt
             TMUX_OUTPUT="$(cat recent.txt)"
-            TMUX_OUTPUT="${TMUX_OUTPUT##"$(cat )"}"
+            TMUX_OUTPUT="${TMUX_OUTPUT##"$(cat prev.txt)"}"
             [[ -n $TMUX_OUTPUT ]] && echo "$TMUX_OUTPUT"
           done
 
