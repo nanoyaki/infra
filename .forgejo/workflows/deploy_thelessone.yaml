@@ -68,7 +68,7 @@ jobs:
           touch recent.txt
           while ssh -T root@10.0.0.6 tmux ls 2> /dev/null | grep -q 'deploy:'; do
             cp recent.txt prev.txt
-            ssh -T root@10.0.0.6 tmux capture-pane -pS - > recent.txt
+            ssh -T root@10.0.0.6 tmux capture-pane -pS - > recent.txt || break
             TMUX_OUTPUT="$(cat recent.txt)"
             TMUX_OUTPUT="${TMUX_OUTPUT##"$(cat prev.txt)"}"
             [[ -n $TMUX_OUTPUT ]] && echo "$TMUX_OUTPUT"
