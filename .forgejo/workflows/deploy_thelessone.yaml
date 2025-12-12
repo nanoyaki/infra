@@ -64,9 +64,9 @@ jobs:
                 --build-host root@10.0.0.5 --target-host root@10.0.0.5;
             '
 
-            while [[ $(tmux ls 2> /dev/null | grep 'deployment:') ]]; do
-              TMUX_OUTPUT="${$(tmux capture-pane -pS deployment)##$T_OUTPUT}"
-              [[ -n TMUX_OUTPUT ]] && echo $T_OUTPUT
+            while tmux ls 2> /dev/null | grep -q 'deployment:'; do
+              TMUX_OUTPUT="${$(tmux capture-pane -pS deployment)##$TMUX_OUTPUT}"
+              [[ -n $TMUX_OUTPUT ]] && echo "$TMUX_OUTPUT"
             done
           EOF
 
