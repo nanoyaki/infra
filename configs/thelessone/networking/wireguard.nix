@@ -25,7 +25,7 @@
         ];
       }
       {
-        publicKey = "rhOWCYUVQTGIMqbZJ1HOPRzKE7j9O2rDoj+l6EP22ns=";
+        publicKey = "Vaq/AzMYsYq0Ba1MS75uyqTJuYk+L5jHUv67ms3jdgQ=";
         allowedIPs = [
           "100.64.64.3/32"
           "fd64::3/128"
