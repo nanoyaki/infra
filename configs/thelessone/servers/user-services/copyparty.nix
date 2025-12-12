@@ -30,12 +30,23 @@ in
   nixpkgs.overlays = [ copyparty.overlays.default ];
 
   sops.secrets = {
-    "copyparty/hana".owner = cfg.user;
-    "copyparty/sebi".owner = cfg.user;
-    "copyparty/thomas".owner = cfg.user;
-    "copyparty/ashley".owner = cfg.user;
-    "copyparty/nik".owner = cfg.user;
-  };
+    "restic/copyparty" = { };
+  }
+  //
+    map
+      (user: {
+        ${user} = {
+          owner = cfg.user;
+          restartUnits = [ "copyparty.service" ];
+        };
+      })
+      [
+        "hana"
+        "sebi"
+        "thomas"
+        "ashley"
+        "nik"
+      ];
 
   systemd.services.copyparty.unitConfig.RequiresMountsFor = "/mnt/raid";
   systemd.services.copyparty.serviceConfig.RuntimeDirectoryMode = lib.mkForce "0770";
@@ -140,8 +151,6 @@ in
   config'.caddy.vHost."files.theless.one".extraConfig = ''
     reverse_proxy unix//run/copyparty/copyparty.sock
   '';
-
-  sops.secrets."restic/copyparty" = { };
 
   config'.restic.backups.copyparty = {
     repository = "/mnt/raid/backups/copyparty";
