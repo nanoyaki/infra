@@ -65,8 +65,8 @@ jobs:
             '
           EOF
 
-          while ssh -T tmux ls 2> /dev/null | grep -q 'deployment:'; do
-            ssh -T tmux capture-pane -pS - > ~/deployment-output.txt
+          while ssh -T root@10.0.0.6 tmux ls 2> /dev/null | grep -q 'deployment:'; do
+            ssh -T root@10.0.0.6 tmux capture-pane -pS - > ~/deployment-output.txt
             TMUX_OUTPUT="$(cat ~/deployment-output.txt)"
             PREV_OUTPUT="${TMUX_OUTPUT##"$PREV_OUTPUT"}"
             [[ -n $PREV_OUTPUT ]] && echo "$PREV_OUTPUT"
