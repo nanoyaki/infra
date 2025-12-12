@@ -65,8 +65,10 @@ jobs:
             '
 
             while tmux ls 2> /dev/null | grep -q 'deployment:'; do
-              TMUX_OUTPUT="${$(tmux capture-pane -pS deployment)##$TMUX_OUTPUT}"
-              [[ -n $TMUX_OUTPUT ]] && echo "$TMUX_OUTPUT"
+              tmux capture-pane -pS - > ~/deployment-output.txt
+              TMUX_OUTPUT="$(cat ~/deployment-output.txt)"
+              PREV_OUTPUT="${TMUX_OUTPUT##"$PREV_OUTPUT"}"
+              [[ -n $PREV_OUTPUT ]] && echo "$PREV_OUTPUT"
             done
           EOF
 
