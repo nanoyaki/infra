@@ -61,16 +61,16 @@ jobs:
               ssh-add /root/.ssh/id_thelessone_deployment;
 
               nixos-rebuild switch --flake ./infra#thelessone \
-                --build-host root@10.0.0.5 --target-host root@10.0.0.5;
+                --build-host root@10.0.0.5 --target-host root@10.0.0.5
             '
-
-            while tmux ls 2> /dev/null | grep -q 'deployment:'; do
-              tmux capture-pane -pS - > ~/deployment-output.txt
-              TMUX_OUTPUT="$(cat ~/deployment-output.txt)"
-              PREV_OUTPUT="${TMUX_OUTPUT##"$PREV_OUTPUT"}"
-              [[ -n $PREV_OUTPUT ]] && echo "$PREV_OUTPUT"
-            done
           EOF
+
+          while ssh -T tmux ls 2> /dev/null | grep -q 'deployment:'; do
+            ssh -T tmux capture-pane -pS - > ~/deployment-output.txt
+            TMUX_OUTPUT="$(cat ~/deployment-output.txt)"
+            PREV_OUTPUT="${TMUX_OUTPUT##"$PREV_OUTPUT"}"
+            [[ -n $PREV_OUTPUT ]] && echo "$PREV_OUTPUT"
+          done
 
       - name: Check generation deployed
         env:
