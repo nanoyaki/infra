@@ -32,21 +32,24 @@ in
   sops.secrets = {
     "restic/copyparty" = { };
   }
-  //
+  // listToAttrs (
     map
-      (user: {
-        ${user} = {
+      (
+        user:
+        nameValuePair user {
+
           owner = cfg.user;
           restartUnits = [ "copyparty.service" ];
-        };
-      })
+        }
+      )
       [
         "hana"
         "sebi"
         "thomas"
         "ashley"
         "nik"
-      ];
+      ]
+  );
 
   systemd.services.copyparty.unitConfig.RequiresMountsFor = "/mnt/raid";
   systemd.services.copyparty.serviceConfig.RuntimeDirectoryMode = lib.mkForce "0770";
