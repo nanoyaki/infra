@@ -36,8 +36,7 @@ in
     map
       (
         user:
-        nameValuePair user {
-
+        nameValuePair "copyparty/${user}" {
           owner = cfg.user;
           restartUnits = [ "copyparty.service" ];
         }
