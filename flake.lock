@@ -114,11 +114,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765491346,
-        "narHash": "sha256-rb7EYVBQnYUxvDH/F+pmcZBdpV76gqjIOVFuL++seR4=",
+        "lastModified": 1765582521,
+        "narHash": "sha256-fkghm0JIx6psh1+KApjZWS9OsdrPjH1uejIUzRK+ZHI=",
         "owner": "9001",
         "repo": "copyparty",
-        "rev": "1b222fb5763f27808e01be1aa1026ada1ee34f3d",
+        "rev": "e440578caea9ad179bf350545e9c59a32328af57",
         "type": "github"
       },
       "original": {
@@ -456,11 +456,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1765329655,
-        "narHash": "sha256-5q2aDi6e3CaBBaM1bDtPTe6KcuMVay9R+OXuYwhBoFE=",
+        "lastModified": 1765590565,
+        "narHash": "sha256-PuGP9l5P+Ob9gwjSDcVZYpB178Y+sir9xTNGhhplnho=",
         "ref": "refs/heads/main",
-        "rev": "249bdf015798940a0f32b3c5c4869954af38941b",
-        "revCount": 282,
+        "rev": "d87f6ed22b7becda359c00208aa6f9e641f0342f",
+        "revCount": 283,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nanopkgs.git"
       },
@@ -556,11 +556,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765506642,
-        "narHash": "sha256-dIMNSczQM3a8CsHOtcYeieht6HZGenfIXzJsTw6NzzE=",
+        "lastModified": 1765545632,
+        "narHash": "sha256-m4IdtiDpcAtMyQtRKaV2Zq+k98RzI/I3AP+MekjL750=",
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
-        "rev": "35acd2ec44c814a9d6f89d87ae54c27b8050fabd",
+        "rev": "f75bb29f5464375a5ee852b682ec3417512ce32b",
         "type": "github"
       },
       "original": {
@@ -579,11 +579,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765515490,
-        "narHash": "sha256-YodSqeajnUclZouupBfaMDphOn4kLsUFxGyj76ho0iA=",
+        "lastModified": 1765591111,
+        "narHash": "sha256-gEGcrYhExXxwbxTufrj8pQvP45uIH8kxm3oDiddUls8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6ff21eafb62215d16558cc2e968dd6865d58831c",
+        "rev": "ec9b159e7a3d1366debafadb8dba9b3217690e53",
         "type": "github"
       },
       "original": {
@@ -657,11 +657,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765231718,
-        "narHash": "sha256-qdBzo6puTgG4G2RHG0PkADg22ZnQo1JmSVFRxrD4QM4=",
+        "lastModified": 1765553226,
+        "narHash": "sha256-Ii16Nq5jL2wURXpV3D3tOM3vPpbKh18roHLkyZCHK4Q=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "7fd1416aba1865eddcdec5bb11339b7222c2363e",
+        "rev": "496a6f625f63b780ce849891868f2fad22fd49c6",
         "type": "github"
       },
       "original": {
