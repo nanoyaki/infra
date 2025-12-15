@@ -16,6 +16,7 @@ in
     settings = {
       ledger_cli = "ledger";
       journalFile = "default.ledger";
+      default_currency = "EUR";
       locale = "de-DE";
       time_zone = "Europe/Berlin";
       week_starting_day = 1;
