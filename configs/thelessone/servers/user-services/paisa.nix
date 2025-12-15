@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 let
   cfg = config.services.paisa;
@@ -15,9 +20,27 @@ in
     };
   };
 
-  systemd.services.paisa.environment = {
-    XDG_CACHE_HOME = "${cfg.settings.dataDir}/.cache";
-    HOME = cfg.settings.dataDir;
+  systemd.services.paisa = {
+    path = [ pkgs.hledger ];
+
+    environment = {
+      XDG_CACHE_HOME = "${cfg.settings.dataDir}.cache";
+      HOME = cfg.settings.dataDir;
+    };
+  };
+
+  users.users.paisa = {
+    isSystemUser = true;
+    home = cfg.settings.dataDir;
+    group = config.users.groups.paisa.name;
+  };
+
+  users.groups.paisa = { };
+
+  systemd.services.paisa.serviceConfig = {
+    User = "paisa";
+    Group = "paisa";
+    DynamicUser = lib.mkForce false;
   };
 
   config'.caddy.vHost."finances.theless.one" = {
