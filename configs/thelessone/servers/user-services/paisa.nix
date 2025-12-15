@@ -15,6 +15,7 @@ in
     openFirewall = true;
     settings = {
       ledger_cli = "hledger";
+      journalFile = "hana.ledger";
       locale = "de-DE";
       time_zone = "Europe/Berlin";
       week_starting_day = 1;
