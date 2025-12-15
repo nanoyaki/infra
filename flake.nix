@@ -48,7 +48,7 @@
     };
 
     nix-minecraft = {
-      url = "github:nanoyaki/nix-minecraft/neoforge-master-base";
+      url = "github:Infinidoge/nix-minecraft";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";

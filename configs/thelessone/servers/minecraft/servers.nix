@@ -7,6 +7,7 @@
 }:
 
 # TODO: maybe a proper module
+# TODO: major refactor is definitely necessary
 let
   inherit (lib) recursiveUpdate;
   inherit (pkgs) formats;
@@ -132,7 +133,7 @@ in
     servers = {
       smp = mkServer 30050 {
         enable = true;
-        package = pkgs.fabricServers.fabric-1_21_7;
+        package = pkgs.fabricServers.fabric-1_21_8;
 
         serverProperties = {
           # Joshs-more-foods
@@ -171,7 +172,7 @@ in
           "world/datapacks" = pkgs.linkFarmFromDrvs "datapacks" (
             lib.attrValues (
               (lib.mapAttrs (_: datapack: datapack.latest) (
-                lib.filterAttrs (_: value: lib.isAttrs value) pkgs.minecraft.datapack.v1_21_7
+                lib.filterAttrs (_: value: lib.isAttrs value) pkgs.minecraft.datapack.v1_21_8
               ))
               // {
                 gamerules = pkgs.datapackSet.gamerules {
@@ -189,7 +190,7 @@ in
         symlinks = {
           mods = pkgs.linkFarmFromDrvs "mods" (
             map (mod: mod.latest) (
-              with pkgs.minecraft.fabric.v1_21_7;
+              with pkgs.minecraft.fabric.v1_21_8;
               [
                 fabric-api
                 fabricproxy-lite
@@ -297,7 +298,7 @@ in
 
       smp-creative = mkServer 30051 {
         enable = true;
-        package = pkgs.fabricServers.fabric-1_21_7;
+        package = pkgs.fabricServers.fabric-1_21_8;
         jvmOpts = "-Xms8G -Xmx8G ${aikarsFlags}";
 
         serverProperties = {
@@ -312,7 +313,7 @@ in
         symlinks = {
           mods = pkgs.linkFarmFromDrvs "mods" (
             map (mod: mod.latest) (
-              with pkgs.minecraft.fabric.v1_21_7;
+              with pkgs.minecraft.fabric.v1_21_8;
               [
                 fabric-api
                 fabricproxy-lite
@@ -347,7 +348,7 @@ in
         files."world/datapacks" = pkgs.linkFarmFromDrvs "datapacks" (
           lib.attrValues (
             (lib.mapAttrs (_: datapack: datapack.latest) (
-              lib.filterAttrs (_: value: lib.isAttrs value) pkgs.minecraft.datapack.v1_21_7
+              lib.filterAttrs (_: value: lib.isAttrs value) pkgs.minecraft.datapack.v1_21_8
             ))
             // {
               gamerules = pkgs.datapackSet.gamerules {
@@ -365,7 +366,7 @@ in
       lobby = mkServer 30052 {
         enable = true;
         enableReload = true;
-        package = pkgs.fabricServers.fabric-1_21_7;
+        package = pkgs.fabricServers.fabric-1_21_8;
         jvmOpts = "-Xms2G -Xmx2G ${aikarsFlags}";
 
         serverProperties = {
@@ -382,7 +383,7 @@ in
         symlinks = {
           mods = pkgs.linkFarmFromDrvs "mods" (
             map (mod: mod.latest) (
-              with pkgs.minecraft.fabric.v1_21_7;
+              with pkgs.minecraft.fabric.v1_21_8;
               [
                 fabric-api
                 fabricproxy-lite
