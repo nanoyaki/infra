@@ -14,6 +14,7 @@ in
     enable = true;
     openFirewall = true;
     settings = {
+      ledger_cli = "hledger";
       locale = "de-DE";
       time_zone = "Europe/Berlin";
       week_starting_day = 1;
