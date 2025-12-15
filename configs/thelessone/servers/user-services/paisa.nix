@@ -14,8 +14,8 @@ in
     enable = true;
     openFirewall = true;
     settings = {
-      ledger_cli = "hledger";
-      journalFile = "hana.ledger";
+      ledger_cli = "ledger";
+      journalFile = "default.ledger";
       locale = "de-DE";
       time_zone = "Europe/Berlin";
       week_starting_day = 1;
@@ -23,7 +23,7 @@ in
   };
 
   systemd.services.paisa = {
-    path = [ pkgs.hledger ];
+    path = [ pkgs.ledger ];
 
     environment = {
       XDG_CACHE_HOME = "${cfg.settings.dataDir}.cache";
