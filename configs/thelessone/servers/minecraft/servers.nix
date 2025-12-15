@@ -105,7 +105,11 @@ in
   nixpkgs.overlays = [
     inputs.nanopkgs.overlays.default
     inputs.nix-minecraft.overlay
-    (import ./overlay.nix)
+    (final: _: {
+      datapackSet = final.lib.recurseIntoAttrs {
+        gamerules = gamerules: final.callPackage ./declarative-gamerules.nix { inherit gamerules; };
+      };
+    })
   ];
 
   sops.secrets.proxy.sopsFile = ./secrets.yaml;
@@ -164,16 +168,57 @@ in
             };
           };
 
-          "world/datapacks" = pkgs.datapackSet.default {
-            locatorBar = false;
-            disableElytraMovementCheck = true;
-            disablePlayerMovementCheck = true;
-            playersSleepingPercentage = 33;
-          };
+          "world/datapacks" = pkgs.linkFarmFromDrvs "datapacks" (
+            lib.attrValues (
+              (lib.mapAttrs (_: datapack: datapack.latest) (
+                lib.filterAttrs (_: value: lib.isAttrs value) pkgs.minecraft.datapack.v1_21_7
+              ))
+              // {
+                gamerules = pkgs.datapackSet.gamerules {
+                  locatorBar = false;
+                  disableElytraMovementCheck = true;
+                  disablePlayerMovementCheck = true;
+                  playersSleepingPercentage = 33;
+                };
+              }
+            )
+          );
+
         };
 
         symlinks = {
-          mods = pkgs.fabricModpacks.smp;
+          mods = pkgs.linkFarmFromDrvs "mods" (
+            map (mod: mod.latest) (
+              with pkgs.minecraft.fabric.v1_21_7;
+              [
+                fabric-api
+                fabricproxy-lite
+                simple-voice-chat
+                vmp-fabric
+                lithium
+                player-roles
+                no-chat-reports
+                krypton
+                c2me-fabric
+                image2map
+                netherportalfix
+                balm
+                ferrite-core
+                scalablelux
+                do-a-barrel-roll
+                cicada
+                servux
+                rei
+                architectury-api
+                cloth-config
+
+                bluemap
+                bluemap-sign-markers
+                discord-mc-chat
+                distanthorizons
+              ]
+            )
+          );
 
           "config/voicechat/voicechat-server.properties" = mkVoiceChatCfg 24454;
 
@@ -265,18 +310,56 @@ in
         operators = import ./whitelist.nix;
 
         symlinks = {
-          mods = pkgs.fabricModpacks.creative;
+          mods = pkgs.linkFarmFromDrvs "mods" (
+            map (mod: mod.latest) (
+              with pkgs.minecraft.fabric.v1_21_7;
+              [
+                fabric-api
+                fabricproxy-lite
+                simple-voice-chat
+                vmp-fabric
+                lithium
+                player-roles
+                no-chat-reports
+                krypton
+                c2me-fabric
+                image2map
+                netherportalfix
+                balm
+                ferrite-core
+                scalablelux
+                do-a-barrel-roll
+                cicada
+                servux
+                rei
+                architectury-api
+                cloth-config
+
+                axiom
+                carpet
+              ]
+            )
+          );
 
           "config/voicechat/voicechat-server.properties" = mkVoiceChatCfg 24455;
         };
 
-        files."world/datapacks" = pkgs.datapackSet.default {
-          keepInventory = true;
-          doMobSpawning = false;
-          mobGriefing = false;
-          disableElytraMovementCheck = true;
-          disablePlayerMovementCheck = true;
-        };
+        files."world/datapacks" = pkgs.linkFarmFromDrvs "datapacks" (
+          lib.attrValues (
+            (lib.mapAttrs (_: datapack: datapack.latest) (
+              lib.filterAttrs (_: value: lib.isAttrs value) pkgs.minecraft.datapack.v1_21_7
+            ))
+            // {
+              gamerules = pkgs.datapackSet.gamerules {
+                keepInventory = true;
+                doMobSpawning = false;
+                mobGriefing = false;
+                disableElytraMovementCheck = true;
+                disablePlayerMovementCheck = true;
+              };
+            }
+          )
+        );
       };
 
       lobby = mkServer 30052 {
@@ -297,7 +380,35 @@ in
         };
 
         symlinks = {
-          mods = pkgs.fabricModpacks.creative.override { without = [ pkgs.fabricMods.v1_21_7.axiom ]; };
+          mods = pkgs.linkFarmFromDrvs "mods" (
+            map (mod: mod.latest) (
+              with pkgs.minecraft.fabric.v1_21_7;
+              [
+                fabric-api
+                fabricproxy-lite
+                simple-voice-chat
+                vmp-fabric
+                lithium
+                player-roles
+                no-chat-reports
+                krypton
+                c2me-fabric
+                image2map
+                netherportalfix
+                balm
+                ferrite-core
+                scalablelux
+                do-a-barrel-roll
+                cicada
+                servux
+                rei
+                architectury-api
+                cloth-config
+
+                carpet
+              ]
+            )
+          );
 
           "config/voicechat/voicechat-server.properties" = mkVoiceChatCfg 24456;
         };
@@ -331,24 +442,25 @@ in
         };
 
         symlinks.mods = pkgs.linkFarmFromDrvs "mods" (
-          with pkgs.fabricMods.v1_21_8;
-
-          [
-            fabric-api
-            fabricproxy-lite
-            lithium
-            no-chat-reports
-            krypton
-            c2me-fabric
-            balm
-            ferrite-core
-            scalablelux
-            cicada
-            servux
-            rei
-            architectury-api
-            cloth-config
-          ]
+          map (mod: mod.latest) (
+            with pkgs.minecraft.fabric.v1_21_8;
+            [
+              fabric-api
+              fabricproxy-lite
+              lithium
+              no-chat-reports
+              krypton
+              c2me-fabric
+              balm
+              ferrite-core
+              scalablelux
+              cicada
+              servux
+              rei
+              architectury-api
+              cloth-config
+            ]
+          )
         );
 
         files = {
