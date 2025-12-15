@@ -7,5 +7,6 @@
     ./suwayomi.nix
     ./vaultwarden.nix
     ./tandoor.nix
+    ./paisa.nix
   ];
 }
