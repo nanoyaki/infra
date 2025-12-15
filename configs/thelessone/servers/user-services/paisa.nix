@@ -1,5 +1,9 @@
 { config, ... }:
 
+let
+  cfg = config.services.paisa;
+in
+
 {
   services.paisa = {
     enable = true;
@@ -11,8 +15,13 @@
     };
   };
 
+  systemd.services.paisa.environment = {
+    XDG_CACHE_HOME = "${cfg.settings.dataDir}/.cache";
+    HOME = cfg.settings.dataDir;
+  };
+
   config'.caddy.vHost."finances.theless.one" = {
-    proxy = { inherit (config.services.paisa) port; };
+    proxy = { inherit (cfg) port; };
     useVpn = true;
   };
 }
