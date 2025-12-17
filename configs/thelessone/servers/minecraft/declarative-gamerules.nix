@@ -2,6 +2,7 @@
   lib,
   runCommand,
   writeText,
+  jq,
   gamerules ? { },
 }:
 
@@ -21,17 +22,34 @@ let
     concatStringsSep "\n" (map toGamerule (attrNames gamerules))
   );
 
-  jsonFiles = mapAttrs (name: json: writeText name (builtins.toJSON json)) {
-    loadJson.values = [ "declarative_gamerules:setup" ];
-    packMcmeta.pack = {
-      description = "Sets gamerules declaratively";
-      pack_format = 81;
-      supported_formats = [
-        81
-        81
-      ];
-    };
-  };
+  jsonFiles =
+    mapAttrs
+      (
+        name: json:
+        writeText name (
+          builtins.readFile (
+            runCommand "formatted-${name}"
+              {
+                json = builtins.toJSON json;
+                buildInputs = [ jq ];
+              }
+              ''
+                jq -r '.' <(echo "$json") > $out
+              ''
+          )
+        )
+      )
+      {
+        loadJson.values = [ "declarative_gamerules:setup" ];
+        packMcmeta.pack = {
+          description = "Sets gamerules declaratively";
+          pack_format = 81;
+          supported_formats = [
+            81
+            81
+          ];
+        };
+      };
 in
 
 runCommand "declarative-gamerules"
@@ -42,8 +60,8 @@ runCommand "declarative-gamerules"
   }
   ''
     mkdir -p $out/data/{minecraft/tags/function,declarative_gamerules/function}
-    ln -s $packMcmeta > $out/pack.mcmeta
-    ln -s $loadJson > $out/data/minecraft/tags/function/load.json
+    ln -s $packMcmeta $out/pack.mcmeta
+    ln -s $loadJson $out/data/minecraft/tags/function/load.json
     ln -s $renderedGamerules $out/data/declarative_gamerules/function/setup.mcfunction
     ln -s $icon $out/pack.png
   ''
