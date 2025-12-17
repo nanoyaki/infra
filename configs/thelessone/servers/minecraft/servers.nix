@@ -197,7 +197,7 @@ in
                 simple-voice-chat
                 vmp-fabric
                 lithium
-                player-roles
+                # player-roles
                 no-chat-reports
                 krypton
                 c2me-fabric
@@ -320,7 +320,7 @@ in
                 simple-voice-chat
                 vmp-fabric
                 lithium
-                player-roles
+                # player-roles
                 no-chat-reports
                 krypton
                 c2me-fabric
@@ -390,7 +390,7 @@ in
                 simple-voice-chat
                 vmp-fabric
                 lithium
-                player-roles
+                # player-roles
                 no-chat-reports
                 krypton
                 c2me-fabric
