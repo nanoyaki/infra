@@ -59,14 +59,23 @@ in
     };
   };
 
-  sops.secrets."restic/suwayomi" = { };
+  services.borgbackup.jobs.suwayomi = {
+    repo = "thelessone-borg@10.0.0.6:suwayomi";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-  config'.restic.backups.suwayomi = {
-    repository = "/mnt/raid/backups/suwayomi";
-    passwordFile = config.sops.secrets."restic/suwayomi".path;
+    paths = config.services.suwayomi.dataDir;
 
-    basePath = config.services.suwayomi.dataDir;
+    encryption.mode = "none";
+    compression = "zstd";
 
-    timerConfig.OnCalendar = "daily";
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

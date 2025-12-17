@@ -7,15 +7,14 @@
 
 let
   inherit (inputs) valheim-server;
+
+  backupPath = "/var/lib/valheim/.config/unity3d/IronGate/Valheim/worlds_local";
 in
 
 {
   imports = [ valheim-server.nixosModules.default ];
 
-  sops.secrets = {
-    valheim-password = { };
-    "restic/valheim" = { };
-  };
+  sops.secrets.valheim-password = { };
 
   sops.templates."valheim-password.env".file =
     (pkgs.formats.keyValue { }).generate "valheim-password.env.template"
@@ -35,16 +34,27 @@ in
     adminList = [ "76561198294979887" ];
   };
 
-  config'.restic.backups.valheim = {
-    repository = "/mnt/raid/backups/valheim";
-    passwordFile = config.sops.secrets."restic/valheim".path;
+  services.borgbackup.jobs.valheim = {
+    repo = "thelessone-borg@10.0.0.6:valheim";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-    basePath = "/var/lib/valheim/.config/unity3d/IronGate/Valheim/worlds_local";
-    paths = [
-      "Test12.db"
-      "Test12.fwl"
+    paths = backupPath;
+    patterns = [
+      "+ ${backupPath}/Test12.*"
+      "- **"
     ];
 
-    timerConfig.OnCalendar = "*:0/15";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "*:0/15";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

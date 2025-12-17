@@ -4,8 +4,6 @@ let
 in
 
 {
-  sops.secrets."restic/radarr" = { };
-
   services.vopono.allowedTCPPorts = [ config.services.radarr.settings.server.port ];
 
   systemd.services.radarr.unitConfig.RequiresMountsFor = "/mnt/raid";
@@ -19,12 +17,23 @@ in
     useVpn = true;
   };
 
-  config'.restic.backups.radarr = {
-    repository = "/mnt/raid/backups/radarr";
-    passwordFile = config.sops.secrets."restic/radarr".path;
+  services.borgbackup.jobs.radarr = {
+    repo = "thelessone-borg@10.0.0.6:radarr";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-    basePath = "/var/lib/radarr";
+    paths = "/var/lib/radarr";
 
-    timerConfig.OnCalendar = "daily";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

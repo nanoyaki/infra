@@ -10,17 +10,6 @@ in
     port = 46551;
   };
 
-  sops.secrets."restic/audiobookshelf" = { };
-
-  config'.restic.backups.audiobookshelf = {
-    repository = "/mnt/raid/backups/audiobookshelf";
-    passwordFile = config.sops.secrets."restic/audiobookshelf".path;
-
-    basePath = "/mnt/raid/audiobookshelf";
-
-    timerConfig.OnCalendar = "daily";
-  };
-
   fileSystems."/var/lib/audiobookshelf" = {
     device = "/mnt/raid/audiobookshelf";
     depends = [ "/mnt/raid" ];
@@ -32,5 +21,25 @@ in
   config'.caddy.vHost.${domain} = {
     proxy = { inherit (config.services.audiobookshelf) port; };
     useVpn = true;
+  };
+
+  services.borgbackup.jobs.audiobookshelf = {
+    repo = "thelessone-borg@10.0.0.6:audiobookshelf";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
+
+    paths = "/mnt/raid/audiobookshelf";
+
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

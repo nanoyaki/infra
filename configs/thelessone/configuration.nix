@@ -6,6 +6,8 @@
   ...
 }:
 
+# TODO: setup nixos impermanence
+
 {
   nixpkgs.overlays = [
     (_: prev: {

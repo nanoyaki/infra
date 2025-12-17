@@ -231,18 +231,24 @@ in
     secrets.mailer.PASSWD = config.sops.secrets."forgejo/mailer-password".path;
   };
 
-  sops.secrets = {
-    "restic/100-64-64-3" = { };
-    "restic/forgejo" = { };
-  };
+  services.borgbackup.jobs.forgejo = {
+    repo = "thelessone-borg@10.0.0.6:forgejo";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-  config'.restic.backups.forgejo = {
-    repository = "/mnt/raid/backups/forgejo";
-    passwordFile = config.sops.secrets."restic/forgejo".path;
+    paths = config.services.forgejo.stateDir;
 
-    basePath = config.services.forgejo.stateDir;
+    encryption.mode = "none";
+    compression = "zstd";
 
-    timerConfig.OnCalendar = "daily";
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 
   config'.caddy.vHost."git.theless.one".proxy.port =

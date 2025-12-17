@@ -24,14 +24,23 @@
     environmentFile = config.sops.templates."fireshare.env".path;
   };
 
-  sops.secrets."restic/fireshare" = { };
+  services.borgbackup.jobs.fireshare = {
+    repo = "thelessone-borg@10.0.0.6:fireshare";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-  config'.restic.backups.fireshare = {
-    repository = "/mnt/raid/backups/fireshare";
-    passwordFile = config.sops.secrets."restic/fireshare".path;
+    paths = "/mnt/raid/fireshare";
 
-    basePath = "/mnt/raid/fireshare";
+    encryption.mode = "none";
+    compression = "zstd";
 
-    timerConfig.OnCalendar = "daily";
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

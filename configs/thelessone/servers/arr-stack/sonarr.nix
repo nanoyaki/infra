@@ -5,8 +5,6 @@ let
 in
 
 {
-  sops.secrets."restic/sonarr" = { };
-
   services.vopono.allowedTCPPorts = [ config.services.sonarr.settings.server.port ];
 
   systemd.services.sonarr.unitConfig.RequiresMountsFor = "/mnt/raid";
@@ -20,12 +18,23 @@ in
     useVpn = true;
   };
 
-  config'.restic.backups.sonarr = {
-    repository = "/mnt/raid/backups/sonarr";
-    passwordFile = config.sops.secrets."restic/sonarr".path;
+  services.borgbackup.jobs.sonarr = {
+    repo = "thelessone-borg@10.0.0.6:sonarr";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-    basePath = "/var/lib/sonarr";
+    paths = "/var/lib/sonarr";
 
-    timerConfig.OnCalendar = "daily";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

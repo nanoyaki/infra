@@ -4,30 +4,49 @@
 }:
 
 {
-  sops.secrets = {
-    "restic/minecraft-servers" = { };
-    "restic/beyond-depth" = { };
-  };
+  services.borgbackup.jobs.nix-minecraft = {
+    repo = "thelessone-borg@10.0.0.6:nix-minecraft";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-  config'.restic.backups.minecraft-servers = {
-    repository = "/mnt/raid/backups/minecraft-servers";
-    passwordFile = config.sops.secrets."restic/minecraft-servers".path;
-
-    basePath = "${config.services.minecraft-servers.dataDir}/*/world";
-    exclude = [
-      "datapacks"
-      "**/*.bak"
+    paths = config.services.minecraft-servers.dataDir;
+    patterns = [
+      "+ */world/**"
+      "- */world/datapacks"
+      "- **/*.bak"
+      "- **"
     ];
 
-    timerConfig.OnCalendar = "*:0/30";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "*:0/30";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 
-  config'.restic.backups.beyond-depth = {
-    repository = "/mnt/raid/backups/beyond-depth";
-    passwordFile = config.sops.secrets."restic/beyond-depth".path;
+  services.borgbackup.jobs.manual-mc = {
+    repo = "thelessone-borg@10.0.0.6:manual-mc";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-    basePath = "/home/thelessone/Dokumente/MinecraftServers/Niklas/niklas3";
+    paths = "/home/thelessone/Dokumente/MinecraftServers";
 
-    timerConfig.OnCalendar = "*:0/30";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "*:0/30";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

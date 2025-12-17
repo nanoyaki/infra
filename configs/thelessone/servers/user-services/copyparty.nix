@@ -23,16 +23,15 @@ let
     fka = 32;
     dks = true;
   };
+
+  backupPath = "/mnt/raid";
 in
 
 {
   imports = [ copyparty.nixosModules.default ];
   nixpkgs.overlays = [ copyparty.overlays.default ];
 
-  sops.secrets = {
-    "restic/copyparty" = { };
-  }
-  // listToAttrs (
+  sops.secrets = listToAttrs (
     map
       (
         user:
@@ -154,16 +153,28 @@ in
     reverse_proxy unix//run/copyparty/copyparty.sock
   '';
 
-  config'.restic.backups.copyparty = {
-    repository = "/mnt/raid/backups/copyparty";
-    passwordFile = config.sops.secrets."restic/copyparty".path;
+  services.borgbackup.jobs.copyparty = {
+    repo = "thelessone-borg@10.0.0.6:copyparty";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-    basePath = "/mnt/raid";
-    paths = [
-      "copyparty"
-      "copyparty-priv"
+    paths = backupPath;
+    patterns = [
+      "+ ${backupPath}/copyparty"
+      "+ ${backupPath}/copyparty-priv"
+      "- **"
     ];
 
-    timerConfig.OnCalendar = "daily";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

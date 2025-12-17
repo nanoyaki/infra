@@ -51,7 +51,6 @@ in
 
   sops.secrets = {
     "restic/100-64-64-6" = { };
-    "restic/vaultwarden-local" = { };
     "restic/vaultwarden-remote" = { };
   };
 
@@ -61,23 +60,40 @@ in
     }@restic.hanakretzer.de/vaultwarden-thelessone
   '';
 
-  config'.restic.backups = rec {
-    vaultwarden-local = {
-      repository = "/mnt/raid/backups/vaultwarden";
-      passwordFile = config.sops.secrets."restic/vaultwarden-local".path;
+  config'.restic.backups.vaultwarden-remote = {
+    repositoryFile = config.sops.templates."restic-vauldwarden-repo.txt".path;
+    passwordFile = config.sops.secrets."restic/vaultwarden-remote".path;
 
-      paths = [
-        "/var/lib/vaultwarden"
-        config.services.vaultwarden.backupDir
-      ];
+    paths = [
+      "/var/lib/vaultwarden"
+      config.services.vaultwarden.backupDir
+    ];
 
-      timerConfig.OnCalendar = "*-*-* 00/3:00:00";
-    };
+    timerConfig.OnCalendar = "*-*-* 00/3:00:00";
+  };
 
-    vaultwarden-remote = vaultwarden-local // {
-      repository = null;
-      repositoryFile = config.sops.templates."restic-vauldwarden-repo.txt".path;
-      passwordFile = config.sops.secrets."restic/vaultwarden-remote".path;
+  services.borgbackup.jobs.vaultwarden = {
+    repo = "thelessone-borg@10.0.0.6:vaultwarden";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
+
+    paths = "/var";
+    patterns = [
+      "+ /var/lib/vaultwarden"
+      "+ ${config.services.vaultwarden.backupDir}"
+      "- **"
+    ];
+
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "*-*-* 00/3:00:00";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
     };
   };
 }

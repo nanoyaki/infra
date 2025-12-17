@@ -89,19 +89,29 @@ in
         };
       });
 
-  sops.secrets."restic/caddy" = { };
+  services.borgbackup.jobs.caddy = {
+    repo = "thelessone-borg@10.0.0.6:caddy";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-  config'.restic.backups.caddy = {
-    repository = "/mnt/raid/backups/caddy";
-    passwordFile = config.sops.secrets."restic/caddy".path;
-
-    basePath = "/var";
-    paths = [
-      "www/theless.one"
-      "lib/caddy/files"
-      "lib/caddy/nanoyaki-files"
+    paths = "/var";
+    patterns = [
+      "+ /var/www/theless.one"
+      "+ /var/lib/caddy/files"
+      "+ /var/lib/caddy/nanoyaki-files"
+      "- **"
     ];
 
-    timerConfig.OnCalendar = "daily";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

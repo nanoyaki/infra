@@ -111,29 +111,23 @@ in
   config'.caddy.vHost."calendar.theless.one".proxy.port = 5232;
   config'.caddy.vHost."dav.theless.one".proxy.port = 5232;
 
-  sops.secrets = {
-    "restic/dav-local" = { };
-    "restic/dav-remote" = { };
-  };
+  services.borgbackup.jobs.dav = {
+    repo = "thelessone-borg@10.0.0.6:dav";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-  sops.templates."restic-dav-repo.txt".content = ''
-    rest:http://restic:${config.sops.placeholder."restic/100-64-64-3"}@100.64.64.3:8000/dav-thelessone
-  '';
+    paths = "/var/lib/radicale";
 
-  config'.restic.backups = rec {
-    dav-local = {
-      repository = "/mnt/raid/backups/dav";
-      passwordFile = config.sops.secrets."restic/dav-local".path;
+    encryption.mode = "none";
+    compression = "zstd";
 
-      basePath = "/var/lib/radicale";
-
-      timerConfig.OnCalendar = "daily";
-    };
-
-    dav-remote = dav-local // {
-      repository = null;
-      repositoryFile = config.sops.templates."restic-dav-repo.txt".path;
-      passwordFile = config.sops.secrets."restic/dav-remote".path;
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
     };
   };
 }

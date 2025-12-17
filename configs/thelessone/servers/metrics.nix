@@ -12,7 +12,6 @@ in
     "apiKeys/prowlarr" = { };
     "apiKeys/lidarr" = { };
     "apiKeys/bazarr" = { };
-    "apiKeys/woodpecker".owner = "prometheus";
   };
 
   services.grafana = {
@@ -155,12 +154,6 @@ in
                 ];
           }
         ];
-      }
-
-      {
-        job_name = "woodpecker";
-        bearer_token_file = config.sops.secrets."apiKeys/woodpecker".path;
-        static_configs = [ { targets = [ "woodpecker.theless.one" ]; } ];
       }
     ];
   };

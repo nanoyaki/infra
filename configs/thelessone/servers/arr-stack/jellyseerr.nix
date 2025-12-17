@@ -5,8 +5,6 @@ let
 in
 
 {
-  sops.secrets."restic/jellyseerr" = { };
-
   services.jellyseerr.enable = true;
 
   config'.caddy.vHost.${domain} = {
@@ -14,12 +12,23 @@ in
     useVpn = true;
   };
 
-  config'.restic.backups.jellyseerr = {
-    repository = "/mnt/raid/backups/jellyseerr";
-    passwordFile = config.sops.secrets."restic/jellyseerr".path;
+  services.borgbackup.jobs.jellyseerr = {
+    repo = "thelessone-borg@10.0.0.6:jellyseerr";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-    basePath = "/var/lib/private/jellyseerr";
+    paths = "/var/lib/private/jellyseerr";
 
-    timerConfig.OnCalendar = "daily";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

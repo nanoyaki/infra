@@ -31,15 +31,23 @@ in
     useVpn = true;
   };
 
-  sops.secrets."restic/immich" = { };
+  services.borgbackup.jobs.immich = {
+    repo = "thelessone-borg@10.0.0.6:immich";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-  config'.restic.backups.immich = {
-    repository = "/mnt/raid/backups/immich";
-    passwordFile = config.sops.secrets."restic/immich".path;
+    paths = "/var/lib/immich";
 
-    basePath = "/var/lib/immich";
-    exclude = [ "thumbs" ];
+    encryption.mode = "none";
+    compression = "zstd";
 
-    timerConfig.OnCalendar = "daily";
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

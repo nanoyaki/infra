@@ -53,4 +53,24 @@ in
       }
     '';
   };
+
+  services.borgbackup.jobs.tandoor-recipes = {
+    repo = "thelessone-borg@10.0.0.6:tandoor-recipes";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
+
+    paths = "/var/lib/tandoor-recipes";
+
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
+  };
 }

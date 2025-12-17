@@ -33,15 +33,24 @@
     useVpn = true;
   };
 
-  sops.secrets."restic/shoko" = { };
+  services.borgbackup.jobs.shoko = {
+    repo = "thelessone-borg@10.0.0.6:shoko";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-  config'.restic.backups.shoko = {
-    repository = "/mnt/raid/backups/shoko";
-    passwordFile = config.sops.secrets."restic/shoko".path;
+    paths = "/var/lib/shoko";
 
-    basePath = "/var/lib/shoko";
+    encryption.mode = "none";
+    compression = "zstd";
 
-    timerConfig.OnCalendar = "daily";
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 
   users.users.torrent-copy = {

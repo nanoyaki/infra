@@ -5,8 +5,6 @@ let
 in
 
 {
-  sops.secrets."restic/prowlarr" = { };
-
   services.vopono.systemd.services.prowlarr = [ config.services.prowlarr.settings.server.port ];
 
   services.prowlarr = {
@@ -22,12 +20,23 @@ in
     useVpn = true;
   };
 
-  config'.restic.backups.prowlarr = {
-    repository = "/mnt/raid/backups/prowlarr";
-    passwordFile = config.sops.secrets."restic/prowlarr".path;
+  services.borgbackup.jobs.prowlarr = {
+    repo = "thelessone-borg@10.0.0.6:prowlarr";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-    basePath = "/var/lib/prowlarr";
+    paths = "/var/lib/private/prowlarr";
 
-    timerConfig.OnCalendar = "daily";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

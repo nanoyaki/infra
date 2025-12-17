@@ -2,6 +2,8 @@
 
 let
   domain = "jellyfin.theless.one";
+
+  backupPath = "/var/lib/jellyfin";
 in
 
 {
@@ -23,18 +25,27 @@ in
     "render"
   ];
 
-  sops.secrets."restic/jellyfin" = { };
+  services.borgbackup.jobs.jellyfin = {
+    repo = "thelessone-borg@10.0.0.6:jellyfin";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-  config'.restic.backups.jellyfin = {
-    repository = "/mnt/raid/backups/jellyfin";
-    passwordFile = config.sops.secrets."restic/jellyfin".path;
-
-    basePath = "/var/lib/jellyfin";
-    exclude = [
-      "metadata/library"
-      "data/subtitles"
+    paths = backupPath;
+    patterns = [
+      "- ${backupPath}/metadata/library"
+      "- ${backupPath}/data/subtitles"
     ];
 
-    timerConfig.OnCalendar = "daily";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

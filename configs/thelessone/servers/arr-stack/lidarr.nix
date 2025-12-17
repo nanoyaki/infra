@@ -5,8 +5,6 @@ let
 in
 
 {
-  sops.secrets."restic/lidarr" = { };
-
   services.vopono.allowedTCPPorts = [ config.services.lidarr.settings.server.port ];
 
   systemd.services.lidarr.unitConfig.RequiresMountsFor = "/mnt/raid";
@@ -20,12 +18,23 @@ in
     useVpn = true;
   };
 
-  config'.restic.backups.lidarr = {
-    repository = "/mnt/raid/backups/lidarr";
-    passwordFile = config.sops.secrets."restic/lidarr".path;
+  services.borgbackup.jobs.lidarr = {
+    repo = "thelessone-borg@10.0.0.6:lidarr";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-    basePath = "/var/lib/lidarr";
+    paths = "/var/lib/lidarr";
 
-    timerConfig.OnCalendar = "daily";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

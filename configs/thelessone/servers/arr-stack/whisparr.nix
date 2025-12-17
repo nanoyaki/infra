@@ -5,8 +5,6 @@ let
 in
 
 {
-  sops.secrets."restic/whisparr" = { };
-
   services.vopono.allowedTCPPorts = [ config.services.whisparr.settings.server.port ];
 
   systemd.services.whisparr.unitConfig.RequiresMountsFor = "/mnt/raid";
@@ -20,12 +18,23 @@ in
     useVpn = true;
   };
 
-  config'.restic.backups.whisparr = {
-    repository = "/mnt/raid/backups/whisparr";
-    passwordFile = config.sops.secrets."restic/whisparr".path;
+  services.borgbackup.jobs.whisparr = {
+    repo = "thelessone-borg@10.0.0.6:whisparr";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-    basePath = "/var/lib/whisparr";
+    paths = "/var/lib/whisparr";
 
-    timerConfig.OnCalendar = "daily";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

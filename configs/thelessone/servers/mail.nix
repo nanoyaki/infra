@@ -108,35 +108,30 @@
     gryphline.com
   '';
 
-  sops.secrets = {
-    "restic/mail-local" = { };
-    "restic/mail-remote" = { };
-  };
+  services.borgbackup.jobs.mail = {
+    repo = "thelessone-borg@10.0.0.6:mail";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-  sops.templates."restic-mail-repo.txt".content = ''
-    rest:http://restic:${config.sops.placeholder."restic/100-64-64-3"}@100.64.64.3:8000/mail-thelessone
-  '';
+    paths = "/var";
+    patterns = [
+      "+ /var/vmail"
+      "+ /var/sieve"
+      "+ /var/lib/redis-rspamd"
+      "+ /var/dkim"
+      "- **"
+    ];
 
-  config'.restic.backups = rec {
-    mail-local = {
-      repository = "/mnt/raid/backups/mail";
-      passwordFile = config.sops.secrets."restic/mail-local".path;
+    encryption.mode = "none";
+    compression = "zstd";
 
-      basePath = "/var";
-      paths = [
-        "vmail"
-        "sieve"
-        "lib/redis-rspamd"
-        "dkim"
-      ];
-
-      timerConfig.OnCalendar = "daily";
-    };
-
-    mail-remote = mail-local // {
-      repository = null;
-      repositoryFile = config.sops.templates."restic-mail-repo.txt".path;
-      passwordFile = config.sops.secrets."restic/mail-remote".path;
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
     };
   };
 }

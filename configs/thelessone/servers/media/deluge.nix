@@ -248,15 +248,24 @@ in
       useVpn = true;
     };
 
-    sops.secrets."restic/deluge" = { };
+    services.borgbackup.jobs.deluge = {
+      repo = "thelessone-borg@10.0.0.6:deluge";
+      environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+      doInit = true;
 
-    config'.restic.backups.deluge = {
-      repository = "/mnt/raid/backups/deluge";
-      passwordFile = config.sops.secrets."restic/deluge".path;
+      paths = "/var/lib/deluge/.config/deluge";
 
-      basePath = "/var/lib/deluge/.config/deluge";
+      encryption.mode = "none";
+      compression = "zstd";
 
-      timerConfig.OnCalendar = "daily";
+      startAt = "daily";
+      persistentTimer = true;
+      prune.keep = {
+        within = "1d";
+        daily = 14;
+        weekly = 12;
+        monthly = -1;
+      };
     };
   };
 }

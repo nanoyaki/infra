@@ -7,8 +7,6 @@ let
 in
 
 {
-  sops.secrets."restic/bazarr" = { };
-
   services.bazarr = {
     enable = true;
     inherit (arr) group;
@@ -19,12 +17,23 @@ in
     useVpn = true;
   };
 
-  config'.restic.backups.bazarr = {
-    repository = "/mnt/raid/backups/bazarr";
-    passwordFile = config.sops.secrets."restic/bazarr".path;
+  services.borgbackup.jobs.bazarr = {
+    repo = "thelessone-borg@10.0.0.6:bazarr";
+    environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+    doInit = true;
 
-    basePath = "/var/lib/bazarr";
+    paths = "/var/lib/bazarr";
 
-    timerConfig.OnCalendar = "daily";
+    encryption.mode = "none";
+    compression = "zstd";
+
+    startAt = "daily";
+    persistentTimer = true;
+    prune.keep = {
+      within = "1d";
+      daily = 14;
+      weekly = 12;
+      monthly = -1;
+    };
   };
 }

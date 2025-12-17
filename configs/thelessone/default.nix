@@ -35,6 +35,8 @@
         ./systemd.nix
       ];
 
+      sops.secrets.id_borg_thelessone = { };
+
       nanoSystem = {
         localization = {
           timezone = "Europe/Vienna";
