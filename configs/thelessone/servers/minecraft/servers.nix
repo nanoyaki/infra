@@ -34,7 +34,7 @@ let
           server-port = port;
 
           spawn-protection = 0;
-          view-distance = 12;
+          view-distance = 999;
           simulation-distance = 12;
 
           gamemode = "survival";
