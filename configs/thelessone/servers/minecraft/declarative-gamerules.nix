@@ -1,6 +1,6 @@
 {
   lib,
-  stdenvNoCC,
+  runCommand,
   writeText,
   gamerules ? { },
 }:
@@ -22,8 +22,8 @@ let
   );
 
   jsonFiles = mapAttrs (name: json: writeText name (builtins.toJSON json)) {
-    "load.json".values = [ "declarative_gamerules:setup" ];
-    "pack.mcmeta".pack = {
+    loadJson.values = [ "declarative_gamerules:setup" ];
+    packMcmeta.pack = {
       description = "Sets gamerules declaratively";
       pack_format = 81;
       supported_formats = [
@@ -34,19 +34,16 @@ let
   };
 in
 
-stdenvNoCC.mkDerivation {
-  pname = "declarative-gamerules";
-  version = "1.0.0";
-
-  installPhase = ''
-    runHook preInstall
-
+runCommand "declarative-gamerules"
+  {
+    icon = ./icon.png;
+    inherit (jsonFiles) loadJson packMcmeta;
+    inherit renderedGamerules;
+  }
+  ''
     mkdir -p $out/data/{minecraft/tags/function,declarative_gamerules/function}
-    ln -s ${jsonFiles."pack.mcmeta"} > $out/pack.mcmeta
-    ln -s ${jsonFiles."load.json"} > $out/data/minecraft/tags/function/load.json
-    ln -s ${renderedGamerules} $out/data/declarative_gamerules/function/setup.mcfunction
-    ln -s ${./icon.png} $out/pack.png
-
-    runHook postInstall
-  '';
-}
+    ln -s $packMcmeta > $out/pack.mcmeta
+    ln -s $loadJson > $out/data/minecraft/tags/function/load.json
+    ln -s $renderedGamerules $out/data/declarative_gamerules/function/setup.mcfunction
+    ln -s $icon $out/pack.png
+  ''
