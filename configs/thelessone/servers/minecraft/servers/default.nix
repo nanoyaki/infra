@@ -15,8 +15,14 @@ in
         FABRIC_PROXY_SECRET = config.sops.placeholder.proxy;
       };
 
-  services.minecraft-servers' = {
+  services.minecraft-servers = {
     enable = true;
+    eula = true;
+    environmentFile = config.sops.templates."minecraft-secrets.env".path;
+    openFirewall = true;
+  };
+
+  services.minecraft-servers' = {
     openVoicechatPorts = true;
     serverDefaults = {
       autoStart = true;

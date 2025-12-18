@@ -8,7 +8,6 @@
 
 let
   inherit (lib)
-    mkIf
     mkOption
     types
     mkEnableOption
@@ -77,6 +76,7 @@ let
     optionalAttrs
     optionalString
     filter
+    mkIf
     ;
 
   inherit (inputs) nix-minecraft nanopkgs;
@@ -91,8 +91,6 @@ in
   ];
 
   options.services.minecraft-servers' = {
-    enable = mkEnableOption "minecraft servers";
-
     openVoicechatPorts = mkEnableOption "" // {
       description = ''
         Whether to open the voice chat ports of the servers
@@ -113,7 +111,7 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
+  config = {
     # BUG: No idea why the overlay order is so
     # messed up. Had to import nanopkgs here again
     nixpkgs.overlays = [
@@ -141,13 +139,14 @@ in
     ) cfg.servers;
 
     # Open voicechat ports
-    networking.firewall.allowedUDPPorts =
+    networking.firewall.allowedUDPPorts = mkIf cfg.openVoicechatPorts (
       map
         (server: cfg.servers.${server}.symlinks."config/voicechat/voicechat-server.properties".value.port)
         (
           filter (server: cfg.servers ? ${server}.symlinks."config/voicechat/voicechat-server.properties") (
             attrNames cfg.servers
           )
-        );
+        )
+    );
   };
 }
