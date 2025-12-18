@@ -456,11 +456,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1765960293,
-        "narHash": "sha256-52xspLpiD6EyxaEt+jUMyvJmlfux+ED7wQK6TGPECwA=",
+        "lastModified": 1766064738,
+        "narHash": "sha256-oc/Ssz3+9SmeW1CAVQrZMkXWAXEcfjgQgZKe09bjslQ=",
         "ref": "refs/heads/main",
-        "rev": "0b71c87d7dbf8226125c76a26077eba1f1845df6",
-        "revCount": 293,
+        "rev": "3628028509df768facfe3a6cdfde7417cfdcee53",
+        "revCount": 295,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nanopkgs.git"
       },
@@ -834,11 +834,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762938485,
-        "narHash": "sha256-AlEObg0syDl+Spi4LsZIBrjw+snSVU4T8MOeuZJUJjM=",
+        "lastModified": 1766000401,
+        "narHash": "sha256-+cqN4PJz9y0JQXfAK5J1drd0U05D5fcAGhzhfVrDlsI=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "5b4ee75aeefd1e2d5a1cc43cf6ba65eba75e83e4",
+        "rev": "42d96e75aa56a3f70cab7e7dc4a32868db28e8fd",
         "type": "github"
       },
       "original": {
