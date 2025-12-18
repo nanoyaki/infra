@@ -8,13 +8,13 @@ in
   imports = [
     ./lobby.nix
     ./proxy.nix
-    ./smp-creative.nix
     ./smp.nix
+    ./smp-creative.nix
     ./smp2.nix
   ];
 
-  sops.secrets.proxy.sopsFile = ../secrets.yaml;
-  sops.secrets.bot-token.sopsFile = ../secrets.yaml;
+  sops.secrets.proxy.sopsFile = ./secrets.yaml;
+  sops.secrets.bot-token.sopsFile = ./secrets.yaml;
 
   sops.templates."minecraft-secrets.env".file =
     (formats.keyValue { }).generate "minecraft-secrets.env"
@@ -38,7 +38,7 @@ in
       appendJvmOpts =
         # Use ZGC
         "-XX:+UseZGC -XX:AllocatePrefetchStyle=1 -XX:-ZProactive"
-        + "-XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+AlwaysActAsServerClassMachine"
+        + " -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+AlwaysActAsServerClassMachine"
         + " -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+UseNUMA -XX:NmethodSweepActivity=1"
         + " -XX:ReservedCodeCacheSize=400M -XX:NonNMethodCodeHeapSize=12M -XX:ProfiledCodeHeapSize=194M"
         + " -XX:NonProfiledCodeHeapSize=194M -XX:-DontCompileHugeMethods -XX:MaxNodeLimit=240000"
@@ -58,7 +58,7 @@ in
       };
 
       serverProperties.white-list = true;
-      whitelist = import ../whitelist.nix;
+      whitelist = import ./whitelist.nix;
       operators.nanoyaki = "433b63b5-5f77-4a9f-b834-8463d520500c";
 
       symlinks = {

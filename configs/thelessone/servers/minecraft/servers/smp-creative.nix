@@ -15,7 +15,7 @@
     };
 
     # TODO: use a proper permission system
-    operators = import ../whitelist.nix;
+    operators = import ./whitelist.nix;
 
     gamerules = {
       keepInventory = true;
