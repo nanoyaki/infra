@@ -171,7 +171,8 @@ in
   };
 
   config'.caddy.vHost."map.theless.one".proxy = {
-    inherit (config.services.minecraft-servers'.smp.symlinks."config/bluemap/webserver.conf".value)
+    inherit
+      (config.services.minecraft-servers'.servers.smp.symlinks."config/bluemap/webserver.conf".value)
       port
       ;
   };

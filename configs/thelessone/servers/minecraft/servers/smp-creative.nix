@@ -17,7 +17,7 @@
     # TODO: use a proper permission system
     operators = import ../whitelist.nix;
 
-    gamerules = pkgs.datapackSet.gamerules {
+    gamerules = {
       keepInventory = true;
       doMobSpawning = false;
       mobGriefing = false;

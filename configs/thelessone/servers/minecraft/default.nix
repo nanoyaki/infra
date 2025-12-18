@@ -15,59 +15,6 @@ let
     ;
   cfg = config.services.minecraft-servers';
 
-  additionalOptions = types.submodule (
-    { config, ... }:
-
-    {
-      freeformType = types.attrsOf types.anything;
-
-      options = {
-        enableDefaults = mkEnableOption "" // {
-          default = true;
-          description = ''
-            Whether to use the default minecraft server options
-          '';
-        };
-
-        appendJvmOpts = mkOption {
-          type = types.str;
-          default = "";
-          description = ''
-            JVM options to append to the jvmOpts option
-          '';
-        };
-
-        mods = mkOption {
-          type = with types; nullOr (listOf package);
-          default = null;
-          description = ''
-            Mods to install to the server
-          '';
-          apply = value: if (value == null) then value else pkgs.linkFarmFromDrvs "mods" value;
-        };
-
-        datapacks = mkOption {
-          type = with types; nullOr (listOf package);
-          default = null;
-          description = ''
-            Datapacks to install to the world of the server
-          '';
-          apply =
-            value: pkgs.linkFarmFromDrvs "datapacks" ((optionals (value != null) value) ++ config.gamerules);
-        };
-
-        gamerules = mkOption {
-          type = with types; attrsOf (either bool int);
-          default = { };
-          description = ''
-            Game rules to set on the server
-          '';
-          apply = gamerules: pkgs.callPackage ./declarative-gamerules.nix { inherit gamerules; };
-        };
-      };
-    }
-  );
-
   inherit (lib)
     mapAttrs
     recursiveUpdate
@@ -98,15 +45,119 @@ in
     };
 
     serverDefaults = mkOption {
-      type = additionalOptions;
+      type = types.submodule {
+        freeformType = types.attrsOf types.anything;
+
+        options = {
+          appendJvmOpts = mkOption {
+            type = types.str;
+            default = "";
+            description = ''
+              JVM options to append to the jvmOpts option
+            '';
+          };
+
+          mods = mkOption {
+            type = with types; nullOr (listOf package);
+            default = null;
+            description = ''
+              Mods to install to the server
+            '';
+            apply = value: if (value == null) then value else pkgs.linkFarmFromDrvs "mods" value;
+          };
+
+          datapacks = mkOption {
+            type = with types; nullOr (listOf package);
+            default = null;
+            description = ''
+              Datapacks to install to the world of the server
+            '';
+            apply =
+              value:
+              if cfg.serverDefaults.gamerules != { } then
+                pkgs.linkFarmFromDrvs "datapacks" (
+                  (optionals (value != null) value) ++ [ cfg.serverDefaults.gamerules ]
+                )
+              else if value != null then
+                pkgs.linkFarmFromDrvs "datapacks" value
+              else
+                null;
+          };
+
+          gamerules = mkOption {
+            type = with types; attrsOf (either bool int);
+            default = { };
+            description = ''
+              Game rules to set on the server
+            '';
+            apply = gamerules: pkgs.callPackage ./declarative-gamerules.nix { inherit gamerules; };
+          };
+        };
+      };
       default = { };
-      description = ''
-        Defaults for the minecraft servers
-      '';
     };
 
     servers = mkOption {
-      type = types.attrsOf additionalOptions;
+      type = types.attrsOf (
+        types.submodule (
+          { config, ... }:
+
+          {
+            freeformType = types.attrsOf types.anything;
+
+            options = {
+              useDefaults = mkEnableOption "" // {
+                default = true;
+                description = ''
+                  Whether to use the default minecraft server options
+                '';
+              };
+
+              appendJvmOpts = mkOption {
+                type = types.str;
+                default = if config.useDefaults then cfg.serverDefaults.appendJvmOpts else "";
+                description = ''
+                  JVM options to append to the jvmOpts option
+                '';
+              };
+
+              mods = mkOption {
+                type = with types; nullOr (listOf package);
+                default = if config.useDefaults then cfg.serverDefaults.mods else null;
+                description = ''
+                  Mods to install to the server
+                '';
+                apply = value: if (value == null) then value else pkgs.linkFarmFromDrvs "mods" value;
+              };
+
+              datapacks = mkOption {
+                type = with types; nullOr (listOf package);
+                default = if config.useDefaults then cfg.serverDefaults.datapacks else null;
+                description = ''
+                  Datapacks to install to the world of the server
+                '';
+                apply =
+                  value:
+                  if config.gamerules != { } then
+                    pkgs.linkFarmFromDrvs "datapacks" ((optionals (value != null) value) ++ [ config.gamerules ])
+                  else if value != null then
+                    pkgs.linkFarmFromDrvs "datapacks" value
+                  else
+                    null;
+              };
+
+              gamerules = mkOption {
+                type = with types; attrsOf (either bool int);
+                default = if config.useDefaults then cfg.serverDefaults.gamerules else { };
+                description = ''
+                  Game rules to set on the server
+                '';
+                apply = gamerules: pkgs.callPackage ./declarative-gamerules.nix { inherit gamerules; };
+              };
+            };
+          }
+        )
+      );
       default = { };
     };
   };
@@ -122,19 +173,24 @@ in
     services.minecraft-servers.servers = mapAttrs (
       _: srvCfg:
       let
-        defaults = optionalAttrs srvCfg.enableDefaults cfg.serverDefaults;
-        overriden = removeAttrs (recursiveUpdate defaults srvCfg) (
-          attrNames (additionalOptions.getSubOptions additionalOptions)
-        );
+        defaults = optionalAttrs srvCfg.useDefaults cfg.serverDefaults;
+        overrides = removeAttrs (recursiveUpdate defaults srvCfg) [
+          "useDefaults"
+          "appendJvmOpts"
+          "mods"
+          "datapacks"
+          "gamerules"
+        ];
 
-        worldName = overriden.serverProperties.level-name or "world";
+        worldName = overrides.serverProperties.level-name or "world";
         addOptions = {
-          jvmOpts = srvCfg.jvmOpts + " ${optionalString (srvCfg.appendJvmOpts != "") srvCfg.appendJvmOpts}";
+          jvmOpts =
+            (srvCfg.jvmOpts or "") + " ${optionalString (srvCfg.appendJvmOpts != "") srvCfg.appendJvmOpts}";
           symlinks = optionalAttrs (srvCfg.mods != null) { inherit (srvCfg) mods; };
           files = optionalAttrs (srvCfg.datapacks != null) { "${worldName}/datapacks" = srvCfg.datapacks; };
         };
 
-        finalCfg = recursiveUpdate overriden addOptions;
+        finalCfg = recursiveUpdate overrides addOptions;
       in
       finalCfg
     ) cfg.servers;

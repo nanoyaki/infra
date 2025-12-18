@@ -11,6 +11,7 @@ in
     package = pkgs.velocityServers.velocity;
     jvmOpts = "-Xms1G -Xmx1G";
     stopCommand = "end";
+    useDefaults = false;
 
     symlinks."velocity.toml" = {
       format = formats.toml { };

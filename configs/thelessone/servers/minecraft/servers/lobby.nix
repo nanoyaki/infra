@@ -58,7 +58,9 @@
     );
 
     datapacks = [
-      inputs.killheal.packages.x86_64-linux.killheal
+      (pkgs.runCommand "killheal" { inherit (inputs.killheal.packages.x86_64-linux) killheal; } ''
+        ln -s $killheal $out
+      '')
     ];
 
     symlinks."config/voicechat/voicechat-server.properties".value = {
