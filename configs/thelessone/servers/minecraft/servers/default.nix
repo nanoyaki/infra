@@ -5,6 +5,14 @@ let
 in
 
 {
+  imports = [
+    ./lobby.nix
+    ./proxy.nix
+    ./smp-creative.nix
+    ./smp.nix
+    ./smp2.nix
+  ];
+
   sops.secrets.proxy.sopsFile = ../secrets.yaml;
   sops.secrets.bot-token.sopsFile = ../secrets.yaml;
 
