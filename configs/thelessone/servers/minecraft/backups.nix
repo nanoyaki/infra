@@ -11,8 +11,10 @@
 
     paths = config.services.minecraft-servers.dataDir;
     patterns = [
+      "+ */"
       "+ */world/**"
-      "- */world/datapacks"
+      "- */world/datapacks/**"
+      "- */**"
       "- **/*.bak"
       "- **"
     ];
