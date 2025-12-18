@@ -57,6 +57,14 @@ in
             '';
           };
 
+          packageOverrides = mkOption {
+            type = types.attrsOf types.anything;
+            default = { };
+            description = ''
+              Overrides to apply to the server package
+            '';
+          };
+
           mods = mkOption {
             type = with types; nullOr (listOf package);
             default = null;
@@ -121,6 +129,14 @@ in
                 '';
               };
 
+              packageOverrides = mkOption {
+                type = types.attrsOf types.anything;
+                default = if config.useDefaults then cfg.serverDefaults.packageOverrides else { };
+                description = ''
+                  Overrides to apply to the server package
+                '';
+              };
+
               mods = mkOption {
                 type = with types; nullOr (listOf package);
                 default = if config.useDefaults then cfg.serverDefaults.mods else null;
@@ -180,6 +196,7 @@ in
           "mods"
           "datapacks"
           "gamerules"
+          "packageOverrides"
         ];
 
         worldName = overrides.serverProperties.level-name or "world";
@@ -188,6 +205,9 @@ in
             (srvCfg.jvmOpts or "") + " ${optionalString (srvCfg.appendJvmOpts != "") srvCfg.appendJvmOpts}";
           symlinks = optionalAttrs (srvCfg.mods != null) { inherit (srvCfg) mods; };
           files = optionalAttrs (srvCfg.datapacks != null) { "${worldName}/datapacks" = srvCfg.datapacks; };
+        }
+        // lib.optionalAttrs (srvCfg ? package) {
+          package = srvCfg.package.override srvCfg.packageOverrides;
         };
 
         finalCfg = recursiveUpdate overrides addOptions;
