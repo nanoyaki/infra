@@ -123,17 +123,18 @@ in
       _: srvCfg:
       let
         defaults = optionalAttrs srvCfg.enableDefaults cfg.serverDefaults;
-        overrides = removeAttrs srvCfg (attrNames (additionalOptions.getSubOptions additionalOptions));
-        overridenCfg = recursiveUpdate defaults overrides;
+        overriden = removeAttrs (recursiveUpdate defaults srvCfg) (
+          attrNames (additionalOptions.getSubOptions additionalOptions)
+        );
 
-        worldName = overridenCfg.serverProperties.level-name or "world";
+        worldName = overriden.serverProperties.level-name or "world";
         addOptions = {
           jvmOpts = srvCfg.jvmOpts + " ${optionalString (srvCfg.appendJvmOpts != "") srvCfg.appendJvmOpts}";
           symlinks = optionalAttrs (srvCfg.mods != null) { inherit (srvCfg) mods; };
           files = optionalAttrs (srvCfg.datapacks != null) { "${worldName}/datapacks" = srvCfg.datapacks; };
         };
 
-        finalCfg = recursiveUpdate overridenCfg addOptions;
+        finalCfg = recursiveUpdate overriden addOptions;
       in
       finalCfg
     ) cfg.servers;
