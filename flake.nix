@@ -130,6 +130,10 @@
         systems.follows = "systems";
       };
     };
+    nix-scpsl = {
+      url = "git+https://git.theless.one/nanoyaki/nix-scpsl.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

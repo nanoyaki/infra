@@ -13,5 +13,6 @@
     ./mail.nix
     ./immich.nix
     ./postgresql.nix
+    ./scpsl.nix
   ];
 }
