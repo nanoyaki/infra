@@ -503,11 +503,11 @@
         "steam-fetcher": "steam-fetcher"
       },
       "locked": {
-        "lastModified": 1766328728,
-        "narHash": "sha256-HhyBAGWG6Qlp+8o2S3r7UY1mrqeQPOHzvZbwSSED7Wo=",
+        "lastModified": 1766329672,
+        "narHash": "sha256-DiSyELPfeN7MRyjSctkwJ9B68ON6j7hjxyvzuu/9Jsg=",
         "ref": "refs/heads/main",
-        "rev": "98db246ad521fb041ba6b034fa0969e5860fe3da",
-        "revCount": 6,
+        "rev": "fe0cf1265bd894e1003c5c9158ab88b0efef98a8",
+        "revCount": 8,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nix-scpsl.git"
       },
