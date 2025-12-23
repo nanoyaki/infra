@@ -8,7 +8,7 @@
     settings = {
       GSSAPIAuthentication = false;
       PasswordAuthentication = false;
-      AcceptEnv = "GIT_PROTOCOL";
+      AcceptEnv = [ "GIT_PROTOCOL" ];
     };
   };
 

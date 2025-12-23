@@ -73,8 +73,7 @@
       };
     };
 
-    certificateScheme = "acme";
-    acmeCertificateName = "theless.one";
+    x509.useACMEHost = "theless.one";
 
     dkimSigning = true;
     dkimKeyType = "rsa";
