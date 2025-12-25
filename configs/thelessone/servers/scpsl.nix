@@ -8,6 +8,8 @@
     eula = true;
     openFirewall = true;
     servers."7777" = {
+      enable = true;
+
       settings = {
         server_name = "Thelessone SCPSL";
         lobby_waiting_time = 30;
