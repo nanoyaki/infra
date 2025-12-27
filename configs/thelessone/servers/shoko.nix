@@ -5,15 +5,34 @@
   ...
 }:
 
-{
-  services.shoko = {
-    enable = true;
-    plugins = with pkgs; [
-      shokofin
-      luarenamer
-    ];
-  };
+let
+  cfg = config.services.shoko;
+in
 
+{
+  services.shoko.enable = true;
+
+  systemd.services.shoko.preStart = lib.mkForce ''
+    rm -rf "$STATE_DIRECTORY/webui"
+    ln -s '${cfg.webui}' "$STATE_DIRECTORY/webui"
+    rm -rf "$STATE_DIRECTORY/plugins"
+    ln -s '${
+      pkgs.linkFarm "plugins" (
+        map
+          (pkg: {
+            inherit (pkg) name;
+            path = "${pkg}/lib/${pkg.pname}";
+          })
+          (
+            with pkgs;
+            [
+              shokofin
+              luarenamer
+            ]
+          )
+      )
+    }' "$STATE_DIRECTORY/plugins"
+  '';
   systemd.services.shoko.unitConfig.RequiresMountsFor = "/mnt/raid";
   systemd.services.shoko.serviceConfig = {
     DynamicUser = lib.mkForce false;
