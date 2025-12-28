@@ -332,11 +332,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766682973,
-        "narHash": "sha256-GKO35onS711ThCxwWcfuvbIBKXwriahGqs+WZuJ3v9E=",
+        "lastModified": 1766881808,
+        "narHash": "sha256-JR7A2xS3EBPWFeONzhqez5vp7nKEsp7eLj2Ks210Srk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "91cdb0e2d574c64fae80d221f4bf09d5592e9ec2",
+        "rev": "d2e0458d6531885600b346e161c38790dc356fa8",
         "type": "github"
       },
       "original": {
@@ -456,11 +456,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1766838173,
-        "narHash": "sha256-JSmhvWTLY/+vfRt39Ks/9blsvpjBmLxlnlxDeAYdlw0=",
+        "lastModified": 1766884743,
+        "narHash": "sha256-sEjlC3m8xkOb+ggCtoWpQ5HWJsb7ZO6B/iRbzZ1+29o=",
         "ref": "refs/heads/main",
-        "rev": "01b33532456f1e1d5e00cc82656e6281dd2ee7e4",
-        "revCount": 315,
+        "rev": "85000920b692f0009e740f31626ac333a33c44d6",
+        "revCount": 318,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nanopkgs.git"
       },
@@ -576,11 +576,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766802514,
-        "narHash": "sha256-y/FDI8W+CUY1lWnjMOKrnfndtis1fSSvZuOGiVpGtQQ=",
+        "lastModified": 1766840906,
+        "narHash": "sha256-b2Ro6YEM+rLtwFL1ybrsPNnaSIaSCAOAHuQNzwmNcBA=",
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
-        "rev": "65a60794c54053c11d61684f2a151070839fca7a",
+        "rev": "ade753f07c85fdb15d419a8456aa03462fa938a9",
         "type": "github"
       },
       "original": {
@@ -599,11 +599,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766836945,
-        "narHash": "sha256-E0b3ZcLwSeBABnE3jw0qboAoxwZ/eEeUw7KOKBWJZwA=",
+        "lastModified": 1766886304,
+        "narHash": "sha256-+I9MvwsgeYCueF1a4BoZ4UwGDJyaEaVi5UgEBCYl8zE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "d6adeeb4ecb6518e540b588cc1cfa4ed4584a771",
+        "rev": "7c3ffbcc59a9f6d980565a8160340ee63c587b15",
         "type": "github"
       },
       "original": {
