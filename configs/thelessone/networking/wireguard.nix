@@ -157,6 +157,14 @@
           "fd64::21/128"
         ];
       }
+      {
+        # himeyuri
+        publicKey = "7E1HhPl9jKrWDPoW5emJZxJx3ajSXnQvWeMpQZX5NjQ=";
+        allowedIPs = [
+          "100.64.64.22/32"
+          "fd64::22/128"
+        ];
+      }
     ];
   };
 
