@@ -114,11 +114,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767145519,
-        "narHash": "sha256-x9D+6X2jAfap0MgYri6oLWoJ8LXU7r+pIRifGn9YHK0=",
+        "lastModified": 1767317991,
+        "narHash": "sha256-NUqvf0IUEUaRvzw/v3E9qQ4247x1IlroWLh7iH/JjB4=",
         "owner": "9001",
         "repo": "copyparty",
-        "rev": "39c3ccc2eb66c886cc65ef676d5ee9de34479073",
+        "rev": "5b89a2e3b20fb14e09e8ebfb583c1ed4c42ec385",
         "type": "github"
       },
       "original": {
@@ -272,11 +272,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765911976,
-        "narHash": "sha256-t3T/xm8zstHRLx+pIHxVpQTiySbKqcQbK+r+01XVKc0=",
+        "lastModified": 1767281941,
+        "narHash": "sha256-6MkqajPICgugsuZ92OMoQcgSHnD6sJHwk8AxvMcIgTE=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "b68b780b69702a090c8bb1b973bab13756cc7a27",
+        "rev": "f0927703b7b1c8d97511c4116eb9b4ec6645a0fa",
         "type": "github"
       },
       "original": {
@@ -456,11 +456,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1767230557,
-        "narHash": "sha256-/49/CVq5Ws7VA6BYCgtKAizw1EMA47LQslgxSKEToy4=",
+        "lastModified": 1767317326,
+        "narHash": "sha256-Wn+0siJ83HC9wPDYLIeN1osaUUcK53agsLqN++vCnJY=",
         "ref": "refs/heads/main",
-        "rev": "9bddaff70b8f315bbfa5c7a9ca9289ae304ab705",
-        "revCount": 327,
+        "rev": "44aa02aa6ac39ce5525bab596e05e81dc4b3687b",
+        "revCount": 329,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nanopkgs.git"
       },
@@ -503,11 +503,11 @@
         "steam-fetcher": "steam-fetcher"
       },
       "locked": {
-        "lastModified": 1767229407,
-        "narHash": "sha256-vZZYd+I548VenIayXlNMILTpcRXfv6xjTPWH2YcqYp4=",
+        "lastModified": 1767269332,
+        "narHash": "sha256-yRv2qcQeESvR/dzwrr7coH3eMr9v6u78ut9DEvnrE0I=",
         "ref": "refs/heads/main",
-        "rev": "25931079dbf4173e8743cd878d325f0b0e5ca839",
-        "revCount": 28,
+        "rev": "cede9981cb72385bb60b471745b44355263efa18",
+        "revCount": 29,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nix-scpsl.git"
       },
@@ -533,11 +533,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1766902085,
-        "narHash": "sha256-coBu0ONtFzlwwVBzmjacUQwj3G+lybcZ1oeNSQkgC0M=",
+        "lastModified": 1767116409,
+        "narHash": "sha256-5vKw92l1GyTnjoLzEagJy5V5mDFck72LiQWZSOnSicw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c0b0e0fddf73fd517c3471e546c0df87a42d53f4",
+        "rev": "cad22e7d996aea55ecab064e84834289143e44a0",
         "type": "github"
       },
       "original": {
@@ -599,11 +599,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767226424,
-        "narHash": "sha256-E0lYlGd5zR8kBQp1XlJWegk8KISFqJx+DavyOsiDrug=",
+        "lastModified": 1767318011,
+        "narHash": "sha256-LlrCPlrIXrmD6tnwCqFNOV02R0q5GNeKeDvdgjn2vGk=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "d8325497eb468f656029eccb93e198075be0a1ff",
+        "rev": "14ad694f34c20d69fa9ef720b06d14340a9c0b37",
         "type": "github"
       },
       "original": {
