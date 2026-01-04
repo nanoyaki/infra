@@ -21,6 +21,7 @@
         home.stateVersion = "25.11";
       };
     };
+    stateVersion = "25.12";
     config = {
       imports = [
         ./hardware

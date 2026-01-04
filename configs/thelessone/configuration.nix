@@ -23,7 +23,9 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vesktop
+    # vesktop
+    discord
+
     vscodium
     tmux
     prismlauncher
