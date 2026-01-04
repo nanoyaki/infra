@@ -14,6 +14,6 @@
     ./immich.nix
     ./postgresql.nix
     ./scpsl.nix
-    ./calendar.nix
+    # ./calendar.nix
   ];
 }
