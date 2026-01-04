@@ -78,4 +78,19 @@ in
       UMask = "0007";
     };
   };
+
+  networking.firewall = {
+    allowedTCPPortRanges = [
+      {
+        from = 25566;
+        to = 25575;
+      }
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 25566;
+        to = 25575;
+      }
+    ];
+  };
 }

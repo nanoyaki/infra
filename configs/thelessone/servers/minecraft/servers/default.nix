@@ -107,14 +107,4 @@ in
     #   };
     # };
   };
-
-  # Additional, non-nixified minecraft servers
-  networking.firewall.allowedTCPPorts = [
-    25566
-    25567
-  ];
-  networking.firewall.allowedUDPPorts = [
-    25566
-    25567
-  ];
 }
