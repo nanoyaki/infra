@@ -35,6 +35,7 @@ in
     ./java.nix
     ./servers
     ./backups.nix
+    ./non-nix.nix
   ];
 
   options.services.minecraft-servers' = {

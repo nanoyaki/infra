@@ -25,8 +25,6 @@ in
 
     "100.64.64.3".publicKey =
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILp5Szm657DfoXyTuO0h25RQpPxqtYicFpboLpcL5RMb";
-    "events.nanoyaki.space".publicKey =
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILp5Szm657DfoXyTuO0h25RQpPxqtYicFpboLpcL5RMb";
 
     # Thelessnas
     "10.0.0.6".publicKey =

@@ -134,6 +134,14 @@
       url = "git+https://git.theless.one/nanoyaki/nix-scpsl.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    discord-events-to-ics = {
+      url = "github:nanoyaki/discord-events-to-ics";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+      };
+    };
   };
 
   outputs =

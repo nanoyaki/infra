@@ -10,6 +10,8 @@
     "dynamicdns/vappie.space" = { };
     "porkbun/api-key" = { };
     "porkbun/secret-api-key" = { };
+    "porkbun-nano/api-key" = { };
+    "porkbun-nano/secret-api-key" = { };
   };
 
   config'.dynamicdns.enable = true;
@@ -29,7 +31,18 @@
       interval = 900;
       ttl = 600;
     };
-    domains =
+
+    domains = [
+      {
+        domain = "nanoyaki.space";
+        subdomain = "";
+      }
+      {
+        domain = "nanoyaki.space";
+        subdomain = "*";
+      }
+    ]
+    ++
       map
         (subdomain: {
           domain = "theless.one";
@@ -55,26 +68,38 @@
     };
   };
 
-  sops.templates."acme.env".file = (pkgs.formats.keyValue { }).generate "acme.env" {
+  sops.templates."theless.one.acme.env".file = (pkgs.formats.keyValue { }).generate "acme.env" {
     PORKBUN_API_KEY = config.sops.placeholder."porkbun/api-key";
     PORKBUN_SECRET_API_KEY = config.sops.placeholder."porkbun/secret-api-key";
   };
 
+  sops.templates."nanoyaki.space.acme.env".file = (pkgs.formats.keyValue { }).generate "acme.env" {
+    PORKBUN_API_KEY = config.sops.placeholder."porkbun-nano/api-key";
+    PORKBUN_SECRET_API_KEY = config.sops.placeholder."porkbun-nano/secret-api-key";
+  };
+
   security.acme = {
     acceptTerms = true;
-    defaults.email = "hanakretzer@gmail.com";
+    defaults = {
+      inherit (config.services.caddy) group;
+      email = "contact@nanoyaki.space";
+
+      dnsProvider = "porkbun";
+      dnsResolver = "173.245.58.37:53";
+      dnsPropagationCheck = true;
+    };
 
     certs."theless.one" = {
-      inherit (config.services.caddy) group;
-
+      environmentFile = config.sops.templates."theless.one.acme.env".path;
       extraDomainNames = [
         "*.vpn.theless.one"
         "*.theless.one"
       ];
-      dnsProvider = "porkbun";
-      dnsResolver = "173.245.58.37:53";
-      dnsPropagationCheck = true;
-      environmentFile = config.sops.templates."acme.env".path;
+    };
+
+    certs."nanoyaki.space" = {
+      environmentFile = config.sops.templates."nanoyaki.space.acme.env".path;
+      extraDomainNames = [ "*.nanoyaki.space" ];
     };
   };
 }

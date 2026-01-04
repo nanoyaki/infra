@@ -153,6 +153,32 @@
         "type": "github"
       }
     },
+    "discord-events-to-ics": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1761516072,
+        "narHash": "sha256-n0lFTxRHYGirQUlVKojdW1xCc/EKBZ0qnrArtiVBsA8=",
+        "owner": "nanoyaki",
+        "repo": "discord-events-to-ics",
+        "rev": "8258396de33d24ae814ecd6e02537dad33feacd9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nanoyaki",
+        "repo": "discord-events-to-ics",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -617,6 +643,7 @@
         "catppuccin": "catppuccin",
         "copyparty": "copyparty",
         "cosmic-manager": "cosmic-manager",
+        "discord-events-to-ics": "discord-events-to-ics",
         "disko": "disko",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
