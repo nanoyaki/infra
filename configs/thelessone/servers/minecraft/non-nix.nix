@@ -32,7 +32,7 @@ in
       for server in $MINECRAFT_SERVERS; do
         chmod 750 "${dataDir}/$server/run.sh"
 
-        tmux -S ${socket} new -d bash -c 'sh ${dataDir}/'"$server"'/run.sh; exec bash'
+        tmux -S ${socket} new -s "$server" -d bash -c 'sh ${dataDir}/'"$server"'/run.sh; exec bash'
         tmux -S ${socket} server-access -aw nobody
       done
     '';
