@@ -11,6 +11,10 @@ in
 
     serverProperties = {
       server-port = 30050;
+      initial-enabled-packs = [
+        "vanilla"
+        "minecart_improvements"
+      ];
 
       # Joshs-more-foods
       require-resource-pack = true;
