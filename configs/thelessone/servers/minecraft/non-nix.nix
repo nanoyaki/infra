@@ -27,10 +27,11 @@ in
       coreutils
     ];
     script = ''
-      MINECRAFT_SERVERS="$(find ${dataDir} -maxdepth 1 -type d -not -name '.*')"
+      MINECRAFT_SERVERS="$(find ${dataDir}/. -maxdepth 1 -type d -not -name '.*' -printf '%f\n')"
 
       for server in $MINECRAFT_SERVERS; do
-        chmod 750 "${dataDir}/$server/run.sh"
+        [[ -f "${dataDir}/$server/run.sh" ]] \
+          && chmod 750 "${dataDir}/$server/run.sh"
 
         tmux -S ${socket} new -s "$server" -d bash -c 'sh ${dataDir}/'"$server"'/run.sh; exec bash'
         tmux -S ${socket} server-access -aw nobody
