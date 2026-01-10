@@ -52,6 +52,7 @@
         # rei
         architectury-api
         cloth-config
+        yacl
 
         carpet
       ]

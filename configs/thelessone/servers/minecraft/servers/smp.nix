@@ -53,6 +53,7 @@ in
         # rei
         architectury-api
         cloth-config
+        yacl
 
         bluemap
         bluemap-sign-markers

@@ -48,6 +48,7 @@
         # rei
         architectury-api
         cloth-config
+        yacl
 
         axiom
         carpet
