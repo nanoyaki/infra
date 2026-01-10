@@ -2,7 +2,7 @@
 
 {
   services.minecraft-servers'.servers.smp2 = {
-    enable = true;
+    enable = false;
     enableReload = true;
     package = pkgs.fabricServers.fabric-1_21_8;
     jvmOpts = "-Xms2G -Xmx16G";

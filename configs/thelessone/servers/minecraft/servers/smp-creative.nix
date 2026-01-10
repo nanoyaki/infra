@@ -3,7 +3,7 @@
 {
   services.minecraft-servers'.servers.smp-creative = {
     enable = true;
-    package = pkgs.fabricServers.fabric-1_21_8;
+    package = pkgs.fabricServers.fabric-1_21_11;
     jvmOpts = "-Xms8G -Xmx8G";
 
     serverProperties = {
@@ -26,14 +26,14 @@
     };
 
     mods = map (mod: mod.latest) (
-      with pkgs.minecraft.fabric.v1_21_8;
+      with pkgs.minecraft.fabric.v1_21_11;
       [
         fabric-api
         fabricproxy-lite
         simple-voice-chat
         vmp-fabric
         lithium
-        # player-roles
+        player-roles
         no-chat-reports
         krypton
         c2me-fabric
@@ -55,10 +55,10 @@
     );
 
     datapacks = map (datapack: datapack.latest) (
-      with pkgs.minecraft.datapack.v1_21_8;
+      with pkgs.minecraft.datapack.v1_21_11;
       [
         dungeons-and-taverns
-        joshs-more-foods
+        # joshs-more-foods
         mini-blocks-datapack
       ]
     );

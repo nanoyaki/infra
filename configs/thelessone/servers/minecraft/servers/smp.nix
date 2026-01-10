@@ -7,20 +7,11 @@ in
 {
   services.minecraft-servers'.servers.smp = {
     enable = true;
-    package = pkgs.fabricServers.fabric-1_21_8;
+    package = pkgs.fabricServers.fabric-1_21_11;
 
     serverProperties = {
       server-port = 30050;
       initial-enabled-packs = "vanilla,minecart_improvements";
-
-      # Joshs-more-foods
-      require-resource-pack = true;
-      resource-pack-prompt = ''
-        The server requires this resource pack for the datapack joshs more foods.
-        Using it does not mean you won't be able to use your own on top of it.
-      '';
-      resource-pack = "https://cdn.modrinth.com/data/3BlwZj8w/versions/bybBGRCd/joshs-more-foods_5.5.1_resource_pack.zip";
-      resource-pack-sha1 = "0df9086d7918e03aed27fd4c2621177d7b81b31e";
     };
 
     gamerules = {
@@ -31,23 +22,23 @@ in
     };
 
     datapacks = map (datapack: datapack.latest) (
-      with pkgs.minecraft.datapack.v1_21_8;
+      with pkgs.minecraft.datapack.v1_21_11;
       [
         dungeons-and-taverns
-        joshs-more-foods
         mini-blocks-datapack
+        # joshs-more-foods
       ]
     );
 
     mods = map (mod: mod.latest) (
-      with pkgs.minecraft.fabric.v1_21_8;
+      with pkgs.minecraft.fabric.v1_21_11;
       [
         fabric-api
         fabricproxy-lite
         simple-voice-chat
         vmp-fabric
         lithium
-        # player-roles
+        player-roles
         no-chat-reports
         krypton
         c2me-fabric
@@ -59,7 +50,7 @@ in
         do-a-barrel-roll
         cicada
         servux
-        rei
+        # rei
         architectury-api
         cloth-config
 

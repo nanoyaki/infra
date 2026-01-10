@@ -48,7 +48,7 @@ in
           "theless.one" = [ "smp" ];
           "creative.theless.one" = [ "creative" ];
           "lobby.theless.one" = [ "lobby" ];
-          "nik.theless.one" = [ "smp2" ];
+          # "nik.theless.one" = [ "smp2" ];
         };
 
         query.enabled = false;

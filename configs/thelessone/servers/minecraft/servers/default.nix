@@ -63,6 +63,7 @@ in
 
     symlinks = {
       "server-icon.png" = ../icon.png;
+
       "config/voicechat/voicechat-server.properties" = {
         format = formats.keyValue { };
         value = {
@@ -83,6 +84,17 @@ in
           allow_pings = true;
         };
       };
+
+      "config/roles.json" = {
+        format = formats.json { };
+        value = {
+          whitelister.overrides.commands."whitelist (add|remove)" = "allow";
+          everyone.overrides.commands = {
+            "image2map create" = "allow";
+            "tick query" = "allow";
+          };
+        };
+      };
     };
 
     files."config/FabricProxy-Lite.toml" = {
@@ -94,17 +106,5 @@ in
         secret = "@FABRIC_PROXY_SECRET@";
       };
     };
-
-    # player-roles is disabled due to crashes
-    # symlinks."config/roles.json" = {
-    #   format = formats.json { };
-    #   value = {
-    #     whitelister.overrides.commands."whitelist (add|remove)" = "allow";
-    #     everyone.overrides.commands = {
-    #       "image2map create" = "allow";
-    #       "tick query" = "allow";
-    #     };
-    #   };
-    # };
   };
 }

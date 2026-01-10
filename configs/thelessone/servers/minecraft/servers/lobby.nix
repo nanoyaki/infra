@@ -4,7 +4,7 @@
   services.minecraft-servers'.servers.lobby = {
     enable = true;
     enableReload = true;
-    package = pkgs.fabricServers.fabric-1_21_8;
+    package = pkgs.fabricServers.fabric-1_21_11;
     jvmOpts = "-Xms2G -Xmx2G";
 
     serverProperties = {
@@ -30,14 +30,14 @@
     };
 
     mods = map (mod: mod.latest) (
-      with pkgs.minecraft.fabric.v1_21_8;
+      with pkgs.minecraft.fabric.v1_21_11;
       [
         fabric-api
         fabricproxy-lite
         simple-voice-chat
         vmp-fabric
         lithium
-        # player-roles
+        player-roles
         no-chat-reports
         krypton
         c2me-fabric
