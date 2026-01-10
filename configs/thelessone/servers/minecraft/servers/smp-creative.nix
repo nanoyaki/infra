@@ -45,7 +45,7 @@
         do-a-barrel-roll
         cicada
         servux
-        rei
+        # rei
         architectury-api
         cloth-config
 
