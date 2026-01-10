@@ -33,7 +33,7 @@ in
   services.minecraft-servers'.openVoicechatPorts = true;
   services.minecraft-servers'.serverDefaults = {
     autoStart = true;
-    packageOverrides.jre_headless = pkgs.zulu21;
+    packageOverrides.jre_headless = pkgs.zulu23;
     jvmOpts = "-Xms16G -Xmx16G";
     appendJvmOpts =
       # Use ZGC
