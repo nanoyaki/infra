@@ -45,13 +45,17 @@
         do-a-barrel-roll
         cicada
         servux
-        # rei
         architectury-api
         cloth-config
         yacl
 
         axiom
         carpet
+
+        # use jei as long as rei isn't
+        # supported for mc 1.21.11
+        # rei
+        jei
       ]
     );
 

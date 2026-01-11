@@ -50,7 +50,6 @@ in
         do-a-barrel-roll
         cicada
         servux
-        # rei
         architectury-api
         cloth-config
         yacl
@@ -59,6 +58,11 @@ in
         bluemap-sign-markers
         discord-mc-chat
         distanthorizons
+
+        # use jei as long as rei isn't
+        # supported for mc 1.21.11
+        # rei
+        jei
       ]
     );
 
