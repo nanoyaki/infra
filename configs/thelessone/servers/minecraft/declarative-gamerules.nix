@@ -66,6 +66,8 @@ stdenvNoCC.mkDerivation {
 
   src = writeText "setup.mcfunction" (concatStringsSep "\n" (map toGamerule (attrNames gamerules)));
 
+  dontUnpack = true;
+
   installPhase = ''
     runHook preInstall
 
