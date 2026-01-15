@@ -27,10 +27,6 @@ let
     in
     "gamerule ${gamerule} ${toValidString gamerules.${rawGamerule}}";
 
-  renderedGamerules = writeText "setup.mcfunction" (
-    concatStringsSep "\n" (map toGamerule (attrNames gamerules))
-  );
-
   jsonFiles =
     mapAttrs
       (
@@ -68,6 +64,8 @@ stdenvNoCC.mkDerivation {
   pname = "declarative-gamerules";
   version = "1.0.0";
 
+  src = writeText "setup.mcfunction" (concatStringsSep "\n" (map toGamerule (attrNames gamerules)));
+
   installPhase = ''
     runHook preInstall
 
@@ -75,7 +73,7 @@ stdenvNoCC.mkDerivation {
     ln -s ${./icon.png} $out/pack.png
     ln -s ${jsonFiles.packMcmeta} $out/pack.mcmeta
     ln -s ${jsonFiles.loadJson} $out/data/minecraft/tags/function/load.json
-    ln -s ${renderedGamerules} $out/data/declarative_gamerules/function/setup.mcfunction
+    ln -s $src $out/data/declarative_gamerules/function/setup.mcfunction
 
     runHook postInstall
   '';
