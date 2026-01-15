@@ -1,6 +1,7 @@
 {
   lib,
   format,
+  name,
 }:
 
 let
@@ -13,16 +14,16 @@ in
     enable = mkEnableOption "this instance of suwayomi";
 
     user = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      defaultText = "suwayomi-<name>";
+      type = types.str;
+      default = "suwayomi-${name}";
+      defaultText = "suwayomi-\${name}";
       description = "The user to use for the service.";
     };
 
     group = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      defaultText = "suwayomi-<name>";
+      type = types.str;
+      default = "suwayomi-${name}";
+      defaultText = "suwayomi-\${name}";
       description = "The group to use for the service.";
     };
 
@@ -36,80 +37,84 @@ in
     };
 
     settings = mkOption {
-      type = types.submodule {
-        freeformType = format.type;
+      type = types.submodule (
+        { name, config, ... }:
 
-        options.server = {
-          ip = mkOption {
-            type = types.str;
-            default = "0.0.0.0";
-            example = "127.0.0.1";
-            description = ''
-              The IP address that Suwayomi will bind to.
-            '';
-          };
+        {
+          freeformType = format.type;
 
-          port = mkOption {
-            type = types.port;
-            default = 8080;
-            example = 4567;
-            description = ''
-              The port that Suwayomi will listen to.
-            '';
-          };
+          options.server = {
+            ip = mkOption {
+              type = types.str;
+              default = "0.0.0.0";
+              example = "127.0.0.1";
+              description = ''
+                The IP address that Suwayomi will bind to.
+              '';
+            };
 
-          downloadAsCbz = mkOption {
-            type = types.bool;
-            default = false;
-            description = ''
-              Download chapters as `.cbz` files.
-            '';
-          };
+            port = mkOption {
+              type = types.port;
+              default = 8080;
+              example = 4567;
+              description = ''
+                The port that Suwayomi will listen to.
+              '';
+            };
 
-          extensionRepos = mkOption {
-            type = types.listOf types.str;
-            default = [ ];
-            example = lib.literalExpression ''
-              [
-                "https://raw.githubusercontent.com/MY_ACCOUNT/MY_REPO/repo/index.min.json"
-              ];
-            '';
-            description = ''
-              URL of repositories from which the extensions can be installed.
-            '';
-          };
+            downloadAsCbz = mkOption {
+              type = types.bool;
+              default = false;
+              description = ''
+                Download chapters as `.cbz` files.
+              '';
+            };
 
-          downloadsPath = mkOption {
-            type = types.nullOr types.path;
-            default = null;
-            defaultText = "\${cfg.instances.<name>.settings.rootDir}/downloads";
-            example = "/var/lib/suwayomi/instance/.cache/downloads";
-            description = ''
-              Downloads directory for suwayomi server.
-            '';
-          };
+            extensionRepos = mkOption {
+              type = types.listOf types.str;
+              default = [ ];
+              example = lib.literalExpression ''
+                [
+                  "https://raw.githubusercontent.com/MY_ACCOUNT/MY_REPO/repo/index.min.json"
+                ];
+              '';
+              description = ''
+                URL of repositories from which the extensions can be installed.
+              '';
+            };
 
-          rootDir = mkOption {
-            type = types.nullOr types.path;
-            default = null;
-            defaultText = "/var/lib/suwayomi/<name>";
-            example = "/var/lib/suwayomi/main-instance";
-            description = ''
-              Data directory for suwayomi server.
-            '';
-          };
+            downloadsPath = mkOption {
+              type = types.path;
+              default = "${config.server.rootDir}/downloads";
+              defaultText = "\${cfg.instances.<name>.settings.rootDir}/downloads";
+              example = "/var/lib/suwayomi/instance/.cache/downloads";
+              description = ''
+                Downloads directory for suwayomi server.
+              '';
+            };
 
-          localSourcePath = mkOption {
-            type = types.nullOr types.path;
-            default = null;
-            defaultText = "\${cfg.instances.<name>.settings.rootDir}/local";
-            example = "/var/lib/suwayomi/instance/localManga";
-            description = ''
-              Local manga directory for suwayomi server.
-            '';
+            rootDir = mkOption {
+              type = types.path;
+              default = "/var/lib/suwayomi/${name}";
+              defaultText = "/var/lib/suwayomi/\${name}";
+              example = "/var/lib/suwayomi/main-instance";
+              description = ''
+                Data directory for suwayomi server.
+              '';
+            };
+
+            localSourcePath = mkOption {
+              type = types.path;
+              default = "${config.server.rootDir}/local";
+              defaultText = "\${cfg.instances.<name>.settings.rootDir}/local";
+              example = "/var/lib/suwayomi/instance/localManga";
+              description = ''
+                Local manga directory for suwayomi server.
+              '';
+            };
           };
-        };
-      };
+        }
+      );
 
       default = { };
 

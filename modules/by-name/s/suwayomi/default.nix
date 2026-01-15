@@ -23,11 +23,9 @@ let
     filterAttrsRecursive
     ;
 
-  inherit (lib.lists) map;
   inherit (builtins) attrNames;
 
   cfg = config.services.suwayomi;
-  nullOr = value: alternative: if value != null then value else alternative;
 
   format = pkgs.formats.hocon { };
 
@@ -51,7 +49,19 @@ in
     };
 
     instances = mkOption {
-      type = types.attrsOf (types.submodule (import ./instance.nix { inherit lib format; }));
+      type = types.attrsOf (
+        types.submodule (
+          { name, ... }:
+
+          (import ./instance.nix {
+            inherit
+              lib
+              format
+              name
+              ;
+          })
+        )
+      );
       default = { };
     };
   };
@@ -72,24 +82,18 @@ in
 
     systemd.tmpfiles.settings = mapAttrs' (
       iName: iCfg:
-      let
-        dataDir = nullOr iCfg.settings.server.rootDir "/var/lib/suwayomi/${iName}";
-        downloadsDir = nullOr iCfg.settings.server.downloadsPath "${dataDir}/downloads";
-        localDir = nullOr iCfg.settings.server.localSourcePath "${dataDir}/local";
-      in
       nameValuePair "10-suwayomi-${iName}" {
-        "${dataDir}/.local/share/Tachidesk" = dirCfg;
-        "${dataDir}/.cache/suwayomi" = dirCfg;
-        ${downloadsDir} = dirCfg;
-        ${localDir} = dirCfg;
+        "${iCfg.settings.server.rootDir}/.local/share/Tachidesk" = dirCfg;
+        "${iCfg.settings.server.rootDir}/.cache/suwayomi" = dirCfg;
+        ${iCfg.settings.server.downloadsPath} = dirCfg;
+        ${iCfg.settings.server.localSourcePath} = dirCfg;
       }
     ) cfg.instances;
 
     systemd.services = mapAttrs' (
       iName: iCfg:
       let
-        dataDir = nullOr iCfg.settings.server.rootDir "${cfg.dataDir}/${iName}";
-
+        inherit (iCfg.settings.server) rootDir;
         configFile = format.generate "server.conf" (
           filterAttrsRecursive (_: x: x != null) (
             recursiveUpdate iCfg.settings {
@@ -108,10 +112,10 @@ in
         wants = [ "network-online.target" ];
         after = [ "network-online.target" ];
 
-        environment.JAVA_TOOL_OPTIONS = "-Djava.io.tmpdir=${dataDir}/.cache/suwayomi -Dsuwayomi.tachidesk.config.server.rootDir=${dataDir}";
+        environment.JAVA_TOOL_OPTIONS = "-Djava.io.tmpdir=${rootDir}/.cache/suwayomi -Dsuwayomi.tachidesk.config.server.rootDir=${rootDir}";
 
         script = ''
-          ${getExe pkgs.envsubst} -i ${configFile} -o ${dataDir}/server.conf
+          ${getExe pkgs.envsubst} -i ${configFile} -o 
 
           ${getExe cfg.package}
         '';
