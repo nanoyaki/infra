@@ -7,7 +7,7 @@
 }:
 
 let
-  inherit (lib) mkIf mkDefault;
+  inherit (lib) mkIf;
   inherit (lib'.options) mkFalseOption;
 
   cfg = config.config'.theming.stylix;
@@ -34,8 +34,6 @@ in
         config.config'.theming.catppuccin.flavor or "mocha"
       }.yaml";
       polarity = "dark";
-
-      image = mkDefault "${config.hm.home.homeDirectory}/owned-material/images/szcb911/2024-10-15.jpeg";
 
       targets.plymouth = { inherit (config.boot.plymouth) enable; };
     };
