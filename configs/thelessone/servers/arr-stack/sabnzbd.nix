@@ -11,7 +11,7 @@ in
   services.sabnzbd = {
     enable = true;
     inherit (config.arr) group;
-    settings.host_whitelist = "sabnzbd.theless.one";
+    settings.misc.host_whitelist = "sabnzbd.theless.one";
   };
 
   config'.caddy.vHost.${domain} = {
