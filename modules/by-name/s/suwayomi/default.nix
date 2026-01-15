@@ -19,8 +19,6 @@ let
     filterAttrs
     nameValuePair
     mapAttrs'
-    recursiveUpdate
-    filterAttrsRecursive
     ;
 
   inherit (builtins) attrNames;
@@ -83,7 +81,12 @@ in
     systemd.tmpfiles.settings = mapAttrs' (
       iName: iCfg:
       nameValuePair "10-suwayomi-${iName}" {
-        "${iCfg.settings.server.rootDir}/.local/share/Tachidesk" = dirCfg;
+        "${iCfg.settings.server.rootDir}/server.conf"."L+" = {
+          user = "suwayomi";
+          group = "suwayomi";
+          mode = "0440";
+          argument = (format.generate "server.conf" iCfg.settings).outPath;
+        };
         "${iCfg.settings.server.rootDir}/.cache/suwayomi" = dirCfg;
         ${iCfg.settings.server.downloadsPath} = dirCfg;
         ${iCfg.settings.server.localSourcePath} = dirCfg;
@@ -92,19 +95,11 @@ in
 
     systemd.services = mapAttrs' (
       iName: iCfg:
+
       let
         inherit (iCfg.settings.server) rootDir;
-        configFile = format.generate "server.conf" (
-          filterAttrsRecursive (_: x: x != null) (
-            recursiveUpdate iCfg.settings {
-              server = {
-                systemTrayEnabled = false;
-                initialOpenInBrowserEnabled = false;
-              };
-            }
-          )
-        );
       in
+
       nameValuePair "suwayomi-${iName}" {
         description = "Suwayomi Server instance ${iName}";
 
@@ -114,16 +109,11 @@ in
 
         environment.JAVA_TOOL_OPTIONS = "-Djava.io.tmpdir=${rootDir}/.cache/suwayomi -Dsuwayomi.tachidesk.config.server.rootDir=${rootDir}";
 
-        script = ''
-          ${getExe pkgs.envsubst} -i ${configFile} -o 
-
-          ${getExe cfg.package}
-        '';
-
         serviceConfig = {
           User = "suwayomi";
           Group = "suwayomi";
 
+          ExecStart = getExe cfg.package;
           Type = "simple";
           Restart = "on-failure";
         };

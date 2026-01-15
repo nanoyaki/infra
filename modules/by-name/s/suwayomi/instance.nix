@@ -112,6 +112,18 @@ in
                 Local manga directory for suwayomi server.
               '';
             };
+
+            systemTrayEnabled = mkOption {
+              type = types.bool;
+              default = false;
+              readOnly = true;
+            };
+
+            initialOpenInBrowserEnabled = mkOption {
+              type = types.bool;
+              default = false;
+              readOnly = true;
+            };
           };
         }
       );
