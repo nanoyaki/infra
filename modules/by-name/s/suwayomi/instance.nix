@@ -38,7 +38,7 @@ in
 
     settings = mkOption {
       type = types.submodule (
-        { name, config, ... }:
+        { config, ... }:
 
         {
           freeformType = format.type;
