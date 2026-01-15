@@ -1,5 +1,6 @@
 {
   lib,
+  stdenvNoCC,
   runCommand,
   writeText,
   jq,
@@ -17,15 +18,15 @@ let
 
   toValidString =
     actual: if isBool actual then (if actual then "true" else "false") else toString actual;
+
   toGamerule =
     rawGamerule:
-
     let
       # Support 1.21.11
       gamerule = "${lib.optionalString (!(lib.hasInfix ":" rawGamerule)) "minecraft:"}${rawGamerule}";
     in
-
     "gamerule ${gamerule} ${toValidString gamerules.${rawGamerule}}";
+
   renderedGamerules = writeText "setup.mcfunction" (
     concatStringsSep "\n" (map toGamerule (attrNames gamerules))
   );
@@ -50,26 +51,38 @@ let
       {
         loadJson.values = [ "declarative_gamerules:setup" ];
         packMcmeta.pack = {
-          description = "Sets gamerules declaratively";
-          pack_format = 81;
-          supported_formats = [
-            81
-            81
+          description = "Set minecraft gamerules using nix";
+          min_format = [
+            88
+            0
+          ];
+          max_format = [
+            88
+            0
           ];
         };
       };
 in
 
-runCommand "declarative-gamerules"
-  {
-    icon = ./icon.png;
-    inherit (jsonFiles) loadJson packMcmeta;
-    inherit renderedGamerules;
-  }
-  ''
+stdenvNoCC.mkDerivation {
+  pname = "declarative-gamerules";
+  version = "1.0.0";
+
+  installPhase = ''
+    runHook preInstall
+
     mkdir -p $out/data/{minecraft/tags/function,declarative_gamerules/function}
-    ln -s $packMcmeta $out/pack.mcmeta
-    ln -s $loadJson $out/data/minecraft/tags/function/load.json
-    ln -s $renderedGamerules $out/data/declarative_gamerules/function/setup.mcfunction
-    ln -s $icon $out/pack.png
-  ''
+    ln -s ${./icon.png} $out/pack.png
+    ln -s ${jsonFiles.packMcmeta} $out/pack.mcmeta
+    ln -s ${jsonFiles.loadJson} $out/data/minecraft/tags/function/load.json
+    ln -s ${renderedGamerules} $out/data/declarative_gamerules/function/setup.mcfunction
+
+    runHook postInstall
+  '';
+
+  meta = {
+    description = "Set minecraft gamerules using nix";
+    license = lib.licenses.gpl3;
+    maintainers = [ lib.maintainers.nanoyaki ];
+  };
+}
