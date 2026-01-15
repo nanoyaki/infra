@@ -21,12 +21,20 @@
     };
 
     gamerules = {
-      keepInventory = true;
-      doMobSpawning = false;
-      mobGriefing = false;
-      disableElytraMovementCheck = true;
-      disablePlayerMovementCheck = true;
-      spawnRadius = 32;
+      # Lobby specific
+      keep_inventory = true;
+      mob_griefing = false;
+      spawn_mobs = false;
+      respawn_radius = 32;
+
+      # Disable movement checks due
+      # to server upload speed limits
+      elytra_movement_check = false;
+      player_movement_check = false;
+
+      # Minecart speed
+      max_minecart_speed = 8;
+      "ace:speed_player" = 64;
     };
 
     mods = map (mod: mod.latest) (
@@ -52,6 +60,7 @@
         architectury-api
         cloth-config
         yacl
+        audaki-cart-engine
 
         carpet
 

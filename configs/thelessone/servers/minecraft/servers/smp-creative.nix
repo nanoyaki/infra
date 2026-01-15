@@ -18,11 +18,19 @@
     operators = import ./whitelist.nix;
 
     gamerules = {
-      keepInventory = true;
-      doMobSpawning = false;
-      mobGriefing = false;
-      disableElytraMovementCheck = true;
-      disablePlayerMovementCheck = true;
+      # Creative specific
+      keep_inventory = true;
+      spawn_mobs = false;
+      mob_griefing = false;
+
+      # Disable movement checks due
+      # to server upload speed limits
+      elytra_movement_check = false;
+      player_movement_check = false;
+
+      # Minecart speed
+      max_minecart_speed = 8;
+      "ace:speed_player" = 64;
     };
 
     mods = map (mod: mod.latest) (
@@ -48,6 +56,7 @@
         architectury-api
         cloth-config
         yacl
+        audaki-cart-engine
 
         axiom
         carpet

@@ -482,11 +482,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1768440277,
-        "narHash": "sha256-HAmO+4PhK8oZ2oCuIYSE0tmf9AunAsbWmlp4HApyMHs=",
+        "lastModified": 1768513436,
+        "narHash": "sha256-u9uK3IJG+EdjGTqA73mJc2JY0DTC3ULR9rokTYmqbG4=",
         "ref": "refs/heads/main",
-        "rev": "69d1a61121cf721e7c39a26d3ea35cdb71018816",
-        "revCount": 351,
+        "rev": "0c7cf9c15d1c12b0b142bf5e24d77ee6b9d124ee",
+        "revCount": 352,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nanopkgs.git"
       },

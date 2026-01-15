@@ -17,7 +17,15 @@ let
 
   toValidString =
     actual: if isBool actual then (if actual then "true" else "false") else toString actual;
-  toGamerule = gamerule: "gamerule ${gamerule} ${toValidString gamerules.${gamerule}}";
+  toGamerule =
+    rawGamerule:
+
+    let
+      # Support 1.21.11
+      gamerule = "${lib.optionalString (!(lib.hasInfix ":" rawGamerule)) "minecraft:"}${rawGamerule}";
+    in
+
+    "gamerule ${gamerule} ${toValidString gamerules.${rawGamerule}}";
   renderedGamerules = writeText "setup.mcfunction" (
     concatStringsSep "\n" (map toGamerule (attrNames gamerules))
   );

@@ -18,10 +18,14 @@
     };
 
     gamerules = {
-      locatorBar = false;
-      disableElytraMovementCheck = true;
-      disablePlayerMovementCheck = true;
-      playersSleepingPercentage = 33;
+      # SMP improvements
+      locator_bar = false;
+      players_sleeping_percentage = 33;
+
+      # Disable movement checks due
+      # to server upload speed limits
+      elytra_movement_check = false;
+      player_movement_check = false;
     };
 
     mods = map (mod: mod.latest) (

@@ -15,10 +15,18 @@ in
     };
 
     gamerules = {
-      locatorBar = false;
-      disableElytraMovementCheck = true;
-      disablePlayerMovementCheck = true;
-      playersSleepingPercentage = 33;
+      # SMP improvements
+      locator_bar = false;
+      players_sleeping_percentage = 33;
+
+      # Disable movement checks due
+      # to server upload speed limits
+      elytra_movement_check = false;
+      player_movement_check = false;
+
+      # Minecart speed
+      max_minecart_speed = 8;
+      "ace:speed_player" = 64;
     };
 
     datapacks = map (datapack: datapack.latest) (
@@ -53,6 +61,7 @@ in
         architectury-api
         cloth-config
         yacl
+        audaki-cart-engine
 
         bluemap
         bluemap-sign-markers

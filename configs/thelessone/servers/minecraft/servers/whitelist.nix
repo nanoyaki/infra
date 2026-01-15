@@ -26,4 +26,5 @@
   vampriyva = "adddeb49-1c25-444d-bfa9-f06d94ee057f";
   TwistOfKills = "fe9c7733-6675-45c8-9555-b2993ee9a44c";
   LostYuu = "9739260b-a936-4c37-a6ea-2c10789d2ed8";
+  Polypsycism = "f6f31813-9e2c-48b1-9f44-b02e1d5df0cd";
 }
