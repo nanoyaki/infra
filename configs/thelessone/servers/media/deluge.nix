@@ -85,7 +85,7 @@ in
           };
 
           move_completed_path = mkOption {
-            type = with types; either (strMatching ''^$'') path;
+            type = with types; either (strMatching "^$") path;
             default = "";
           };
 
