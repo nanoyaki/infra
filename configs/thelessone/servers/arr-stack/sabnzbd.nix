@@ -72,6 +72,11 @@ in
         history_retention_number = 1;
         check_new_rel = 1;
 
+        # Limits
+        cache_limit = "1G";
+        bandwidth_max = "10M";
+        bandwidth_perc = 100;
+
         # Keep the disk usable
         complete_free = "100G";
         fulldisk_autoresume = 1;
