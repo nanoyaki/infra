@@ -85,7 +85,7 @@ in
         port = 563;
         timeout = 60;
         connections = 50;
-        ssl = 1;
+        ssl = true;
         ssl_verify = 3;
 
         expire_date = "2026-06-06";
