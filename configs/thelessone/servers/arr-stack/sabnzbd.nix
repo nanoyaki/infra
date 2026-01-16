@@ -37,8 +37,8 @@ in
     enable = true;
     inherit (config.arr) group;
 
+    allowConfigWrite = false;
     secretFiles = [ config.sops.templates."secrets.ini".path ];
-
     settings = {
       misc = {
         # Webinterface
