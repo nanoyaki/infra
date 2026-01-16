@@ -16,19 +16,23 @@ in
     "sabnzbd/eweka-password" = { };
   };
 
-  sops.templates."secrets.ini".content = ''
-    [misc]
-    username = ${config.sops.placeholder."sabnzbd/username"}
-    password = ${config.sops.placeholder."sabnzbd/password"}
+  sops.templates."secrets.ini" = {
+    content = ''
+      [misc]
+      username = ${config.sops.placeholder."sabnzbd/username"}
+      password = ${config.sops.placeholder."sabnzbd/password"}
 
-    api_key = ${config.sops.placeholder."sabnzbd/api-key"}
-    nzb_key = ${config.sops.placeholder."sabnzbd/nzb-key"}
+      api_key = ${config.sops.placeholder."sabnzbd/api-key"}
+      nzb_key = ${config.sops.placeholder."sabnzbd/nzb-key"}
 
-    [servers]
-    [[news.eweka.nl]]
-    username = ${config.sops.placeholder."sabnzbd/eweka-username"}
-    password = ${config.sops.placeholder."sabnzbd/eweka-password"}
-  '';
+      [servers]
+      [[news.eweka.nl]]
+      username = ${config.sops.placeholder."sabnzbd/eweka-username"}
+      password = ${config.sops.placeholder."sabnzbd/eweka-password"}
+    '';
+
+    owner = config.services.sabnzbd.user;
+  };
 
   services.vopono.allowedTCPPorts = [ 8080 ];
 
