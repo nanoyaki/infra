@@ -49,14 +49,10 @@ in
         host = "127.0.0.1";
         inet_exposure = 4;
         port = 8080;
-        host_whitelist = [ "sabnzbd.theless.one" ];
+        host_whitelist = "sabnzbd.theless.one";
         verify_xff_header = 1;
-        local_ranges = [
-          # LAN
-          "10.0.0.0/24"
-          # VPN
-          "100.64.64.0/24"
-        ];
+        # LAN and VPN
+        local_ranges = "10.0.0.0/24, 100.64.64.0/24";
 
         # Settings where i don't
         # know what they do
