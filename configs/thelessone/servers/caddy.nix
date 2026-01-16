@@ -71,7 +71,7 @@ in
       (error_handling) {
         handle_errors {
           root * ${thelessDotOne}
-          try_files /{http.error.status_code}.html =404
+          try_files /{uri} /{http.error.status_code}.html =404
           file_server
         }
       }
