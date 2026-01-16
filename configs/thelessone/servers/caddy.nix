@@ -61,13 +61,10 @@ in
       "www.vappie.space".extraConfig = mkRedirect "https://bsky.app/profile/vappie.space";
       "twitter.vappie.space".extraConfig = mkRedirect "https://x.com/vappie_";
 
-      "theless.one" = {
-        extraConfig = ''
-          root * ${thelessDotOne}
-          file_server
-        '';
-        listenAddresses = [ "10.0.0.5" ];
-      };
+      "theless.one".extraConfig = ''
+        root * ${thelessDotOne}
+        file_server
+      '';
     };
 
     extraConfig = mkForce ''
