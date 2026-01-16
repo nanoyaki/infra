@@ -6,7 +6,7 @@
 }:
 
 let
-  inherit (lib) genAttrs;
+  inherit (lib) genAttrs mkForce;
 
   # String -> String
   mkFileServer = directory: ''
@@ -37,7 +37,7 @@ in
 
   services.caddy = {
     enable = true;
-    package = lib.mkForce (
+    package = mkForce (
       pkgs.caddy.withPlugins {
         plugins = [ "github.com/caddyserver/cache-handler@v0.16.0" ];
         hash = "sha256-XTFwYo3o7il3UfnE2QuJM+UoGTu0Yw+8ka0p9czdgEM=";
