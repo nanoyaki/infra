@@ -54,14 +54,6 @@ let
     oldPath: newPath: mkRenamedOptionModule (deprecatedPath ++ oldPath) (vHostPath ++ newPath);
 
   enabledHosts = filterAttrs (_: hostCfg: hostCfg.enable) cfg.vHost;
-
-  thelessDotOne = pkgs.fetchFromGitea {
-    domain = "git.theless.one";
-    owner = "nanoyaki";
-    repo = "theless.one";
-    rev = "9cd564626cfec89eba19d46fe9aba6b4837a5db9";
-    hash = "sha256-ckWY/aSTULHe43YNoMijs7IYlavEM4hG7VgqodtXBL0=";
-  };
 in
 
 {
@@ -117,59 +109,43 @@ in
       extraConfig = ''
         (error_handling) {
           handle_errors {
-            root * ${thelessDotOne}
+            root * ${pkgs.error-pages}/share/error-pages
             try_files /{http.error.status_code}.html =404
             file_server
           }
         }
       '';
 
-      virtualHosts =
-        (mapAttrs (domain: vhost: {
-          extraConfig = ''
-            ${optionalString (vhost.userEnvVar != null) ''
-              basic_auth * {
-                {''$${vhost.userEnvVar}}
-              }
-            ''}
+      virtualHosts = mapAttrs (domain: vhost: {
+        extraConfig = ''
+          ${optionalString (vhost.userEnvVar != null) ''
+            basic_auth * {
+              {''$${vhost.userEnvVar}}
+            }
+          ''}
 
-            ${vhost.extraConfig}
+          ${vhost.extraConfig}
 
-            ${optionalString (
-              vhost.proxy.port != 0
-            ) "reverse_proxy ${vhost.proxy.host}:${toString vhost.proxy.port}"}
+          ${optionalString (
+            vhost.proxy.port != 0
+          ) "reverse_proxy ${vhost.proxy.host}:${toString vhost.proxy.port}"}
 
-            import error_handling
-          '';
-          inherit (vhost) serverAliases;
-          useACMEHost = mkIf (hasInfix cfg.baseDomain domain) cfg.baseDomain;
-          listenAddresses = mkIf vhost.useVpn (
-            map (
-              cidrSuffixed:
+          import error_handling
+        '';
+        inherit (vhost) serverAliases;
+        useACMEHost = mkIf (hasInfix cfg.baseDomain domain) cfg.baseDomain;
+        listenAddresses = mkIf vhost.useVpn (
+          map (
+            cidrSuffixed:
 
-              let
-                address = elemAt (splitString "/" cidrSuffixed) 0;
-              in
+            let
+              address = elemAt (splitString "/" cidrSuffixed) 0;
+            in
 
-              if hasInfix ":" address then "[${address}]" else address
-            ) config.networking.wg-quick.interfaces.wg0.address
-          );
-        }) enabledHosts)
-        // mapAttrs (domain: vhost: {
-          extraConfig = ''
-            root * ${thelessDotOne}
-            file_server
-          '';
-          inherit (vhost) serverAliases;
-          useACMEHost = mkIf (hasInfix cfg.baseDomain domain) cfg.baseDomain;
-          listenAddresses = [ "10.0.0.5" ];
-        }) (lib.filterAttrs (_: vhost: vhost.useVpn) enabledHosts)
-        // {
-          ${cfg.baseDomain}.extraConfig = ''
-            root * ${thelessDotOne}
-            file_server
-          '';
-        };
+            if hasInfix ":" address then "[${address}]" else address
+          ) config.networking.wg-quick.interfaces.wg0.address
+        );
+      }) enabledHosts;
     };
 
     systemd.services.porkbun-vpn-records = {

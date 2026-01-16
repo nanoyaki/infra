@@ -18,6 +18,14 @@ let
   mkRedirect = url: ''
     redir ${url} permanent
   '';
+
+  thelessDotOne = pkgs.fetchFromGitea {
+    domain = "git.theless.one";
+    owner = "nanoyaki";
+    repo = "theless.one";
+    rev = "9cd564626cfec89eba19d46fe9aba6b4837a5db9";
+    hash = "sha256-ckWY/aSTULHe43YNoMijs7IYlavEM4hG7VgqodtXBL0=";
+  };
 in
 
 {
@@ -52,7 +60,25 @@ in
       "vappie.space".extraConfig = mkRedirect "https://bsky.app/profile/vappie.space";
       "www.vappie.space".extraConfig = mkRedirect "https://bsky.app/profile/vappie.space";
       "twitter.vappie.space".extraConfig = mkRedirect "https://x.com/vappie_";
+
+      "theless.one" = {
+        extraConfig = ''
+          root * ${thelessDotOne}
+          file_server
+        '';
+        listenAddresses = [ "10.0.0.5" ];
+      };
     };
+
+    extraConfig = mkForce ''
+      (error_handling) {
+        handle_errors {
+          root * ${thelessDotOne}
+          try_files /{http.error.status_code}.html =404
+          file_server
+        }
+      }
+    '';
   };
 
   sops.templates."porkbun.json".content = builtins.toJSON {
