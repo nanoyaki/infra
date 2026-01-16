@@ -23,8 +23,8 @@ let
     domain = "git.theless.one";
     owner = "nanoyaki";
     repo = "theless.one";
-    rev = "9cd564626cfec89eba19d46fe9aba6b4837a5db9";
-    hash = "sha256-ckWY/aSTULHe43YNoMijs7IYlavEM4hG7VgqodtXBL0=";
+    rev = "4c517108933ffd4cde44b1eabf810cd67f31ee21";
+    hash = "sha256-qB8FszzFgNa03WLJ2ZhLByEMTYEJa39Y08OYNkm1DOA=";
   };
 in
 
