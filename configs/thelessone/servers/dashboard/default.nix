@@ -69,7 +69,7 @@ in
     enable = true;
     listenPort = 33189;
     allowedHosts = lib.concatStringsSep "," [
-      "https://home.theless.one"
+      "home.theless.one"
       "localhost:33189"
       "127.0.0.1:33189"
       "100.64.64.1:33189"
