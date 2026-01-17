@@ -18,6 +18,7 @@ in
     extraConfig = {
       SECRET_KEY_FILE = config.sops.secrets.tandoor.path;
 
+      MEDIA_ROOT = "/var/lib/tandoor-recipes";
       DB_ENGINE = "django.db.backends.postgresql";
       POSTGRES_HOST = "/run/postgresql";
       POSTGRES_USER = "tandoor_recipes";
