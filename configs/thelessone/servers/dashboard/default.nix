@@ -113,34 +113,28 @@ in
           Media = {
             style = "row";
             columns = 4;
-            useEqualHeights = true;
           };
         }
         {
           Downloads = {
             style = "row";
             columns = 3;
-            useEqualHeights = true;
           };
         }
         {
           "Arr admin" = {
             style = "row";
             columns = 3;
-            useEqualHeights = true;
           };
         }
         {
           "User services" = {
             style = "column";
-            useEqualHeights = true;
           };
         }
         {
           Manga = {
-            style = "row";
-            columns = 4;
-            useEqualHeights = true;
+            style = "column";
           };
         }
       ];
