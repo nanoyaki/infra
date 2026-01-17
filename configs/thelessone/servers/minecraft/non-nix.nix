@@ -28,6 +28,7 @@ in
     ];
     script = ''
       MINECRAFT_SERVERS="$(find ${dataDir}/. -maxdepth 1 -type d -not -name '.*' -printf '%f\n')"
+      [[ -z "$MINECRAFT_SERVERS" ]] && exit 0
 
       for server in $MINECRAFT_SERVERS; do
         [[ -f "${dataDir}/$server/run.sh" ]] \
