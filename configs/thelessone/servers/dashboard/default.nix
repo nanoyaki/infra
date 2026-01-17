@@ -400,7 +400,7 @@ in
           {
             Thomas = rec {
               icon = "suwayomi.svg";
-              href = "https://thomas-manga.theless.one";
+              href = "https://manga.theless.one";
               siteMonitor = href;
               description = "Thomas' mangas";
               widget = {
