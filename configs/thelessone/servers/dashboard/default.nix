@@ -235,7 +235,7 @@ in
           {
             Immich = rec {
               icon = "immich.svg";
-              href = "https://images.theless.one";
+              href = "https://immich.theless.one/";
               siteMonitor = href;
               description = "Photo backups";
               widget = {
