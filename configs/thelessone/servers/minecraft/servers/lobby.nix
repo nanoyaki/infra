@@ -33,7 +33,6 @@
       player_movement_check = false;
 
       # Minecart speed
-      max_minecart_speed = 8;
       "ace:speed_player" = 64;
     };
 

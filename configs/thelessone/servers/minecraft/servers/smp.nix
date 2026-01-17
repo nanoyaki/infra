@@ -11,7 +11,7 @@ in
 
     serverProperties = {
       server-port = 30050;
-      initial-enabled-packs = "vanilla,minecart_improvements";
+      initial-enabled-packs = "vanilla";
     };
 
     gamerules = {
@@ -25,7 +25,6 @@ in
       player_movement_check = false;
 
       # Minecart speed
-      max_minecart_speed = 8;
       "ace:speed_player" = 64;
     };
 
