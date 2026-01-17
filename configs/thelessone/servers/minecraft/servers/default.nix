@@ -11,6 +11,7 @@ in
     ./smp.nix
     ./smp-creative.nix
     ./smp2.nix
+    ./creative-flat.nix
   ];
 
   sops.secrets.proxy.sopsFile = ./secrets.yaml;

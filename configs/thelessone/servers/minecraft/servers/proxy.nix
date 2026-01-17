@@ -37,6 +37,7 @@ in
           creative = "127.0.0.1:30051";
           lobby = "127.0.0.1:30052";
           smp2 = "127.0.0.1:30053";
+          flat = "127.0.0.1:30054";
 
           try = [
             "smp"
@@ -49,6 +50,7 @@ in
           "creative.theless.one" = [ "creative" ];
           "lobby.theless.one" = [ "lobby" ];
           # "nik.theless.one" = [ "smp2" ];
+          "flat.theless.one" = [ "flat" ];
         };
 
         query.enabled = false;

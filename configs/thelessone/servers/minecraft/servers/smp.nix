@@ -40,7 +40,12 @@ in
     mods = map (mod: mod.latest) (
       with pkgs.minecraft.fabric.v1_21_11;
       [
+        # libraries
+        architectury-api
+        cloth-config
+        yacl
         fabric-api
+
         fabricproxy-lite
         simple-voice-chat
         vmp-fabric
@@ -57,10 +62,8 @@ in
         do-a-barrel-roll
         cicada
         servux
-        architectury-api
-        cloth-config
-        yacl
         audaki-cart-engine
+        carpet
 
         bluemap
         bluemap-sign-markers
