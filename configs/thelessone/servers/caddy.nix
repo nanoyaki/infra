@@ -18,17 +18,21 @@ let
   mkRedirect = url: ''
     redir ${url} permanent
   '';
-
-  thelessDotOne = pkgs.fetchFromGitea {
-    domain = "git.theless.one";
-    owner = "nanoyaki";
-    repo = "theless.one";
-    rev = "4c517108933ffd4cde44b1eabf810cd67f31ee21";
-    hash = "sha256-qB8FszzFgNa03WLJ2ZhLByEMTYEJa39Y08OYNkm1DOA=";
-  };
 in
 
 {
+  nixpkgs.overlays = [
+    (final: _: {
+      thelessDotOne = final.fetchFromGitea {
+        domain = "git.theless.one";
+        owner = "nanoyaki";
+        repo = "theless.one";
+        rev = "4c517108933ffd4cde44b1eabf810cd67f31ee21";
+        hash = "sha256-qB8FszzFgNa03WLJ2ZhLByEMTYEJa39Y08OYNkm1DOA=";
+      };
+    })
+  ];
+
   sops.secrets = {
     "caddy-env-vars/nik" = { };
     "caddy-env-vars/hana" = { };
@@ -62,7 +66,7 @@ in
       "twitter.vappie.space".extraConfig = mkRedirect "https://x.com/vappie_";
 
       "theless.one".extraConfig = ''
-        root * ${thelessDotOne}
+        root * ${pkgs.thelessDotOne}
         file_server
       '';
     };
@@ -70,7 +74,7 @@ in
     extraConfig = mkForce ''
       (error_handling) {
         handle_errors {
-          root * ${thelessDotOne}
+          root * ${pkgs.thelessDotOne}
           try_files {path} /{err.status_code}.html /index.html
           file_server {
             status 200

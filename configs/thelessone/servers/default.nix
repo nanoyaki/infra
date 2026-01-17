@@ -15,5 +15,6 @@
     ./postgresql.nix
     ./scpsl.nix
     # ./calendar.nix
+    ./dashboard
   ];
 }

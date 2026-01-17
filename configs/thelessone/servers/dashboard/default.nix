@@ -1,0 +1,484 @@
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+
+# TODO: create a proper module to reuse and order code
+
+let
+  svg = svg: "${pkgs.dashboardIcons}/svg/${svg}.svg";
+  # png = svg: "${pkgs.dashboardIcons}/png/${svg}.png";
+in
+
+{
+  nixpkgs.overlays = [
+    (final: _: {
+      dashboardIcons = final.fetchFromGitHub {
+        owner = "homarr-labs";
+        repo = "dashboard-icons";
+        rev = "4788bf85545871e1b47b272b5746982c33a999ea";
+        hash = "sha256-46rJVRuuVfUzGBySALdpYdU3m1dxE74XuXmCWbL1Aig=";
+      };
+    })
+  ];
+
+  sops.secrets = {
+    "dashboard/jellyfin" = { };
+    "dashboard/audiobookshelf" = { };
+    "dashboard/immich" = { };
+    "dashboard/jellyseerr" = { };
+    "dashboard/flood-username" = { };
+    "dashboard/flood-password" = { };
+    "dashboard/sabnzbd" = { };
+    "dashboard/tandoor" = { };
+    "dashboard/radarr" = { };
+    "dashboard/sonarr" = { };
+    "dashboard/lidarr" = { };
+    "dashboard/bazarr" = { };
+    "dashboard/prowlarr" = { };
+  };
+
+  sops.templates."homepage-secrets.env".file =
+    (pkgs.formats.keyValue { }).generate "homepage-secrets.env.template"
+      {
+        HOMEPAGE_VAR_JELLYFIN_API_KEY = config.sops.placeholder."dashboard/jellyfin";
+        HOMEPAGE_VAR_AUDIOBOOKSHELF_API_KEY = config.sops.placeholder."dashboard/audiobookshelf";
+        HOMEPAGE_VAR_IMMICH_API_KEY = config.sops.placeholder."dashboard/immich";
+        HOMEPAGE_VAR_JELLYSEERR_API_KEY = config.sops.placeholder."dashboard/jellyseerr";
+        HOMEPAGE_VAR_FLOOD_USERNAME = config.sops.placeholder."dashboard/flood-username";
+        HOMEPAGE_VAR_FLOOD_PASSWORD = config.sops.placeholder."dashboard/flood-password";
+        HOMEPAGE_VAR_SABNZBD_API_KEY = config.sops.placeholder."dashboard/sabnzbd";
+        HOMEPAGE_VAR_TANDOOR_API_KEY = config.sops.placeholder."dashboard/tandoor";
+        HOMEPAGE_VAR_RADARR_API_KEY = config.sops.placeholder."dashboard/radarr";
+        HOMEPAGE_VAR_SONARR_API_KEY = config.sops.placeholder."dashboard/sonarr";
+        HOMEPAGE_VAR_LIDARR_API_KEY = config.sops.placeholder."dashboard/lidarr";
+        HOMEPAGE_VAR_BAZARR_API_KEY = config.sops.placeholder."dashboard/bazarr";
+        HOMEPAGE_VAR_PROWLARR_API_KEY = config.sops.placeholder."dashboard/prowlarr";
+      };
+
+  services.homepage-dashboard = {
+    enable = true;
+    listenPort = 33189;
+    allowedHosts = lib.concatStringsSep "," [
+      "https://home.theless.one"
+      "localhost:33189"
+      "127.0.0.1:33189"
+      "100.64.64.1:33189"
+    ];
+    environmentFile = config.sops.templates."homepage-secrets.env".path;
+
+    settings = {
+      # Meta
+      title = "theless.one";
+      description = "A list of all services running on theless.one";
+      startUrl = "https://home.theless.one";
+      language = "en";
+      disableIndexing = true;
+      # We use nix after all
+      hideVersion = true;
+      disableUpdateCheck = true;
+
+      # Theming
+      background = pkgs.fetchPixivIllust {
+        pixivId = 139667080;
+        hash = "sha256-DtiyzMmxC7qpHc77eUcxRtpJOGSWGYMxabl1+WuFCY8=";
+      };
+      favicon = "${pkgs.thelessDotOne}/favicon.ico";
+      theme = "dark";
+      color = "slate";
+
+      layout = [
+        {
+          Media = {
+            style = "row";
+            columns = 4;
+            useEqualHeights = true;
+          };
+        }
+        {
+          Downloads = {
+            style = "row";
+            columns = 3;
+            useEqualHeights = true;
+          };
+        }
+        {
+          "Arr admin" = {
+            style = "row";
+            columns = 3;
+            useEqualHeights = true;
+          };
+        }
+        {
+          "Random stuff" = {
+            style = "column";
+            useEqualHeights = true;
+          };
+        }
+        {
+          Manga = {
+            style = "row";
+            columns = 4;
+            useEqualHeights = true;
+          };
+        }
+      ];
+
+      # Launching applications
+      target = "_blank";
+      quicklaunch = {
+        searchDescriptions = true;
+        hideInternetSearch = true;
+        showSearchSuggestions = true;
+        hideVisitURL = true;
+        provider = "duckduckgo";
+
+        mobileButtonPosition = "bottom-right";
+      };
+    };
+
+    bookmarks = [
+      {
+        Discord = [
+          {
+            General = [
+              {
+                icon = "${pkgs.dashboardIcons}/svg/discord.svg";
+                href = "https://discord.com/channels/1392204217141301338";
+                description = "The Discord server";
+              }
+            ];
+          }
+          {
+            "Minecraft chat" = [
+              {
+                icon = svg "minecraft";
+                href = "https://discord.com/channels/1392204217141301338/1395405287984201738";
+                description = "Discord chat linked with the Minecraft chat";
+              }
+            ];
+          }
+          {
+            Issues = [
+              {
+                icon = svg "forgejo";
+                href = "https://git.theless.one/nanoyaki/theless.one-issues/issues";
+                description = "Report issues here";
+              }
+            ];
+          }
+        ];
+      }
+    ];
+
+    services = [
+      {
+        Media = [
+          {
+            Jellyfin = rec {
+              icon = svg "jellyfin";
+              href = "https://jellyfin.theless.one";
+              description = "Media library";
+              widget = {
+                type = "jellyfin";
+                url = href;
+                key = "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}";
+                enableNowPlaying = false;
+                enableMediaControl = false;
+                fields = [
+                  "movies"
+                  "series"
+                  "episodes"
+                ];
+              };
+            };
+          }
+          {
+            Audiobookshelf = rec {
+              icon = svg "audiobookshelf";
+              href = "https://audiobookshelf.theless.one";
+              description = "Photo backups";
+              widget = {
+                type = "audiobookshelf";
+                url = href;
+                key = "{{HOMEPAGE_VAR_AUDIOBOOKSHELF_API_KEY}}";
+                fields = [
+                  "books"
+                  "booksDuration"
+                ];
+              };
+            };
+          }
+          {
+            Immich = rec {
+              icon = svg "immich";
+              href = "https://images.theless.one";
+              description = "Photo backups";
+              widget = {
+                type = "immich";
+                url = href;
+                key = "{{HOMEPAGE_VAR_IMMICH_API_KEY}}";
+                version = 2;
+                fields = [
+                  "photos"
+                  "videos"
+                  "storage"
+                ];
+              };
+            };
+          }
+          {
+            Fireshare = {
+              icon = svg "fireshare";
+              href = "https://fireshare.theless.one/#/login";
+              description = "Clip sharing";
+            };
+          }
+        ];
+
+        Downloads = [
+          {
+            Jellyseerr = rec {
+              icon = svg "jellyseerr";
+              href = "https://jellyseerr.theless.one";
+              description = "Media requests";
+              widget = {
+                type = "jellyseerr";
+                url = href;
+                key = "{{HOMEPAGE_VAR_JELLYSEERR_API_KEY}}";
+                fields = [
+                  "pending"
+                  "available"
+                  "issues"
+                ];
+              };
+            };
+          }
+          {
+            Flood = rec {
+              icon = svg "flood";
+              href = "https://flood.theless.one";
+              description = "Webinterface for deluge";
+              widget = {
+                type = "flood";
+                url = href;
+                username = "{{HOMEPAGE_VAR_FLOOD_USERNAME}}";
+                password = "{{HOMEPAGE_VAR_FLOOD_PASSWORD}}";
+                fields = [
+                  "leech"
+                  "seed"
+                  "download"
+                  "upload"
+                ];
+              };
+            };
+          }
+          {
+            Sabnzbd = rec {
+              icon = svg "sabnzbd";
+              href = "https://sabnzbd.theless.one";
+              description = "Newznab client";
+              widget = {
+                type = "sabnzbd";
+                url = href;
+                key = "{{HOMEPAGE_VAR_SABNZBD_API_KEY}}";
+                fields = [
+                  "rate"
+                  "queue"
+                  "timeleft"
+                ];
+              };
+            };
+          }
+        ];
+
+        "Random stuff" = [
+          {
+            Actual = {
+              icon = svg "actual";
+              href = "https://finances.theless.one";
+              description = "Finance management";
+            };
+          }
+          {
+            Tandoor = rec {
+              icon = svg "actual";
+              href = "https://recipes.theless.one";
+              description = "Recipe management";
+              widget = {
+                type = "tandoor";
+                url = href;
+                key = "{{HOMEPAGE_VAR_TANDOOR_API_KEY}}";
+                fields = [ "recipes" ];
+              };
+            };
+          }
+          {
+            Copyparty = {
+              icon = svg "copyparty";
+              href = "https://files.theless.one";
+              description = "File server";
+            };
+          }
+          {
+            Vaultwarden = {
+              icon = svg "vaultwarden";
+              href = "https://vaultwarden.theless.one";
+              description = "Password manager";
+            };
+          }
+          {
+            Forgejo = {
+              icon = svg "forgejo";
+              href = "https://git.theless.one";
+              description = "Code forge";
+            };
+          }
+        ];
+
+        Manga = [
+          {
+            Mei = rec {
+              icon = svg "suwayomi";
+              href = "https://mei-manga.theless.one";
+              description = "Mei's mangas";
+              widget = {
+                type = "suwayomi";
+                url = href;
+              };
+            };
+          }
+          {
+            Hana = rec {
+              icon = svg "suwayomi";
+              href = "https://hana-manga.theless.one";
+              description = "Hana's mangas";
+              widget = {
+                type = "suwayomi";
+                url = href;
+              };
+            };
+          }
+          {
+            Thomas = rec {
+              icon = svg "suwayomi";
+              href = "https://thomas-manga.theless.one";
+              description = "Thomas' mangas";
+              widget = {
+                type = "suwayomi";
+                url = href;
+              };
+            };
+          }
+          {
+            Nik = rec {
+              icon = svg "suwayomi";
+              href = "https://nik-manga.theless.one";
+              description = "Nik's mangas";
+              widget = {
+                type = "suwayomi";
+                url = href;
+              };
+            };
+          }
+        ];
+
+        "Arr admin" = [
+          {
+            Radarr = rec {
+              icon = svg "radarr";
+              href = "https://radarr.theless.one";
+              description = "Movie management";
+              widget = {
+                type = "radarr";
+                url = href;
+                key = "{{HOMEPAGE_VAR_RADARR_API_KEY}}";
+                enableQueue = true;
+                fields = [
+                  "wanted"
+                  "missing"
+                  "queued"
+                ];
+              };
+            };
+          }
+          {
+            Sonarr = rec {
+              icon = svg "sonarr";
+              href = "https://sonarr.theless.one";
+              description = "Show management";
+              widget = {
+                type = "sonarr";
+                url = href;
+                key = "{{HOMEPAGE_VAR_SONARR_API_KEY}}";
+                enableQueue = true;
+                fields = [
+                  "wanted"
+                  "queued"
+                ];
+              };
+            };
+          }
+          {
+            Lidarr = rec {
+              icon = svg "lidarr";
+              href = "https://lidarr.theless.one";
+              description = "Music management";
+              widget = {
+                type = "lidarr";
+                url = href;
+                key = "{{HOMEPAGE_VAR_LIDARR_API_KEY}}";
+                fields = [
+                  "wanted"
+                  "queued"
+                  "artists"
+                ];
+              };
+            };
+          }
+          {
+            Shoko = {
+              icon = svg "shoko";
+              href = "https://shoko.theless.one";
+              description = "Anime management";
+            };
+          }
+          {
+            Bazarr = rec {
+              icon = svg "bazarr";
+              href = "https://bazarr.theless.one";
+              description = "Subtitle management";
+              widget = {
+                type = "bazarr";
+                url = href;
+                key = "{{HOMEPAGE_VAR_BAZARR_API_KEY}}";
+                fields = [
+                  "missingEpisodes"
+                  "missingMovies"
+                ];
+              };
+            };
+          }
+          {
+            Prowlarr = rec {
+              icon = svg "prowlarr";
+              href = "https://prowlarr.theless.one";
+              description = "Indexer management";
+              widget = {
+                type = "prowlarr";
+                url = href;
+                key = "{{HOMEPAGE_VAR_PROWLARR_API_KEY}}";
+                fields = [
+                  "numberOfGrabs"
+                  "numberOfQueries"
+                ];
+              };
+            };
+          }
+        ];
+      }
+    ];
+  };
+}
