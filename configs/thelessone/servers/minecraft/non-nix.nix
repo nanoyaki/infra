@@ -38,7 +38,7 @@ in
       done
     '';
     postStart = ''
-      chmod 660 ${socket}
+      [[ -f ${socket} ]] && chmod 660 ${socket}
     '';
 
     serviceConfig = {
