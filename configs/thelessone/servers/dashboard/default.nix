@@ -40,6 +40,9 @@ in
     "dashboard/lidarr" = { };
     "dashboard/bazarr" = { };
     "dashboard/prowlarr" = { };
+
+    "dashboard/latitude" = { };
+    "dashboard/longitude" = { };
   };
 
   sops.templates."homepage-secrets.env".file =
