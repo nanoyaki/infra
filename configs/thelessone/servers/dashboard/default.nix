@@ -58,6 +58,11 @@ in
         HOMEPAGE_VAR_PROWLARR_API_KEY = config.sops.placeholder."dashboard/prowlarr";
       };
 
+  config'.caddy.vHost."home.theless.one" = {
+    proxy.port = config.services.homepage-dashboard.listenPort;
+    useVpn = true;
+  };
+
   services.homepage-dashboard = {
     enable = true;
     listenPort = 33189;
