@@ -142,12 +142,15 @@ in
           };
         }
         {
-          "Arr admin".style = "row";
-        }
-        {
           Manga = {
             style = "row";
             columns = 4;
+          };
+        }
+        {
+          "Arr admin" = {
+            style = "row";
+            columns = 3;
           };
         }
       ];
