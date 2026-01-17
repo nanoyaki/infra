@@ -7,11 +7,6 @@
 
 # TODO: create a proper module to reuse and order code
 
-let
-  svg = svg: "${pkgs.dashboardIcons}/svg/${svg}.svg";
-  # png = svg: "${pkgs.dashboardIcons}/png/${svg}.png";
-in
-
 {
   nixpkgs.overlays = [
     (final: _: {
@@ -150,7 +145,7 @@ in
           {
             General = [
               {
-                icon = "${pkgs.dashboardIcons}/svg/discord.svg";
+                icon = "discord.svg";
                 href = "https://discord.com/channels/1392204217141301338";
                 description = "The Discord server";
               }
@@ -159,7 +154,7 @@ in
           {
             "Minecraft chat" = [
               {
-                icon = svg "minecraft";
+                icon = "minecraft.svg";
                 href = "https://discord.com/channels/1392204217141301338/1395405287984201738";
                 description = "Discord chat linked with the Minecraft chat";
               }
@@ -168,7 +163,7 @@ in
           {
             Issues = [
               {
-                icon = svg "forgejo";
+                icon = "forgejo.svg";
                 href = "https://git.theless.one/nanoyaki/theless.one-issues/issues";
                 description = "Report issues here";
               }
@@ -183,8 +178,9 @@ in
         Media = [
           {
             Jellyfin = rec {
-              icon = svg "jellyfin";
+              icon = "jellyfin.svg";
               href = "https://jellyfin.theless.one";
+              siteMonitor = href;
               description = "Media library";
               widget = {
                 type = "jellyfin";
@@ -202,8 +198,9 @@ in
           }
           {
             Audiobookshelf = rec {
-              icon = svg "audiobookshelf";
+              icon = "audiobookshelf.svg";
               href = "https://audiobookshelf.theless.one";
+              siteMonitor = href;
               description = "Photo backups";
               widget = {
                 type = "audiobookshelf";
@@ -218,8 +215,9 @@ in
           }
           {
             Immich = rec {
-              icon = svg "immich";
+              icon = "immich.svg";
               href = "https://images.theless.one";
+              siteMonitor = href;
               description = "Photo backups";
               widget = {
                 type = "immich";
@@ -236,8 +234,9 @@ in
           }
           {
             Fireshare = {
-              icon = svg "fireshare";
+              icon = "fireshare.svg";
               href = "https://fireshare.theless.one/#/login";
+              siteMonitor = "https://fireshare.theless.one";
               description = "Clip sharing";
             };
           }
@@ -246,16 +245,18 @@ in
       {
         "User services" = [
           {
-            Actual = {
-              icon = svg "actual";
+            Actual = rec {
+              icon = "actual.svg";
               href = "https://finances.theless.one";
+              siteMonitor = href;
               description = "Finance management";
             };
           }
           {
             Tandoor = rec {
-              icon = svg "actual";
+              icon = "actual.svg";
               href = "https://recipes.theless.one";
+              siteMonitor = href;
               description = "Recipe management";
               widget = {
                 type = "tandoor";
@@ -266,23 +267,26 @@ in
             };
           }
           {
-            Copyparty = {
-              icon = svg "copyparty";
+            Copyparty = rec {
+              icon = "copyparty.svg";
               href = "https://files.theless.one";
+              siteMonitor = href;
               description = "File server";
             };
           }
           {
-            Vaultwarden = {
-              icon = svg "vaultwarden";
+            Vaultwarden = rec {
+              icon = "vaultwarden.svg";
               href = "https://vaultwarden.theless.one";
+              siteMonitor = href;
               description = "Password manager";
             };
           }
           {
-            Forgejo = {
-              icon = svg "forgejo";
+            Forgejo = rec {
+              icon = "forgejo.svg";
               href = "https://git.theless.one";
+              siteMonitor = href;
               description = "Code forge";
             };
           }
@@ -292,8 +296,9 @@ in
         Downloads = [
           {
             Jellyseerr = rec {
-              icon = svg "jellyseerr";
+              icon = "jellyseerr.svg";
               href = "https://jellyseerr.theless.one";
+              siteMonitor = href;
               description = "Media requests";
               widget = {
                 type = "jellyseerr";
@@ -309,8 +314,9 @@ in
           }
           {
             Flood = rec {
-              icon = svg "flood";
+              icon = "flood.svg";
               href = "https://flood.theless.one";
+              siteMonitor = href;
               description = "Webinterface for deluge";
               widget = {
                 type = "flood";
@@ -328,8 +334,9 @@ in
           }
           {
             Sabnzbd = rec {
-              icon = svg "sabnzbd";
+              icon = "sabnzbd.svg";
               href = "https://sabnzbd.theless.one";
+              siteMonitor = href;
               description = "Newznab client";
               widget = {
                 type = "sabnzbd";
@@ -349,8 +356,9 @@ in
         Manga = [
           {
             Mei = rec {
-              icon = svg "suwayomi";
+              icon = "suwayomi.svg";
               href = "https://mei-manga.theless.one";
+              siteMonitor = href;
               description = "Mei's mangas";
               widget = {
                 type = "suwayomi";
@@ -360,8 +368,9 @@ in
           }
           {
             Hana = rec {
-              icon = svg "suwayomi";
+              icon = "suwayomi.svg";
               href = "https://hana-manga.theless.one";
+              siteMonitor = href;
               description = "Hana's mangas";
               widget = {
                 type = "suwayomi";
@@ -371,8 +380,9 @@ in
           }
           {
             Thomas = rec {
-              icon = svg "suwayomi";
+              icon = "suwayomi.svg";
               href = "https://thomas-manga.theless.one";
+              siteMonitor = href;
               description = "Thomas' mangas";
               widget = {
                 type = "suwayomi";
@@ -382,8 +392,9 @@ in
           }
           {
             Nik = rec {
-              icon = svg "suwayomi";
+              icon = "suwayomi.svg";
               href = "https://nik-manga.theless.one";
+              siteMonitor = href;
               description = "Nik's mangas";
               widget = {
                 type = "suwayomi";
@@ -397,8 +408,9 @@ in
         "Arr admin" = [
           {
             Radarr = rec {
-              icon = svg "radarr";
+              icon = "radarr.svg";
               href = "https://radarr.theless.one";
+              siteMonitor = href;
               description = "Movie management";
               widget = {
                 type = "radarr";
@@ -415,8 +427,9 @@ in
           }
           {
             Sonarr = rec {
-              icon = svg "sonarr";
+              icon = "sonarr.svg";
               href = "https://sonarr.theless.one";
+              siteMonitor = href;
               description = "Show management";
               widget = {
                 type = "sonarr";
@@ -432,8 +445,9 @@ in
           }
           {
             Lidarr = rec {
-              icon = svg "lidarr";
+              icon = "lidarr.svg";
               href = "https://lidarr.theless.one";
+              siteMonitor = href;
               description = "Music management";
               widget = {
                 type = "lidarr";
@@ -448,16 +462,18 @@ in
             };
           }
           {
-            Shoko = {
-              icon = svg "shoko";
+            Shoko = rec {
+              icon = "shoko.svg";
               href = "https://shoko.theless.one";
+              siteMonitor = href;
               description = "Anime management";
             };
           }
           {
             Bazarr = rec {
-              icon = svg "bazarr";
+              icon = "bazarr.svg";
               href = "https://bazarr.theless.one";
+              siteMonitor = href;
               description = "Subtitle management";
               widget = {
                 type = "bazarr";
@@ -472,8 +488,9 @@ in
           }
           {
             Prowlarr = rec {
-              icon = svg "prowlarr";
+              icon = "prowlarr.svg";
               href = "https://prowlarr.theless.one";
+              siteMonitor = href;
               description = "Indexer management";
               widget = {
                 type = "prowlarr";
