@@ -58,6 +58,9 @@ in
         HOMEPAGE_VAR_LIDARR_API_KEY = config.sops.placeholder."dashboard/lidarr";
         HOMEPAGE_VAR_BAZARR_API_KEY = config.sops.placeholder."dashboard/bazarr";
         HOMEPAGE_VAR_PROWLARR_API_KEY = config.sops.placeholder."dashboard/prowlarr";
+
+        HOMEPAGE_VAR_LATITUDE = config.sops.placeholder."dashboard/latitude";
+        HOMEPAGE_VAR_LONGITUDE = config.sops.placeholder."dashboard/longitude";
       };
 
   config'.caddy.vHost."home.theless.one" = {
@@ -83,10 +86,10 @@ in
 
       postInstall = ''
         mkdir -p $out/share/homepage/public/images
+        # Reduce image size to about 100kb
         magick ${wallpaper} \
           -resize 1920x1080\! \
-          -quality 100 \
-          -define webp:lossless=true \
+          -quality 95 \
           $out/share/homepage/public/images/${wallpaper.name}.webp
       '';
     });
@@ -103,29 +106,32 @@ in
       disableUpdateCheck = true;
 
       # Theming
-      background = "/images/${wallpaper.name}.webp";
+      headerStyle = "clean";
+      background = {
+        image = "/images/${wallpaper.name}.webp";
+        blur = "xs";
+        brightness = 50;
+        saturate = 50;
+        opacity = 50;
+      };
       favicon = "https://theless.one/favicon.ico";
       theme = "dark";
       color = "slate";
+      cardBlur = "xs";
 
       layout = [
         {
-          Media = {
-            style = "row";
-            columns = 4;
-          };
-        }
-        {
-          Downloads = {
+          General = {
+            header = false;
             style = "row";
             columns = 3;
           };
         }
         {
-          "Arr admin" = {
-            style = "row";
-            columns = 3;
-          };
+          Media.style = "column";
+        }
+        {
+          Downloads.style = "column";
         }
         {
           "User services" = {
@@ -133,8 +139,12 @@ in
           };
         }
         {
+          "Arr admin".style = "row";
+        }
+        {
           Manga = {
-            style = "column";
+            style = "row";
+            columns = 4;
           };
         }
       ];
@@ -152,11 +162,34 @@ in
       };
     };
 
+    widgets = [
+      { logo.icon = "https://theless.one/assets/nix.svg"; }
+      {
+        search = {
+          provider = "duckduckgo";
+          target = "_blank";
+          showSearchSuggestions = true;
+          focus = true;
+        };
+      }
+      {
+        openmeteo = {
+          label = "Austria - Server";
+          latitude = "{{HOMEPAGE_VAR_LATITUDE}}";
+          longitude = "{{HOMEPAGE_VAR_LONGITUDE}}";
+          timezone = "Austria/Vienna";
+          units = "metric";
+          cache = 5;
+          format.maximumFractionDigits = 1;
+        };
+      }
+    ];
+
     bookmarks = [
       {
-        Discord = [
+        General = [
           {
-            General = [
+            Discord = [
               {
                 icon = "discord.svg";
                 href = "https://discord.com/channels/1392204217141301338";
@@ -247,7 +280,7 @@ in
           }
           {
             Fireshare = {
-              icon = "fireshare.svg";
+              icon = "fireshare.webp";
               href = "https://fireshare.theless.one/#/login";
               siteMonitor = "https://fireshare.theless.one";
               description = "Clip sharing";
@@ -259,7 +292,7 @@ in
         "User services" = [
           {
             Actual = rec {
-              icon = "actual.svg";
+              icon = "actual-budget.svg";
               href = "https://finances.theless.one";
               siteMonitor = href;
               description = "Finance management";
@@ -267,7 +300,7 @@ in
           }
           {
             Tandoor = rec {
-              icon = "actual.svg";
+              icon = "tandoor-recipes.svg";
               href = "https://recipes.theless.one";
               siteMonitor = href;
               description = "Recipe management";
