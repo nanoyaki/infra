@@ -56,7 +56,6 @@
       [
         fabric-api
         fabricproxy-lite
-        simple-voice-chat
         vmp-fabric
         lithium
         player-roles
@@ -94,10 +93,5 @@
         mini-blocks-datapack
       ]
     );
-
-    symlinks."config/voicechat/voicechat-server.properties".value = {
-      port = 24456;
-      voice_host = "theless.one:24456";
-    };
   };
 }
