@@ -117,7 +117,7 @@ in
           };
         }
         {
-          "Random stuff" = {
+          "User services" = {
             style = "column";
             useEqualHeights = true;
           };
@@ -242,7 +242,53 @@ in
             };
           }
         ];
-
+      }
+      {
+        "User services" = [
+          {
+            Actual = {
+              icon = svg "actual";
+              href = "https://finances.theless.one";
+              description = "Finance management";
+            };
+          }
+          {
+            Tandoor = rec {
+              icon = svg "actual";
+              href = "https://recipes.theless.one";
+              description = "Recipe management";
+              widget = {
+                type = "tandoor";
+                url = href;
+                key = "{{HOMEPAGE_VAR_TANDOOR_API_KEY}}";
+                fields = [ "recipes" ];
+              };
+            };
+          }
+          {
+            Copyparty = {
+              icon = svg "copyparty";
+              href = "https://files.theless.one";
+              description = "File server";
+            };
+          }
+          {
+            Vaultwarden = {
+              icon = svg "vaultwarden";
+              href = "https://vaultwarden.theless.one";
+              description = "Password manager";
+            };
+          }
+          {
+            Forgejo = {
+              icon = svg "forgejo";
+              href = "https://git.theless.one";
+              description = "Code forge";
+            };
+          }
+        ];
+      }
+      {
         Downloads = [
           {
             Jellyseerr = rec {
@@ -298,51 +344,8 @@ in
             };
           }
         ];
-
-        "Random stuff" = [
-          {
-            Actual = {
-              icon = svg "actual";
-              href = "https://finances.theless.one";
-              description = "Finance management";
-            };
-          }
-          {
-            Tandoor = rec {
-              icon = svg "actual";
-              href = "https://recipes.theless.one";
-              description = "Recipe management";
-              widget = {
-                type = "tandoor";
-                url = href;
-                key = "{{HOMEPAGE_VAR_TANDOOR_API_KEY}}";
-                fields = [ "recipes" ];
-              };
-            };
-          }
-          {
-            Copyparty = {
-              icon = svg "copyparty";
-              href = "https://files.theless.one";
-              description = "File server";
-            };
-          }
-          {
-            Vaultwarden = {
-              icon = svg "vaultwarden";
-              href = "https://vaultwarden.theless.one";
-              description = "Password manager";
-            };
-          }
-          {
-            Forgejo = {
-              icon = svg "forgejo";
-              href = "https://git.theless.one";
-              description = "Code forge";
-            };
-          }
-        ];
-
+      }
+      {
         Manga = [
           {
             Mei = rec {
@@ -389,7 +392,8 @@ in
             };
           }
         ];
-
+      }
+      {
         "Arr admin" = [
           {
             Radarr = rec {
