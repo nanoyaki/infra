@@ -76,12 +76,20 @@ in
     ];
     environmentFile = config.sops.templates."homepage-secrets.env".path;
 
-    package = pkgs.homepage-dashboard.overrideAttrs {
+    package = pkgs.homepage-dashboard.overrideAttrs (prevAttrs: {
+      nativeBuildInputs = (prevAttrs.nativeBuildInputs or [ ]) ++ [
+        pkgs.imagemagick
+      ];
+
       postInstall = ''
         mkdir -p $out/share/homepage/public/images
-        ln -s ${wallpaper} $out/share/homepage/public/images/${wallpaper.name}.png
+        magick ${wallpaper} \
+          -resize 1920x1080\! \
+          -quality 100 \
+          -define webp:lossless=true \
+          $out/share/homepage/public/images/${wallpaper.name}.webp
       '';
-    };
+    });
 
     settings = {
       # Meta
@@ -95,7 +103,7 @@ in
       disableUpdateCheck = true;
 
       # Theming
-      background = "/images/${wallpaper.name}.png";
+      background = "/images/${wallpaper.name}.webp";
       favicon = "https://theless.one/favicon.ico";
       theme = "dark";
       color = "slate";
