@@ -7,6 +7,13 @@
 
 # TODO: create a proper module to reuse and order code
 
+let
+  wallpaper = pkgs.fetchPixivIllust {
+    pixivId = 139667080;
+    hash = "sha256-DtiyzMmxC7qpHc77eUcxRtpJOGSWGYMxabl1+WuFCY8=";
+  };
+in
+
 {
   nixpkgs.overlays = [
     (final: _: {
@@ -69,6 +76,13 @@
     ];
     environmentFile = config.sops.templates."homepage-secrets.env".path;
 
+    package = pkgs.homepage-dashboard.overrideAttrs {
+      postInstall = ''
+        mkdir -p $out/share/homepage/public/images
+        ln -s ${wallpaper} $out/share/homepage/public/images/${wallpaper.name}.png
+      '';
+    };
+
     settings = {
       # Meta
       title = "theless.one";
@@ -81,11 +95,8 @@
       disableUpdateCheck = true;
 
       # Theming
-      background = pkgs.fetchPixivIllust {
-        pixivId = 139667080;
-        hash = "sha256-DtiyzMmxC7qpHc77eUcxRtpJOGSWGYMxabl1+WuFCY8=";
-      };
-      favicon = "${pkgs.thelessDotOne}/favicon.ico";
+      background = "/images/${wallpaper.name}.png";
+      favicon = "https://theless.one/favicon.ico";
       theme = "dark";
       color = "slate";
 
