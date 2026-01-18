@@ -114,11 +114,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768598221,
-        "narHash": "sha256-09F+4yMnno3yI1us7t0Gt/wEbyZNk5U8EW9IE9HGXg8=",
+        "lastModified": 1768696246,
+        "narHash": "sha256-IuoFZtPL/M0lNN4V+MOZT0eyTfh1FvUj9Ubo7yvhYPU=",
         "owner": "9001",
         "repo": "copyparty",
-        "rev": "72c59405e7a49686389414913787245aa8e66164",
+        "rev": "d9255538100f5196a7e4ffdd78661f68d77cdb4f",
         "type": "github"
       },
       "original": {
@@ -423,11 +423,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768528912,
-        "narHash": "sha256-sbp4JtdeVpT4ZieQ6iZU+j+0nIK634cKhJk5AfCqslo=",
+        "lastModified": 1768615316,
+        "narHash": "sha256-qf6cboqmOWN6IGSTyK5xkAG5wzaE4546LvshPNZe9H0=",
         "ref": "refs/heads/main",
-        "rev": "087412279710284ff1e58a4983d6c5285ab5709f",
-        "revCount": 48,
+        "rev": "a9a4232a332deea289aa8f732a70d6db9b991e1b",
+        "revCount": 50,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nanolib.git"
       },
@@ -452,11 +452,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768549584,
-        "narHash": "sha256-+6vjJtbiL/a2Wa8cnmB2dwhOLkmyqdsCpHdb3CoQBWs=",
+        "lastModified": 1768646699,
+        "narHash": "sha256-IN7d7AWxP1KiOvo6z11X7wGhSXtT+GcgV7Rn/0wpQr0=",
         "ref": "refs/heads/main",
-        "rev": "fe1994f74ac3d03a08e5160491e3b97bdb0d2fc8",
-        "revCount": 89,
+        "rev": "65c3ccf2fd703f73268c931759f6ff423ae7abf1",
+        "revCount": 91,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/nanomodules.git"
       },
@@ -602,11 +602,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768569780,
-        "narHash": "sha256-fukAjPMHnCrTyOr+MrdAwUNrk58lJwkeDZZ0dvZvoxg=",
+        "lastModified": 1768616908,
+        "narHash": "sha256-jBAVIJ3sZrji8Lk+QcrEUfjU7thA67k9nBNHvU4n1js=",
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
-        "rev": "0d02ab3691b2e235f21f12aef42b4af215fb0a46",
+        "rev": "ba68392077c0ec40d1a5b0e03fdda6b59bcdd652",
         "type": "github"
       },
       "original": {
@@ -625,11 +625,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768614713,
-        "narHash": "sha256-K+kAIZd9d3yPX7qxK8UL+43XeH6Uf4S3pLltpnUhzIA=",
+        "lastModified": 1768700529,
+        "narHash": "sha256-NdKLP5y8nbtaFSEzGfZhhp4dKxAQr/GtClRLH1IhOI8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "8a51ee0772da572b130fec7c014ecf06bfa4de0c",
+        "rev": "5196fdfc1b212a6a82ab7065f1f47b004390bfa7",
         "type": "github"
       },
       "original": {
