@@ -63,8 +63,6 @@ in
     operators.nanoyaki = "433b63b5-5f77-4a9f-b834-8463d520500c";
 
     symlinks = {
-      "server-icon.png" = ../logo.png;
-
       "config/voicechat/voicechat-server.properties" = {
         format = formats.keyValue { };
         value = {
@@ -98,13 +96,17 @@ in
       };
     };
 
-    files."config/FabricProxy-Lite.toml" = {
-      format = formats.toml { };
-      value = {
-        hackOnlineMode = true;
-        hackMessageChain = true;
-        disconnectMessage = "Please connect through the proxy.";
-        secret = "@FABRIC_PROXY_SECRET@";
+    files = {
+      "server-icon.png" = ../logo.png;
+
+      "config/FabricProxy-Lite.toml" = {
+        format = formats.toml { };
+        value = {
+          hackOnlineMode = true;
+          hackMessageChain = true;
+          disconnectMessage = "Please connect through the proxy.";
+          secret = "@FABRIC_PROXY_SECRET@";
+        };
       };
     };
   };
