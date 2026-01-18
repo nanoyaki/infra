@@ -11,7 +11,8 @@ in
     package = pkgs.fabricServers.fabric-1_21_11;
 
     extraStopPre = ''
-      tmux -S ${tmux.socketPath} send-keys
+      tmux -S ${tmux.socketPath "smp"} send-keys "say Server restart in 10 seconds" Enter
+      sleep 10
     '';
 
     serverProperties = {
