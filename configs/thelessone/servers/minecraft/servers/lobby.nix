@@ -31,9 +31,6 @@
       # to server upload speed limits
       elytra_movement_check = false;
       player_movement_check = false;
-
-      # Minecart speed
-      "ace:speed_player" = 64;
     };
 
     mods = map (mod: mod.latest) (

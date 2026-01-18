@@ -2,12 +2,17 @@
 
 let
   inherit (pkgs) formats;
+  inherit (config.services.minecraft-servers.managementSystem) tmux;
 in
 
 {
   services.minecraft-servers'.servers.smp = {
     enable = true;
     package = pkgs.fabricServers.fabric-1_21_11;
+
+    extraStopPre = ''
+      tmux -S ${tmux.socketPath} send-keys
+    '';
 
     serverProperties = {
       server-port = 30050;
@@ -23,9 +28,6 @@ in
       # to server upload speed limits
       elytra_movement_check = false;
       player_movement_check = false;
-
-      # Minecart speed
-      "ace:speed_player" = 64;
     };
 
     datapacks = map (datapack: datapack.latest) (

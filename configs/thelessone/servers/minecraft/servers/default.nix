@@ -24,6 +24,7 @@ in
         FABRIC_PROXY_SECRET = config.sops.placeholder.proxy;
       };
 
+  users.users.thelessone.extraGroups = [ config.services.minecraft-servers.group ];
   services.minecraft-servers = {
     enable = true;
     eula = true;
