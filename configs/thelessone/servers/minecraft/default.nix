@@ -18,7 +18,6 @@ let
   inherit (lib)
     mapAttrs
     recursiveUpdate
-    removeAttrs
     attrNames
     optionalAttrs
     optionalString

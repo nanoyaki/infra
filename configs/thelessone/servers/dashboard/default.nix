@@ -169,7 +169,7 @@ in
     };
 
     widgets = [
-      { logo.icon = "https://theless.one/assets/nix.svg"; }
+      { logo.icon = "https://theless.one/assets/logo.svg"; }
       {
         search = {
           provider = "duckduckgo";

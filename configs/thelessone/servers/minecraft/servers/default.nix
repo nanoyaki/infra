@@ -63,7 +63,7 @@ in
     operators.nanoyaki = "433b63b5-5f77-4a9f-b834-8463d520500c";
 
     symlinks = {
-      "server-icon.png" = ../icon.png;
+      "server-icon.png" = ../logo.png;
 
       "config/voicechat/voicechat-server.properties" = {
         format = formats.keyValue { };

@@ -10,7 +10,6 @@
 let
   inherit (lib)
     concatStringsSep
-    map
     attrNames
     isBool
     mapAttrs
@@ -72,7 +71,7 @@ stdenvNoCC.mkDerivation {
     runHook preInstall
 
     mkdir -p $out/data/{minecraft/tags/function,declarative_gamerules/function}
-    ln -s ${./icon.png} $out/pack.png
+    ln -s ${./nix.png} $out/pack.png
     ln -s ${jsonFiles.packMcmeta} $out/pack.mcmeta
     ln -s ${jsonFiles.loadJson} $out/data/minecraft/tags/function/load.json
     ln -s $src $out/data/declarative_gamerules/function/setup.mcfunction
