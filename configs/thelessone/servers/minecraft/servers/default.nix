@@ -64,25 +64,6 @@ in
     operators.nanoyaki = "433b63b5-5f77-4a9f-b834-8463d520500c";
 
     symlinks = {
-      "config/expresscarts/config.json" = {
-        format = formats.json { };
-        value = {
-          # Multipliers
-          maxMinecartSpeed = 64;
-          waterSpeedMultiplier = 0.5;
-          fallDamageMultiplier = 1.0;
-
-          # QOL
-          brakeSlowdown = 0.8;
-          brakingEnabled = true;
-          fastUnpoweredSlowdown = true;
-
-          # Keep behaviour as vanilla as possible
-          loadChunks = false;
-          blockSpeedMultipliers = { };
-        };
-      };
-
       "config/voicechat/voicechat-server.properties" = {
         format = formats.keyValue { };
         value = {
@@ -118,6 +99,25 @@ in
 
     files = {
       "server-icon.png" = ../logo.png;
+
+      "config/expresscarts/config.json" = {
+        format = formats.json { };
+        value = {
+          # Multipliers
+          maxMinecartSpeed = 64.0;
+          waterSpeedMultiplier = 0.5;
+          fallDamageMultiplier = 1.0;
+
+          # QOL
+          brakeSlowdown = 0.8;
+          brakingEnabled = true;
+          fastUnpoweredSlowdown = true;
+
+          # Keep behaviour as vanilla as possible
+          loadChunks = false;
+          blockSpeedMultipliers = { };
+        };
+      };
 
       "config/FabricProxy-Lite.toml" = {
         format = formats.toml { };
