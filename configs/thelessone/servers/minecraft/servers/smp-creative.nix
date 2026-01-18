@@ -55,7 +55,7 @@
         architectury-api
         cloth-config
         yacl
-        audaki-cart-engine
+        express-carts
 
         axiom
         carpet
