@@ -3,7 +3,7 @@
 {
   services.caddy = {
     enable = true;
-    globalConfig = ''
+    extraConfig = ''
       (error_handling) {
         handle_errors {
           root * ${
