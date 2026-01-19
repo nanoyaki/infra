@@ -20,6 +20,7 @@
           ./hardware
 
           ./openssh.nix
+          ./networking.nix
         ];
 
         sops.secrets."users/root".neededForUsers = true;

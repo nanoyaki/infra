@@ -165,6 +165,14 @@
           "fd64::22/128"
         ];
       }
+      {
+        # sentinel
+        publicKey = "Kpj71d9PfdskRId0w9920mxAlU1ELtNbhepL21TqHFE=";
+        allowedIPs = [
+          "100.64.64.23/32"
+          "fd64::23/128"
+        ];
+      }
     ];
   };
 
