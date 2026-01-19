@@ -29,5 +29,8 @@ in
     # Thelessnas
     "10.0.0.6".publicKey =
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPqlQS9C6tms9vFdb0tuaudzCFMH57xcBYnkT3FQVdba";
+
+    "85.215.152.236".publicKey =
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAQEccskyRqrMdwPWEIafcrA9f3bi0A56tclI49HbZV3";
   };
 }
