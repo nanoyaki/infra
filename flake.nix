@@ -160,6 +160,7 @@
 
         ./configs/thelessone
         ./configs/thelessnas
+        ./configs/sentinel
       ];
 
       perSystem =
