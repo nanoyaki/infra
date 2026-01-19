@@ -26,7 +26,17 @@
     virtualHosts."theless.one" = {
       serverAliases = [ "*.theless.one" ];
       extraConfig = ''
-        reverse_proxy 100.64.64.1 localhost {
+        @vpn remote_ip 100.64.64.0/24
+
+        reverse_proxy @vpn 100.64.64.1 localhost {
+          lb_policy first
+
+          fail_duration 30s
+          max_fails 2
+          unhealthy_status 4xx 5xx
+        }
+
+        reverse_proxy at01.theless.one {
           lb_policy first
 
           fail_duration 30s
