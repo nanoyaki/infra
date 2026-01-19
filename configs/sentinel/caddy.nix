@@ -3,6 +3,12 @@
 {
   services.caddy = {
     enable = true;
+
+    logFormat = ''
+      level INFO
+      format console
+    '';
+
     extraConfig = ''
       (error_handling) {
         handle_errors {
@@ -25,6 +31,7 @@
 
     virtualHosts."theless.one" = {
       serverAliases = [ "*.theless.one" ];
+      useACMEHost = "theless.one";
       extraConfig = ''
         @vpn remote_ip 100.64.64.0/24
 

@@ -81,6 +81,10 @@
     PORKBUN_SECRET_API_KEY = config.sops.placeholder."porkbun-nano/secret-api-key";
   };
 
+  users.users.acme.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILop1PDNFg/4cifMlfwg5wyJcJDpankE01FIt4K104nW"
+  ];
+
   security.acme = {
     acceptTerms = true;
     defaults = {
@@ -92,9 +96,9 @@
       dnsPropagationCheck = true;
     };
 
-    certs."theless.one" = {
+    certs."mail.theless.one" = {
       environmentFile = config.sops.templates."theless.one.acme.env".path;
-      extraDomainNames = [ "*.theless.one" ];
+      extraDomainNames = [ "at01.theless.one" ];
     };
 
     certs."nanoyaki.space" = {

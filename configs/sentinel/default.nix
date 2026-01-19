@@ -21,7 +21,8 @@
 
           ./openssh.nix
           ./networking.nix
-          ./dns.nix
+          ./oink.nix
+          ./acme.nix
           ./caddy.nix
         ];
 

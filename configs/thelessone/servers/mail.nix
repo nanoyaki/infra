@@ -73,7 +73,7 @@
       };
     };
 
-    x509.useACMEHost = "theless.one";
+    x509.useACMEHost = "mail.theless.one";
 
     dkimSigning = true;
     dkimKeyType = "rsa";

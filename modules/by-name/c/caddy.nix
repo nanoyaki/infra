@@ -118,7 +118,7 @@ in
         }
       '';
 
-      virtualHosts = mapAttrs (domain: vhost: {
+      virtualHosts = mapAttrs (_: vhost: {
         extraConfig = ''
           ${optionalString (vhost.userEnvVar != null) ''
             basic_auth * {
@@ -135,7 +135,7 @@ in
           import error_handling
         '';
         inherit (vhost) serverAliases;
-        useACMEHost = mkIf (hasInfix cfg.baseDomain domain) cfg.baseDomain;
+        # useACMEHost = mkIf (hasInfix cfg.baseDomain domain) cfg.baseDomain;
         listenAddresses = mkIf vhost.useVpn (
           map (
             cidrSuffixed:
