@@ -53,8 +53,7 @@
           inherit subdomain;
         })
         [
-          "*"
-          ""
+          "at01"
           "mail"
         ];
   };
@@ -95,10 +94,7 @@
 
     certs."theless.one" = {
       environmentFile = config.sops.templates."theless.one.acme.env".path;
-      extraDomainNames = [
-        "*.vpn.theless.one"
-        "*.theless.one"
-      ];
+      extraDomainNames = [ "*.theless.one" ];
     };
 
     certs."nanoyaki.space" = {

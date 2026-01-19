@@ -21,6 +21,8 @@
 
           ./openssh.nix
           ./networking.nix
+          ./dns.nix
+          ./caddy.nix
         ];
 
         sops.secrets."users/root".neededForUsers = true;
