@@ -1,0 +1,48 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'flake.lock'
+      - 'modules/**/*.nix'
+      - 'configs/sentinel/**/*.nix'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: native
+    outputs:
+      generation: ${{ steps.build.outputs.path }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build generation
+        id: build
+        run: >
+          nix build .#nixosConfigurations.sentinel.config.system.build.toplevel
+
+          echo "path=$(readlink -f ./result)" >> $FORGEJO_OUTPUT
+
+  diff:
+    runs-on: native
+    needs: build
+    steps:
+      - name: Diff
+        run: dix -v /etc/systems/sentinel "${{ needs.build.outputs.generation }}"
+
+  deployment:
+    runs-on: native
+    needs: build
+    env:
+      DEPLOYMENT_KEY_SENTINEL: ${{ secrets.DEPLOYMENT_KEY_SENTINEL }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Deploy
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add <(echo "$DEPLOYMENT_KEY_SENTINEL")
+
+          nh os switch . -H sentinel --target-host root@85.215.152.236 --no-nom -R
