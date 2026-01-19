@@ -26,6 +26,9 @@ in
       PasswordAuthentication = false;
       PermitRootLogin = "prohibit-password";
     };
+
+    knownHosts."at01.theless.one".publicKey =
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAMMGaMOd8S0N/fUetBkdMehGP47/88C8LDjobmuvwjS";
   };
 
   nanoSystem.deployment.addresses."85.215.152.236" = {

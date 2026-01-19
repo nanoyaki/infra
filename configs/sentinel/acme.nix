@@ -11,7 +11,7 @@ let
 
     postStop = ''
       rsync -avz --delete \
-        -e "ssh -i ''${CREDENTIALS_DIRECTORY}/id_acme_thelessone" \
+        -e "ssh -i ''$CREDENTIALS_DIRECTORY/id_acme_thelessone" \
         ${config.security.acme.certs."theless.one".directory} \
         acme@at01.theless.one:${config.security.acme.certs."theless.one".directory}
     '';
