@@ -25,7 +25,7 @@
         sops.secrets."users/root".neededForUsers = true;
         users.users.root.hashedPasswordFile = config.sops.secrets."users/root".path;
 
-        nanoSystem.sops.enable = false;
+        nanoSystem.sops.enable = true;
         nanoSystem.sops.defaultSopsFile = ./secrets/host.yaml;
 
         system.stateVersion = "26.05";
