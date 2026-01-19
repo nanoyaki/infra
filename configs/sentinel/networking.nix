@@ -8,7 +8,7 @@
       "100.64.64.7/32"
       "fd64::7/128"
     ];
-    privateKeyFile = config.sops.secrets.wg0;
+    privateKeyFile = config.sops.secrets.wg0.path;
 
     peers = [
       {
