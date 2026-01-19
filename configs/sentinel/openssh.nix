@@ -6,10 +6,17 @@ let
 in
 
 {
-  users.users.root.openssh.authorizedKeys.keys = [
-    id_nadesiko
-    id_sentinel_deployment
-  ];
+  users.users = {
+    root.openssh.authorizedKeys.keys = [
+      id_nadesiko
+      id_sentinel_deployment
+    ];
+
+    sentinel.openssh.authorizedKeys.keys = [
+      id_nadesiko
+      id_sentinel_deployment
+    ];
+  };
 
   services.openssh = {
     enable = lib.mkForce true;

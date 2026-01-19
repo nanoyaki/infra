@@ -7,21 +7,28 @@
     users.sentinel = {
       isMainUser = true;
       isSuperuser = true;
-      # hashedPasswordSopsKey = "users/sentinel"; keep null for now
+      hashedPasswordSopsKey = "users/sentinel";
       home.stateVersion = "26.05";
     };
     stateVersion = "25.12";
-    config = {
-      imports = [
-        inputs.disko.nixosModules.disko
-        ./hardware
+    config =
+      { config, ... }:
 
-        ./openssh.nix
-      ];
+      {
+        imports = [
+          inputs.disko.nixosModules.disko
+          ./hardware
 
-      nanoSystem.sops.enable = false;
+          ./openssh.nix
+        ];
 
-      system.stateVersion = "26.05";
-    };
+        sops.secrets."users/root".neededForUsers = true;
+        users.users.root.hashedPasswordFile = config.sops.secrets."users/root".path;
+
+        nanoSystem.sops.enable = false;
+        nanoSystem.sops.defaultSopsFile = ./secrets/host.yaml;
+
+        system.stateVersion = "26.05";
+      };
   };
 }

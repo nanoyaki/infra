@@ -2,6 +2,7 @@ keys:
   - &shirayuri age1g76tzmg5pr368e8acvxzlz8rvakzy7atjl0qzm0xsdy56u9m4ejswcss5g
   - &thelessone age1t5w4gj3d8ulk2xud6kgkdpgtugcycd3vqeu05jth6wcflvu3fd0qucklu8
   - &thelessnas age1a82mdpvl5w2j0ahyccngc2wvwgrhezrnwn5te99yxy254f9nm54qex3r0y
+  - &sentinel age1xqlmklzh0he8xr23wal8kjdhlhqsp8fhvvxqnzn0mkrg2d4ud5ssgq89cj
 creation_rules:
   - path_regex: configs/thelessone/secrets/.*\.yaml$
     key_groups:
@@ -13,11 +14,11 @@ creation_rules:
       - age:
           - *thelessnas
           - *shirayuri
-  # - path_regex: configs/sentinel/secrets/.*\.yaml$
-  #   key_groups:
-  #     - age:
-  #         - *thelessnas
-  #         - *shirayuri
+  - path_regex: configs/sentinel/secrets/.*\.yaml$
+    key_groups:
+      - age:
+          - *sentinel
+          - *shirayuri
   - path_regex: modules/systems/all/.*\.yaml$
     key_groups:
       - age:
