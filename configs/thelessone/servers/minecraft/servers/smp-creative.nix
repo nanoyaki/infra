@@ -52,7 +52,7 @@
         architectury-api
         cloth-config
         yacl
-        express-carts
+        # express-carts
 
         axiom
         carpet
