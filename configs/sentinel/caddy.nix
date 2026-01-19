@@ -29,7 +29,7 @@
         reverse_proxy 100.64.64.1 localhost {
           lb_policy first
 
-          fail_duration 30
+          fail_duration 30s
           max_fails 2
           unhealthy_status 4xx 5xx
         }
