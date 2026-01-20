@@ -1,12 +1,17 @@
 { pkgs, ... }:
 
 {
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
+
   services.caddy = {
     enable = true;
 
     logFormat = ''
       level INFO
-      format console
+      format single_field '{ts} {remote} → {method} {uri} {status} {size} "{user_agent}" ({latency})'
     '';
 
     extraConfig = ''
@@ -34,8 +39,7 @@
       useACMEHost = "theless.one";
       extraConfig = ''
         @vpn remote_ip 100.64.64.0/24
-
-        reverse_proxy @vpn 100.64.64.1 localhost {
+        reverse_proxy @vpn 100.64.64.1 100.64.64.23 {
           lb_policy first
 
           fail_duration 30s
@@ -43,7 +47,8 @@
           unhealthy_status 4xx 5xx
         }
 
-        reverse_proxy at01.theless.one {
+        @public not host at01.theless.one de01.theless.one
+        reverse_proxy @public at01.theless.one de01.theless.one {
           lb_policy first
 
           fail_duration 30s

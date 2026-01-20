@@ -120,8 +120,8 @@ in
 
       virtualHosts = mapAttrs (domain: vhost: {
         extraConfig = ''
-          ${optionalString (hasInfix cfg.baseDomain domain) ''
-            tls /var/lib/acme/${cfg.baseDomain}/cert.pem /var/lib/acme/${cfg.baseDomain}/key.pem
+          ${optionalString (hasInfix "theless.one" domain) ''
+            tls /var/lib/acme-remote/${cfg.baseDomain}/cert.pem /var/lib/acme-remote/${cfg.baseDomain}/key.pem
           ''}
 
           ${optionalString (vhost.userEnvVar != null) ''
@@ -139,7 +139,9 @@ in
           import error_handling
         '';
         inherit (vhost) serverAliases;
-        # useACMEHost = mkIf (hasInfix cfg.baseDomain domain) cfg.baseDomain;
+        useACMEHost = mkIf (
+          (hasInfix cfg.baseDomain domain) && !(hasInfix "theless.one" domain)
+        ) cfg.baseDomain;
         listenAddresses = mkIf vhost.useVpn (
           map (
             cidrSuffixed:

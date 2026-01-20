@@ -37,10 +37,11 @@ in
       postRun = ''
         set -x
 
+        RSYNC_RSH="ssh -i ${config.sops.secrets.id_acme_thelessone.path}"
+
         ${lib.getExe pkgs.rsync} -avz --delete \
-          -e "ssh -i ${config.sops.secrets.id_acme_thelessone.path}" \
           ${config.security.acme.certs."theless.one".directory} \
-          acme@100.64.64.1:${config.security.acme.certs."theless.one".directory}
+          acme-remote@100.64.64.1:/var/lib/acme-remote/theless.one
       '';
     };
   };

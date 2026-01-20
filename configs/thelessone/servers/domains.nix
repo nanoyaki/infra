@@ -6,58 +6,75 @@
 }:
 
 {
-  sops.secrets = {
-    "dynamicdns/vappie.space" = { };
-    "porkbun/api-key" = { };
-    "porkbun/secret-api-key" = { };
-    "porkbun-nano/api-key" = { };
-    "porkbun-nano/secret-api-key" = { };
-  };
+  sops = {
+    secrets = {
+      "dynamicdns/vappie.space" = { };
 
-  config'.dynamicdns.enable = true;
-  config'.dynamicdns.domains."vappie.space" = {
-    subdomains = [
-      "*"
-      "@"
-    ];
-
-    passwordFile = config.sops.secrets."dynamicdns/vappie.space".path;
-  };
-
-  sops.templates."oink.json".file = (pkgs.formats.json { }).generate "oink.json" {
-    global = {
-      secretapikey = config.sops.placeholder."porkbun/secret-api-key";
-      apikey = config.sops.placeholder."porkbun/api-key";
-      interval = 900;
-      ttl = 600;
+      "porkbun/api-key" = { };
+      "porkbun/secret-api-key" = { };
+      "porkbun-nano/api-key" = { };
+      "porkbun-nano/secret-api-key" = { };
     };
 
-    domains = [
-      {
-        secretapikey = config.sops.placeholder."porkbun-nano/secret-api-key";
-        apikey = config.sops.placeholder."porkbun-nano/api-key";
-        domain = "nanoyaki.space";
-        subdomain = "";
-      }
-      {
-        secretapikey = config.sops.placeholder."porkbun-nano/secret-api-key";
-        apikey = config.sops.placeholder."porkbun-nano/api-key";
-        domain = "nanoyaki.space";
-        subdomain = "*";
-      }
-    ]
-    ++
-      map
-        (subdomain: {
+    templates."oink.json".content = builtins.toJSON {
+      global = {
+        secretapikey = config.sops.placeholder."porkbun/secret-api-key";
+        apikey = config.sops.placeholder."porkbun/api-key";
+        interval = 900;
+        ttl = 600;
+      };
+
+      domains = [
+        {
+          secretapikey = config.sops.placeholder."porkbun-nano/secret-api-key";
+          apikey = config.sops.placeholder."porkbun-nano/api-key";
+          domain = "nanoyaki.space";
+          subdomain = "";
+        }
+        {
+          secretapikey = config.sops.placeholder."porkbun-nano/secret-api-key";
+          apikey = config.sops.placeholder."porkbun-nano/api-key";
+          domain = "nanoyaki.space";
+          subdomain = "*";
+        }
+        {
           domain = "theless.one";
-          inherit subdomain;
-        })
-        [
-          ""
-          "*"
-          "at01"
-          "mail"
-        ];
+          subdomain = "at01";
+        }
+        # Remove this soon
+        {
+          domain = "theless.one";
+          subdomain = "";
+        }
+        {
+          domain = "theless.one";
+          subdomain = "*";
+        }
+      ];
+    };
+  };
+
+  config'.dynamicdns = {
+    enable = true;
+
+    domains."vappie.space" = {
+      passwordFile = config.sops.secrets."dynamicdns/vappie.space".path;
+      subdomains = [
+        "*"
+        "@"
+      ];
+    };
+  };
+
+  users.users.acme-remote = {
+    isSystemUser = true;
+    inherit (config.services.caddy) group;
+    home = "/var/lib/acme-remote";
+    homeMode = "750";
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILop1PDNFg/4cifMlfwg5wyJcJDpankE01FIt4K104nW"
+    ];
   };
 
   systemd.services.oink = {
@@ -111,10 +128,6 @@
     PORKBUN_API_KEY = config.sops.placeholder."porkbun-nano/api-key";
     PORKBUN_SECRET_API_KEY = config.sops.placeholder."porkbun-nano/secret-api-key";
   };
-
-  users.users.acme.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILop1PDNFg/4cifMlfwg5wyJcJDpankE01FIt4K104nW"
-  ];
 
   security.acme = {
     acceptTerms = true;
