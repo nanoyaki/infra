@@ -9,7 +9,7 @@
   services.caddy = {
     enable = true;
     package = pkgs.caddy.withPlugins {
-      plugins = [ "https://github.com/mholt/caddy-l4@93f52b6a03bac66a4321dd1c5287820e3c2a832c" ];
+      plugins = [ "github.com/mholt/caddy-l4@93f52b6a03bac66a4321dd1c5287820e3c2a832c" ];
       hash = "sha256-s8D9p8k/Gote8s4fk0pv35R7aIwRi5ze7gbBHj+Fm8U=";
     };
 
