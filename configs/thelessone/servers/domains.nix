@@ -53,6 +53,8 @@
           inherit subdomain;
         })
         [
+          ""
+          "*"
           "at01"
           "mail"
         ];
@@ -65,9 +67,38 @@
     after = [ "network-online.target" ];
 
     serviceConfig = {
-      ExecStart = "${lib.getExe pkgs.oink} -c ${config.sops.templates."oink.json".path} -v";
+      LoadCredential = "oink.json:${config.sops.templates."oink.json".path}";
+      ExecStart = "${lib.getExe pkgs.oink} -c \${CREDENTIALS_DIRECTORY}/oink.json -v";
       Restart = "always";
       Type = "simple";
+
+      # Hardening
+      DynamicUser = true;
+      CapabilityBoundingSet = "";
+      SystemCallFilter = [ "@system-service" ];
+
+      NoNewPrivileges = true;
+      ProtectClock = true;
+      RestrictNamespaces = true;
+      RestrictSUIDSGID = true;
+      LockPersonality = true;
+      RestrictRealtime = true;
+      RestrictAddressFamilies = [
+        "AF_INET"
+        "AF_INET6"
+      ];
+      MemoryDenyWriteExecute = true;
+      ProtectHostname = true;
+
+      ProtectSystem = "strict";
+      PrivateTmp = true;
+      ProtectHome = true;
+      PrivateDevices = true;
+      ProtectControlGroups = true;
+      ProtectKernelTunables = true;
+      ProtectKernelModules = true;
+      ProtectKernelLogs = true;
+      ProtectProc = "invisible";
     };
   };
 

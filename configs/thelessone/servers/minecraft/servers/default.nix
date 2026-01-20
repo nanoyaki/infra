@@ -61,6 +61,7 @@ in
 
     serverProperties.white-list = true;
     whitelist = import ./whitelist.nix;
+    bannedPlayers = import ./banned.nix;
     operators.nanoyaki = "433b63b5-5f77-4a9f-b834-8463d520500c";
 
     symlinks = {

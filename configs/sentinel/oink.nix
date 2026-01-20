@@ -21,13 +21,17 @@
       };
 
       domains = [
+        # {
+        #   domain = "theless.one";
+        #   subdomain = "";
+        # }
+        # {
+        #   domain = "theless.one";
+        #   subdomain = "*";
+        # }
         {
           domain = "theless.one";
-          subdomain = "";
-        }
-        {
-          domain = "theless.one";
-          subdomain = "*";
+          subdomain = "de01";
         }
       ];
     };

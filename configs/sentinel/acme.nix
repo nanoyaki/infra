@@ -1,25 +1,12 @@
-{ pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 let
   writeEnv = (pkgs.formats.keyValue { }).generate;
-
-  syncCerts = {
-    path = with pkgs; [
-      rsync
-      openssh
-    ];
-
-    postStop = ''
-      rsync -avz --delete \
-        -e "ssh -i ''$CREDENTIALS_DIRECTORY/id_acme_thelessone" \
-        ${config.security.acme.certs."theless.one".directory} \
-        acme@at01.theless.one:${config.security.acme.certs."theless.one".directory}
-    '';
-
-    serviceConfig.LoadCredential = [
-      "id_acme_thelessone:${config.sops.secrets.id_acme_thelessone.path}"
-    ];
-  };
 in
 
 {
@@ -46,9 +33,15 @@ in
       dnsProvider = "porkbun";
       dnsResolver = "173.245.58.37:53";
       dnsPropagationCheck = true;
+
+      postRun = ''
+        set -x
+
+        ${lib.getExe pkgs.rsync} -avz --delete \
+          -e "ssh -i ${config.sops.secrets.id_acme_thelessone.path}" \
+          ${config.security.acme.certs."theless.one".directory} \
+          acme@100.64.64.1:${config.security.acme.certs."theless.one".directory}
+      '';
     };
   };
-
-  systemd.services."acme-theless.one" = syncCerts;
-  systemd.services."acme-order-renew-theless.one" = syncCerts;
 }

@@ -25,6 +25,12 @@ let
     mkIf
     ;
 
+  minecraftUUID =
+    types.strMatching "([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|[0-9a-f]{32})"
+    // {
+      description = "Minecraft UUID";
+    };
+
   inherit (inputs) nix-minecraft nanopkgs;
 in
 
@@ -100,6 +106,14 @@ in
             '';
             apply = gamerules: pkgs.callPackage ./declarative-gamerules.nix { inherit gamerules; };
           };
+
+          bannedPlayers = mkOption {
+            type = types.attrsOf minecraftUUID;
+            default = { };
+            description = ''
+              Player names mapped to minecraft UUIDs
+            '';
+          };
         };
       };
       default = { };
@@ -170,6 +184,14 @@ in
                 '';
                 apply = gamerules: pkgs.callPackage ./declarative-gamerules.nix { inherit gamerules; };
               };
+
+              bannedPlayers = mkOption {
+                type = types.attrsOf minecraftUUID;
+                default = if config.useDefaults then cfg.serverDefaults.bannedPlayers else { };
+                description = ''
+                  Player names mapped to minecraft UUIDs
+                '';
+              };
             };
           }
         )
@@ -197,6 +219,7 @@ in
           "datapacks"
           "gamerules"
           "packageOverrides"
+          "bannedPlayers"
         ];
 
         worldName = overrides.serverProperties.level-name or "world";
@@ -204,7 +227,20 @@ in
           jvmOpts =
             (srvCfg.jvmOpts or "") + " ${optionalString (srvCfg.appendJvmOpts != "") srvCfg.appendJvmOpts}";
           symlinks = optionalAttrs (srvCfg.mods != null) { inherit (srvCfg) mods; };
-          files = optionalAttrs (srvCfg.datapacks != null) { "${worldName}/datapacks" = srvCfg.datapacks; };
+          files =
+            (optionalAttrs (srvCfg.datapacks != null) { "${worldName}/datapacks" = srvCfg.datapacks; })
+            // optionalAttrs (srvCfg.bannedPlayers != { }) {
+              "banned-players.json" = {
+                format = pkgs.formats.json { };
+                value = map (name: {
+                  inherit name;
+                  uuid = srvCfg.bannedPlayers.${name};
+                  created = "1970-01-01 00:00:01 +0000";
+                  source = "server";
+                  expires = "forever";
+                }) (attrNames srvCfg.bannedPlayers);
+              };
+            };
         }
         // lib.optionalAttrs (srvCfg ? package) {
           package = srvCfg.package.override srvCfg.packageOverrides;

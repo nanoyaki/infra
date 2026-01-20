@@ -118,8 +118,12 @@ in
         }
       '';
 
-      virtualHosts = mapAttrs (_: vhost: {
+      virtualHosts = mapAttrs (domain: vhost: {
         extraConfig = ''
+          ${optionalString (hasInfix cfg.baseDomain domain) ''
+            tls /var/lib/acme/${cfg.baseDomain}/cert.pem /var/lib/acme/${cfg.baseDomain}/key.pem
+          ''}
+
           ${optionalString (vhost.userEnvVar != null) ''
             basic_auth * {
               {''$${vhost.userEnvVar}}
