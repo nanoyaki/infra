@@ -23,6 +23,6 @@
     ];
   };
 
-  networking.firewall.checkReversePath = "loose";
+  networking.firewall.checkReversePath = false;
   networking.firewall.trustedInterfaces = [ "wg0" ];
 }
