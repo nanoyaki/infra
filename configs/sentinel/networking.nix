@@ -5,8 +5,8 @@
 
   networking.wireguard.interfaces.wg0 = {
     ips = [
-      "100.64.64.7/32" # CGNAT?
-      "fd64::7/128"
+      "100.64.64.23/32" # CGNAT?
+      "fd64::23/128"
     ];
     privateKeyFile = config.sops.secrets.wg0.path;
 
@@ -21,18 +21,6 @@
         persistentKeepalive = 25;
       }
     ];
-  };
-
-  boot.kernel.sysctl = {
-    "net.ipv4.ip_forward" = true;
-    "net.ipv6.conf.all.forwarding" = true;
-  };
-
-  networking.nat = {
-    enable = true;
-    enableIPv6 = true;
-    externalInterface = "ens6";
-    internalInterfaces = [ "wg0" ];
   };
 
   networking.firewall.trustedInterfaces = [ "wg0" ];
