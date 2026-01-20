@@ -22,4 +22,6 @@
       }
     ];
   };
+
+  networking.firewall.trustedInterfaces = [ "wg0" ];
 }
