@@ -189,6 +189,7 @@
   };
 
   networking.firewall = {
+    checkReversePath = "loose";
     trustedInterfaces = [ "wg0" ];
     allowedUDPPorts = [ 51820 ];
   };
