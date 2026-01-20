@@ -23,6 +23,11 @@
     ];
   };
 
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = true;
+    "net.ipv6.conf.all.forwarding" = true;
+  };
+
   networking.nat = {
     enable = true;
     enableIPv6 = true;
