@@ -8,6 +8,10 @@
 
   services.caddy = {
     enable = true;
+    package = pkgs.caddy.withPlugins {
+      plugins = [ "https://github.com/mholt/caddy-l4@93f52b6a03bac66a4321dd1c5287820e3c2a832c" ];
+      hash = "sha256-s8D9p8k/Gote8s4fk0pv35R7aIwRi5ze7gbBHj+Fm8U=";
+    };
 
     logFormat = ''
       level INFO
@@ -29,6 +33,17 @@
           try_files {path} /{err.status_code}.html /index.html
           file_server {
             status 200
+          }
+        }
+      }
+    '';
+
+    globalConfig = ''
+      layer4 {
+        git.theless.one:22 {
+          @ssh ssh
+          route @ssh {
+            proxy at01.theless.one:22 de01.theless.one:22
           }
         }
       }
