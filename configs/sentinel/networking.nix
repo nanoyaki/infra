@@ -23,6 +23,12 @@
     ];
   };
 
-  networking.firewall.checkReversePath = false;
+  networking.nat = {
+    enable = true;
+    enableIPv6 = true;
+    externalInterface = "ens6";
+    internalInterfaces = [ "wg0" ];
+  };
+
   networking.firewall.trustedInterfaces = [ "wg0" ];
 }
