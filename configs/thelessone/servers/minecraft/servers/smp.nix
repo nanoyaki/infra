@@ -77,6 +77,10 @@ in
         # supported for mc 1.21.11
         # rei
         jei
+
+        # log fucking everything
+        fabric-language-kotlin
+        ledger
       ]
     );
 
@@ -103,6 +107,27 @@ in
     };
 
     symlinks = {
+      "config/ledger.toml" = {
+        format = formats.toml { };
+        value = {
+          # Once ledger databases gets a 1.21.11 release
+          # database_extensions = {
+          #   database = "POSTGRESQL";
+          #   url = "localhost:${toString config.services.postgresql.settings.port}/smp-ledger";
+          #   username = "smp-ledger";
+          #   password = "@SMP_LEDGER_POSTGRES_PASSWORD@";
+          #   properties = [
+          #     "serverTimezone=${toString config.nanoSystem.localization.timezone}"
+          #   ];
+          # };
+
+          search.timeZone = config.nanoSystem.localization.timezone;
+
+          # Allow clients to give us data
+          networking.networking = true;
+        };
+      };
+
       "config/voicechat/voicechat-server.properties".value = {
         port = 24454;
         voice_host = "theless.one:24454";
@@ -187,4 +212,16 @@ in
       port
       ;
   };
+
+  # services.postgresql = {
+  #   ensureDatabases = [ "smp-ledger" ];
+  #   ensureUsers = [
+  #     {
+  #       name = "smp-ledger";
+  #       ensureDBOwnership = true;
+  #       # Don't know how to feel about this...
+  #       ensureClauses.password = "SCRAM-SHA-256$4096:5v42qnWdS02ImuTiBnwtVw==$RRgNdaf05jbHaNmmeqdlt8QCS9lpxN+etnGl3SqB+zE=:3AbP2vlYrJxttAKNTYrYTpzuQXj4EEcmOktKtKfYMr4=";
+  #     }
+  #   ];
+  # };
 }

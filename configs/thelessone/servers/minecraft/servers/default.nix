@@ -16,12 +16,14 @@ in
 
   sops.secrets.proxy.sopsFile = ./secrets.yaml;
   sops.secrets.bot-token.sopsFile = ./secrets.yaml;
+  sops.secrets.smp-ledger-postgres-password.sopsFile = ./secrets.yaml;
 
   sops.templates."minecraft-secrets.env".file =
     (formats.keyValue { }).generate "minecraft-secrets.env"
       {
         DISCORDMCCHAT_BOT_TOKEN = config.sops.placeholder.bot-token;
         FABRIC_PROXY_SECRET = config.sops.placeholder.proxy;
+        SMP_LEDGER_POSTGRES_PASSWORD = config.sops.placeholder.smp-ledger-postgres-password;
       };
 
   users.users.thelessone.extraGroups = [ config.services.minecraft-servers.group ];
