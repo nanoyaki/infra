@@ -9,13 +9,16 @@
   services.caddy = {
     enable = true;
     package = pkgs.caddy.withPlugins {
-      plugins = [ "github.com/mholt/caddy-l4@v0.0.0-20260116154418-93f52b6a03ba" ];
-      hash = "sha256-s8D9p8k/Gote8s4fk0pv35R7aIwRi5ze7gbBHj+Fm8U=";
+      plugins = [
+        "github.com/mholt/caddy-l4@v0.0.0-20260116154418-93f52b6a03ba"
+        "github.com/caddyserver/transform-encoder@v0.0.0-20251203163749-3574c321422b"
+      ];
+      hash = "sha256-6vy3S9hidO98sh2VosGTSK32sTus0aeNrqs+mpGgX4A=";
     };
 
     logFormat = ''
       level INFO
-      format single_field '{ts} {remote} → {method} {uri} {status} {size} "{user_agent}" ({latency})'
+      format transform "{ts} {request>remote_ip} → {request>method} {request>uri} {status} {size} \"{request>headers>User-Agent>[0]}\" ({duration})"
     '';
 
     extraConfig = ''
