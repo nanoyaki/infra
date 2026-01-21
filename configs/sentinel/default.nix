@@ -24,6 +24,7 @@
           ./oink.nix
           ./acme.nix
           ./caddy.nix
+          ./gatus.nix
         ];
 
         sops.secrets."users/root".neededForUsers = true;

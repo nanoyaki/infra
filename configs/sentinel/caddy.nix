@@ -1,4 +1,14 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
+
+let
+  thelessDotOne = pkgs.fetchFromGitea {
+    domain = "git.theless.one";
+    owner = "nanoyaki";
+    repo = "theless.one";
+    rev = "c98e1b01f036e7bccc249cce444bc1e542efd5b3";
+    hash = "sha256-IR9Ml+/WecD+6twUzM3Mzk+CGqrYrkOKt3JHZ/N6fZ4=";
+  };
+in
 
 {
   networking.firewall.allowedTCPPorts = [
@@ -17,22 +27,14 @@
     };
 
     logFormat = ''
-      level INFO
+      level DEBUG
       format transform "{ts} {request>remote_ip} → {request>method} {request>uri} {status} {size} \"{request>headers>User-Agent>[0]}\" ({duration})"
     '';
 
     extraConfig = ''
       (error_handling) {
         handle_errors {
-          root * ${
-            pkgs.fetchFromGitea {
-              domain = "git.theless.one";
-              owner = "nanoyaki";
-              repo = "theless.one";
-              rev = "c98e1b01f036e7bccc249cce444bc1e542efd5b3";
-              hash = "sha256-IR9Ml+/WecD+6twUzM3Mzk+CGqrYrkOKt3JHZ/N6fZ4=";
-            }
-          }
+          root * ${thelessDotOne}
           try_files {path} /{err.status_code}.html /index.html
           file_server {
             status 200
@@ -52,31 +54,36 @@
       }
     '';
 
-    virtualHosts."theless.one" = {
-      serverAliases = [ "*.theless.one" ];
-      useACMEHost = "theless.one";
-      inherit (config.services.caddy) logFormat;
-      extraConfig = ''
-        @vpn remote_ip 100.64.64.0/24
-        reverse_proxy @vpn 100.64.64.1 100.64.64.23 {
-          lb_policy first
+    # virtualHosts."theless.one" = {
+    #   serverAliases = [ "*.theless.one" ];
+    #   useACMEHost = "theless.one";
+    #   inherit (config.services.caddy) logFormat;
+    #   extraConfig = ''
+    #     @vpn remote_ip 100.64.64.0/24
+    #     handle @vpn {
+    #       reverse_proxy 100.64.64.1 {
+    #         lb_policy first
+    #         lb_try_duration 5s
 
-          fail_duration 30s
-          max_fails 2
-          unhealthy_status 4xx 5xx
-        }
+    #         fail_duration 30s
+    #         max_fails 2
+    #         unhealthy_status 5xx
+    #       }
+    #     }
 
-        @public not host at01.theless.one de01.theless.one
-        reverse_proxy @public at01.theless.one de01.theless.one {
-          lb_policy first
+    #     handle {
+    #       reverse_proxy at01.theless.one {
+    #         lb_policy first
+    #         lb_try_duration 5s
 
-          fail_duration 30s
-          max_fails 2
-          unhealthy_status 4xx 5xx
-        }
+    #         fail_duration 30s
+    #         max_fails 2
+    #         unhealthy_status 5xx
+    #       }
+    #     }
 
-        import error_handling
-      '';
-    };
+    #     import error_handling
+    #   '';
+    # };
   };
 }
