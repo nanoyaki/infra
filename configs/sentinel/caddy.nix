@@ -54,7 +54,7 @@
 
           @raw-ssh ssh
           route @raw-ssh {
-            proxy de01.theless.one:22
+            proxy de01.theless.one:2222
           }
         }
       }
