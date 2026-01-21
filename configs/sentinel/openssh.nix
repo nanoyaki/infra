@@ -20,10 +20,7 @@ in
 
   services.openssh = {
     enable = lib.mkForce true;
-    ports = [
-      22
-      2222
-    ];
+    ports = [ 2222 ];
     openFirewall = true;
 
     settings = {
