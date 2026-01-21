@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
   thelessDotOne = pkgs.fetchFromGitea {
@@ -54,36 +54,36 @@ in
       }
     '';
 
-    # virtualHosts."theless.one" = {
-    #   serverAliases = [ "*.theless.one" ];
-    #   useACMEHost = "theless.one";
-    #   inherit (config.services.caddy) logFormat;
-    #   extraConfig = ''
-    #     @vpn remote_ip 100.64.64.0/24
-    #     handle @vpn {
-    #       reverse_proxy 100.64.64.1 {
-    #         lb_policy first
-    #         lb_try_duration 5s
+    virtualHosts."theless.one" = {
+      serverAliases = [ "*.theless.one" ];
+      useACMEHost = "theless.one";
+      inherit (config.services.caddy) logFormat;
+      extraConfig = ''
+        @vpn remote_ip 100.64.64.0/24
+        handle @vpn {
+          reverse_proxy 100.64.64.1 {
+            lb_policy first
+            lb_try_duration 5s
 
-    #         fail_duration 30s
-    #         max_fails 2
-    #         unhealthy_status 5xx
-    #       }
-    #     }
+            fail_duration 30s
+            max_fails 2
+            unhealthy_status 5xx
+          }
+        }
 
-    #     handle {
-    #       reverse_proxy at01.theless.one {
-    #         lb_policy first
-    #         lb_try_duration 5s
+        handle {
+          reverse_proxy at01.theless.one {
+            lb_policy first
+            lb_try_duration 5s
 
-    #         fail_duration 30s
-    #         max_fails 2
-    #         unhealthy_status 5xx
-    #       }
-    #     }
+            fail_duration 30s
+            max_fails 2
+            unhealthy_status 5xx
+          }
+        }
 
-    #     import error_handling
-    #   '';
-    # };
+        import error_handling
+      '';
+    };
   };
 }
