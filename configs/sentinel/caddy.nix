@@ -43,18 +43,10 @@
 
     globalConfig = ''
       layer4 {
-        :22 {
-          @ssh-tls tls {
-            sni git.theless.one
-          }
-          route @ssh-tls {
-            tls
+        :2222 {
+          @ssh ssh
+          route @ssh {
             proxy at01.theless.one:22
-          }
-
-          @raw-ssh ssh
-          route @raw-ssh {
-            proxy de01.theless.one:2222
           }
         }
       }
