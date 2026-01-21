@@ -43,8 +43,8 @@
 
     globalConfig = ''
       layer4 {
-        git.theless.one:22 {
-          @ssh ssh
+        :22 {
+          @ssh ssh and host git.theless.one
           route @ssh {
             proxy at01.theless.one:22 de01.theless.one:22
           }
