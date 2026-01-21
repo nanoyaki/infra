@@ -61,25 +61,11 @@ in
       extraConfig = ''
         @vpn remote_ip 100.64.64.0/24
         handle @vpn {
-          reverse_proxy 100.64.64.1 {
-            lb_policy first
-            lb_try_duration 5s
-
-            fail_duration 30s
-            max_fails 2
-            unhealthy_status 5xx
-          }
+          reverse_proxy 100.64.64.1
         }
 
         handle {
-          reverse_proxy at01.theless.one {
-            lb_policy first
-            lb_try_duration 5s
-
-            fail_duration 30s
-            max_fails 2
-            unhealthy_status 5xx
-          }
+          reverse_proxy at01.theless.one
         }
 
         import error_handling
