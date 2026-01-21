@@ -47,6 +47,7 @@
 
   services.caddy.virtualHosts."status.theless.one" = {
     useACMEHost = "theless.one";
+    inherit (config.services.caddy) logFormat;
     extraConfig = ''
       reverse_proxy localhost:${toString config.services.gatus.settings.web.port}
 

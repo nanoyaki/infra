@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   networking.firewall.allowedTCPPorts = [
@@ -55,6 +55,7 @@
     virtualHosts."theless.one" = {
       serverAliases = [ "*.theless.one" ];
       useACMEHost = "theless.one";
+      inherit (config.services.caddy) logFormat;
       extraConfig = ''
         @vpn remote_ip 100.64.64.0/24
         reverse_proxy @vpn 100.64.64.1 100.64.64.23 {
