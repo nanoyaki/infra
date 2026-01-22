@@ -27,4 +27,6 @@
   LostYuu = "9739260b-a936-4c37-a6ea-2c10789d2ed8";
   Polypsycism = "f6f31813-9e2c-48b1-9f44-b02e1d5df0cd";
   Ami951 = "649b6235-f83f-424f-b22a-284ec2e0fd8e";
+  SleeperLulu = "bcd341a1-8bfc-498b-a1e7-9fdd06e28860";
+  Daxbau = "18695a71-b3fe-4e7d-860e-d84367486b6d";
 }
