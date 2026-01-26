@@ -31,4 +31,5 @@
   Daxbau = "18695a71-b3fe-4e7d-860e-d84367486b6d";
   der_Muffin_echt = "0daadaa4-4c47-462f-8935-cf29d77a8d08";
   kokoschlaffy = "14b93555-d083-4862-85e4-8e2ffa5927aa";
+  LostBlad3 = "5da34239-e450-4eeb-96b8-d9cdc4915ee7";
 }
