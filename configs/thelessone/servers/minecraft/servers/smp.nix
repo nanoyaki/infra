@@ -71,7 +71,6 @@ in
         bluemap
         bluemap-sign-markers
         discord-mc-chat
-        distanthorizons
 
         # use jei as long as rei isn't
         # supported for mc 1.21.11
