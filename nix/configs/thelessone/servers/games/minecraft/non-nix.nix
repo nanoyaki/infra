@@ -49,6 +49,8 @@
           coreutils
         ];
         script = ''
+          set -x
+
           MINECRAFT_SERVERS="$(find ${dataDir}/. -maxdepth 1 -type d -not -name '.*' -printf '%f\n')"
           [[ -z "$MINECRAFT_SERVERS" ]] && exit 0
 
@@ -61,6 +63,8 @@
           done
         '';
         postStart = ''
+          set -x
+
           [[ -f ${socket} ]] && chmod 660 ${socket}
         '';
 
