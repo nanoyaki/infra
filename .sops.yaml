@@ -4,17 +4,17 @@ keys:
   - &thelessnas age1a82mdpvl5w2j0ahyccngc2wvwgrhezrnwn5te99yxy254f9nm54qex3r0y
   - &sentinel age1xqlmklzh0he8xr23wal8kjdhlhqsp8fhvvxqnzn0mkrg2d4ud5ssgq89cj
 creation_rules:
-  - path_regex: configs/thelessone/secrets/.*\.yaml$
+  - path_regex: nix/configs/thelessone/secrets\.yaml$
     key_groups:
       - age:
           - *thelessone
           - *shirayuri
-  - path_regex: configs/thelessnas/secrets/.*\.yaml$
+  - path_regex: nix/configs/thelessnas/secrets\.yaml$
     key_groups:
       - age:
           - *thelessnas
           - *shirayuri
-  - path_regex: configs/sentinel/secrets/.*\.yaml$
+  - path_regex: nix/configs/sentinel/secrets\.yaml$
     key_groups:
       - age:
           - *sentinel
