@@ -6,7 +6,7 @@
 
       defaultGateway = {
         address = "10.0.0.1";
-        interface = "enp9s0";
+        interface = "enp6s0";
       };
     };
 
