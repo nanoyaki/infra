@@ -255,7 +255,7 @@
             }
             ''
               mkdir -p $out
-              magick $logomarkSvg \
+              magick $logomarkSvg/nixos-logomark-rainbow-gradient-recommended.svg \
                 -gravity center \
                 -trim \
                 -resize 64x64 \
