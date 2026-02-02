@@ -3,6 +3,14 @@
     { config, ... }:
 
     {
+      nixpkgs.overlays = [
+        (_: prev: {
+          weston = prev.weston.overrideAttrs (prevAttrs: {
+            mesonFlags = prevAttrs.mesonFlags or [ ] ++ [ (prev.lib.mesonBool "backend-vnc" false) ];
+          });
+        })
+      ];
+
       services.displayManager.autoLogin = {
         enable = true;
         user = config.self.mainUser;
