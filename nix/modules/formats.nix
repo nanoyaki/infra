@@ -17,8 +17,10 @@
 
     {
       legacyPackages = {
-        writeEnv = name: (pkgs.formats.keyValue { }).generate name toEnv;
-        writeEnv' = opts: name: (pkgs.formats.keyValue opts).generate name toEnv;
+        writeEnv = name: attrs: (pkgs.formats.keyValue { }).generate name (toEnv attrs);
+        writeEnv' =
+          opts: name: attrs:
+          (pkgs.formats.keyValue opts).generate name (toEnv attrs);
         writeYaml = name: attrs: (pkgs.formats.yaml { }).generate name attrs;
       };
     };
@@ -30,7 +32,7 @@
       { config, ... }:
 
       {
-        inherit (config.legacyPackages) writeEnv writeEnv';
+        inherit (config.legacyPackages) writeEnv writeEnv' writeYaml;
       }
     );
 }

@@ -5,7 +5,7 @@
     let
       inherit (lib) mkOption types;
 
-      powerOf2 = types.addCheck (x: (builtins.bitAnd x (x - 1)) == 0);
+      powerOf2 = types.addCheck types.int (x: (builtins.bitAnd x (x - 1)) == 0);
 
       cfg = config.self;
     in

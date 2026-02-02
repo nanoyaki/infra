@@ -238,11 +238,12 @@
               nativeBuildInputs = [ pkgs.imagemagick ];
             }
             ''
+              mkdir -p $out
               magick $logomarkSvg \
                 -gravity center \
                 -trim \
                 -resize 64x64 \
-                $out.png
+                $out/icon.png
             '';
 
         nix-minecraft-logomark =
@@ -253,11 +254,12 @@
               nativeBuildInputs = [ pkgs.imagemagick ];
             }
             ''
+              mkdir -p $out
               magick $logomarkSvg \
                 -gravity center \
                 -trim \
                 -resize 64x64 \
-                $out.png
+                $out/icon.png
             '';
 
         declarative-gamerules = pkgs.callPackage (
@@ -334,7 +336,7 @@
               runHook preInstall
 
               mkdir -p $out/data/{minecraft/tags/function,declarative_gamerules/function}
-              ln -s ${config.packages.nix-minecraft-logomark} $out/pack.png
+              ln -s ${config.packages.nix-minecraft-logomark}/icon.png $out/pack.png
               ln -s ${jsonFiles.packMcmeta} $out/pack.mcmeta
               ln -s ${jsonFiles.loadJson} $out/data/minecraft/tags/function/load.json
               ln -s $src $out/data/declarative_gamerules/function/setup.mcfunction

@@ -92,7 +92,7 @@
         };
 
         files = {
-          "server-icon.png" = pkgs.thelessone-minecraft-logomark;
+          "server-icon.png" = "${pkgs.thelessone-minecraft-logomark}/icon.png";
 
           "config/expresscarts/config.json" = {
             format = formats.json { };
