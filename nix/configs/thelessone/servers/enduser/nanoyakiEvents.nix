@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ withSystem, ... }:
 
 {
   flake.nixosModules.thelessone-nanoyakiEvents =
@@ -9,9 +9,7 @@
     }:
 
     let
-      webPkg = "${
-        inputs.discord-events-to-ics.packages.${pkgs.stdenv.hostPlatform.system}.default
-      }/share/php/discord-events-to-ics";
+      webPkg = "${pkgs.discord-events-to-ics}/share/php/discord-events-to-ics";
       home = "/var/lib/caddy/nanoyaki-events";
       inherit (config.services.caddy) user;
     in
@@ -99,4 +97,24 @@
         };
       };
     };
+
+  perSystem =
+    { inputs', ... }:
+
+    {
+      packages.discord-events-to-ics = inputs'.discord-events-to-ics.packages.default.overrideAttrs {
+        vendorHash = "sha256-w2dmfX2H0NdouC1Z4YCjirNgJK67cOSQVt3nu7bJ8xY=";
+      };
+    };
+
+  flake.overlays.discord-events-to-ics =
+    _: prev:
+
+    withSystem prev.stdenv.hostPlatform.system (
+      { config, ... }:
+
+      {
+        inherit (config.packages) discord-events-to-ics;
+      }
+    );
 }
