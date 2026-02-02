@@ -113,6 +113,11 @@
         gryphline.com
       '';
 
+      systemd.services.rspamd = {
+        wants = [ "network-online.target" ];
+        after = [ "network-online.target" ];
+      };
+
       services.borgbackup.jobs.mail = {
         repo = "thelessone-borg@10.0.0.6:mail";
         environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";

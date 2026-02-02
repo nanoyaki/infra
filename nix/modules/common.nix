@@ -12,7 +12,7 @@
       options.self = {
         mainUser = mkOption {
           type = types.str;
-          default = null;
+          default = "";
         };
 
         mainUserHome = mkOption {
@@ -28,6 +28,12 @@
             assertion = cfg.mainUser != "";
             message = ''
               Make sure to set {option}`self.mainUser`
+            '';
+          }
+          {
+            assertion = cfg.mainUserHome != null;
+            message = ''
+              The user doesn't exist, therefore the home can't get determined
             '';
           }
         ];

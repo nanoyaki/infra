@@ -8,6 +8,7 @@
       enable = true;
       eula = true;
       openFirewall = true;
+
       servers."7777" = {
         enable = true;
 

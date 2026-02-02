@@ -17,8 +17,9 @@
 
     {
       legacyPackages = {
-        writeEnv = name: (pkgs.formats.keyValue { }) name toEnv;
-        writeEnv' = opts: name: (pkgs.formats.keyValue opts) name toEnv;
+        writeEnv = name: (pkgs.formats.keyValue { }).generate name toEnv;
+        writeEnv' = opts: name: (pkgs.formats.keyValue opts).generate name toEnv;
+        writeYaml = name: attrs: (pkgs.formats.yaml { }).generate name attrs;
       };
     };
 

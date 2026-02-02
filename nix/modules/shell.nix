@@ -8,7 +8,6 @@
 
       environment.systemPackages = with pkgs; [
         alacritty
-        unrar
         unzip
         p7zip
         ncdu

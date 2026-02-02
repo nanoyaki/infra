@@ -16,8 +16,4 @@
       services.libinput.mouse.accelProfile = "flat";
       services.xserver.xkb.layout = "de";
     };
-
-  flake.homeModules.wayland = {
-    xdg.autostart.enable = true;
-  };
 }

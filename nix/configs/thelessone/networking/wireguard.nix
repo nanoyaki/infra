@@ -28,6 +28,7 @@
           "fd64::1/64"
         ];
         listenPort = 51820;
+        # JB0jviICHpiTm1PYjm4+FCWCPLAjU/NZBm6tRO6/XGY=
         privateKeyFile = config.sops.secrets.wg0.path;
       };
 
@@ -186,6 +187,14 @@
           allowedIPs = [
             "100.64.64.23/32"
             "fd64::23/128"
+          ];
+        }
+        {
+          # nameless phone
+          publicKey = "rhOWCYUVQTGIMqbZJ1HOPRzKE7j9O2rDoj+l6EP22ns=";
+          allowedIPs = [
+            "100.64.64.24/32"
+            "fd64::24/128"
           ];
         }
       ];

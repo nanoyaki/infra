@@ -1,6 +1,6 @@
 {
   flake.nixosModules.gnome =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
 
     {
       services.displayManager = {
@@ -10,17 +10,26 @@
         sddm.wayland.enable = true;
       };
 
-      services.desktopManager.gnome = {
-        enable = true;
-        extraGSettingsOverrides = ''
-          [org.gnome.settings-daemon.plugins.power]
-          sleep-inactive-ac-type="nothing"
+      services.desktopManager.gnome.enable = true;
 
-          [org.gnome.desktop.media-handling]
-          automount=false
-          automount-open=false
-          autorun-never=true
-        '';
+      programs.dconf = {
+        enable = true;
+        profiles.user.databases = [
+          {
+            settings."org/gnome/settings-daemon/plugins/power" = {
+              sleep-inactive-ac-type = "nothing";
+              sleep-inactive-battery-type = "nothing";
+              sleep-inactive-ac-timeout = lib.gvariant.mkInt32 0;
+              sleep-inactive-battery-timeout = lib.gvariant.mkInt32 0;
+            };
+
+            settings."org/gnome/desktop/media-handling" = {
+              automount = false;
+              automount-open = false;
+              autorun-never = true;
+            };
+          }
+        ];
       };
 
       environment.gnome.excludePackages = with pkgs; [
@@ -46,10 +55,5 @@
 
       programs.nautilus-open-any-terminal.enable = true;
       programs.nautilus-open-any-terminal.terminal = "alacritty";
-
-      # Disable sleep because gnome is silly
-      systemd.targets.hibernate.enable = false;
-      systemd.targets.suspend.enable = false;
-      systemd.targets.sleep.enable = false;
     };
 }

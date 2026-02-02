@@ -18,7 +18,7 @@
 
       users.users.shoko = {
         isSystemUser = true;
-        inherit (config.arr) group;
+        inherit (config.thelessone.arr) group;
         home = config.systemd.services.shoko.environment.SHOKO_HOME;
         homeMode = toString config.systemd.services.shoko.serviceConfig.StateDirectoryMode;
       };
@@ -27,10 +27,10 @@
       systemd.services.shoko.serviceConfig = {
         DynamicUser = lib.mkForce false;
         User = "shoko";
-        Group = config.arr.group;
+        Group = config.thelessone.arr.group;
       };
 
-      config'.caddy.vHost."shoko.theless.one" = {
+      thelessone.caddy.vHost."shoko.theless.one" = {
         proxy.port = 8111;
         useVpn = true;
       };

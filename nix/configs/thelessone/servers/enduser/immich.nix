@@ -24,11 +24,11 @@
         settings.allowDownloadAll = 1;
       };
 
-      config'.caddy.vHost."images.theless.one".proxy = {
+      thelessone.caddy.vHost."images.theless.one".proxy = {
         inherit (config.services.immich-public-proxy) port;
       };
 
-      config'.caddy.vHost.${domain} = {
+      thelessone.caddy.vHost.${domain} = {
         proxy = { inherit (config.services.immich) port; };
         useVpn = true;
       };

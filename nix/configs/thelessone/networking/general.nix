@@ -1,7 +1,12 @@
 {
   flake.nixosModules.thelessone-networking = {
     networking = {
-      firewall = true;
+      hostId = "f617b7b6";
+      hostName = "thelessone";
+      domain = "theless.one";
+      fqdn = "at01.theless.one";
+
+      firewall.enable = true;
       nftables.enable = true;
       networkmanager.enable = true;
 
