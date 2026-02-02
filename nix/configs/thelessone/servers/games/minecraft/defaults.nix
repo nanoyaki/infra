@@ -27,12 +27,6 @@
         filter
         mkIf
         ;
-
-      minecraftUUID =
-        types.strMatching "([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|[0-9a-f]{32})"
-        // {
-          description = "Minecraft UUID";
-        };
     in
 
     {
@@ -103,14 +97,6 @@
                 '';
                 apply = gamerules: pkgs.declarative-gamerules.override { inherit gamerules; };
               };
-
-              bannedPlayers = mkOption {
-                type = types.attrsOf minecraftUUID;
-                default = { };
-                description = ''
-                  Player names mapped to minecraft UUIDs
-                '';
-              };
             };
           };
           default = { };
@@ -180,14 +166,6 @@
                       Game rules to set on the server
                     '';
                     apply = gamerules: pkgs.declarative-gamerules.override { inherit gamerules; };
-                  };
-
-                  bannedPlayers = mkOption {
-                    type = types.attrsOf minecraftUUID;
-                    default = if config.useDefaults then cfg.serverDefaults.bannedPlayers else { };
-                    description = ''
-                      Player names mapped to minecraft UUIDs
-                    '';
                   };
                 };
               }
