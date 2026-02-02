@@ -26,8 +26,6 @@
 
     {
       programs = {
-        alacritty.enable = true;
-
         zellij.enable = true;
         zellij.settings.pane_frames = false;
 
@@ -45,6 +43,7 @@
 
         starship.enable = true;
 
+        btop.enable = true;
         lsd.enable = true;
         bat.enable = true;
         fastfetch.enable = true;
