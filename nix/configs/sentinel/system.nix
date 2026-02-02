@@ -19,6 +19,7 @@
       sentinel-networking
       sentinel-wireguard
       sentinel-ssh
+      sentinel-caddy
       sentinel-acme
       sentinel-ddns
     ];
