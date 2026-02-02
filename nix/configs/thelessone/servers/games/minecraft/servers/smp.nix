@@ -69,6 +69,7 @@
             servux
             express-carts
             carpet
+            invview
 
             bluemap
             bluemap-sign-markers
