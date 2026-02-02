@@ -54,6 +54,13 @@
         hashedPasswordFile = config.sops.secrets."users/sentinel".path;
       };
 
+      home-manager.users.sentinel.imports = with inputs.self.homeModules; [ sentinel-system ];
+      home-manager.sharedModules = with inputs.self.homeModules; [
+        homeManager
+        nix
+        shell
+      ];
+
       system.stateVersion = "26.05";
     };
 

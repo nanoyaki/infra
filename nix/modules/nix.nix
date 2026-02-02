@@ -85,7 +85,7 @@
     };
 
   flake.homeModules.nix =
-    { lib, config, ... }:
+    args@{ lib, config, ... }:
 
     {
       options.nixpkgs.allowUnfreeNames = lib.mkOption {
@@ -93,7 +93,33 @@
         default = [ ];
       };
 
-      config.nixpkgs.config.allowUnfreePredicate =
-        pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowUnfreeNames;
+      config =
+        if args ? nixosConfig then
+          { }
+        else
+          {
+            nixpkgs.config.allowUnfreePredicate =
+              pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowUnfreeNames;
+
+            nixpkgs.overlays = [
+              (final: _: {
+                stable = import inputs.nixpkgs-stable {
+                  inherit (final.stdenv.hostPlatform) system;
+                  inherit (config.nixpkgs) config;
+                };
+              })
+            ]
+            ++ lib.flatten (
+              map (
+                input:
+
+                let
+                  inherit (inputs.${input}) overlays;
+                in
+
+                map (overlay: overlays.${overlay}) (lib.attrNames overlays)
+              ) (builtins.filter (input: inputs.${input} ? overlays) (builtins.attrNames inputs))
+            );
+          };
     };
 }

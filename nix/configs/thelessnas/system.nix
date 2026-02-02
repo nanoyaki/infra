@@ -52,7 +52,13 @@
         extraGroups = [ "wheel" ];
         hashedPasswordFile = config.sops.secrets."users/admin".path;
       };
-      home-manager.users.admin = inputs.self.homeConfigurations.admin.config;
+
+      home-manager.users.admin.imports = with inputs.self.homeModules; [ admin-system ];
+      home-manager.sharedModules = with inputs.self.homeModules; [
+        homeManager
+        nix
+        shell
+      ];
 
       system.stateVersion = "24.11";
     };

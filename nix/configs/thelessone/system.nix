@@ -109,11 +109,30 @@
         hashedPasswordFile = config.sops.secrets."users/thelessone".path;
       };
 
+      home-manager.users.thelessone.imports = with inputs.self.homeModules; [
+        thelessone-system
+        thelessone-desktop
+        thelessone-terminal
+        thelessone-theming
+        thelessone-xdg
+      ];
+      home-manager.sharedModules = with inputs.self.homeModules; [
+        homeManager
+        nix
+        shell
+        fonts
+      ];
+
       nixpkgs.allowUnfreeNames = [
         "intel-ocl"
         "minecraft-server"
         # dependency of sabnzbd
         "unrar"
+        # firefox addons
+        "keepa"
+        "languagetool"
+        "tampermonkey"
+        "betterttv"
       ];
 
       system.stateVersion = "24.11";
