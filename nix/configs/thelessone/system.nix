@@ -109,6 +109,18 @@
         hashedPasswordFile = config.sops.secrets."users/thelessone".path;
       };
 
+      security.sudo.extraRules = [
+        {
+          users = [ "thelessone" ];
+          commands = [
+            {
+              command = "ALL";
+              options = [ "NOPASSWD" ];
+            }
+          ];
+        }
+      ];
+
       home-manager.users.thelessone.imports = with inputs.self.homeModules; [
         thelessone-system
         thelessone-desktop
