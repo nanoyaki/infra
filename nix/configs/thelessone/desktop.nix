@@ -195,6 +195,13 @@
         };
       };
 
+      nixpkgs.allowUnfreeNames = [
+        "keepa"
+        "languagetool"
+        "tampermonkey"
+        "betterttv"
+      ];
+
       xdg.mimeApps.defaultApplications = {
         "text/html" = "librewolf.desktop";
         "application/pdf" = "librewolf.desktop";
@@ -214,7 +221,6 @@
           sponsorblock
           thumbfast
           modernx
-          mpvacious
           mpv-discord
           mpv-subtitle-lines
           mpv-playlistmanager

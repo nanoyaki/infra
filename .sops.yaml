@@ -9,12 +9,12 @@ creation_rules:
       - age:
           - *thelessone
           - *shirayuri
-  - path_regex: configs/thelessnas/secrets/.*\.yaml$
+  - path_regex: nix/configs/thelessnas/secrets\.yaml$
     key_groups:
       - age:
           - *thelessnas
           - *shirayuri
-  - path_regex: configs/sentinel/secrets/.*\.yaml$
+  - path_regex: nix/configs/sentinel/secrets\.yaml$
     key_groups:
       - age:
           - *sentinel

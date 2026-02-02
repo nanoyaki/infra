@@ -81,11 +81,12 @@
     };
     modules = with inputs.self.homeModules; [
       homeManager
+      nix
       shell
-      terminal
       fonts
       thelessone-system
       thelessone-desktop
+      thelessone-terminal
       thelessone-theming
       thelessone-xdg
     ];

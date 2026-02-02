@@ -30,8 +30,8 @@
     };
     modules = with inputs.self.homeModules; [
       homeManager
+      nix
       shell
-      terminal
       admin-system
     ];
   };
@@ -52,6 +52,7 @@
         extraGroups = [ "wheel" ];
         hashedPasswordFile = config.sops.secrets."users/admin".path;
       };
+      home-manager.users.admin = inputs.self.homeConfigurations.admin.config;
 
       system.stateVersion = "24.11";
     };

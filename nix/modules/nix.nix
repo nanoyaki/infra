@@ -12,10 +12,11 @@
 
       config = {
         # Use stricter *explicit* policy
-        nixpkgs.config = {
-          checkMeta = true;
-          allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowUnfreeNames;
-        };
+        # but don't check meta due to
+        # firefox addons with custom
+        # meta
+        nixpkgs.config.allowUnfreePredicate =
+          pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowUnfreeNames;
 
         nixpkgs.overlays = [
           (final: _: {
@@ -81,5 +82,18 @@
 
         programs.direnv.enable = true;
       };
+    };
+
+  flake.homeModules.nix =
+    { lib, config, ... }:
+
+    {
+      options.nixpkgs.allowUnfreeNames = lib.mkOption {
+        type = with lib.types; listOf str;
+        default = [ ];
+      };
+
+      config.nixpkgs.config.allowUnfreePredicate =
+        pkg: builtins.elem (lib.getName pkg) config.nixpkgs.allowUnfreeNames;
     };
 }

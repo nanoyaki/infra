@@ -89,6 +89,8 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
     git-hooks-nix.inputs = {
       nixpkgs.follows = "nixpkgs";
