@@ -263,7 +263,8 @@
                 "AF_INET"
                 "AF_INET6"
               ];
-              MemoryDenyWriteExecute = true;
+              # java..
+              # MemoryDenyWriteExecute = true;
               ProtectHostname = true;
 
               ProtectSystem = "strict";
