@@ -65,7 +65,9 @@
         postStart = ''
           set -x
 
-          [[ -f ${socket} ]] && chmod 660 ${socket}
+          [[ -f ${socket} ]] \
+            && chmod 660 ${socket} \
+            || exit 0
         '';
 
         serviceConfig = {
