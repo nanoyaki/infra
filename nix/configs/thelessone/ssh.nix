@@ -3,7 +3,6 @@
     { config, ... }:
 
     {
-      # TODO: PLEASE INSERT THE KEYS IN THE SECRETS YAML
       sops.secrets.hostkey-rsa = { };
       sops.secrets.hostkey-ed25519 = { };
 
