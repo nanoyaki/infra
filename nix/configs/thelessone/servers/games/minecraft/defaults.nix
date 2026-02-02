@@ -239,10 +239,13 @@
             }
             ''
               mkdir -p $out
-              magick $logomarkSvg \
-                -gravity center \
+              magick \
+                -background none \
+                $logomarkSvg \
                 -trim \
                 -resize 64x64 \
+                -gravity center \
+                -extent 64x64 \
                 $out/icon.png
             '';
 
@@ -255,10 +258,13 @@
             }
             ''
               mkdir -p $out
-              magick $logomarkSvg/nixos-logomark-rainbow-gradient-recommended.svg \
-                -gravity center \
+              magick \
+                -background none \
+                $logomarkSvg/nixos-logomark-rainbow-gradient-recommended.svg \
                 -trim \
                 -resize 64x64 \
+                -gravity center \
+                -extent 64x64 \
                 $out/icon.png
             '';
 
