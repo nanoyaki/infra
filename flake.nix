@@ -82,6 +82,13 @@
       pre-commit-hooks.follows = "git-hooks-nix";
     };
     killheal.url = "git+https://git.theless.one/thelessone/KillHeal.git";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
     git-hooks-nix.inputs = {
       nixpkgs.follows = "nixpkgs";
@@ -104,13 +111,6 @@
     steam-fetcher = {
       url = "github:nix-community/steam-fetcher";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
     };
   };
 

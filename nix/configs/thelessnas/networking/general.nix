@@ -1,12 +1,8 @@
 {
-  flake.nixosModules.thelessone-networking = {
+  flake.nixosModules.thelessnas-networking = {
     networking = {
-      hostId = "f617b7b6";
-      hostName = "thelessone";
-      domain = "theless.one";
-      fqdn = "at01.theless.one";
-
-      networkmanager.enable = true;
+      hostId = "23d2908a";
+      hostName = "thelessnas";
 
       defaultGateway = {
         address = "10.0.0.1";

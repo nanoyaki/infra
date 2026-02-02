@@ -4,7 +4,9 @@
       enable = true;
       openFirewall = true;
 
-      settings.PermitRootLogin = "no";
+      # root login is necessary for
+      # deployments at the moment
+      # settings.PermitRootLogin = "no";
       settings.PasswordAuthentication = false;
     };
 

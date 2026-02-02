@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.thelessone-locale =
+  flake.nixosModules.thelessnas-locale =
     let
       german = "de_AT.UTF-8";
     in

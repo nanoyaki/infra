@@ -10,7 +10,6 @@
       sops
       networking
       openssh
-      homeManager
       fonts
       shell
       audio
@@ -78,7 +77,7 @@
   flake.homeConfigurations.thelessone = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = import inputs.nixpkgs {
       system = "x86_64-linux";
-      inherit (inputs.self.nixosConfigurations.thelessone.config.nixpkgs) config;
+      inherit (inputs.self.nixosConfigurations.thelessnas.config.nixpkgs) config overlays;
     };
     modules = with inputs.self.homeModules; [
       homeManager
@@ -120,6 +119,9 @@
     };
 
   flake.homeModules.thelessone-system = {
+    home.username = "thelessone";
+    home.homeDirectory = "/home/thelessone";
+
     home.stateVersion = "24.11";
   };
 }

@@ -192,12 +192,6 @@
             "copyparty.service"
           ];
         };
-
-        thelessone.caddy.vHost."restic.theless.one" = {
-          proxy.host = "10.0.0.6";
-          proxy.port = 8000;
-          useVpn = true;
-        };
       };
     };
 

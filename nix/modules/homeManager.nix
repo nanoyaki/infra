@@ -13,8 +13,6 @@
         overwriteBackup = lib.mkDefault true;
         useUserPackages = true;
         useGlobalPkgs = true;
-
-        sharedModules = builtins.attrValues inputs.self.homeModules;
       };
     };
 

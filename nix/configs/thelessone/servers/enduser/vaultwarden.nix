@@ -48,12 +48,13 @@
       thelessone.caddy.vHost."vaultwarden.theless.one".proxy.port =
         config.services.vaultwarden.config.ROCKET_PORT;
 
-      sops.secrets = {
-        "restic/100-64-64-6" = { };
-        "restic/vaultwarden-remote" = { };
-      };
-
       # FIXME: remote backup
+
+      # sops.secrets = {
+      #   "restic/100-64-64-6" = { };
+      #   "restic/vaultwarden-remote" = { };
+      # };
+
       # sops.templates."restic-vauldwarden-repo.txt".content = ''
       #   rest:https://restic:${
       #     config.sops.placeholder."restic/100-64-64-6"
