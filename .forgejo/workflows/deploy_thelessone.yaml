@@ -4,7 +4,7 @@ on:
       - main
     paths:
       - 'flake.lock'
-      - '{pkgs,lib,homeModules,modules}/**/*.nix'
+      - 'nix/modules/**/*.nix'
       - 'nix/configs/thelessone/**/*.nix'
   workflow_dispatch:
 
