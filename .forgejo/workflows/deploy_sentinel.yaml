@@ -4,8 +4,8 @@ on:
       - main
     paths:
       - 'flake.lock'
-      - 'modules/**/*.nix'
-      - 'configs/sentinel/**/*.nix'
+      - 'nix/modules/**/*.nix'
+      - 'nix/configs/sentinel/**/*.nix'
   workflow_dispatch:
 
 jobs:

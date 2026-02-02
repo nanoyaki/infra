@@ -4,8 +4,8 @@ on:
       - main
     paths:
       - 'flake.lock'
-      - '{pkgs,lib,homeModules,modules}/**/*.nix'
-      - 'configs/thelessnas/**/*.nix'
+      - 'nix/modules/**/*.nix'
+      - 'nix/configs/thelessnas/**/*.nix'
   workflow_dispatch:
 
 jobs:
