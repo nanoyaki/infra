@@ -65,6 +65,8 @@
           ProtectKernelLogs = true;
           ProtectProc = "invisible";
         };
+
+        restartTriggers = [ config.sops.templates."oink.json".file ];
       };
 
       sops.templates."oink.json".content = builtins.toJSON {
