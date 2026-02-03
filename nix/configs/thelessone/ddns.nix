@@ -80,6 +80,10 @@
             domain = "theless.one";
             subdomain = "at01";
           }
+          {
+            domain = "theless.one";
+            subdomain = "mail";
+          }
           # Remove this soon
           {
             domain = "theless.one";
