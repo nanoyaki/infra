@@ -65,8 +65,6 @@
           ProtectKernelLogs = true;
           ProtectProc = "invisible";
         };
-
-        restartTriggers = [ config.sops.templates."oink.json".file ];
       };
 
       sops.templates."oink.json".content = builtins.toJSON {
@@ -120,5 +118,6 @@
 
       imports = [ inputs.self.nixosModules.oink ];
       self.oink.configFile = config.sops.templates."oink.json".path;
+      systemd.services.oink.restartTriggers = [ config.sops.templates."oink.json".file ];
     };
 }
