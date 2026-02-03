@@ -50,39 +50,39 @@
             cloth-config
             yacl
             fabric-api
+            fabric-language-kotlin
+            balm
+            cicada
 
+            # velocity
             fabricproxy-lite
             simple-voice-chat
+
+            # optimization
             vmp-fabric
             lithium
-            player-roles
-            no-chat-reports
+            scalablelux
             krypton
             c2me-fabric
-            image2map
-            netherportalfix
-            balm
             ferrite-core
-            scalablelux
-            do-a-barrel-roll
-            cicada
-            servux
-            express-carts
-            carpet
-            invview
 
+            # qol
+            no-chat-reports
+            image2map
             bluemap
             bluemap-sign-markers
             discord-mc-chat
+            netherportalfix
+            do-a-barrel-roll
+            servux # for litematica, i think
+            express-carts
+            carpet
+            rei
 
-            # use jei as long as rei isn't
-            # supported for mc 1.21.11
-            # rei
-            jei
-
-            # log fucking everything
-            fabric-language-kotlin
+            # admin
+            player-roles
             ledger
+            invview
           ]
         );
 
