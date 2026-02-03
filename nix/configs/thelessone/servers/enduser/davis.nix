@@ -1,3 +1,5 @@
+{ withSystem, ... }:
+
 {
   flake.nixosModules.thelessone-davis =
     { lib, config, ... }:
@@ -103,4 +105,30 @@
         };
       };
     };
+
+  perSystem =
+    { pkgs, ... }:
+    {
+      packages.davis = pkgs.davis.overrideAttrs (
+        finalAttrs: prevAttrs:
+
+        {
+          php = pkgs.php.withExtensions ({ all, enabled }: enabled ++ [ all.imap ]);
+          passthru = prevAttrs.passthru // {
+            inherit (finalAttrs) php;
+          };
+        }
+      );
+    };
+
+  flake.overlays.davis =
+    _: prev:
+
+    withSystem prev.stdenv.hostPlatform.system (
+      { config, ... }:
+
+      {
+        inherit (config.packages) davis;
+      }
+    );
 }
