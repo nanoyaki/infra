@@ -13,6 +13,8 @@
           "porkbun/secret-api-key" = { };
           "porkbun-nano/api-key" = { };
           "porkbun-nano/secret-api-key" = { };
+          "porkbun-ashley/api-key" = { };
+          "porkbun-ashley/secret-api-key" = { };
         };
 
         templates."theless.one-acme.env".file = pkgs.writeEnv "theless.one-acme.env.template" {
@@ -23,6 +25,11 @@
         templates."nanoyaki.space-acme.env".file = pkgs.writeEnv "nanoyaki.space-acme.env.template" {
           PORKBUN_API_KEY = config.sops.placeholder."porkbun-nano/api-key";
           PORKBUN_SECRET_API_KEY = config.sops.placeholder."porkbun-nano/secret-api-key";
+        };
+
+        templates."aslija.com-acme.env".file = pkgs.writeEnv "aslija.com-acme.env.template" {
+          PORKBUN_API_KEY = config.sops.placeholder."porkbun-ashley/api-key";
+          PORKBUN_SECRET_API_KEY = config.sops.placeholder."porkbun-ashley/secret-api-key";
         };
       };
 
@@ -45,6 +52,11 @@
         certs."nanoyaki.space" = {
           environmentFile = config.sops.templates."nanoyaki.space-acme.env".path;
           extraDomainNames = [ "*.nanoyaki.space" ];
+        };
+
+        certs."aslija.com" = {
+          environmentFile = config.sops.templates."aslija.com-acme.env".path;
+          extraDomainNames = [ "*.aslija.com" ];
         };
       };
     };

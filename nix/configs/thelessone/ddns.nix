@@ -77,6 +77,19 @@
 
         domains = [
           {
+            domain = "theless.one";
+            subdomain = "at01";
+          }
+          # Remove this soon
+          {
+            domain = "theless.one";
+            subdomain = "";
+          }
+          {
+            domain = "theless.one";
+            subdomain = "*";
+          }
+          {
             secretapikey = config.sops.placeholder."porkbun-nano/secret-api-key";
             apikey = config.sops.placeholder."porkbun-nano/api-key";
             domain = "nanoyaki.space";
@@ -89,16 +102,15 @@
             subdomain = "*";
           }
           {
-            domain = "theless.one";
-            subdomain = "at01";
-          }
-          # Remove this soon
-          {
-            domain = "theless.one";
+            secretapikey = config.sops.placeholder."porkbun-ashley/secret-api-key";
+            apikey = config.sops.placeholder."porkbun-ashley/api-key";
+            domain = "aslija.com";
             subdomain = "";
           }
           {
-            domain = "theless.one";
+            secretapikey = config.sops.placeholder."porkbun-ashley/secret-api-key";
+            apikey = config.sops.placeholder."porkbun-ashley/api-key";
+            domain = "aslija.com";
             subdomain = "*";
           }
         ];
