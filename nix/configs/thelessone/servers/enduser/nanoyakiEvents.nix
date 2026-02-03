@@ -71,29 +71,26 @@
         homeMode = "770";
       };
 
-      services.phpfpm = {
+      services.phpfpm.pools.nanoyaki-events = {
+        user = "nanoyaki-events";
         phpPackage = pkgs.php84;
         phpOptions = ''
           memory_limit = 256M
           display_errors = 0
           date.timezone = "Europe/Berlin"
         '';
-
-        pools.nanoyaki-events = {
-          user = "nanoyaki-events";
-          settings = {
-            "listen.owner" = user;
-            "listen.group" = config.services.caddy.group;
-            "pm" = "dynamic";
-            "pm.max_children" = 5;
-            "pm.start_servers" = 1;
-            "pm.min_spare_servers" = 1;
-            "pm.max_spare_servers" = 5;
-            "pm.max_requests" = 50;
-            "php_admin_value[error_log]" = "stderr";
-            "php_admin_flag[log_errors]" = true;
-            "catch_workers_output" = true;
-          };
+        settings = {
+          "listen.owner" = user;
+          "listen.group" = config.services.caddy.group;
+          "pm" = "dynamic";
+          "pm.max_children" = 5;
+          "pm.start_servers" = 1;
+          "pm.min_spare_servers" = 1;
+          "pm.max_spare_servers" = 5;
+          "pm.max_requests" = 50;
+          "php_admin_value[error_log]" = "stderr";
+          "php_admin_flag[log_errors]" = true;
+          "catch_workers_output" = true;
         };
       };
     };

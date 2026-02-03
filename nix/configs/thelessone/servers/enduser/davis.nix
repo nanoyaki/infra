@@ -60,7 +60,7 @@
         database.createLocally = true;
       };
 
-      users.users.${config.services.caddy.user}.extraGroups = [ cfg.group ];
+      services.phpfpm.pools.davis.settings."listen.group" = "caddy";
       thelessone.caddy.vHost."dav.theless.one".extraConfig = ''
         root * ${cfg.package}/public
         encode zstd gzip
@@ -68,7 +68,10 @@
         @caldav path_regexp ^/\.well-known/(caldav|carddav)$
         redir @caldav /dav/ 302
 
-        php_fastcgi unix/${config.services.phpfpm.pools.davis.socket}
+        php_fastcgi unix/${config.services.phpfpm.pools.davis.socket} {
+          root ${cfg.package}/public
+          resolve_root_symlink
+        }
 
         file_server
 
