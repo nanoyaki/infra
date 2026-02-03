@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.thelessone-valheim =
+  flake.nixosModules.thelessone-shoko =
     {
       lib,
       pkgs,
