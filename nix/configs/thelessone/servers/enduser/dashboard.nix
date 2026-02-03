@@ -558,7 +558,7 @@
         homepage-dashboard = final.symlinkJoin {
           inherit (prev.homepage-dashboard) meta pname version;
           paths = [ prev.homepage-dashboard ];
-          postInstall = ''
+          postBuild = ''
             mkdir -p $out/share/homepage/public/images
             # Reduce image size to about 100kb
             ${final.lib.getExe' final.imagemagick "magick"} ${dashboard-wallpaper} \
