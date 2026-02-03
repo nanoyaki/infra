@@ -22,6 +22,7 @@
         domains = [
           "theless.one"
           "nanoyaki.space"
+          "aslija.com"
         ];
 
         loginAccounts = {
@@ -52,6 +53,16 @@
               "thomas@theless.one"
               "contact@theless.one"
             ];
+          };
+
+          "personal@aslija.com" = {
+            hashedPasswordFile = config.sops.secrets."mailserver/aslija-personal".path;
+            aliasesRegexp = [ ''/^personal\+.*@aslija\.com$/'' ];
+          };
+
+          "business@aslija.com" = {
+            hashedPasswordFile = config.sops.secrets."mailserver/aslija-business".path;
+            aliases = [ "inquiry@aslija.com" ];
           };
 
           "no-reply@theless.one" = {
