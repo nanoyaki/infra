@@ -13,7 +13,7 @@
       hardware.cpu.amd.updateMicrocode = true;
       zramSwap.enable = true;
 
-      hardware.enableAllFirmware = true;
+      hardware.enableRedistributableFirmware = true;
       hardware.facter.reportPath = ./facter.json;
 
       boot.kernelModules = [

@@ -151,14 +151,6 @@
         "steam"
         "steam-unwrapped"
         "discord"
-
-        # hardware
-        "broadcom-bt-firmware"
-        "b43-firmware"
-        "xow_dongle-firmware"
-        "xone-dongle-firmware"
-        "facetimehd-calibration"
-        "facetimehd-firmware"
       ];
 
       system.stateVersion = "24.11";
