@@ -197,6 +197,14 @@
             "fd64::24/128"
           ];
         }
+        {
+          # old phone
+          publicKey = "rHvleR543B5eil5KEQTMEmGXOxuYTvqwQmoPim+9f04=";
+          allowedIPs = [
+            "100.64.64.25/32"
+            "fd64::25/128"
+          ];
+        }
       ];
     };
 }
