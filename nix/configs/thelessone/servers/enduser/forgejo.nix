@@ -32,6 +32,7 @@
         "forgejo/syakuyaku" = { };
         "forgejo/botan" = { };
         "forgejo/kigiku" = { };
+        "mailserver/git" = { };
       };
 
       sops.templates."kikyo.env".file = pkgs.writeEnv "kikyo.env.template" {
@@ -229,6 +230,11 @@
         };
 
         secrets.mailer.PASSWD = config.sops.secrets."forgejo/mailer-password".path;
+      };
+
+      mailserver.loginAccounts."git@theless.one" = {
+        sendOnly = true;
+        hashedPasswordFile = config.sops.secrets."mailserver/git".path;
       };
 
       services.borgbackup.jobs.forgejo = {

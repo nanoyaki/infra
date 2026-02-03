@@ -23,7 +23,10 @@
         enable = true;
         backendListenAddress = "127.0.0.1:32254";
         dataDir = "/mnt/raid/fireshare";
-        environment.DOMAIN = "fireshare.theless.one";
+        environment = {
+          DOMAIN = "fireshare.theless.one";
+          ENABLE_TRANSCODING = "true";
+        };
 
         environmentFile = config.sops.templates."fireshare.env".path;
       };

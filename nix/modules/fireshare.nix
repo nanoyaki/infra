@@ -20,16 +20,6 @@
         ;
 
       cfg = config.self.fireshare;
-      finalEnv = {
-        FLASK_APP = "${cfg.package}/share/fireshare/server/fireshare:create_app()";
-        DATA_DIRECTORY = "${cfg.dataDir}/data";
-        VIDEO_DIRECTORY = "${cfg.dataDir}/videos";
-        PROCESSED_DIRECTORY = "${cfg.dataDir}/processed";
-        TEMPLATE_PATH = "${cfg.package}/share/fireshare/server/fireshare/templates";
-        ENVIRONMENT = "production";
-        FLASK_ENV = "production";
-      }
-      // cfg.environment;
     in
 
     {
@@ -66,7 +56,7 @@
 
         environment = mkOption {
           type = types.submodule {
-            freeformType = with types; nullOr (oneOf str path);
+            freeformType = with types; attrsOf (nullOr (either str path));
 
             options = {
               DOMAIN = mkOption {
@@ -103,13 +93,25 @@
             nativeBuildInputs = [ pkgs.makeWrapper ];
             postBuild = ''
               wrapProgram "$out/bin/fireshare" \
-                ${concatMapStringsSep " \\\n" (var: ''--set ${var} "${finalEnv.${var}}"'') (attrNames finalEnv)}
+                ${concatMapStringsSep " \\\n" (var: ''--set ${var} "${cfg.environment.${var}}"'') (
+                  attrNames cfg.environment
+                )}
             '';
             postFixup = ''
               rm $out/bin/fireshare-server
             '';
           })
         ];
+
+        self.fireshare.environment = {
+          FLASK_APP = "${cfg.package}/share/fireshare/server/fireshare:create_app()";
+          DATA_DIRECTORY = "${cfg.dataDir}/data";
+          VIDEO_DIRECTORY = "${cfg.dataDir}/videos";
+          PROCESSED_DIRECTORY = "${cfg.dataDir}/processed";
+          TEMPLATE_PATH = "${cfg.package}/share/fireshare/server/fireshare/templates";
+          ENVIRONMENT = "production";
+          FLASK_ENV = "production";
+        };
 
         users.users = mkMerge [
           { ${config.services.caddy.user}.extraGroups = [ cfg.group ]; }
@@ -137,7 +139,7 @@
             cache
           '';
 
-          virtualHosts.${finalEnv.DOMAIN}.extraConfig = ''
+          virtualHosts.${cfg.environment.DOMAIN}.extraConfig = ''
             header -Server
             root * ${cfg.package}/share/fireshare/client
             file_server
@@ -208,9 +210,9 @@
           wantedBy = [ "multi-user.target" ];
           before = [ "fireshare.service" ];
 
-          environment = finalEnv;
+          inherit (cfg) environment;
 
-          unitConfig.ConditionFileNotEmpty = "!${finalEnv.DATA_DIRECTORY}/db.sqlite";
+          unitConfig.ConditionFileNotEmpty = "!${cfg.environment.DATA_DIRECTORY}/db.sqlite";
 
           serviceConfig = {
             ExecStart = "${lib.getExe' cfg.package "fireshare"} init-db";
@@ -230,12 +232,12 @@
           wants = [ "network-online.target" ];
           after = [ "network-online.target" ];
 
-          environment = finalEnv;
+          inherit (cfg) environment;
 
           path = [ cfg.package ];
 
           script = ''
-            jobsDb="${finalEnv.DATA_DIRECTORY}/jobs.sqlite"
+            jobsDb="${cfg.environment.DATA_DIRECTORY}/jobs.sqlite"
             [[ -f "$jobsDb" ]] && rm "$jobsDb"
 
             fireshare-server \
@@ -244,7 +246,7 @@
               ${lib.escapeShellArgs cfg.extraArgs}
           '';
 
-          unitConfig.ConditionFileNotEmpty = "${finalEnv.DATA_DIRECTORY}/db.sqlite";
+          unitConfig.ConditionFileNotEmpty = "${cfg.environment.DATA_DIRECTORY}/db.sqlite";
           serviceConfig = {
             StateDirectory = mkIf (cfg.dataDir == "/var/lib/fireshare") "fireshare";
             WorkingDirectory = "~";

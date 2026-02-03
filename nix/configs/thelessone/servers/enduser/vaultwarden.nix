@@ -6,7 +6,9 @@
       sops.secrets = {
         vaultwarden-smtp-password = { };
         vaultwarden-admin-token = { };
+        "mailserver/vaultwarden" = { };
       };
+
       sops.templates."vaultwarden.env" = {
         file = pkgs.writeEnv "vaultwarden.env.template" {
           SMTP_PASSWORD = config.sops.placeholder.vaultwarden-smtp-password;
@@ -43,6 +45,11 @@
         };
 
         environmentFile = config.sops.templates."vaultwarden.env".path;
+      };
+
+      mailserver.loginAccounts."vaultwarden@theless.one" = {
+        sendOnly = true;
+        hashedPasswordFile = config.sops.secrets."mailserver/vaultwarden".path;
       };
 
       thelessone.caddy.vHost."vaultwarden.theless.one".proxy.port =

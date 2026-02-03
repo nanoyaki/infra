@@ -31,7 +31,8 @@
       thelessone-acme
       thelessone-ddns
       thelessone-mailserver
-      thelessone-radicale
+      thelessone-davis
+      # thelessone-radicale
       thelessone-caddy
       thelessone-vaultwarden
       thelessone-nanoyakiEvents

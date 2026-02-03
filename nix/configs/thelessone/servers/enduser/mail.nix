@@ -11,14 +11,12 @@
         "mailserver/postmaster" = { };
         "mailserver/nanoyaki" = { };
         "mailserver/thelessone" = { };
-        "mailserver/vaultwarden" = { };
-        "mailserver/calendar" = { };
-        "mailserver/git" = { };
-        "mailserver/recipes" = { };
+        "mailserver/no-reply" = { };
       };
 
       mailserver = {
         enable = true;
+        virusScanning = true;
         stateVersion = 3;
         fqdn = "mail.theless.one";
         domains = [
@@ -56,24 +54,9 @@
             ];
           };
 
-          "vaultwarden@theless.one" = {
+          "no-reply@theless.one" = {
+            hashedPasswordFile = config.sops.secrets."mailserver/no-reply".path;
             sendOnly = true;
-            hashedPasswordFile = config.sops.secrets."mailserver/vaultwarden".path;
-          };
-
-          "calendar@theless.one" = {
-            sendOnly = true;
-            hashedPasswordFile = config.sops.secrets."mailserver/calendar".path;
-          };
-
-          "git@theless.one" = {
-            sendOnly = true;
-            hashedPasswordFile = config.sops.secrets."mailserver/git".path;
-          };
-
-          "recipes@theless.one" = {
-            sendOnly = true;
-            hashedPasswordFile = config.sops.secrets."mailserver/recipes".path;
           };
         };
 

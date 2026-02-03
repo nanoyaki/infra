@@ -10,6 +10,7 @@
       sops.secrets = {
         tandoor.owner = cfg.user;
         tandoor_email.owner = cfg.user;
+        "mailserver/recipes" = { };
       };
 
       services.tandoor-recipes = {
@@ -39,6 +40,11 @@
           EMAIL_USE_TLS = 0;
           EMAIL_USE_SSL = 1;
         };
+      };
+
+      mailserver.loginAccounts."recipes@theless.one" = {
+        sendOnly = true;
+        hashedPasswordFile = config.sops.secrets."mailserver/recipes".path;
       };
 
       systemd.tmpfiles.settings.tandoor-recipes."/var/lib/tandoor-recipes".Z = {

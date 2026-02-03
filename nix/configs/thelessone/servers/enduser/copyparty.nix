@@ -160,7 +160,7 @@
         serviceConfig.RuntimeDirectoryMode = lib.mkForce "0770";
       };
 
-      systemd.services.caddy.serviceConfig.BindPaths = [ "/run/copyparty/copyparty.sock" ];
+      systemd.services.caddy.serviceConfig.ReadWritePaths = [ "/run/copyparty/copyparty.sock" ];
       users.users.${config.services.caddy.user}.extraGroups = [ cfg.group ];
       thelessone.caddy.vHost."files.theless.one".extraConfig = ''
         reverse_proxy unix//run/copyparty/copyparty.sock

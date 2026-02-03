@@ -25,6 +25,7 @@
 
     {
       sops.secrets.radicale-smtp-password.owner = "radicale";
+      sops.secrets."mailserver/calendar" = { };
 
       services.radicale = {
         enable = true;
@@ -108,8 +109,12 @@
         )
       );
 
+      mailserver.loginAccounts."calendar@theless.one" = {
+        sendOnly = true;
+        hashedPasswordFile = config.sops.secrets."mailserver/calendar".path;
+      };
+
       thelessone.caddy.vHost."calendar.theless.one".proxy.port = 5232;
-      thelessone.caddy.vHost."dav.theless.one".proxy.port = 5232;
 
       services.borgbackup.jobs.dav = {
         repo = "thelessone-borg@10.0.0.6:dav";
