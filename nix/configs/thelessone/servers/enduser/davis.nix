@@ -52,7 +52,7 @@
           # misc
           BIRTHDAY_REMINDER_OFFSET = "PT9H";
           LOG_FILE_PATH = lib.mkForce "/var/log/davis/%kernel.environment%.log";
-          SYMFONY_TRUSTED_PROXIES = "127.0.0.1";
+          SYMFONY_TRUSTED_PROXIES = "127.0.0.1,dav.theless.one";
           APP_ENV = "prod";
         };
 
@@ -64,6 +64,13 @@
       thelessone.caddy.vHost."dav.theless.one".extraConfig = ''
         root * ${cfg.package}/public
         encode zstd gzip
+        header {
+          -Server
+          -X-Powered-By
+          Strict-Transport-Security max-age=31536000;
+          X-Content-Type-Options nosniff
+          Referrer-Policy no-referrer-when-downgrade
+        }
 
         @caldav path_regexp ^/\.well-known/(caldav|carddav)$
         redir @caldav /dav/ 302
