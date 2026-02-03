@@ -23,6 +23,7 @@
 
       services.davis = {
         enable = true;
+        nginx = null;
         hostname = "dav.theless.one";
         appSecretFile = config.sops.secrets.davis-app-secret.path;
 
@@ -59,7 +60,6 @@
         database.createLocally = true;
       };
 
-      systemd.services.caddy.serviceConfig.ReadWritePaths = [ config.services.phpfpm.pools.davis.socket ];
       users.users.${config.services.caddy.user}.extraGroups = [ cfg.group ];
       thelessone.caddy.vHost."dav.theless.one".extraConfig = ''
         root * ${cfg.package}/public
