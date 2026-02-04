@@ -108,12 +108,22 @@
 
   perSystem =
     { pkgs, ... }:
+
     {
       packages.davis = pkgs.davis.overrideAttrs (
         finalAttrs: prevAttrs:
 
         {
-          php = pkgs.php.withExtensions ({ all, enabled }: enabled ++ [ all.imap ]);
+          php = pkgs.php.withExtensions (
+            { all, enabled }:
+
+            enabled
+            ++ [
+              all.imap
+              all.pdo_pgsql
+            ]
+          );
+
           passthru = prevAttrs.passthru // {
             inherit (finalAttrs) php;
           };
