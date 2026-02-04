@@ -49,7 +49,7 @@
 
           WEBDAV_TMP_DIR = "/srv/webdav/tmp";
           WEBDAV_PUBLIC_DIR = "/srv/webdav/public";
-          WEBDAV_HOMES_DIR = "/srv/webdav/homes";
+          WEBDAV_HOMES_DIR = "/srv/webdav-homes";
 
           # misc
           BIRTHDAY_REMINDER_OFFSET = "PT9H";
@@ -97,7 +97,7 @@
         "/srv/webdav" = dirCfg;
         "/srv/webdav/tmp" = dirCfg;
         "/srv/webdav/public" = dirCfg;
-        "/srv/webdav/homes" = dirCfg;
+        "/srv/webdav-homes" = dirCfg;
 
         "/var/log/davis".d = {
           inherit (cfg) user group;
