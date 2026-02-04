@@ -42,7 +42,7 @@
           PUBLIC_CALENDARS_ENABLED = true;
 
           AUTH_METHOD = "IMAP";
-          IMAP_AUTH_URL = "imap.theless.one";
+          IMAP_AUTH_URL = "imap.theless.one:993";
           IMAP_ENCRYPTION_METHOD = "tls";
           IMAP_CERTIFICATE_VALIDATION = true;
           IMAP_AUTH_USER_AUTOCREATE = true;
