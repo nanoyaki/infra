@@ -75,7 +75,7 @@
         }
 
         @caldav path_regexp ^/\.well-known/(caldav|carddav)$
-        redir @caldav /dav/ 302
+        redir @caldav /dav/ 301
 
         php_fastcgi unix/${config.services.phpfpm.pools.davis.socket} {
           root ${cfg.package}/public
