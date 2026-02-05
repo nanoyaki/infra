@@ -79,7 +79,7 @@
   flake.homeConfigurations.thelessone = inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = import inputs.nixpkgs {
       system = "x86_64-linux";
-      inherit (inputs.self.nixosConfigurations.thelessnas.config.nixpkgs) config overlays;
+      inherit (inputs.self.nixosConfigurations.thelessone.config.nixpkgs) config overlays;
     };
     modules = with inputs.self.homeModules; [
       homeManager

@@ -253,6 +253,7 @@
               CapabilityBoundingSet = "";
               SystemCallFilter = [ "@system-service" ];
 
+              ReadWritePaths = [ rootDir ];
               NoNewPrivileges = true;
               ProtectClock = true;
               RestrictNamespaces = true;
