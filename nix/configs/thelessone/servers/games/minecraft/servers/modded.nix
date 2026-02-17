@@ -89,6 +89,7 @@
             bluemap-sign-markers.v1_20_1-0_2_4_28
             netherportalfix.v13_0_21_20
             rei.v12_1_785
+            roughly-enough-trades.v1_20_1-1_0
 
             # admin
             player-roles."v1_6_6+1_20"
@@ -110,10 +111,12 @@
             create-new-age.v1_1_2
             create-steam-n-rails.v1_6_9mc
             create-structures."v0_1_1+mod"
+            extended-cogwheels.v2_1_10_5_1_f
 
             # modded
             ad-astra.v1_15_20
             ad-astra-giselle-addon.v6_19
+            ad-astra-rocketed.v1_0_3
             ad_extendra-continuation.v1_1_2
             applied-energistics-2-wireless-terminals.v15_2_1
             alloy-forgery."v2_1_2+1_20"
@@ -121,13 +124,12 @@
             ae2.v15_4_10
             bosses-of-mass-destruction.v1_7_5
             botarium.v2_3_4
-            ct-overhaul-village.v3_3_6
+            ct-overhaul-village.v3_4_16
             comforts.v6_4_0
             connectiblechains.v2_5_7
             dungeons-and-taverns."v3_0_3_f+mod"
             elytra-trims.v3_9_3
             enchanted-vertical-slabs.v2_2_1
-            extended-cogwheels.v2_1_10_5_1_f
             fabric-seasons."v2_4_2-BETA+1_20"
             fabric-seasons-terralith-compat.v1_0
             lets-do-herbalbrews.v1_0_12
@@ -154,7 +156,8 @@
             towns-and-towers.v1_12
             twigs.v3_1_0
             valkyrien-skies.v1_20_12_3_0-beta_5
-            xaeros-minimap."fabric25_3_10"
+            xaeros-minimap.fabric25_3_10
+            xaeros-world-map.fabric1_40_11
             yigd.v2_0_16
           ])
           ++ (with pkgs.minecraft.fabric; [
