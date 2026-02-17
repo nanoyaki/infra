@@ -124,7 +124,7 @@
             ae2.v15_4_10
             bosses-of-mass-destruction.v1_7_5
             botarium.v2_3_4
-            ct-overhaul-village.v3_4_16
+            ct-overhaul-village.v3_4_14
             comforts.v6_4_0
             connectiblechains.v2_5_7
             dungeons-and-taverns."v3_0_3_f+mod"
