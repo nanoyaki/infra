@@ -58,6 +58,8 @@
             supermartijn642s-config-lib.v1_1_8amc
             trinkets.v3_7_2
             yungs-api.v1_20-Fabric-4_0_6
+            fzzy-config.v0_7_6
+            fusion-connected-textures.v1_2_12mc
 
             # velocity
             fabricproxy-lite.latest
