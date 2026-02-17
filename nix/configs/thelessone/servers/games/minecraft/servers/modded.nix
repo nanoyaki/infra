@@ -18,7 +18,7 @@
           sleep 10
         '';
 
-        serverProperties.server-port = 30055;
+        serverProperties.server-port = 25567;
 
         gamerules = {
           # SMP improvements
@@ -65,17 +65,16 @@
             fabricproxy-lite.latest
 
             # optimization
-            vmp-fabric.latest
-            lithium.latest
+            vmp-fabric."v0_2_0+beta_7_102"
+            lithium.mc0_11_4
             krypton.latest
             c2me-fabric.latest
-            ferrite-core.latest
+            ferrite-core.v6_0_1
             chunky.latest
-            entityculling.latest
-            faster-random.latest
-            lithium.latest
-            memoryleakfix.latest
-            modernfix.latest
+            entityculling.v1_9_5
+            faster-random.v5_1_0
+            memoryleakfix.v1_1_5
+            modernfix."v5_25_2+mc"
 
             # qol
             no-chat-reports.latest
@@ -83,7 +82,7 @@
             bluemap.latest
             bluemap-sign-markers.latest
             netherportalfix.latest
-            rei.latest
+            rei.v12_1_785
 
             # admin
             player-roles.latest
