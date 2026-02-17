@@ -15,6 +15,7 @@
           jre_headless = pkgs.zulu21;
           loaderVersion = "0.18.4";
         };
+        appendJvmOpts = "-Dowo.handshake.disable true";
 
         extraStopPre = ''
           tmux -S ${tmux.socketPath "modded"} send-keys "say Server restart in 10 seconds" Enter
