@@ -1,7 +1,6 @@
 {
   flake.nixosModules.thelessone-minecraftModded =
     {
-      lib,
       pkgs,
       config,
       ...
@@ -9,23 +8,22 @@
 
     let
       inherit (pkgs) formats;
-      inherit (config.services.minecraft-servers.managementSystem) tmux;
     in
 
     {
       services.minecraft-servers'.servers.modded = {
         enable = true;
+        managementSystem = {
+          tmux.enable = false;
+          systemd-socket.enable = true;
+        };
+
         package = pkgs.fabricServers.fabric-1_20_1;
         packageOverrides = {
           jre_headless = pkgs.zulu21;
           loaderVersion = "0.18.4";
         };
         appendJvmOpts = "-Dowo.handshake.disable true";
-
-        extraStopPre = ''
-          ${lib.getExe pkgs.tmux} -S ${tmux.socketPath "modded"} send-keys "say Server restart in 10 seconds" Enter
-          sleep 10
-        '';
 
         serverProperties.server-port = 25567;
 
