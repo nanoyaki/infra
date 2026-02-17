@@ -63,6 +63,7 @@
 
             # velocity
             fabricproxy-lite.latest
+            crossstitch.latest
 
             # optimization
             vmp-fabric."v0_2_0+beta_7_102"

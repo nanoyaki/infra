@@ -35,7 +35,7 @@
               creative = "127.0.0.1:30051";
               lobby = "127.0.0.1:30052";
               flat = "127.0.0.1:30054";
-              # modded = "127.0.0.1:30055";
+              modded = "127.0.0.1:25567";
 
               try = [
                 "smp"
@@ -48,7 +48,7 @@
               "creative.theless.one" = [ "creative" ];
               "lobby.theless.one" = [ "lobby" ];
               "flat.theless.one" = [ "flat" ];
-              # "mods.theless.one" = [ "modded" ];
+              "mods.theless.one" = [ "modded" ];
             };
 
             query.enabled = false;
@@ -56,6 +56,7 @@
         };
 
         files."forwarding.secret" = pkgs.writeText "forwarding.secret" "@FABRIC_PROXY_SECRET@";
+        files."server-icon.png" = "${pkgs.thelessone-minecraft-logomark}/icon.png";
       };
     };
 }
