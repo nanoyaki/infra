@@ -69,6 +69,7 @@
       thelessone-minecraftSmp
       thelessone-minecraftCreative
       thelessone-minecraftFlat
+      thelessone-minecraftModded
       thelessone-nonNixMinecraft
       thelessone-desktop
       thelessone-theming

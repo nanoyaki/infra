@@ -292,8 +292,12 @@
             toGamerule =
               rawGamerule:
               let
-                # Support 1.21.11
-                gamerule = "${lib.optionalString (!(lib.hasInfix ":" rawGamerule)) "minecraft:"}${rawGamerule}";
+                # Support 1.21.11 and older
+                minecraftPrefix = lib.optionalString (
+                  (!lib.hasInfix ":" rawGamerule)
+                  && lib.all (key: (builtins.match "[a-z_]+" key) != null) (builtins.attrNames gamerules)
+                ) "minecraft:";
+                gamerule = "${minecraftPrefix}${rawGamerule}";
               in
               "gamerule ${gamerule} ${toValidString gamerules.${rawGamerule}}";
 
