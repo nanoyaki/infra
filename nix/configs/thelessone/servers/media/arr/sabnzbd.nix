@@ -38,6 +38,7 @@
       services.sabnzbd = {
         enable = true;
         inherit (config.thelessone.arr) group;
+        configFile = null;
 
         allowConfigWrite = false;
         secretFiles = [ config.sops.templates."secrets.ini".path ];

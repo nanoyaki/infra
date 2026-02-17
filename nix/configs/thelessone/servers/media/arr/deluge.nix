@@ -229,7 +229,6 @@
           enable = true;
           host = "0.0.0.0";
           port = 24325;
-          package = pkgs.flood-with-labels;
         };
 
         thelessone.caddy.vHost."flood.theless.one" = {
