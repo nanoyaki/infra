@@ -31,13 +31,11 @@
         mods =
           (with pkgs.minecraft.fabric.v1_20_1; [
             # libraries
-            architectury-api.latest
-            cloth-config.latest
-            yacl.latest
-            fabric-api.latest
-            fabric-language-kotlin.latest
-            balm.latest
-            cicada.latest
+            architectury-api.v9_2_14
+            cloth-config.v11_1_136
+            yacl.v3_6_6
+            balm.v7_3_9
+            cicada.v0_9_2
             # modded
             cardinal-components-api.v5_2_3
             cristel-lib.v1_1_5
@@ -62,32 +60,32 @@
             fusion-connected-textures.v1_2_12mc
 
             # velocity
-            fabricproxy-lite.latest
-            crossstitch.latest
+            fabricproxy-lite.v2_6_0
+            crossstitch.v0_1_6
 
             # optimization
             vmp-fabric."v0_2_0+beta_7_102"
             lithium.mc0_11_4
-            krypton.latest
-            c2me-fabric.latest
+            krypton.v0_2_3
+            c2me-fabric."v0_2_0+alpha_11_8"
             ferrite-core.v6_0_1
-            chunky.latest
+            chunky.v1_3_146
             entityculling.v1_9_5
             faster-random.v5_1_0
             memoryleakfix.v1_1_5
             modernfix."v5_25_2+mc"
 
             # qol
-            no-chat-reports.latest
-            image2map.latest
-            bluemap.latest
-            bluemap-sign-markers.latest
-            netherportalfix.latest
+            no-chat-reports.Fabricv2_2_2
+            image2map."v0_4_2+1_20"
+            bluemap.v5_31_20
+            bluemap-sign-markers.v1_20_1-0_2_4_28
+            netherportalfix.v13_0_21_20
             rei.v12_1_785
 
             # admin
-            player-roles.latest
-            invview.latest
+            player-roles."v1_6_6+1_20"
+            invview.v1_4_12
 
             # create
             create-fabric."v0_5_1-j-build_1631+mc"
