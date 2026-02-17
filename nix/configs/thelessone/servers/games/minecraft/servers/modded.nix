@@ -1,6 +1,11 @@
 {
   flake.nixosModules.thelessone-minecraftModded =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     let
       inherit (pkgs) formats;
@@ -18,7 +23,7 @@
         appendJvmOpts = "-Dowo.handshake.disable true";
 
         extraStopPre = ''
-          tmux -S ${tmux.socketPath "modded"} send-keys "say Server restart in 10 seconds" Enter
+          ${lib.getExe pkgs.tmux} -S ${tmux.socketPath "modded"} send-keys "say Server restart in 10 seconds" Enter
           sleep 10
         '';
 

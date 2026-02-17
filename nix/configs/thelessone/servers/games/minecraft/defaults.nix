@@ -47,7 +47,7 @@
 
             options = {
               appendJvmOpts = mkOption {
-                type = types.str;
+                type = types.separatedString " ";
                 default = "";
                 description = ''
                   JVM options to append to the jvmOpts option
