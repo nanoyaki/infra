@@ -20,7 +20,7 @@
 
         package = pkgs.fabricServers.fabric-1_20_1;
         packageOverrides = {
-          jre_headless = pkgs.zulu21;
+          jre_headless = pkgs.zulu25;
           loaderVersion = "0.18.4";
         };
         appendJvmOpts = "-Dowo.handshake.disable=true";
