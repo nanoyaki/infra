@@ -17,10 +17,7 @@
           sleep 10
         '';
 
-        serverProperties = {
-          server-port = 30055;
-          initial-enabled-packs = "vanilla";
-        };
+        serverProperties.server-port = 30055;
 
         gamerules = {
           # SMP improvements
@@ -160,6 +157,8 @@
             v1_20_1."sophisticated-storage-(unofficial-fabric-port)".v1_20_1-1_3_5_9_136
             v1_20_1."sophisticated-storage-in-motion-(unofficial-fabric-port)".v1_20_1-0_10_5_1_37
           ]);
+
+        datapacks = null;
 
         symlinks = {
           "config/bluemap/core.conf" = {
