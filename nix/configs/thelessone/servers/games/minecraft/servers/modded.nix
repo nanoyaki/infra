@@ -46,7 +46,6 @@
             fabric-api.v0_92_7
             fabric-language-kotlin."v1_13_7+kotlin_2_2_21"
             geckolib.v4_8_3
-            guard-ribbits.v1_20_1-Fabric-1_0_4
             lithostitched.v1_4_111_20
             moonlight.v1_20-2_16_27
             owo-lib."v0_11_2+1_20"
