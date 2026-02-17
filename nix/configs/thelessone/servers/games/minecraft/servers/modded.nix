@@ -23,7 +23,7 @@
           jre_headless = pkgs.zulu21;
           loaderVersion = "0.18.4";
         };
-        appendJvmOpts = "-Dowo.handshake.disable true";
+        appendJvmOpts = "-Dowo.handshake.disable=true";
 
         serverProperties.server-port = 25567;
 
