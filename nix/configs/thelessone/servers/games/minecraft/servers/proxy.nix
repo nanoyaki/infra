@@ -48,7 +48,7 @@
               "creative.theless.one" = [ "creative" ];
               "lobby.theless.one" = [ "lobby" ];
               "flat.theless.one" = [ "flat" ];
-              "mods.theless.one" = [ "modded" ];
+              "modded.theless.one" = [ "modded" ];
             };
 
             query.enabled = false;
