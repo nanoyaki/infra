@@ -11,7 +11,10 @@
       services.minecraft-servers'.servers.modded = {
         enable = true;
         package = pkgs.fabricServers.fabric-1_20_1;
-        packageOverrides.jre_headless = pkgs.zulu21;
+        packageOverrides = {
+          jre_headless = pkgs.zulu21;
+          loaderVersion = "0.18.4";
+        };
 
         extraStopPre = ''
           tmux -S ${tmux.socketPath "modded"} send-keys "say Server restart in 10 seconds" Enter
