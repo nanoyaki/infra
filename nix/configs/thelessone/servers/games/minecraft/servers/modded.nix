@@ -65,6 +65,7 @@
             yungs-api.v1_20-Fabric-4_0_6
             fzzy-config.v0_7_6
             fusion-connected-textures.v1_2_12mc
+            puzzles-lib.v8__20_1-Fabric
 
             # velocity
             fabricproxy-lite.v2_6_0
@@ -132,6 +133,7 @@
             enchanted-vertical-slabs.v2_2_1
             fabric-seasons."v2_4_2-BETA+1_20"
             fabric-seasons-terralith-compat.v1_0
+            leaves-be-gone.v8_0_0Fabric
             lets-do-herbalbrews.v1_0_12
             macaws-doors.v1_1_5
             merequester.v1_20_1-1_1_4
