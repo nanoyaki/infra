@@ -130,7 +130,7 @@
             connectiblechains.v2_5_7
             dungeons-and-taverns."v3_0_3_f+mod"
             elytra-trims.v3_9_3
-            every-compat.v1_20-2_9_17
+            every-compat.v1_20-2_9_9
             enchanted-vertical-slabs.v2_2_1
             fabric-seasons."v2_4_2-BETA+1_20"
             fabric-seasons-terralith-compat.v1_0
