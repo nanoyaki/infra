@@ -130,12 +130,12 @@
             connectiblechains.v2_5_7
             dungeons-and-taverns."v3_0_3_f+mod"
             elytra-trims.v3_9_3
+            every-compat.v1_20-2_9_17
             enchanted-vertical-slabs.v2_2_1
             fabric-seasons."v2_4_2-BETA+1_20"
             fabric-seasons-terralith-compat.v1_0
             leaves-be-gone.v8_0_0Fabric
             lets-do-herbalbrews.v1_0_12
-            macaws-doors.v1_1_5
             merequester.v1_20_1-1_1_4
             mythicmetals.v0_19_11
             mythicmetals-decorations.v0_6_4
@@ -161,6 +161,20 @@
             xaeros-minimap.fabric25_3_10
             xaeros-world-map.fabric1_40_11
             yigd.v2_0_16
+
+            # macaws
+            macaws-bridges.v3_1_2
+            macaws-doors.v1_1_5
+            macaws-fences-and-walls.v1_2_1
+            macaws-furniture.v3_4_1
+            macaws-holidays.v1_1_2
+            macaws-lights-and-lamps.v1_1_5
+            macaws-paintings.v1_0_5
+            macaws-paths-and-pavings.v1_1_1
+            macaws-roofs.v2_3_2
+            macaws-stairs.v1_0_2
+            macaws-trapdoors.v1_1_5
+            macaws-windows.v2_4_2
           ])
           ++ (with pkgs.minecraft.fabric; [
             v1_20_1."shulker+".v1_0_7

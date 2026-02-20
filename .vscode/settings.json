@@ -14,17 +14,19 @@
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
+    "nix.enableLanguageServer": true,
+    "nix.serverPath": "nixd",
     "nix.serverSettings": {
         "nixd": {
             "nixpkgs": {
-                "expr": "(import /home/hana/flake/.vscode/nixd-workspace.nix { path = \"${workspaceFolder}\"; })"
+                "expr": "(import /home/hana/flake/.vscode/nixd-workspace.nix { path = \"/home/hana/infra\"; })"
             },
             "formatting": {
                 "command": [ "nixfmt" ]
             },
             "options": {
                 "opts": {
-                    "expr": "(import /home/hana/flake/.vscode/nixd-workspace.nix { path = \"${workspaceFolder}\"; })"
+                    "expr": "(import /home/hana/flake/.vscode/nixd-workspace.nix { path = \"/home/hana/infra\"; })"
                 }
             }
         }
