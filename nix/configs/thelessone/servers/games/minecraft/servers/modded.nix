@@ -83,7 +83,6 @@
               quark
               rechiseled
               reconnectible-chains
-              rei
               ribbits
               serene-seasons
               serene-seasons-plus
@@ -117,12 +116,17 @@
               terralith-restoned
               terralith
 
+              # emi
+              emi
+              emi-ores
+              advanced-loot-info
+
               # refined storage
               refined-storage
               refined-types
-              refined-storage-rei-integration
               refined-storage-quartz-arsenal
               refined-storage-mekanism-integration
+              refined-storage-emi-integration
 
               # applied energistics
               ae2
