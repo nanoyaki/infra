@@ -39,6 +39,7 @@
               # libs
               addonslib
               architectury-api
+              balm
               cristel-lib
               curios
               fzzy-config
@@ -73,7 +74,6 @@
               lets-do-herbalbrews
               modern-industrialization
               nullscape
-              owo-lib
               polymorph
               quark
               rechiseled
@@ -187,6 +187,7 @@
 
             create-tfmg.v1_1_1
             kotlin-for-forge.v5_11_0
+            owo-lib."v0_12_15_5-beta_1+1_21"
 
             # latest doesn't work well for sophisticated stuff
             # i mean, look at those version numbers..
