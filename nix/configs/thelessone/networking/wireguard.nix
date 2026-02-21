@@ -205,6 +205,14 @@
             "fd64::25/128"
           ];
         }
+        {
+          # media pc
+          publicKey = "TlP+JV1fO2s17IDK0si2cCkCztg4N1vbpGTouHIdnEc=";
+          allowedIPs = [
+            "100.64.64.26/32"
+            "fd64::26/128"
+          ];
+        }
       ];
     };
 }
