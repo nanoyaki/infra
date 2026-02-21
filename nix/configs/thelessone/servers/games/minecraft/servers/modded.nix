@@ -67,8 +67,6 @@
               patchouli
 
               # general
-              accessories
-              accessories-compat-layer
               alloy-smelter
               almost-unified
               betterdays
