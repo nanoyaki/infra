@@ -167,6 +167,7 @@
               rechiseled-create
               sophisticated-backpacks-create-integration
               sophisticated-storage-create-integration
+              create-steam-n-rails-1
 
               # macaws
               macaws-bridges
@@ -191,7 +192,6 @@
             })
           ])
           ++ [
-            pkgs.minecraft.neoforge.v1_21_1."create-steam-n-rails-1.21.1".latest
             pkgs.minecraft.neoforge.v1_21_1."create-track-map-(unofficial-fork)".latest
           ];
 
