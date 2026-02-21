@@ -452,11 +452,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1771672386,
-        "narHash": "sha256-9hGkzcXYZTSYawc8JSaIGyBUKKsmrO1nDadG/LtQQW8=",
+        "lastModified": 1771676373,
+        "narHash": "sha256-Z2O5jTpLGNvpHatbBwQ9IAb8J/ORqQiLt8drnX7ebGQ=",
         "owner": "nanoyaki",
         "repo": "nanopkgs",
-        "rev": "b59789760145c6488810959998fa7418f8d331ae",
+        "rev": "d85911054c828eba3b2af19e567dfb45e9037ace",
         "type": "github"
       },
       "original": {
