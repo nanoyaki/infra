@@ -22,7 +22,8 @@
         packageOverrides.jre_headless = pkgs.zulu21;
         appendJvmOpts = "-Dowo.handshake.disable=true";
 
-        serverProperties.server-port = 25568;
+        serverProperties.server-port = 30055;
+        serverProperties.online-mode = false;
 
         gamerules = {
           # SMP improvements
@@ -60,6 +61,7 @@
               zeta
               owo-lib
               kotlin-for-forge
+              badpackets
 
               # general
               accessories
@@ -90,6 +92,7 @@
               towns-and-towers
               xaeros-minimap
               xaeros-world-map
+              wthit
 
               # sophisticated
               sophisticated-backpacks
