@@ -151,6 +151,7 @@
               redirected
               saturn
               proxy-compatible-forge
+              chunky
 
               # create
               create
