@@ -93,7 +93,7 @@
               towns-and-towers
               xaeros-minimap
               xaeros-world-map
-              wthit
+              jade
               storagedrawers
 
               # farmer's delight
