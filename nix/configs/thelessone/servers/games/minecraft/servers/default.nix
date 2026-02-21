@@ -30,6 +30,10 @@
       services.minecraft-servers'.openVoicechatPorts = true;
       services.minecraft-servers'.serverDefaults = {
         autoStart = true;
+        managementSystem = {
+          tmux.enable = false;
+          systemd-socket.enable = true;
+        };
         packageOverrides.jre_headless = pkgs.zulu25;
         jvmOpts = "-Xms16G -Xmx16G";
         appendJvmOpts =

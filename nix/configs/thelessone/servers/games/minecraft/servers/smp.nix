@@ -1,7 +1,6 @@
 {
   flake.nixosModules.thelessone-minecraftSmp =
     {
-      lib,
       pkgs,
       config,
       ...
@@ -9,7 +8,7 @@
 
     let
       inherit (pkgs) formats;
-      inherit (config.services.minecraft-servers.managementSystem) tmux;
+      inherit (config.services.minecraft-servers.managementSystem.systemd-socket) stdinSocket;
     in
 
     {
@@ -18,7 +17,7 @@
         package = pkgs.fabricServers.fabric-1_21_11;
 
         extraStopPre = ''
-          ${lib.getExe pkgs.tmux} -S ${tmux.socketPath "smp"} send-keys "say Server restart in 10 seconds" Enter
+          echo "say Server restart in 10 seconds" > ${stdinSocket.path "smp"}
           sleep 10
         '';
 

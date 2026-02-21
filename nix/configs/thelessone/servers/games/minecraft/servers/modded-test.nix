@@ -8,15 +8,17 @@
 
     let
       inherit (pkgs) formats;
+      inherit (config.services.minecraft-servers.managementSystem.systemd-socket) stdinSocket;
     in
 
     {
       services.minecraft-servers'.servers.modded-test = {
         enable = true;
-        managementSystem = {
-          tmux.enable = false;
-          systemd-socket.enable = true;
-        };
+
+        extraStopPre = ''
+          echo "say Server restart in 10 seconds" > ${stdinSocket.path "smp"}
+          sleep 10
+        '';
 
         package = pkgs.neoforgeServers.neoforge-1_21_1-21_1_219;
         packageOverrides.jre_headless = pkgs.zulu21;
@@ -186,6 +188,7 @@
               macaws-stairs
               macaws-trapdoors
               macaws-windows
+              macaws-quark
             ]
           ))
           ++ [
