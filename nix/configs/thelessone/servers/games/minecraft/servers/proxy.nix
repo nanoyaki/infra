@@ -57,7 +57,7 @@
           };
         };
 
-        files."forwarding.secret" = pkgs.writeText "forwarding.secret" "@FABRIC_PROXY_SECRET@";
+        files."forwarding.secret" = pkgs.writeText "forwarding.secret" "@PROXY_SECRET@";
         files."server-icon.png" = "${pkgs.thelessone-minecraft-logomark}/icon.png";
       };
     };

@@ -15,7 +15,7 @@
 
       sops.templates."minecraft-secrets.env".file = pkgs.writeEnv "minecraft-secrets.env" {
         DISCORDMCCHAT_BOT_TOKEN = config.sops.placeholder.bot-token;
-        FABRIC_PROXY_SECRET = config.sops.placeholder.proxy;
+        PROXY_SECRET = config.sops.placeholder.proxy;
         SMP_LEDGER_POSTGRES_PASSWORD = config.sops.placeholder.smp-ledger-postgres-password;
       };
 
@@ -119,7 +119,7 @@
               hackOnlineMode = true;
               hackMessageChain = true;
               disconnectMessage = "Please connect through the proxy.";
-              secret = "@FABRIC_PROXY_SECRET@";
+              secret = "@PROXY_SECRET@";
             };
           };
         };

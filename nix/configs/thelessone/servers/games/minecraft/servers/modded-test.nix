@@ -136,6 +136,7 @@
               noisiumforked
               redirected
               saturn
+              proxy-compatible-forge
 
               # create
               create
@@ -266,6 +267,24 @@
                 append = true;
                 format = "%1$s \"%3$s %4$s %5$s\" %6$s %7$s";
               };
+            };
+          };
+
+          "config/proxy-compatible-forge.toml" = {
+            format = formats.toml { };
+            value = {
+              forwarding = {
+                enabled = true;
+                secret = "@PROXY_SECRET@";
+                approvedProxyHosts = [
+                  "::1"
+                  "127.0.0.1"
+                  "localhost"
+                ];
+              };
+
+              crossStitch.enabled = true;
+              advanced.modernForwardingVersion = 4;
             };
           };
         };
