@@ -154,6 +154,9 @@
         "steam"
         "steam-unwrapped"
         "discord"
+
+        # minecraft
+        "neoforge"
       ];
 
       system.stateVersion = "24.11";
