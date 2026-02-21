@@ -46,7 +46,6 @@
               geckolib
               glitchcore
               gravestone-mod
-              kotlin-for-forge
               lithostitched
               moonlight
               puzzles-lib
@@ -98,12 +97,6 @@
               tectonic
               terralith-restoned
               terralith
-
-              # sophisticated
-              sophisticated-backpacks
-              sophisticated-core
-              sophisticated-storage
-              sophisticated-storage-in-motion
 
               # refined storage
               refined-storage
@@ -161,13 +154,10 @@
               interiors
               create-new-age
               create-polymer
-              create-tfmg
               create-threaded-trains
               create-stellaris
               create-design-n-decor
               rechiseled-create
-              sophisticated-backpacks-create-integration
-              sophisticated-storage-create-integration
               create-steam-n-rails-1
 
               # macaws
@@ -185,16 +175,28 @@
               macaws-windows
             ]
           ))
+          ++ [
+            pkgs.minecraft.neoforge.v1_21_1."create-track-map-(unofficial-fork)".latest
+          ]
+          # locked packages
           ++ (with pkgs.minecraft.neoforge.v1_21_1; [
-            create-tfmg.v1_1_1
             (pkgs.fetchurl {
               url = "https://files.theless.one/shared-public-download/spelunkery-1.21.1-BETA-26.2.16-neoforge.jar";
               hash = "sha256-UG/DpPXa2AyfduXPIfgCYJUDg6UHcCDGLaGB0X1BXec=";
             })
-          ])
-          ++ [
-            pkgs.minecraft.neoforge.v1_21_1."create-track-map-(unofficial-fork)".latest
-          ];
+
+            create-tfmg.v1_1_1
+            kotlin-for-forge.v5_11_0
+
+            # latest doesn't work well for sophisticated stuff
+            # i mean, look at those version numbers..
+            sophisticated-backpacks.v1_21_1-3_25_28_1537
+            sophisticated-storage.v1_21_1-1_5_28_1494
+            sophisticated-core.v1_21_1-1_4_5_1499
+            sophisticated-storage-in-motion.v1_21_1-0_10_26_181
+            sophisticated-storage-create-integration.v1_21_1-0_1_13_54
+            sophisticated-backpacks-create-integration.v1_21_1-0_1_5_29
+          ]);
 
         datapacks = null;
 
