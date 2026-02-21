@@ -64,6 +64,7 @@
               owo-lib
               kotlin-for-forge
               badpackets
+              patchouli
 
               # general
               accessories
@@ -95,6 +96,13 @@
               xaeros-minimap
               xaeros-world-map
               wthit
+              storagedrawers
+              terrafirmacraft
+
+              # farmer's delight
+              farmers-delight
+              farmers-delight-tfc
+              farmers-knives
 
               # sophisticated
               sophisticated-backpacks
@@ -174,6 +182,10 @@
               create-design-n-decor
               rechiseled-create
               create-steam-n-rails-1
+              create-fd-dough
+              create-confectionery
+              create-factory
+              storage-drawers-create-compat
 
               # macaws
               macaws-bridges
