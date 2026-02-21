@@ -97,11 +97,9 @@
               xaeros-world-map
               wthit
               storagedrawers
-              terrafirmacraft
 
               # farmer's delight
               farmers-delight
-              farmers-delight-tfc
               farmers-knives
 
               # sophisticated
