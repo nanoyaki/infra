@@ -35,8 +35,7 @@
               creative = "127.0.0.1:30051";
               lobby = "127.0.0.1:30052";
               flat = "127.0.0.1:30054";
-              modded = "127.0.0.1:25567";
-              test = "127.0.0.1:30055";
+              modded = "127.0.0.1:30055";
 
               try = [
                 "smp"
@@ -50,7 +49,6 @@
               "lobby.theless.one" = [ "lobby" ];
               "flat.theless.one" = [ "flat" ];
               "modded.theless.one" = [ "modded" ];
-              "test.theless.one" = [ "test" ];
             };
 
             query.enabled = false;

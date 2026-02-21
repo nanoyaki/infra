@@ -8,24 +8,24 @@
 
     let
       inherit (pkgs) formats;
+      inherit (config.services.minecraft-servers.managementSystem.systemd-socket) stdinSocket;
     in
 
     {
-      services.minecraft-servers'.servers.modded = {
+      services.minecraft-servers'.servers.modded-test = {
         enable = true;
-        managementSystem = {
-          tmux.enable = false;
-          systemd-socket.enable = true;
-        };
 
-        package = pkgs.fabricServers.fabric-1_20_1;
-        packageOverrides = {
-          jre_headless = pkgs.zulu25;
-          loaderVersion = "0.18.4";
-        };
+        extraStopPre = ''
+          echo "say Server restart in 10 seconds" > ${stdinSocket.path "smp"}
+          sleep 10
+        '';
+
+        package = pkgs.neoforgeServers.neoforge-1_21_1-21_1_219;
+        packageOverrides.jre_headless = pkgs.zulu21;
         appendJvmOpts = "-Dowo.handshake.disable=true";
 
-        serverProperties.server-port = 25567;
+        serverProperties.server-port = 30055;
+        serverProperties.online-mode = false;
 
         gamerules = {
           # SMP improvements
@@ -36,155 +36,202 @@
         };
 
         mods =
-          (with pkgs.minecraft.fabric.v1_20_1; [
-            # libraries
-            architectury-api.v9_2_14
-            cloth-config.v11_1_136
-            yacl.v3_6_6
-            balm.v7_3_9
-            cicada.v0_9_2
-            # modded
-            cardinal-components-api.v5_2_3
-            cristel-lib.v1_1_5
-            cynosure.v0_1_15
-            forge-config-api-port.v8_0_3Fabric
-            fabric-api.v0_92_7
-            fabric-language-kotlin."v1_13_7+kotlin_2_2_21"
-            geckolib.v4_8_3
-            lithostitched.v1_4_111_20
-            moonlight.v1_20-2_16_27
-            owo-lib."v0_11_2+1_20"
-            pneumono_core."v1_2_1+1_20+A"
-            reborncore.v5_8_15
-            resourceful-lib.v2_1_29
-            resourceful-config.v2_1_3
-            rpl.v2_1_1
-            supermartijn642s-core-lib.v1_1_20mc
-            supermartijn642s-config-lib.v1_1_8amc
-            trinkets.v3_7_2
-            yungs-api.v1_20-Fabric-4_0_6
-            fzzy-config.v0_7_6
-            fusion-connected-textures.v1_2_12mc
-            puzzles-lib.v8__20_1-Fabric
+          (map (pkg: pkg.latest) (
+            with pkgs.minecraft.neoforge.v1_21_1;
+            [
+              # libs
+              addonslib
+              architectury-api
+              balm
+              cristel-lib
+              curios
+              fzzy-config
+              gabous-libs
+              geckolib
+              glitchcore
+              gravestone-mod
+              lithostitched
+              moonlight
+              puzzles-lib
+              potentials
+              rpl
+              supermartijn642s-config-lib
+              supermartijn642s-core-lib
+              txnilib
+              yacl
+              yungs-api
+              zeta
+              owo-lib
+              kotlin-for-forge
+              badpackets
+              patchouli
 
-            # velocity
-            fabricproxy-lite.v2_6_0
-            crossstitch.v0_1_6
+              # general
+              accessories
+              accessories-compat-layer
+              alloy-smelter
+              almost-unified
+              betterdays
+              ct-overhaul-village
+              cloth-config
+              comforts
+              dungeons-and-taverns
+              enchanted-vertical-slabs
+              every-compat
+              lets-do-herbalbrews
+              modern-industrialization
+              nullscape
+              polymorph
+              quark
+              rechiseled
+              reconnectible-chains
+              rei
+              ribbits
+              serene-seasons
+              serene-seasons-plus
+              simply-swords
+              sound-physics-remastered
+              stone-zone
+              towns-and-towers
+              xaeros-minimap
+              xaeros-world-map
+              wthit
+              storagedrawers
 
-            # optimization
-            vmp-fabric."v0_2_0+beta_7_102"
-            lithium.mc0_11_4
-            krypton.v0_2_3
-            c2me-fabric."v0_2_0+alpha_11_8"
-            ferrite-core.v6_0_1
-            chunky.v1_3_146
-            entityculling.v1_9_5
-            faster-random.v5_1_0
-            memoryleakfix.v1_1_5
-            modernfix."v5_25_2+mc"
+              # farmer's delight
+              farmers-delight
+              farmers-knives
 
-            # qol
-            no-chat-reports.Fabricv2_2_2
-            image2map."v0_4_2+1_20"
-            bluemap.v5_31_20
-            bluemap-sign-markers.v1_20_1-0_2_4_28
-            netherportalfix.v13_0_21_20
-            rei.v12_1_785
-            roughly-enough-trades.v1_20_1-1_0
+              # sophisticated
+              sophisticated-backpacks
+              sophisticated-storage
+              sophisticated-core
+              sophisticated-storage-in-motion
+              sophisticated-storage-create-integration
+              sophisticated-backpacks-create-integration
 
-            # admin
-            player-roles."v1_6_6+1_20"
-            invview.v1_4_12
+              # stellaris
+              stellaris
+              tfmg-stellaris-compat
 
-            # create
-            create-fabric."v0_5_1-j-build_1631+mc"
-            createaddition."fabric1_2_6"
-            bellsandwhistles.v0_4_5-mc
-            create-big-cannons.v5_8_2
-            create-bluemap.v1_0_0build_32
-            create-clockwork.v1_20_1-0_1_16
-            create-enchantment-industry-fabric-legacy.v1_2_16
-            createnuclear.v1_3_0
-            create-ore-excavation.v1_20_1-1_5_4
-            create-railways-navigator.v1_20_1-beta-0_8_4
-            copycats."v2_2_0+mc_"
-            interiors.v0_5_6mc
-            create-new-age.v1_1_2
-            create-steam-n-rails.v1_6_9mc
-            create-structures."v0_1_1+mod"
-            extended-cogwheels.v2_1_10_5_1_f
+              # world gen
+              tectonic
+              terralith-restoned
+              terralith
 
-            # modded
-            ad-astra.v1_15_20
-            ad-astra-giselle-addon.v6_19
-            ad-astra-rocketed.v1_0_3
-            ad_extendra-continuation.v1_1_2
-            applied-energistics-2-wireless-terminals.v15_2_1
-            alloy-forgery."v2_1_2+1_20"
-            almost-unified.v1_20_1-0_11_0
-            ae2.v15_4_10
-            bosses-of-mass-destruction.v1_7_5
-            botarium.v2_3_4
-            ct-overhaul-village.v3_4_14
-            comforts.v6_4_0
-            connectiblechains.v2_5_7
-            dungeons-and-taverns."v3_0_3_f+mod"
-            elytra-trims.v3_9_3
-            every-compat.v1_20-2_9_9
-            enchanted-vertical-slabs.v2_2_1
-            fabric-seasons."v2_4_2-BETA+1_20"
-            fabric-seasons-terralith-compat.v1_0
-            leaves-be-gone.v8_0_0Fabric
-            lets-do-herbalbrews.v1_0_12
-            merequester.v1_20_1-1_1_4
-            mythicmetals.v0_19_11
-            mythicmetals-decorations.v0_6_4
-            naturalist.v5_0pre3
-            nullscape.v1_2_8
-            planetsplus."BV1_7_5-MAINPACK-MOD"
-            polymorph.v0_49_10
-            polymorphic-energistics."fabric-0_1_1"
-            quarry-reborn.v1_2_0
-            rechiseled.v1_2_3mc
-            ribbits.v3_0_5
-            simply-swords.v1_56_0
-            sound-physics-remastered."fabric1_5_1"
-            spelunkery.v1_20_1-0_3_16
-            spelunkery-no-easy-teleport.v1_0_0-rtp
-            techreborn.v5_8_15
-            tectonic.v3_0_17
-            terralith.v2_5_4
-            terralith-restoned.v1_3
-            towns-and-towers.v1_12
-            twigs.v3_1_0
-            valkyrien-skies.v1_20_12_3_0-beta_5
-            xaeros-minimap.fabric25_3_10
-            xaeros-world-map.fabric1_40_11
-            yigd.v2_0_16
+              # refined storage
+              refined-storage
+              refined-types
+              refined-storage-rei-integration
+              refined-storage-quartz-arsenal
+              refined-storage-mekanism-integration
 
-            # macaws
-            macaws-bridges.v3_1_2
-            macaws-doors.v1_1_5
-            macaws-fences-and-walls.v1_2_1
-            macaws-furniture.v3_4_1
-            macaws-holidays.v1_1_2
-            macaws-lights-and-lamps.v1_1_5
-            macaws-paintings.v1_0_5
-            macaws-paths-and-pavings.v1_1_1
-            macaws-roofs.v2_3_2
-            macaws-stairs.v1_0_2
-            macaws-trapdoors.v1_1_5
-            macaws-windows.v2_4_2
-          ])
-          ++ (with pkgs.minecraft.fabric; [
-            v1_20_1."shulker+".v1_0_7
-            v1_20_1."sophisticated-backpacks-(unoffical-fabric-port)".v1_20_1-3_23_4_5_110
-            v1_20_1."sophisticated-core-(unofficial-fabric-port)".v1_20_1-1_2_7_15_166
-            v1_20_1."sophisticated-storage-(unofficial-fabric-port)".v1_20_1-1_3_5_9_136
-            v1_20_1."sophisticated-storage-in-motion-(unofficial-fabric-port)".v1_20_1-0_10_5_1_37
+              # applied energistics
+              ae2
+              applied-energistics-2-wireless-terminals
+              guideme
+              merequester
+              rechiseled-ae2
+
+              # mekanism
+              mekanism
+              mekanism-tools
+              mekanism-tfmg-compat
+              mekanism-generators
+              mekanism-additions
+
+              # performance and server stuff
+              entityculling
+              ferrite-core
+              immediatelyfast
+              modernfix
+              netherportalfix
+              no-chat-reports
+              noisiumforked
+              redirected
+              saturn
+              proxy-compatible-forge
+
+              # create
+              create
+              createaddition
+              bellsandwhistles
+              create-big-cannons
+              create-deco
+              create-diesel-generators
+              create-goggles
+              create-let-the-adventure-begin
+              createnuclear
+              create-ore-excavation
+              create-railways-navigator
+              slice-and-dice
+              create-central-kitchen
+              create-connected
+              copycats
+              create-dragons-plus
+              create-dreams-and-desires
+              create-drill-drain
+              create-enchantment-industry
+              interiors
+              create-new-age
+              create-polymer
+              create-threaded-trains
+              create-stellaris
+              create-design-n-decor
+              rechiseled-create
+              create-steam-n-rails-1
+              create-fd-dough
+              create-confectionery
+              create-factory
+              storage-drawers-create-compat
+
+              # macaws
+              macaws-bridges
+              macaws-doors
+              macaws-fences-and-walls
+              macaws-furniture
+              macaws-holidays
+              macaws-lights-and-lamps
+              macaws-paintings
+              macaws-paths-and-pavings
+              macaws-roofs
+              macaws-stairs
+              macaws-trapdoors
+              macaws-windows
+              macaws-quark
+            ]
+          ))
+          ++ [
+            pkgs.minecraft.neoforge.v1_21_1."create-track-map-(unofficial-fork)".latest
+          ]
+          # locked packages
+          ++ (with pkgs.minecraft.neoforge.v1_21_1; [
+            (pkgs.fetchurl {
+              url = "https://files.theless.one/shared-public-download/spelunkery-1.21.1-BETA-26.2.16-neoforge.jar";
+              hash = "sha256-OsOBP1AMLbrM3xkMp2QFaZUtz0iZZ8bQs29d3YfTH8A=";
+            })
+            create-tfmg.v1_1_1
           ]);
 
         datapacks = null;
+
+        files."config/proxy-compatible-forge.toml" = {
+          format = formats.toml { };
+          value = {
+            forwarding = {
+              enabled = true;
+              secret = "@PROXY_SECRET@";
+              approvedProxyHosts = [
+                "::1"
+                "127.0.0.1"
+                "localhost"
+              ];
+            };
+
+            crossStitch.enabled = true;
+            advanced.modernForwardingVersion = 4;
+          };
+        };
 
         symlinks = {
           "config/bluemap/core.conf" = {
@@ -260,11 +307,13 @@
         };
       };
 
-      thelessone.caddy.vHost."mod-map.theless.one".proxy = {
+      thelessone.caddy.vHost."modded.theless.one".proxy = {
         inherit
-          (config.services.minecraft-servers'.servers.modded.symlinks."config/bluemap/webserver.conf".value)
+          (config.services.minecraft-servers'.servers.modded-test.symlinks."config/bluemap/webserver.conf".value
+          )
           port
           ;
       };
+      thelessone.caddy.vHost."trains-modded.theless.one".proxy.port = 3876;
     };
 }
