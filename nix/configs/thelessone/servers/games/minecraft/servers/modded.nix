@@ -94,6 +94,7 @@
               xaeros-minimap
               xaeros-world-map
               jade
+              jade-addons-forge
               storagedrawers
 
               # farmer's delight
