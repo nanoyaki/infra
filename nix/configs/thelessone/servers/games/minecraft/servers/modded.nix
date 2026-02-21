@@ -76,6 +76,7 @@
               dungeons-and-taverns
               enchanted-vertical-slabs
               every-compat
+              leaves-be-gone
               lets-do-herbalbrews
               modern-industrialization
               nullscape
