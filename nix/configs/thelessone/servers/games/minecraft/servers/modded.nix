@@ -156,6 +156,7 @@
               saturn
               proxy-compatible-forge
               chunky
+              bluemap
 
               # create
               create
