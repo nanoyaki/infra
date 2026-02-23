@@ -189,6 +189,7 @@
               create-confectionery
               create-factory
               storage-drawers-create-compat
+              create-stock-bridge
 
               # macaws
               macaws-bridges
