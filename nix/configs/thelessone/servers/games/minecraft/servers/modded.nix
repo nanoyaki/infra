@@ -68,7 +68,7 @@
 
               # general
               alloy-smelter
-              # almost-unified
+              almost-unified
               betterdays
               ct-overhaul-village
               cloth-config
@@ -140,7 +140,7 @@
               # mekanism
               mekanism
               mekanism-tools
-              mekanism-tfmg-compat
+              # mekanism-tfmg-compat
               mekanism-generators
               mekanism-additions
 
