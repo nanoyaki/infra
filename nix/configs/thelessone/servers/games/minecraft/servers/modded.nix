@@ -16,7 +16,7 @@
         enable = true;
 
         extraStopPre = ''
-          echo "say Server restart in 10 seconds" > ${stdinSocket.path "smp"}
+          echo "say Server restart in 10 seconds" > ${stdinSocket.path "modded-test"}
           sleep 10
         '';
 
@@ -190,6 +190,7 @@
               create-factory
               storage-drawers-create-compat
               create-stock-bridge
+              create-bits-n-bobs
 
               # macaws
               macaws-bridges
