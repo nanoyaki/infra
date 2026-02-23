@@ -259,13 +259,23 @@
     };
 
   flake.overlays.flood-with-labels = final: prev: {
-    flood-with-labels = prev.flood.overrideAttrs (prevAttrs: {
-      patches = (prevAttrs.patches or [ ]) ++ [
-        (final.fetchpatch {
-          url = "https://github.com/AllySummers/flood-deluge/commit/50b3aa96bc97200678a00e92252e8b10cb821360.patch";
-          hash = "sha256-B9bqWTfxDsGSSZsZ/wXQ07e8nTsPjBxKj6KIYPkkkYI=";
-        })
-      ];
-    });
+    flood-with-labels = prev.flood.overrideAttrs (
+      finalAttrs: prevAttrs: {
+        version = "4.11.0";
+        src = final.fetchFromGitHub {
+          owner = "jesec";
+          repo = "flood";
+          tag = "v${finalAttrs.version}";
+          hash = "sha256-RBWDEFhLEZdC7luGFGx3qY0Hk7nM44RZgRyCWXFPh1k=";
+        };
+
+        patches = (prevAttrs.patches or [ ]) ++ [
+          (final.fetchpatch {
+            url = "https://github.com/AllySummers/flood-deluge/commit/50b3aa96bc97200678a00e92252e8b10cb821360.patch";
+            hash = "sha256-B9bqWTfxDsGSSZsZ/wXQ07e8nTsPjBxKj6KIYPkkkYI=";
+          })
+        ];
+      }
+    );
   };
 }
