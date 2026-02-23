@@ -5,6 +5,7 @@
     {
       users.defaultUserShell = pkgs.bash;
       programs.bash.enable = true;
+      programs.bash.blesh.enable = true;
 
       environment.systemPackages = with pkgs; [
         alacritty
@@ -12,9 +13,22 @@
         p7zip
         ncdu
         jq
+
+        btop
+        lsd
+        ripgrep
       ];
 
-      environment.shellAliases.copy = "rsync -a --info=progress2 --info=name0";
+      programs.bat.enable = true;
+      programs.starship.enable = true;
+      programs.zoxide.enable = true;
+
+      environment.shellAliases = {
+        ls = "lsd";
+        copy = "rsync -a --info=progress2 --info=name0";
+        cd = "z";
+      };
+
       environment.sessionVariables = {
         MANPAGER = "sh -c 'col -bx | ${lib.getExe pkgs.bat} -l man -p'";
         MANROFFOPT = "-c";
@@ -22,15 +36,21 @@
     };
 
   flake.homeModules.shell =
-    { config, ... }:
+    { pkgs, config, ... }:
 
     {
+      home.packages = with pkgs; [ wl-clipboard ];
+
       programs = {
+        alacritty.enable = true;
+        alacritty.package = null;
+
         zellij.enable = true;
         zellij.settings.pane_frames = false;
 
         bash = {
           enable = true;
+          enableCompletion = true;
           historyFile = "${config.xdg.dataHome}/bash/history";
           shellOptions = [
             "histappend"
@@ -48,6 +68,7 @@
         bat.enable = true;
         fastfetch.enable = true;
         ripgrep.enable = true;
+        zoxide.enable = true;
       };
     };
 }
