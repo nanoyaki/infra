@@ -214,10 +214,6 @@
           ]
           # locked packages
           ++ (with pkgs.minecraft.neoforge.v1_21_1; [
-            (pkgs.fetchurl {
-              url = "https://files.theless.one/shared-public-download/spelunkery-1.21.1-BETA-26.2.16-neoforge.jar";
-              hash = "sha256-OsOBP1AMLbrM3xkMp2QFaZUtz0iZZ8bQs29d3YfTH8A=";
-            })
             create-tfmg.v1_1_1
           ]);
 
