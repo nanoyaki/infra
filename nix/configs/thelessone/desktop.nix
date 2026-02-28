@@ -224,7 +224,7 @@
           mpv-discord
           mpv-subtitle-lines
           mpv-playlistmanager
-          mpv-cheatsheet
+          # mpv-cheatsheet
         ];
       };
 
