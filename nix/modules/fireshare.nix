@@ -132,7 +132,7 @@
         services.caddy = {
           package = pkgs.caddy.withPlugins {
             plugins = [ "github.com/caddyserver/cache-handler@v0.16.0" ];
-            hash = "sha256-XTFwYo3o7il3UfnE2QuJM+UoGTu0Yw+8ka0p9czdgEM=";
+            hash = "sha256-ofF6uF6KrE4lcLkjdKFeA0PJsM1qLchYvgScq64wRSU=";
           };
 
           globalConfig = ''
