@@ -67,6 +67,7 @@
               patchouli
               titanium
               mechanicals-lib
+              athena
 
               # general
               alloy-smelter
