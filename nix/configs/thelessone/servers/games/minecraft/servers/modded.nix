@@ -65,6 +65,8 @@
               kotlin-for-forge
               badpackets
               patchouli
+              titanium
+              mechanicals-lib
 
               # general
               alloy-smelter
@@ -96,6 +98,12 @@
               jade
               jade-addons-forge
               storagedrawers
+              industrial-foregoing
+              oritech
+              camerapture
+              immersive-ores
+              carry-on
+              bountiful-blocks
 
               # farmer's delight
               farmers-delight
@@ -136,6 +144,7 @@
               guideme
               merequester
               rechiseled-ae2
+              mega
 
               # mekanism
               mekanism
@@ -143,6 +152,7 @@
               # mekanism-tfmg-compat
               mekanism-generators
               mekanism-additions
+              applied-mekanistics
 
               # performance and server stuff
               entityculling
@@ -157,6 +167,10 @@
               proxy-compatible-forge
               chunky
               bluemap
+
+              # cc tweaked
+              cc-tweaked
+              advancedperipherals
 
               # create
               create
@@ -192,6 +206,14 @@
               storage-drawers-create-compat
               create-stock-bridge
               create-bits-n-bobs
+              create-cobblestone
+              create-ultimate-factory
+              create-sifting
+              create-jetpack
+              cccbridge
+              delightful-creators
+              create-trading-floor
+              create-misc-and-things
 
               # macaws
               macaws-bridges
