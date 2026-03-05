@@ -20,7 +20,7 @@ jobs:
       - name: Build generation
         id: build
         run: >
-          nix build .#nixosConfigurations.thelessone.config.system.build.toplevel
+          nix build .#nixosConfigurations.thelessone.config.system.build.toplevel -L
 
           echo "path=$(readlink -f ./result)" >> $FORGEJO_OUTPUT
 
@@ -54,14 +54,13 @@ jobs:
             tmux new-session -d -s deploy '
               set -e;
 
-              rm -rf ./infra;
-              git clone https://git.theless.one/nanoyaki/infra.git;
-
               eval "$(ssh-agent -s)";
               ssh-add /root/.ssh/id_thelessone_deployment;
 
-              nixos-rebuild switch --flake ./infra#thelessone \
-                --build-host root@10.0.0.5 --target-host root@10.0.0.5
+              ssh root@10.0.0.5 "
+                sudo nix-env -p /nix/var/nix/profiles/system --set ${{ needs.build.outputs.generation }};
+                ${{ needs.build.outputs.generation }}/bin/switch-to-configuration switch
+              "
             '
           EOF
 
@@ -80,7 +79,8 @@ jobs:
         run: |
           set -x
 
-          sleep 1
+          echo "Waiting for 5 seconds just in case..."
+          sleep 5
 
           CURRENT_GEN="$(readlink /nix/var/nix/profiles/system | grep -oP 'system-\K\d+')"
           [[ "$CURRENT_GEN" == "$((PREVIOUS_GEN + 1))" ]] || exit 1
