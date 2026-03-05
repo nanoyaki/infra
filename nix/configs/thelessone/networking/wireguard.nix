@@ -79,8 +79,8 @@
           # nameless desktop
           publicKey = "7o8uuMiSuz7hqdEMPbo1f9mciDGQ2OR3ms3P8KPdt0Y=";
           allowedIPs = [
-            "100.64.64.8/24"
-            "fd64::8/64"
+            "100.64.64.8/32"
+            "fd64::8/128"
           ];
         }
         {
@@ -194,8 +194,8 @@
           # nameless phone
           publicKey = "rhOWCYUVQTGIMqbZJ1HOPRzKE7j9O2rDoj+l6EP22ns=";
           allowedIPs = [
-            "100.64.64.24/24"
-            "fd64::24/64"
+            "100.64.64.24/32"
+            "fd64::24/128"
           ];
         }
         {
