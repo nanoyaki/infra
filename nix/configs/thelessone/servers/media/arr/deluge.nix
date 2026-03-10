@@ -1,3 +1,5 @@
+{ withSystem, ... }:
+
 {
   flake.nixosModules.thelessone-deluge =
     {
@@ -227,6 +229,7 @@
 
         services.flood = {
           enable = true;
+          package = pkgs.flood-with-labels;
           host = "0.0.0.0";
           port = 24325;
         };
@@ -258,24 +261,52 @@
       };
     };
 
-  flake.overlays.flood-with-labels = final: prev: {
-    flood-with-labels = prev.flood.overrideAttrs (
-      finalAttrs: prevAttrs: {
-        version = "4.11.0";
-        src = final.fetchFromGitHub {
-          owner = "jesec";
-          repo = "flood";
-          tag = "v${finalAttrs.version}";
-          hash = "sha256-RBWDEFhLEZdC7luGFGx3qY0Hk7nM44RZgRyCWXFPh1k=";
-        };
+  flake.overlays.flood-with-labels =
+    _: prev:
 
-        patches = (prevAttrs.patches or [ ]) ++ [
-          (final.fetchpatch {
-            url = "https://github.com/AllySummers/flood-deluge/commit/50b3aa96bc97200678a00e92252e8b10cb821360.patch";
-            hash = "sha256-B9bqWTfxDsGSSZsZ/wXQ07e8nTsPjBxKj6KIYPkkkYI=";
-          })
-        ];
+    withSystem prev.stdenv.hostPlatform.system (
+      { config, ... }:
+
+      {
+        inherit (config.packages) flood-with-labels;
       }
     );
-  };
+
+  perSystem =
+    { pkgs, ... }:
+
+    {
+      packages.flood-with-labels = pkgs.flood.overrideAttrs (
+        finalAttrs: prevAttrs: {
+          version = "4.11.0";
+          src = pkgs.fetchFromGitHub {
+            owner = "jesec";
+            repo = "flood";
+            tag = "v${finalAttrs.version}";
+            hash = "sha256-RBWDEFhLEZdC7luGFGx3qY0Hk7nM44RZgRyCWXFPh1k=";
+          };
+
+          npmConfigHook = pkgs.pnpmConfigHook;
+          npmDeps = finalAttrs.pnpmDeps;
+          dontNpmPrune = true;
+          pnpmDeps = pkgs.fetchPnpmDeps {
+            inherit (finalAttrs)
+              pname
+              version
+              src
+              ;
+            pnpm = pkgs.pnpm_9;
+            fetcherVersion = 1;
+            hash = "sha256-MnsUTXcLMT0Q2bQ/rRD4FfJx8XP9TLiv1oTHIgnMZCQ=";
+          };
+
+          patches = (prevAttrs.patches or [ ]) ++ [
+            (pkgs.fetchpatch {
+              url = "https://github.com/AllySummers/flood-deluge/commit/50b3aa96bc97200678a00e92252e8b10cb821360.patch";
+              hash = "sha256-B9bqWTfxDsGSSZsZ/wXQ07e8nTsPjBxKj6KIYPkkkYI=";
+            })
+          ];
+        }
+      );
+    };
 }
