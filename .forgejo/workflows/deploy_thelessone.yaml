@@ -59,7 +59,7 @@ jobs:
 
               ssh root@10.0.0.5 "
                 sudo nix-env -p /nix/var/nix/profiles/system --set ${{ needs.build.outputs.generation }};
-                ${{ needs.build.outputs.generation }}/bin/switch-to-configuration switch
+                ${{ needs.build.outputs.generation }}/bin/switch-to-configuration switch;
                 ${{ needs.build.outputs.generation }}/bin/switch-to-configuration boot
               "
             '
