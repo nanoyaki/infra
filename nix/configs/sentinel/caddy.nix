@@ -10,7 +10,7 @@
             "github.com/mholt/caddy-l4@v0.0.0-20260116154418-93f52b6a03ba"
             "github.com/caddyserver/transform-encoder@v0.0.0-20251203163749-3574c321422b"
           ];
-          hash = "sha256-hdCiv8hJGU7MpWeVekuTtOLQdVNML43tsOQ9oTI9S3M=";
+          hash = "sha256-daIorMZWsgvj2z35uBz7tMkh2wOBizPIzlSfH3Cw4xw=";
         };
 
         logFormat = ''
