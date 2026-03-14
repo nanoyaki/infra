@@ -75,10 +75,12 @@
 
         x509.useACMEHost = "theless.one";
 
-        dkimSigning = true;
-        dkimKeyType = "rsa";
-        dkimKeyBits = 4096;
-        dkimSelector = "mail";
+        dkim.enable = true;
+        dkim.defaults = {
+          keyType = "rsa";
+          keyLength = 4096;
+          selector = "mail";
+        };
 
         dmarcReporting.enable = true;
 
