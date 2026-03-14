@@ -68,6 +68,9 @@
               titanium
               mechanicals-lib
               athena-ctm
+              dragonlib
+              glodium
+              forgified-fabric-api
 
               # general
               alloy-smelter
@@ -105,6 +108,7 @@
               immersive-ores
               carry-on
               bountiful-blocks
+              modular-routers
 
               # farmer's delight
               farmers-delight
@@ -146,6 +150,9 @@
               merequester
               rechiseled-ae2
               mega
+              ae2-import-export-card
+              extended-ae
+              extendedae-plus
 
               # mekanism
               mekanism
@@ -168,6 +175,10 @@
               proxy-compatible-forge
               chunky
               bluemap
+              fastevent
+              c2me-neoforge
+              smooth-boot
+              packet-fixer
 
               # cc tweaked
               cc-tweaked
@@ -232,9 +243,10 @@
               macaws-quark
             ]
           ))
-          ++ [
-            pkgs.minecraft.neoforge.v1_21_1."create-track-map-(unofficial-fork)".latest
-          ]
+          ++ (map (pkg: pkgs.minecraft.neoforge.v1_21_1.${pkg}.latest) [
+            "create-track-map-(unofficial-fork)"
+            "put-a-plug-in-it!"
+          ])
           # locked packages
           ++ (with pkgs.minecraft.neoforge.v1_21_1; [
             create-tfmg.v1_1_1
