@@ -70,6 +70,7 @@
       thelessone-minecraftCreative
       thelessone-minecraftFlat
       thelessone-minecraftModded
+      thelessone-minecraftBackups
       thelessone-nonNixMinecraft
       thelessone-desktop
       thelessone-theming
