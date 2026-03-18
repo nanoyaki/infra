@@ -8,6 +8,9 @@
         (modulesPath + "/profiles/qemu-guest.nix")
       ];
 
+      hardware.graphics.enable = false;
+      hardware.graphics.enable32Bit = false;
+
       hardware.facter.reportPath = ./facter.json;
     };
 }
