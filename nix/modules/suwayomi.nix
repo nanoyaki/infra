@@ -214,12 +214,6 @@
         systemd.tmpfiles.settings = mapAttrs' (
           iName: iCfg:
           nameValuePair "10-suwayomi-${iName}" {
-            "${iCfg.settings.server.rootDir}/server.conf"."L+" = {
-              user = "suwayomi";
-              group = "suwayomi";
-              mode = "0660";
-              argument = (format.generate "server.conf" iCfg.settings).outPath;
-            };
             "${iCfg.settings.server.rootDir}/.cache/suwayomi" = dirCfg;
             ${iCfg.settings.server.downloadsPath} = dirCfg;
             ${iCfg.settings.server.localSourcePath} = dirCfg;
@@ -241,6 +235,10 @@
             after = [ "network-online.target" ];
 
             environment.JAVA_TOOL_OPTIONS = "-Djava.io.tmpdir=${rootDir}/.cache/suwayomi -Dsuwayomi.tachidesk.config.server.rootDir=${rootDir}";
+
+            preStart = ''
+              cp -f "${(format.generate "server.conf" iCfg.settings).outPath}" "${rootDir}/server.conf"
+            '';
 
             serviceConfig = {
               ExecStart = getExe cfg.package;
