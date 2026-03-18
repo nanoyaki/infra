@@ -47,7 +47,6 @@ jobs:
 
           nh os switch \
             "${{ needs.build.outputs.generation }}" \
-            -- \
             --target-host root@10.0.0.6 \
             --no-nom \
             -L \
