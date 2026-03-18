@@ -253,6 +253,9 @@
               CapabilityBoundingSet = "";
               SystemCallFilter = [ "@system-service" ];
 
+              ReadOnlyPaths = [
+                (format.generate "server.conf" iCfg.settings).outPath
+              ];
               ReadWritePaths = [ rootDir ];
               NoNewPrivileges = true;
               ProtectClock = true;
