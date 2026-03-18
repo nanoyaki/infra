@@ -217,7 +217,7 @@
             "${iCfg.settings.server.rootDir}/server.conf"."L+" = {
               user = "suwayomi";
               group = "suwayomi";
-              mode = "0440";
+              mode = "0660";
               argument = (format.generate "server.conf" iCfg.settings).outPath;
             };
             "${iCfg.settings.server.rootDir}/.cache/suwayomi" = dirCfg;
@@ -253,9 +253,6 @@
               CapabilityBoundingSet = "";
               SystemCallFilter = [ "@system-service" ];
 
-              ReadOnlyPaths = [
-                (format.generate "server.conf" iCfg.settings).outPath
-              ];
               ReadWritePaths = [ rootDir ];
               NoNewPrivileges = true;
               ProtectClock = true;
