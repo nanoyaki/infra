@@ -238,6 +238,7 @@
             environment.JAVA_TOOL_OPTIONS = "-Dsuwayomi.tachidesk.config.server.rootDir=${rootDir}";
 
             preStart = ''
+              rm -rf "${rootDir}/webUI"
               ln -sf "${pkgs.suwayomi-webui}" "${rootDir}/webUI"
               rm "${rootDir}/server.conf"
               install -m640 "${confPath}" "${rootDir}/server.conf"
