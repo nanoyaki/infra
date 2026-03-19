@@ -225,6 +225,7 @@
 
           let
             inherit (iCfg.settings.server) rootDir;
+            confPath = (format.generate "server.conf" iCfg.settings).outPath;
           in
 
           nameValuePair "suwayomi-${iName}" {
@@ -237,7 +238,8 @@
             environment.JAVA_TOOL_OPTIONS = "-Djava.io.tmpdir=${rootDir}/.cache/suwayomi -Dsuwayomi.tachidesk.config.server.rootDir=${rootDir}";
 
             preStart = ''
-              cp -f "${(format.generate "server.conf" iCfg.settings).outPath}" "${rootDir}/server.conf"
+              rm "${rootDir}/server.conf"
+              install -m640 "${confPath}" "${rootDir}/server.conf"
             '';
 
             serviceConfig = {
@@ -251,6 +253,7 @@
               CapabilityBoundingSet = "";
               SystemCallFilter = [ "@system-service" ];
 
+              ReadOnlyPaths = [ confPath ];
               ReadWritePaths = [ rootDir ];
               NoNewPrivileges = true;
               ProtectClock = true;
