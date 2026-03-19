@@ -239,7 +239,7 @@
 
             preStart = ''
               rm -rf "${rootDir}/webUI"
-              ln -sf "${pkgs.suwayomi-webui}" "${rootDir}/webUI"
+              ln -sf "${pkgs.suwayomi-webui}/share/suwayomi-webui" "${rootDir}/webUI"
               rm "${rootDir}/server.conf"
               install -m640 "${confPath}" "${rootDir}/server.conf"
             '';
