@@ -235,7 +235,7 @@
             wants = [ "network-online.target" ];
             after = [ "network-online.target" ];
 
-            environment.JAVA_TOOL_OPTIONS = "-Djava.io.tmpdir=${rootDir}/.cache/suwayomi -Dsuwayomi.tachidesk.config.server.rootDir=${rootDir}";
+            environment.JAVA_TOOL_OPTIONS = "-Dsuwayomi.tachidesk.config.server.rootDir=${rootDir}";
 
             preStart = ''
               ln -sf "${pkgs.suwayomi-webui}" "${rootDir}/webUI"
@@ -254,7 +254,10 @@
               CapabilityBoundingSet = "";
               SystemCallFilter = [ "@system-service" ];
 
-              ReadOnlyPaths = [ confPath ];
+              ReadOnlyPaths = [
+                confPath
+                pkgs.suwayomi-webui.outPath
+              ];
               ReadWritePaths = [ rootDir ];
               NoNewPrivileges = true;
               ProtectClock = true;
