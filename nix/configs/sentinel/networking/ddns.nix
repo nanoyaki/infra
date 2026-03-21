@@ -16,6 +16,7 @@
           "porkbun/pds-api-key" = { };
         };
 
+        templates."oink.json".restartUnits = [ "oink.service" ];
         templates."oink.json".content = builtins.toJSON {
           global = {
             secretapikey = config.sops.placeholder."porkbun/pds-secret-api-key";
