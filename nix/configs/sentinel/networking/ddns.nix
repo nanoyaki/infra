@@ -12,20 +12,34 @@
         secrets = {
           "porkbun/secret-api-key" = { };
           "porkbun/api-key" = { };
+          "porkbun/pds-secret-api-key" = { };
+          "porkbun/pds-api-key" = { };
         };
 
         templates."oink.json".content = builtins.toJSON {
           global = {
-            secretapikey = config.sops.placeholder."porkbun/secret-api-key";
-            apikey = config.sops.placeholder."porkbun/api-key";
             interval = 900;
             ttl = 600;
           };
 
           domains = [
             {
+              secretapikey = config.sops.placeholder."porkbun/secret-api-key";
+              apikey = config.sops.placeholder."porkbun/api-key";
               domain = "theless.one";
               subdomain = "de01";
+            }
+            {
+              secretapikey = config.sops.placeholder."porkbun/pds-secret-api-key";
+              apikey = config.sops.placeholder."porkbun/pds-api-key";
+              domain = "nanoyaki.space";
+              subdomain = "pds";
+            }
+            {
+              secretapikey = config.sops.placeholder."porkbun/pds-secret-api-key";
+              apikey = config.sops.placeholder."porkbun/pds-api-key";
+              domain = "nanoyaki.space";
+              subdomain = "knot";
             }
           ];
         };

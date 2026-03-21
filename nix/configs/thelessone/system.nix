@@ -39,6 +39,7 @@
       thelessone-copyparty
       thelessone-fireshare
       thelessone-forgejo
+      thelessone-tangledAppview
       thelessone-dashboard
       thelessone-suwayomi
       thelessone-arr

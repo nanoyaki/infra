@@ -82,13 +82,9 @@
       pre-commit-hooks.follows = "git-hooks-nix";
     };
     killheal.url = "git+https://git.theless.one/thelessone/KillHeal.git";
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
+    nur.url = "github:nix-community/NUR";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
+    nur.inputs.flake-parts.follows = "flake-parts";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
@@ -97,6 +93,16 @@
       flake-compat.follows = "flake-compat";
       gitignore.follows = "gitignore";
     };
+    tangled.url = "git+https://tangled.org/tangled.org/core";
+    tangled.inputs.nixpkgs.follows = "nixpkgs";
+    tangled.inputs.gomod2nix.follows = "gomod2nix";
+    avatar-server.url = "github:nanoyaki/avatar-server";
+    avatar-server.inputs = {
+      nixpkgs.follows = "nixpkgs";
+      flake-parts.follows = "flake-parts";
+      systems.follows = "systems";
+      treefmt-nix.follows = "treefmt-nix";
+    };
 
     # Deduplication
     flake-compat.url = "github:NixOS/flake-compat";
@@ -104,16 +110,17 @@
     flake-utils.url = "github:numtide/flake-utils";
     flake-utils.inputs.systems.follows = "systems";
     lib-aggregate.url = "github:nix-community/lib-aggregate";
-    lib-aggregate.inputs = {
-      flake-utils.follows = "flake-utils";
-      nixpkgs-lib.follows = "nixpkgs";
-    };
+    lib-aggregate.inputs.flake-utils.follows = "flake-utils";
+    lib-aggregate.inputs.nixpkgs-lib.follows = "nixpkgs";
     gitignore.url = "github:hercules-ci/gitignore.nix";
     gitignore.inputs.nixpkgs.follows = "nixpkgs";
-    steam-fetcher = {
-      url = "github:nix-community/steam-fetcher";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    steam-fetcher.url = "github:nix-community/steam-fetcher";
+    steam-fetcher.inputs.nixpkgs.follows = "nixpkgs";
+    gomod2nix.url = "github:nix-community/gomod2nix";
+    gomod2nix.inputs.nixpkgs.follows = "nixpkgs";
+    gomod2nix.inputs.flake-utils.follows = "flake-utils";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./nix);

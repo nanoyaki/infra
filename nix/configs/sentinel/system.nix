@@ -22,6 +22,7 @@
       sentinel-caddy
       sentinel-acme
       sentinel-ddns
+      sentinel-federation
     ];
   };
 

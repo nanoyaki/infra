@@ -67,7 +67,7 @@
           kikyo = {
             enable = true;
             name = "kikyo";
-            url = "https://git.theless.one";
+            url = "https://legacy-git.theless.one";
             tokenFile = config.sops.templates."kikyo.env".path;
 
             labels = [ "native:host" ];
@@ -108,7 +108,7 @@
           botan = {
             enable = true;
             name = "botan";
-            url = "https://git.theless.one";
+            url = "https://legacy-git.theless.one";
             tokenFile = config.sops.templates."botan.env".path;
 
             settings.runner.capacity = 8;
@@ -193,7 +193,7 @@
 
         settings = {
           server = {
-            DOMAIN = "git.theless.one";
+            DOMAIN = "legacy-git.theless.one";
             ROOT_URL = "https://${cfg.settings.server.DOMAIN}/";
             HTTP_PORT = 12500;
 
@@ -257,7 +257,7 @@
         };
       };
 
-      thelessone.caddy.vHost."git.theless.one".proxy.port = cfg.settings.server.HTTP_PORT;
+      thelessone.caddy.vHost."legacy-git.theless.one".proxy.port = cfg.settings.server.HTTP_PORT;
 
       sops.secrets."forgejo/users/nanoyaki".owner = cfg.user;
       systemd.services.forgejo.preStart = ''
