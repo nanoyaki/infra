@@ -32,11 +32,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774127956,
-        "narHash": "sha256-dnc8jWAgu3rGswbWT38pHVAb2AhSTF2DmlBMlNcPc0A=",
+        "lastModified": 1774135185,
+        "narHash": "sha256-/UlSW6/UJt0kdnmrnww0qr8VlN2AeL3bMZAu3K6SSH8=",
         "owner": "nanoyaki",
         "repo": "avatar-server",
-        "rev": "daaf6908291a6bd0bd539bd17df6da2160de742f",
+        "rev": "895afaf4d20608243736a92c72258b06dc3d29d6",
         "type": "github"
       },
       "original": {
