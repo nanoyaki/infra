@@ -45,7 +45,7 @@
       };
 
       services.tangled.knot = {
-        enable = false;
+        enable = true;
         stateDir = "/var/lib/tangled";
 
         appviewEndpoint = "https://git.theless.one";
