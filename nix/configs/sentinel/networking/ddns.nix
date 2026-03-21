@@ -18,6 +18,8 @@
 
         templates."oink.json".content = builtins.toJSON {
           global = {
+            secretapikey = config.sops.placeholder."porkbun/pds-secret-api-key";
+            apikey = config.sops.placeholder."porkbun/pds-api-key";
             interval = 900;
             ttl = 600;
           };
@@ -30,16 +32,20 @@
               subdomain = "de01";
             }
             {
-              secretapikey = config.sops.placeholder."porkbun/pds-secret-api-key";
-              apikey = config.sops.placeholder."porkbun/pds-api-key";
               domain = "nanoyaki.space";
               subdomain = "pds";
             }
             {
-              secretapikey = config.sops.placeholder."porkbun/pds-secret-api-key";
-              apikey = config.sops.placeholder."porkbun/pds-api-key";
               domain = "nanoyaki.space";
               subdomain = "knot";
+            }
+            {
+              domain = "nanoyaki.space";
+              subdomain = "camo";
+            }
+            {
+              domain = "nanoyaki.space";
+              subdomain = "avatars";
             }
           ];
         };
