@@ -32,7 +32,7 @@
       };
 
       services.tangled.appview = {
-        enable = false;
+        enable = true;
         port = 33190;
         environmentFile = config.sops.templates."tangled-appview.env".path;
 
@@ -44,6 +44,6 @@
         avatar.host = "https://avatars.nanoyaki.space";
       };
 
-      # thelessone.caddy.vHost."git.theless.one".proxy.port = config.services.tangled.appview.port;
+      thelessone.caddy.vHost."git.theless.one".proxy.port = config.services.tangled.appview.port;
     };
 }
