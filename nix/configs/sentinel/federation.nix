@@ -26,7 +26,7 @@
 
       sops.templates."bluesky-pds.env".file = pkgs.writeEnv "bluesky-pds.env.template" {
         PDS_JWT_SECRET = plh."pds/jwt";
-        PDS_ADMIN_PASSWORD = "'${plh."pds/admin-password"}'";
+        PDS_ADMIN_PASSWORD = plh."pds/admin-password";
         PDS_PLC_ROTATION_KEY_K256_PRIVATE_KEY_HEX = plh."pds/k256-key";
         PDS_EMAIL_SMTP_URL = plh."pds/smtp-dsn";
       };
