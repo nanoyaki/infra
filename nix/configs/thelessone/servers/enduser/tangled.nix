@@ -19,6 +19,7 @@
         "tangled/app-password" = { };
         "tangled/alt-app-password" = { };
         "tangled/pds-admin-password" = { };
+        "tangled/avatar-secret" = { };
       };
 
       sops.templates."tangled-appview.env".file = pkgs.writeEnv "tangled-appview.env.template" {
@@ -28,7 +29,8 @@
         TANGLED_COOKIE_SECRET = plh."tangled/cookie-secret";
         TANGLED_APP_PASSWORD = plh."tangled/app-password";
         TANGLED_ALT_APP_PASSWORD = plh."tangled/alt-app-password";
-        TANGLED_PDS_ADMIN_SECRET = "'${plh."tangled/pds-admin-password"}'";
+        TANGLED_PDS_ADMIN_SECRET = plh."tangled/pds-admin-password";
+        TANGLED_AVATAR_SHARED_SECRET = plh."tangled/avatar-secret";
       };
 
       services.tangled.appview = {
