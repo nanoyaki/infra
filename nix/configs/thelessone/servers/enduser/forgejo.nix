@@ -88,6 +88,7 @@
 
               nix
               nixos-rebuild
+              nix-eval-jobs
               openssh
               statix
               dix
