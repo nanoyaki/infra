@@ -9,7 +9,10 @@
     in
 
     {
-      imports = [ inputs.tangled.nixosModules.appview ];
+      imports = [
+        inputs.tangled.nixosModules.appview
+        inputs.tangled.nixosModules.spindle
+      ];
 
       sops.secrets = {
         "tangled/camo" = { };
@@ -33,7 +36,7 @@
         TANGLED_AVATAR_SHARED_SECRET = plh."tangled/avatar-secret";
       };
 
-      # systemd.services.appview.environment.TANGLED_KNOTMIRROR_URL = "https://knotmirror.theless.space";
+      systemd.services.appview.environment.TANGLED_KNOTMIRROR_URL = "";
       services.tangled.appview = {
         enable = true;
         port = 33190;
@@ -47,6 +50,22 @@
         avatar.host = "https://avatars.nanoyaki.space";
       };
 
+      services.tangled.spindle = {
+        enable = true;
+
+        server = {
+          listenAddr = "0.0.0.0:33191";
+          hostname = "spindle.theless.one";
+          jetstreamEndpoint = "wss://jetstream2.us-east.bsky.network/subscribe";
+          owner = "did:plc:majihettvb7ieflgmkvujecu";
+          maxJobCount = 4;
+        };
+
+        pipelines.nixery = "nixery.dev";
+        pipelines.workflowTimeout = "10m";
+      };
+
       thelessone.caddy.vHost."git.theless.one".proxy.port = config.services.tangled.appview.port;
+      thelessone.caddy.vHost."spindle.theless.one".proxy.port = 33191;
     };
 }
