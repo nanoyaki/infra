@@ -28,7 +28,7 @@
         // (lib.mapAttrs'
           (name: cfg: {
             name = "nixos-configuration-${name}";
-            value = cfg.system.build.toplevel;
+            value = cfg.config.system.build.toplevel;
           })
           (
             lib.filterAttrs (
