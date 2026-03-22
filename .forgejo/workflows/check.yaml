@@ -32,11 +32,10 @@ jobs:
 
       - name: Check changed
         run: |
-          set -x
           set -eo pipefail
 
           for check in $(
-            jq -s -r \
+            jq -s -r -c \
             'map({ path: (select(.isCached == false) | .drvPath), attr: ([.system] + .attrPath | join (".")) })[]' \
             ./evaled
           ); do
