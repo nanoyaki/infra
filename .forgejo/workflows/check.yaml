@@ -16,5 +16,32 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Flake checks
-        run: nix flake check
+      - name: Eval checks
+        id: eval
+        run: |
+          nix-eval-jobs \
+            --option eval-cache false \
+            --workers 32 \
+            --max-memory-size 4096 \
+            --option accept-flake-config true \
+            --force-recurse \
+            --check-cache-status \
+            --show-trace \
+            --flake '.#checks.x86_64-linux' \
+            > evaled
+
+      - name: Check changed
+        run: |
+          for check in $(
+            jq -s -r \
+            'map({ path: (select(.isCached == false) | .drvPath), attr: ([.system] + .attrPath | join (".")) })[]' \
+            ./evaled
+          ); do
+            nix build \
+              -L \
+              --show-trace \
+              --keep-going \
+              --max-silent-time 1200 \
+              --out-link "result-$(jq -r '.attr' <<< $item)" \
+              "$(jq -r '.path' <<< $item)"'^*'
+          done
