@@ -3,7 +3,6 @@
 {
   flake.nixosModules.sentinel-federation =
     {
-      # lib,
       pkgs,
       config,
       ...
@@ -16,7 +15,6 @@
     {
       imports = [
         inputs.tangled.nixosModules.knot
-        # inputs.tangled.nixosModules.knotmirror
         inputs.avatar-server.nixosModules.avatar-server
       ];
 
@@ -64,75 +62,6 @@
         };
       };
 
-      # The mirror is far too heavy to self-host on this server
-
-      # systemd.services.knotmirror = {
-      #   serviceConfig.User = "knotmirror";
-      #   serviceConfig.Group = "knotmirror";
-
-      #   unitConfig = {
-      #     MemoryMax = "1536M";
-      #     CPUQuota = "40%";
-      #     CPUQuotaPeriodSec = "500ms";
-      #     AllowedCPUs = "2";
-      #   };
-      # };
-      # systemd.services.tap-knotmirror = {
-      #   serviceConfig.User = "knotmirror-tap";
-      #   serviceConfig.Group = "knotmirror-tap";
-
-      #   unitConfig = {
-      #     MemoryMax = "1536M";
-      #     CPUQuota = "40%";
-      #     CPUQuotaPeriodSec = "750ms";
-      #     AllowedCPUs = "2";
-      #   };
-      # };
-
-      # services.tangled.knotmirror = {
-      #   package = pkgs.knotmirror;
-      #   enable = true;
-      #   fullNetwork = true;
-
-      #   listenAddr = "0.0.0.0:8004";
-      #   hostname = "knotmirror.nanoyaki.space";
-      #   atpRelayUrl = "https://relay1.us-east.bsky.network";
-      #   dbUrl = "postgresql:///knotmirror?host=/run/postgresql";
-      #   tap.dbUrl = "postgresql:///knotmirror-tap?host=/run/postgresql";
-      # };
-
-      # users.groups.knotmirror-tap = { };
-      # users.groups.knotmirror = { };
-
-      # users.users.knotmirror-tap = {
-      #   description = "Knotmirror-tap service user";
-      #   isSystemUser = true;
-      #   group = "knotmirror-tap";
-      # };
-      # users.users.knotmirror = {
-      #   description = "Knotmirror service user";
-      #   isSystemUser = true;
-      #   group = "knotmirror";
-      # };
-
-      # services.postgresql = {
-      #   enable = lib.mkDefault true;
-      #   ensureDatabases = [
-      #     "knotmirror-tap"
-      #     "knotmirror"
-      #   ];
-      #   ensureUsers = [
-      #     {
-      #       name = "knotmirror-tap";
-      #       ensureDBOwnership = true;
-      #     }
-      #     {
-      #       name = "knotmirror";
-      #       ensureDBOwnership = true;
-      #     }
-      #   ];
-      # };
-
       services.tangled.avatar-server = {
         enable = true;
         port = 8003;
@@ -172,12 +101,5 @@
           reverse_proxy 127.0.0.1:8003
         '';
       };
-
-      # services.caddy.virtualHosts."knotmirror.nanoyaki.space" = {
-      #   useACMEHost = "nanoyaki.space";
-      #   extraConfig = ''
-      #     reverse_proxy 127.0.0.1:8004
-      #   '';
-      # };
     };
 }
