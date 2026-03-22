@@ -32,7 +32,6 @@ jobs:
 
       - name: Check changed
         run: |
-          set -x
           set -eo pipefail
 
           for check in $(
@@ -45,6 +44,6 @@ jobs:
               --show-trace \
               --keep-going \
               --max-silent-time 1200 \
-              --out-link "result-$(jq -r '.attr' <<< $item)" \
-              "$(jq -r '.path' <<< $item)^*"
+              --out-link "result-$(jq -r '.attr' <<< $check)" \
+              "$(jq -r '.path' <<< $check)^*"
           done
