@@ -70,6 +70,8 @@
             url = "https://git.theless.one";
             tokenFile = config.sops.templates."kikyo.env".path;
 
+            settings.runner.capacity = 8;
+
             labels = [ "native:host" ];
             hostPackages = with pkgs; [
               # essentials
