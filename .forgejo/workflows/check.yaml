@@ -36,7 +36,7 @@ jobs:
 
           echo "to-check=$(
             jq -s -r -c \
-            'map({ name: .name, path: (select(.isCached == false) | .drvPath), attr: ([.system] + .attrPath | join (".")) })' \
+            'map(select(.isCached == false) | { name: .name, path: .drvPath, attr: ([.system] + .attrPath | join (".")) })' \
             ./evaled
           )" > $FORGEJO_OUTPUT
 
