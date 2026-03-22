@@ -32,6 +32,7 @@ jobs:
 
       - name: Check changed
         run: |
+          set -x
           set -eo pipefail
 
           for check in $(
