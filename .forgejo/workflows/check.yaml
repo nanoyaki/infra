@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2025 Hana Kretzer <hanakretzer@gmail.com>
+#
+# SPDX-License-Identifier: MIT
 on:
   pull_request:
   push:
@@ -6,12 +9,13 @@ on:
       - '**/*.nix'
     branches:
       - main
-  workflow_call:
   workflow_dispatch:
 
 jobs:
-  checks:
+  eval:
     runs-on: native
+    outputs:
+      to-check: ${{ steps.eval.outputs.to-check }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -30,20 +34,27 @@ jobs:
             --flake '.#checks.x86_64-linux' \
             > evaled
 
-      - name: Check changed
-        run: |
-          set -eo pipefail
-
-          for check in $(
+          echo "to-check=$(
             jq -s -r -c \
-            'map({ path: (select(.isCached == false) | .drvPath), attr: ([.system] + .attrPath | join (".")) })[]' \
+            'map({ name: .name, path: (select(.isCached == false) | .drvPath), attr: ([.system] + .attrPath | join (".")) })' \
             ./evaled
-          ); do
-            nix build \
-              -L \
-              --show-trace \
-              --keep-going \
-              --max-silent-time 1200 \
-              --out-link "result-$(jq -r '.attr' <<< $check)" \
-              "$(jq -r '.path' <<< $check)^*"
-          done
+          )" > $FORGEJO_OUTPUT
+
+  check:
+    name: Check ${{ matrix.checks.name }}
+    runs-on: native
+    needs: eval
+    strategy:
+      matrix:
+        checks: ${{ fromJSON(needs.eval.outputs.to-check) }}
+    steps:
+      - name: Check outputs
+        id: check
+        run: |-
+          nix build \
+            -L \
+            --show-trace \
+            --keep-going \
+            --max-silent-time 1200 \
+            --out-link "result-${{ matrix.checks.attr }}" \
+            "${{ matrix.checks.path }}"'^*'
