@@ -109,6 +109,7 @@
 
       services.rspamd.locals."domain_whitelist.map".text = ''
         gryphline.com
+        tangled.org
       '';
 
       systemd.services.rspamd = {
