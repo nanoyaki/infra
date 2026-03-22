@@ -139,11 +139,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774127912,
-        "narHash": "sha256-bM40BCUVC964zV+31A990xCrDJh/EEfgP6jtEW8P2z8=",
+        "lastModified": 1774133349,
+        "narHash": "sha256-Gu4q5Uj82OWCPFlgLjIR5U+fUp1KJpN6sS3dGUXbRUg=",
         "owner": "9001",
         "repo": "copyparty",
-        "rev": "311eb698a0ab23bde734cbea6c18961dd9ca4903",
+        "rev": "1f8ebd57dc42f437555c52ab42cbd1561ed277cf",
         "type": "github"
       },
       "original": {
@@ -417,11 +417,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774007980,
-        "narHash": "sha256-FOnZjElEI8pqqCvB6K/1JRHTE8o4rer8driivTpq2uo=",
+        "lastModified": 1774135471,
+        "narHash": "sha256-TVeIGOxnfSPM6JvkRkXHpJECnj1OG2dXkWMSA4elzzQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9670de2921812bc4e0452f6e3efd8c859696c183",
+        "rev": "856b01ebd1de3f53c3929ce8082d9d67d799d816",
         "type": "github"
       },
       "original": {
@@ -460,11 +460,11 @@
         "lastModified": 1731402384,
         "narHash": "sha256-OwUmrPfEehLDz0fl2ChYLK8FQM2p0G1+EMrGsYEq+6g=",
         "type": "tarball",
-        "url": "https://github.com/IBM/plex/releases/download/@ibm/plex-mono@1.1.0/ibm-plex-mono.zip"
+        "url": "https://github.com/IBM/plex/releases/download/@ibm%2Fplex-mono@1.1.0/ibm-plex-mono.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/IBM/plex/releases/download/@ibm/plex-mono@1.1.0/ibm-plex-mono.zip"
+        "url": "https://github.com/IBM/plex/releases/download/@ibm%2Fplex-mono@1.1.0/ibm-plex-mono.zip"
       }
     },
     "import-tree": {
@@ -536,11 +536,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773579712,
-        "narHash": "sha256-cvxFTYuOvvmpLJz5nB8iREmMGsDksY6gmZFf74UKD1Q=",
+        "lastModified": 1774184422,
+        "narHash": "sha256-/0uavLqZtZJkpHJJzw5XXxEb4BDnCoETmJIw7eV+AQk=",
         "owner": "nix-community",
         "repo": "lib-aggregate",
-        "rev": "c23c52797845b8e4f273ddb5ccdf8622b5d98284",
+        "rev": "04dab896c2aa239ea787781c1a2a06ec19161bf9",
         "type": "github"
       },
       "original": {
@@ -673,11 +673,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773802295,
-        "narHash": "sha256-luPLLgS8VR2fHo3xT04KbJm0RU2wep6SDh3smwF8e5E=",
+        "lastModified": 1774060651,
+        "narHash": "sha256-sZiam+rmNcOZGnlbnqDD9oTwfMdQUM+uQmFqqSoe194=",
         "owner": "Infinidoge",
         "repo": "nix-minecraft",
-        "rev": "41870283e080c46a6d33b6c3b3923e90348254c3",
+        "rev": "46727bd27d32d63069ed26a690554373ae2b4702",
         "type": "github"
       },
       "original": {
@@ -800,11 +800,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773842508,
-        "narHash": "sha256-i9Khq+O9E2Yqj2LiHsla4ICpssTopQmUUEXLuSLSb74=",
+        "lastModified": 1774186184,
+        "narHash": "sha256-zPDoxGvQqO9GloUJBYAQheIFDau5Y6Mt2of1/Tc6Sig=",
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
-        "rev": "2c89f396a6d0cf0f1f8ae61f44a9cd3af0ca6ed4",
+        "rev": "ec903e72ce0a0775c4cd92dd9fb2e87f5302500c",
         "type": "github"
       },
       "original": {
@@ -823,11 +823,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773884811,
-        "narHash": "sha256-OtiCUbLYB34624564McFDFjGICtnp0Kno3jYxRa55XY=",
+        "lastModified": 1774187013,
+        "narHash": "sha256-TmCGHRIDsbaeejQC+H94fcy2XtjiU4VDX88tpScfdnE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "36c477166cbbcc3be524446186d2263bc43e8927",
+        "rev": "b66da7ac4067e88f5cba42b6be2f52b068bb59bb",
         "type": "github"
       },
       "original": {
@@ -903,11 +903,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774001769,
-        "narHash": "sha256-6y8yLrMecnFq21wFlUSxHF7OsabVCCj2p104HEUosvI=",
+        "lastModified": 1774188198,
+        "narHash": "sha256-FB4e67TDafECAdd0FB97oZ7To/KtLzBW7UrlKm8rzJc=",
         "owner": "simple-nixos-mailserver",
         "repo": "nixos-mailserver",
-        "rev": "05968d7978faaa501836d6d2eb7f6cffb4140829",
+        "rev": "5d715c4ce84e79df6ec8949593747c77d5edabab",
         "type": "gitlab"
       },
       "original": {
@@ -923,11 +923,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773889674,
-        "narHash": "sha256-+ycaiVAk3MEshJTg35cBTUa0MizGiS+bgpYw/f8ohkg=",
+        "lastModified": 1774154798,
+        "narHash": "sha256-zsTuloDSdKf+PrI1MsWx5z/cyGEJ8P3eERtAfdP8Bmg=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "29b6519f3e0780452bca0ac0be4584f04ac16cc5",
+        "rev": "3e0d543e6ba6c0c48117a81614e90c6d8c425170",
         "type": "github"
       },
       "original": {
