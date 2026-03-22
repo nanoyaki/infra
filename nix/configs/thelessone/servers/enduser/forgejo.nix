@@ -85,6 +85,7 @@
               which
               iputils
               tea
+              jq
 
               nix
               nixos-rebuild
