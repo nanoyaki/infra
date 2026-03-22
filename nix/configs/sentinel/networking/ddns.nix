@@ -48,6 +48,10 @@
               domain = "nanoyaki.space";
               subdomain = "avatars";
             }
+            # {
+            #   domain = "nanoyaki.space";
+            #   subdomain = "knotmirror";
+            # }
           ];
         };
       };
