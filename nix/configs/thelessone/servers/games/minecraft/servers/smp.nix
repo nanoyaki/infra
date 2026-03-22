@@ -24,6 +24,7 @@
         serverProperties = {
           server-port = 30050;
           initial-enabled-packs = "vanilla";
+          difficulty = "normal";
         };
 
         gamerules = {
