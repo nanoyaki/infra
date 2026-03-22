@@ -66,19 +66,33 @@
 
       # The mirror is far too heavy to self-host on this server
 
-      # systemd.services.knotmirror.serviceConfig = {
-      #   User = "knotmirror";
-      #   Group = "knotmirror";
+      # systemd.services.knotmirror = {
+      #   serviceConfig.User = "knotmirror";
+      #   serviceConfig.Group = "knotmirror";
+
+      #   unitConfig = {
+      #     MemoryMax = "1536M";
+      #     CPUQuota = "40%";
+      #     CPUQuotaPeriodSec = "500ms";
+      #     AllowedCPUs = "2";
+      #   };
       # };
-      # systemd.services.tap-knotmirror.serviceConfig = {
-      #   User = "knotmirror-tap";
-      #   Group = "knotmirror-tap";
+      # systemd.services.tap-knotmirror = {
+      #   serviceConfig.User = "knotmirror-tap";
+      #   serviceConfig.Group = "knotmirror-tap";
+
+      #   unitConfig = {
+      #     MemoryMax = "1536M";
+      #     CPUQuota = "40%";
+      #     CPUQuotaPeriodSec = "750ms";
+      #     AllowedCPUs = "2";
+      #   };
       # };
 
       # services.tangled.knotmirror = {
       #   package = pkgs.knotmirror;
       #   enable = true;
-      #   fullNetwork = false;
+      #   fullNetwork = true;
 
       #   listenAddr = "0.0.0.0:8004";
       #   hostname = "knotmirror.nanoyaki.space";

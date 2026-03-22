@@ -33,6 +33,7 @@
         TANGLED_AVATAR_SHARED_SECRET = plh."tangled/avatar-secret";
       };
 
+      # systemd.services.appview.environment.TANGLED_KNOTMIRROR_URL = "https://knotmirror.theless.space";
       services.tangled.appview = {
         enable = true;
         port = 33190;
