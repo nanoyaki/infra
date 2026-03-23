@@ -24,144 +24,145 @@
         useDefaultShell = true;
         isSystemUser = true;
 
-        # extraGroups = [ "podman" ];
+        extraGroups = [ "podman" ];
       };
 
       sops.secrets = {
-        # "forgejo/kikyo" = { };
-        # "forgejo/syakuyaku" = { };
-        # "forgejo/botan" = { };
-        # "forgejo/kigiku" = { };
+        "forgejo/kikyo" = { };
+        "forgejo/syakuyaku" = { };
+        "forgejo/botan" = { };
+        "forgejo/kigiku" = { };
         "mailserver/git" = { };
       };
 
-      # sops.templates."kikyo.env".file = pkgs.writeEnv "kikyo.env.template" {
-      #   TOKEN = config.sops.placeholder."forgejo/kikyo";
-      # };
+      sops.templates."kikyo.env".file = pkgs.writeEnv "kikyo.env.template" {
+        TOKEN = config.sops.placeholder."forgejo/kikyo";
+      };
 
-      # sops.templates."syakuyaku.env".file = pkgs.writeEnv "syakuyaku.env.template" {
-      #   TOKEN = config.sops.placeholder."forgejo/syakuyaku";
-      # };
+      sops.templates."syakuyaku.env".file = pkgs.writeEnv "syakuyaku.env.template" {
+        TOKEN = config.sops.placeholder."forgejo/syakuyaku";
+      };
 
-      # sops.templates."botan.env".file = pkgs.writeEnv "botan.env.template" {
-      #   TOKEN = config.sops.placeholder."forgejo/botan";
-      #   REGISTRY_AUTH_FILE = config.sops.templates."auth.json".path;
-      # };
+      sops.templates."botan.env".file = pkgs.writeEnv "botan.env.template" {
+        TOKEN = config.sops.placeholder."forgejo/botan";
+        REGISTRY_AUTH_FILE = config.sops.templates."auth.json".path;
+      };
 
-      # sops.templates."kigiku.env".file = pkgs.writeEnv "kigiku.env.template" {
-      #   TOKEN = config.sops.placeholder."forgejo/kigiku";
-      # };
+      sops.templates."kigiku.env".file = pkgs.writeEnv "kigiku.env.template" {
+        TOKEN = config.sops.placeholder."forgejo/kigiku";
+      };
 
-      # systemd.services.gitea-runner-kikyo.environment = {
-      #   inherit (config.environment.sessionVariables) NIX_PATH;
-      # };
+      systemd.services.gitea-runner-kikyo.environment = {
+        inherit (config.environment.sessionVariables) NIX_PATH;
+      };
 
-      # systemd.services.gitea-runner-syakuyaku.environment = {
-      #   inherit (config.environment.sessionVariables) NIX_PATH;
-      # };
+      systemd.services.gitea-runner-syakuyaku.environment = {
+        inherit (config.environment.sessionVariables) NIX_PATH;
+      };
 
-      # services.gitea-actions-runner = {
-      #   package = pkgs.forgejo-runner;
+      services.gitea-actions-runner = {
+        package = pkgs.forgejo-runner;
 
-      #   instances = rec {
-      #     kikyo = {
-      #       enable = false;
-      #       name = "kikyo";
-      #       url = "https://forgejo.theless.one";
-      #       tokenFile = config.sops.templates."kikyo.env".path;
+        instances = rec {
+          kikyo = {
+            enable = true;
+            name = "kikyo";
+            url = "https://git.theless.one";
+            tokenFile = config.sops.templates."kikyo.env".path;
 
-      #       labels = [ "native:host" ];
-      #       hostPackages = with pkgs; [
-      #         # essentials
-      #         bash
-      #         coreutils
-      #         curl
-      #         gawk
-      #         git
-      #         git-lfs
-      #         gnused
-      #         nodejs
-      #         wget
-      #         which
-      #         iputils
-      #         tea
+            labels = [ "native:host" ];
+            hostPackages = with pkgs; [
+              # essentials
+              bash
+              coreutils
+              curl
+              gawk
+              git
+              git-lfs
+              gnused
+              nodejs
+              wget
+              which
+              iputils
+              tea
 
-      #         nix
-      #         openssh
-      #         statix
-      #         dix
-      #         inotify-tools
-      #         nh
-      #       ];
-      #     };
+              nix
+              nixos-rebuild
+              openssh
+              statix
+              dix
+              inotify-tools
+              nh
+            ];
+          };
 
-      #     syakuyaku = kikyo // {
-      #       name = "syakuyaku";
-      #       tokenFile = config.sops.templates."syakuyaku.env".path;
-      #     };
+          syakuyaku = kikyo // {
+            name = "syakuyaku";
+            tokenFile = config.sops.templates."syakuyaku.env".path;
+          };
 
-      #     kigiku = kikyo // {
-      #       name = "kigiku";
-      #       tokenFile = config.sops.templates."kigiku.env".path;
-      #     };
+          kigiku = kikyo // {
+            name = "kigiku";
+            tokenFile = config.sops.templates."kigiku.env".path;
+          };
 
-      #     botan = {
-      #       enable = false;
-      #       name = "botan";
-      #       url = "https://forgejo.theless.one";
-      #       tokenFile = config.sops.templates."botan.env".path;
+          botan = {
+            enable = true;
+            name = "botan";
+            url = "https://git.theless.one";
+            tokenFile = config.sops.templates."botan.env".path;
 
-      #       settings.runner.capacity = 8;
+            settings.runner.capacity = 8;
 
-      #       labels = [
-      #         "debian-latest:docker://debian:latest"
-      #         "debian-stable:docker://debian:stable"
+            labels = [
+              "debian-latest:docker://debian:latest"
+              "debian-stable:docker://debian:stable"
 
-      #         "ubuntu-latest:docker://ubuntu:latest"
-      #         "ubuntu-22.04:docker://ubuntu:jammy"
+              "ubuntu-latest:docker://ubuntu:latest"
+              "ubuntu-22.04:docker://ubuntu:jammy"
 
-      #         "nix:docker://ghcr.io/nixos/nix:latest"
-      #         "rust:docker://rust:latest"
-      #       ];
-      #     };
-      #   };
-      # };
+              "nix:docker://ghcr.io/nixos/nix:latest"
+              "rust:docker://rust:latest"
+            ];
+          };
+        };
+      };
 
-      # sops.secrets."containers/docker" = { };
-      # sops.templates."auth.json" = {
-      #   content = builtins.toJSON {
-      #     auths."docker.io".auth = config.sops.placeholder."containers/docker";
-      #   };
+      sops.secrets."containers/docker" = { };
+      sops.templates."auth.json" = {
+        content = builtins.toJSON {
+          auths."docker.io".auth = config.sops.placeholder."containers/docker";
+        };
 
-      #   path = "/etc/containers/auth.json";
-      #   mode = "440";
-      #   group = "podman";
-      # };
+        path = "/etc/containers/auth.json";
+        mode = "440";
+        group = "podman";
+      };
 
-      # systemd.tmpfiles.settings.podman."/root/.config/containers/auth.json"."L+".argument =
-      #   config.sops.templates."auth.json".path;
+      systemd.tmpfiles.settings.podman."/root/.config/containers/auth.json"."L+".argument =
+        config.sops.templates."auth.json".path;
 
       # Use podman instead since rootless docker
       # isn't supported by the forgejo nixos module
-      # virtualisation.containers = {
-      #   enable = false;
-      #   registries.search = [
-      #     "quay.io"
-      #     "ghcr.io"
-      #     "docker.io"
-      #   ];
-      # };
+      virtualisation.containers = {
+        enable = true;
+        registries.search = [
+          "quay.io"
+          "ghcr.io"
+          "docker.io"
+        ];
+      };
 
-      # virtualisation.podman = {
-      #   enable = false;
-      #   dockerCompat = true;
-      #   defaultNetwork.settings = {
-      #     dns_enabled = true;
-      #     ipv6_enabled = true;
-      #   };
-      # };
+      virtualisation.podman = {
+        enable = true;
+        dockerCompat = true;
+        defaultNetwork.settings = {
+          dns_enabled = true;
+          ipv6_enabled = true;
+        };
+      };
 
-      # networking.firewall.interfaces."\"podman*\"".allowedUDPPorts = [ 53 ];
+      networking.firewall.interfaces."\"podman*\"".allowedUDPPorts = [ 53 ];
 
       sops.secrets = {
         "forgejo/signing".owner = cfg.user;
@@ -193,7 +194,7 @@
 
         settings = {
           server = {
-            DOMAIN = "forgejo.theless.one";
+            DOMAIN = "git.theless.one";
             ROOT_URL = "https://${cfg.settings.server.DOMAIN}/";
             HTTP_PORT = 12500;
 
@@ -224,7 +225,7 @@
           "repository.signing" = {
             FORMAT = "ssh";
             SIGNING_KEY = config.sops.secrets."forgejo/signing.pub".path;
-            SIGNING_NAME = "forgejo forgejo.theless.one";
+            SIGNING_NAME = "forgejo git.theless.one";
             SIGNING_EMAIL = "git@theless.one";
           };
         };
@@ -257,7 +258,7 @@
         };
       };
 
-      thelessone.caddy.vHost."forgejo.theless.one".proxy.port = cfg.settings.server.HTTP_PORT;
+      thelessone.caddy.vHost."git.theless.one".proxy.port = cfg.settings.server.HTTP_PORT;
 
       sops.secrets."forgejo/users/nanoyaki".owner = cfg.user;
       systemd.services.forgejo.preStart = ''

@@ -1,6 +1,8 @@
 { inputs, ... }:
 
 {
+  # Tangled is nowhere close to mature
+  # enough yet even for basic usage
   flake.nixosModules.thelessone-tangledAppview =
     { config, pkgs, ... }:
 
