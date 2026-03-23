@@ -93,16 +93,16 @@
       flake-compat.follows = "flake-compat";
       gitignore.follows = "gitignore";
     };
-    # tangled.url = "git+https://tangled.org/tangled.org/core";
-    # tangled.inputs.nixpkgs.follows = "nixpkgs";
-    # tangled.inputs.gomod2nix.follows = "gomod2nix";
-    # avatar-server.url = "github:nanoyaki/avatar-server";
-    # avatar-server.inputs = {
-    #   nixpkgs.follows = "nixpkgs";
-    #   flake-parts.follows = "flake-parts";
-    #   systems.follows = "systems";
-    #   treefmt-nix.follows = "treefmt-nix";
-    # };
+    tangled.url = "git+https://tangled.org/tangled.org/core";
+    tangled.inputs.nixpkgs.follows = "nixpkgs";
+    tangled.inputs.gomod2nix.follows = "gomod2nix";
+    avatar-server.url = "github:nanoyaki/avatar-server";
+    avatar-server.inputs = {
+      nixpkgs.follows = "nixpkgs";
+      flake-parts.follows = "flake-parts";
+      systems.follows = "systems";
+      treefmt-nix.follows = "treefmt-nix";
+    };
 
     # Deduplication
     flake-compat.url = "github:NixOS/flake-compat";
