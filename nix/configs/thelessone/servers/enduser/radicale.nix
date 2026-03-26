@@ -109,7 +109,7 @@
         )
       );
 
-      mailserver.loginAccounts."calendar@theless.one" = {
+      mailserver.accounts."calendar@theless.one" = {
         sendOnly = true;
         hashedPasswordFile = config.sops.secrets."mailserver/calendar".path;
       };

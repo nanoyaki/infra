@@ -27,7 +27,7 @@
           "aslija.com"
         ];
 
-        loginAccounts = {
+        accounts = {
           "postmaster@theless.one" = {
             hashedPasswordFile = config.sops.secrets."mailserver/postmaster".path;
             aliases = [ "postmaster@nanoyaki.space" ];

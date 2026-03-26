@@ -237,7 +237,7 @@
         secrets.mailer.PASSWD = config.sops.secrets."forgejo/mailer-password".path;
       };
 
-      mailserver.loginAccounts."git@theless.one" = {
+      mailserver.accounts."git@theless.one" = {
         sendOnly = true;
         hashedPasswordFile = config.sops.secrets."mailserver/git".path;
       };

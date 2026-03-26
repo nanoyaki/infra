@@ -42,7 +42,7 @@
         };
       };
 
-      mailserver.loginAccounts."recipes@theless.one" = {
+      mailserver.accounts."recipes@theless.one" = {
         sendOnly = true;
         hashedPasswordFile = config.sops.secrets."mailserver/recipes".path;
       };

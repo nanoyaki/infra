@@ -37,7 +37,6 @@
       thelessone-vaultwarden
       thelessone-nanoyakiEvents
       thelessone-copyparty
-      thelessone-fireshare
       thelessone-forgejo
       # thelessone-tangledAppview
       thelessone-dashboard
