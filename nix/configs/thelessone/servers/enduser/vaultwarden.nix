@@ -47,7 +47,7 @@
         environmentFile = config.sops.templates."vaultwarden.env".path;
       };
 
-      mailserver.loginAccounts."vaultwarden@theless.one" = {
+      mailserver.accounts."vaultwarden@theless.one" = {
         sendOnly = true;
         hashedPasswordFile = config.sops.secrets."mailserver/vaultwarden".path;
       };

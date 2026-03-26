@@ -255,14 +255,6 @@
                   };
                 };
               }
-              {
-                Fireshare = {
-                  icon = "fireshare.webp";
-                  href = "https://fireshare.theless.one/#/login";
-                  siteMonitor = "https://fireshare.theless.one";
-                  description = "Clip sharing";
-                };
-              }
             ];
           }
           {

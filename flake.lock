@@ -696,11 +696,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774314216,
-        "narHash": "sha256-Q/d8is0+dZp/R16VN964Vo8jPmkMpRd3wMEMFzw3wq0=",
+        "lastModified": 1774518171,
+        "narHash": "sha256-t1oF2u/MXOFmu44mMByVbea99GMLH9IBgx+aB/cv4BY=",
         "owner": "nanoyaki",
         "repo": "nix-scpsl",
-        "rev": "31839d2670233c2d409163f6f53e05ce3851b2c6",
+        "rev": "24accc3ee1d597cb24ebefd94e1f1571aaa743c3",
         "type": "github"
       },
       "original": {
