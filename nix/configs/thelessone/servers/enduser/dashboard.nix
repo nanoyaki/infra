@@ -66,7 +66,7 @@
           "100.64.64.1:33189"
           "[fd64::1]:33189"
         ];
-        environmentFile = config.sops.templates."homepage-secrets.env".path;
+        environmentFiles = [ config.sops.templates."homepage-secrets.env".path ];
 
         settings = {
           # Meta
