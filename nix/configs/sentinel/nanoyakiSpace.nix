@@ -29,7 +29,9 @@
         export APP_LOG_DIR="/var/log/nanoyaki-space"
         export APP_CACHE_DIR="/var/cache/nanoyaki-space"
         export APP_SHARE_DIR="/var/cache/nanoyaki-space"
-        ${lib.getExe pkgs.php85} ${webPkg}/bin/console cache:warmup --env=prod --no-debug
+
+        rm -rf "$APP_CACHE_DIR/prod"
+        ${lib.getExe pkgs.php85} ${webPkg}/bin/console cache:clear --env=prod --no-debug
       '';
       services.caddy.virtualHosts."nanoyaki.space" = {
         useACMEHost = "nanoyaki.space";
@@ -50,6 +52,7 @@
             env APP_LOG_DIR "/var/log/nanoyaki-space"
             env DEFAULT_URI "https://nanoyaki.space"
             env APP_RUNTIME_OPTIONS {file.${runtimeOptsFile}}
+            env CHROMIUM_BIN "${lib.getExe' pkgs.nanoyaki-space.passthru.dependencies "chromium"}"
 
             capture_stderr
             resolve_root_symlink
@@ -71,6 +74,21 @@
         inherit (config.services.caddy) user group;
         mode = "770";
       };
+
+      # To render the zZ emoji properly in the embed image
+      fonts.packages = [ pkgs.twemoji-color-font ];
+      fonts.fontconfig.enable = true;
+      fonts.fontconfig.defaultFonts.emoji = [ "Twitter Color Emoji" ];
+
+      # Necessary to screenshot the rendered twig page
+      security.wrappers."__chromium-suid-sandbox" = {
+        source = "${pkgs.ungoogled-chromium.sandbox}/bin/__chromium-suid-sandbox";
+        owner = "root";
+        group = "root";
+        setuid = true;
+      };
+      systemd.services.phpfpm-nanoyaki-space.environment.CHROME_DEVEL_SANDBOX =
+        "/run/wrappers/bin/__chromium-suid-sandbox";
 
       services.phpfpm.pools.nanoyaki-space = {
         inherit (config.services.caddy) user group;

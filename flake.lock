@@ -667,11 +667,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774805894,
-        "narHash": "sha256-GDPGmPElSnUy8Skfemmsd6rGBM3/urhbrsLle7Lrn7g=",
+        "lastModified": 1774827236,
+        "narHash": "sha256-e6EZCkat7yMilLkLiPEssNKDpt44zddXkoI4t5I5Kas=",
         "ref": "refs/heads/main",
-        "rev": "de17a11a7947e82ddd39dde886d74716977d0e55",
-        "revCount": 6,
+        "rev": "884d7bf8a71d76081a7056e5ebacb705028d25b1",
+        "revCount": 9,
         "type": "git",
         "url": "https://tangled.org/nanoyaki.space/nanoyaki.space"
       },
