@@ -15,6 +15,7 @@
 
     {
       sops.secrets.steam-api-key.owner = user;
+      sops.secrets.app-secret.owner = user;
 
       users.users.${user}.extraGroups = [ "nanoyaki-space" ];
       services.caddy.virtualHosts."nanoyaki.space" = {
@@ -28,10 +29,12 @@
           php_fastcgi unix/${config.services.phpfpm.pools.nanoyaki-space.socket} {
             root ${webPkg}/public
 
+            env APP_SECRET {file.${config.sops.secrets.app-secret.path}}
             env STEAM_API_KEY {file.${config.sops.secrets.steam-api-key.path}}
             env APP_SHARE_DIR "/var/cache/nanoyaki-space"
             env APP_CACHE_DIR "/var/cache/nanoyaki-space"
             env APP_LOG_DIR "/var/log/nanoyaki-space"
+            env APP_ENV "prod"
 
             resolve_root_symlink
           }
