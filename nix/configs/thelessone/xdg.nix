@@ -9,6 +9,7 @@
     {
       xdg.userDirs = {
         enable = true;
+        setSessionVariables = true;
 
         desktop = "${homeDirectory}/Schreibtisch";
         download = "${homeDirectory}/Downloads";

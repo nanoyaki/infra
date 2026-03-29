@@ -23,6 +23,7 @@
       sentinel-acme
       sentinel-ddns
       sentinel-federation
+      sentinel-nanoyakiSpace
     ];
   };
 
