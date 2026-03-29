@@ -12,6 +12,7 @@
         "mailserver/nanoyaki" = { };
         "mailserver/thelessone" = { };
         "mailserver/no-reply" = { };
+        "mailserver/meilyne" = { };
         "mailserver/aslija-personal" = { };
         "mailserver/aslija-business" = { };
       };
