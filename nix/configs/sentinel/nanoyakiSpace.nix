@@ -45,7 +45,10 @@
       };
 
       users.groups.nanoyaki-space = { };
-      users.users.nanoyaki-space.isSystemUser = true;
+      users.users.nanoyaki-space = {
+        isSystemUser = true;
+        group = "nanoyaki-space";
+      };
 
       systemd.services.phpfpm-nanoyaki-space.serviceConfig = {
         CacheDirectory = "nanoyaki-space";
