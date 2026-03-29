@@ -34,6 +34,10 @@
             }
             {
               domain = "nanoyaki.space";
+              subdomain = "";
+            }
+            {
+              domain = "nanoyaki.space";
               subdomain = "pds";
             }
             {
