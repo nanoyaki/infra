@@ -47,12 +47,12 @@
         '';
       };
 
-      systemd.settings.nanoyaki-space."/var/cache/nanoyaki-space".d = {
+      systemd.tmpfiles.settings.nanoyaki-space."/var/cache/nanoyaki-space".d = {
         user = "nanoyaki-space";
         group = "nanoyaki-space";
         mode = "770";
       };
-      systemd.settings.nanoyaki-space."/var/log/nanoyaki-space".d = {
+      systemd.tmpfiles.settings.nanoyaki-space."/var/log/nanoyaki-space".d = {
         user = "nanoyaki-space";
         group = "nanoyaki-space";
         mode = "770";
