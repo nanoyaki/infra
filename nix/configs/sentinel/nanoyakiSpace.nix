@@ -17,7 +17,7 @@
       sops.secrets.steam-api-key.owner = user;
 
       users.users.${user}.extraGroups = [ "nanoyaki-space" ];
-      services.caddy.virtualHosts."events.nanoyaki.space" = {
+      services.caddy.virtualHosts."nanoyaki.space" = {
         useACMEHost = "nanoyaki.space";
         extraConfig = ''
           root * ${webPkg}/public
