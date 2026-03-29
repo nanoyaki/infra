@@ -97,12 +97,6 @@
             secretapikey = config.sops.placeholder."porkbun-nano/secret-api-key";
             apikey = config.sops.placeholder."porkbun-nano/api-key";
             domain = "nanoyaki.space";
-            subdomain = "";
-          }
-          {
-            secretapikey = config.sops.placeholder."porkbun-nano/secret-api-key";
-            apikey = config.sops.placeholder."porkbun-nano/api-key";
-            domain = "nanoyaki.space";
             subdomain = "*";
           }
           {
