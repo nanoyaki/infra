@@ -57,6 +57,11 @@
             ];
           };
 
+          "meilyne@nanoyaki.space" = {
+            hashedPasswordFile = config.sops.secrets."mailserver/meilyne".path;
+            aliasesRegexp = [ ''/^meilyne(\.|\+).*@nanoyaki\.space$/'' ];
+          };
+
           "personal@aslija.com" = {
             hashedPasswordFile = config.sops.secrets."mailserver/aslija-personal".path;
             aliasesRegexp = [ ''/^personal\+.*@aslija\.com$/'' ];
