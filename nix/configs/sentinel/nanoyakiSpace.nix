@@ -47,16 +47,23 @@
         '';
       };
 
+      systemd.settings.nanoyaki-space."/var/cache/nanoyaki-space".d = {
+        user = "nanoyaki-space";
+        group = "nanoyaki-space";
+        mode = "770";
+      };
+      systemd.settings.nanoyaki-space."/var/log/nanoyaki-space".d = {
+        user = "nanoyaki-space";
+        group = "nanoyaki-space";
+        mode = "770";
+      };
+
       users.groups.nanoyaki-space = { };
       users.users.nanoyaki-space = {
         isSystemUser = true;
         group = "nanoyaki-space";
       };
 
-      systemd.services.phpfpm-nanoyaki-space.serviceConfig = {
-        CacheDirectory = "nanoyaki-space";
-        LogsDirectory = "nanoyaki-space";
-      };
       services.phpfpm.pools.nanoyaki-space = {
         user = "nanoyaki-space";
         group = "nanoyaki-space";
