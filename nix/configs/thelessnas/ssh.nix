@@ -2,6 +2,16 @@
   flake.nixosModules.thelessnas-ssh =
     { pkgs, config, ... }:
 
+    let
+      openssh.authorizedKeys.keys = [
+        # id_deployment_thelessnas
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC6a6yxA1AaSmrf/0Xqvyl6m6QcafD9LU93qEFCmI9Ce"
+        # TODO: migrate over time
+        # id_deployment_thelessnas_new
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGDJK71DAZOFN6oB3RfmqmIF1lXf5Le6i/uEuH7GOCg/"
+      ];
+    in
+
     {
       sops.secrets.hostkey-rsa = { };
       sops.secrets.hostkey-ed25519 = { };
@@ -17,10 +27,8 @@
         }
       ];
 
-      users.users.root.openssh.authorizedKeys.keys = [
-        # id_deployment_thelessnas
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC6a6yxA1AaSmrf/0Xqvyl6m6QcafD9LU93qEFCmI9Ce"
-      ];
+      users.users.root = { inherit openssh; };
+      users.users.${config.self.mainUser} = { inherit openssh; };
 
       # for deployment
       environment.systemPackages = [ pkgs.tmux ];
