@@ -20,7 +20,7 @@
           sleep 10
         '';
 
-        package = pkgs.neoforgeServers.neoforge-1_21_1-21_1_219;
+        package = pkgs.neoforgeServers.neoforge-1_21_1;
         packageOverrides.jre_headless = pkgs.zulu21;
         appendJvmOpts = "-Dowo.handshake.disable=true";
 

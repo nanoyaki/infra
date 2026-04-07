@@ -19,16 +19,20 @@
     "nix.serverSettings": {
         "nixd": {
             "nixpkgs": {
-                "expr": "(import /home/hana/flake/.vscode/nixd-workspace.nix { path = \"/home/hana/infra\"; })"
+                "expr": "import /home/hana/flake/nix/configs/shirayuri/_nixd-nixpkgs.nix { nixosConfig = \"/home/hana/infra\"; isFlake = true; }"
             },
             "formatting": {
                 "command": [ "nixfmt" ]
             },
             "options": {
-                "opts": {
-                    "expr": "(import /home/hana/flake/.vscode/nixd-workspace.nix { path = \"/home/hana/infra\"; })"
+                "nixos": {
+                    "expr": "import /home/hana/flake/nix/configs/shirayuri/_nixd-nixos-options.nix { nixosConfig = \"/home/hana/infra\"; isFlake = true; hostname = \"thelessone\"; }"
+                },
+                "home-manager": {
+                    "expr": "import /home/hana/flake/nix/configs/shirayuri/_nixd-home-options.nix { homeConfig = \"/home/hana/infra\"; isFlake = true; username = \"thelessone\"; }"
                 }
             }
         }
-    }
+    },
+    "nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix"
 }
