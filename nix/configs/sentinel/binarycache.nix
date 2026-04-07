@@ -31,6 +31,7 @@
 
           storage = {
             type = "s3";
+            region = "European Union";
             bucket = "binary-cache";
             endpoint = "https://eu2.contabostorage.com";
           };
