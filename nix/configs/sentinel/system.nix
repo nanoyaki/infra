@@ -24,6 +24,7 @@
       sentinel-ddns
       sentinel-federation
       sentinel-nanoyakiSpace
+      sentinel-binarycache
     ];
   };
 

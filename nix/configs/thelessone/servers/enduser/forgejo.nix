@@ -97,6 +97,7 @@
               dix
               inotify-tools
               nh
+              attic-client
             ];
           };
 

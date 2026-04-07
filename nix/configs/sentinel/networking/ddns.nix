@@ -33,6 +33,12 @@
               subdomain = "de01";
             }
             {
+              secretapikey = config.sops.placeholder."porkbun/secret-api-key";
+              apikey = config.sops.placeholder."porkbun/api-key";
+              domain = "theless.one";
+              subdomain = "binarycache";
+            }
+            {
               domain = "nanoyaki.space";
               subdomain = "";
             }
