@@ -9,6 +9,6 @@
         efiInstallAsRemovable = true;
       };
 
-      boot.kernelPackages = pkgs.linuxKernel.packages.linux_hardened;
+      boot.kernelPackages = pkgs.linuxKernel.packageAliases.linux_latest;
     };
 }
