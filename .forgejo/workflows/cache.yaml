@@ -1,25 +1,18 @@
 on:
-  pull_request:
-  push:
-    paths:
-      - 'flake.lock'
-      - '**/*.nix'
-    branches:
-      - main
   workflow_dispatch:
   workflow_call:
 
 jobs:
-  eval:
+  eval-packages:
     runs-on: native
     outputs:
-      to-cache: ${{ steps.eval.outputs.to-cache }}
+      to-build: ${{ steps.eval-packages.outputs.to-build }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Eval checks
-        id: eval
+        id: eval-packages
         run: |
           nix-eval-jobs \
             --option eval-cache false \
@@ -32,7 +25,7 @@ jobs:
             --flake '.#packages.x86_64-linux' \
             > evaled
 
-          echo "to-cache=$(
+          echo "to-build=$(
             jq -s -r -c \
             'map(select(.isCached == false) | { name: .name, path: .drvPath, attr: ([.system] + .attrPath | join (".")) })' \
             ./evaled
@@ -41,10 +34,10 @@ jobs:
   cache:
     name: Build ${{ matrix.builds.name }}
     runs-on: native
-    needs: eval
+    needs: eval-packages
     strategy:
       matrix:
-        builds: ${{ fromJSON(needs.eval.outputs.to-cache) }}
+        builds: ${{ fromJSON(needs.eval-packages.outputs.to-build) }}
     steps:
       - name: Check outputs
         id: check
