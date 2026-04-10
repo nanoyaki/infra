@@ -42,7 +42,7 @@
       thelessone-dashboard
       thelessone-suwayomi
       thelessone-arr
-      thelessone-deluge
+      thelessone-transmission
       thelessone-sabnzbd
       thelessone-flaresolverr
       thelessone-prowlarr
