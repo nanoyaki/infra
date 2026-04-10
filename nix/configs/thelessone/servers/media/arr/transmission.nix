@@ -1,6 +1,7 @@
 {
   flake.nixosModules.thelessone-transmission =
     {
+      pkgs,
       config,
       ...
     }:
@@ -41,6 +42,7 @@
         enable = true;
         openRPCPort = true;
         inherit (config.thelessone.arr) group;
+        package = pkgs.transmission_4;
 
         settings = {
           rpc-enabled = true;

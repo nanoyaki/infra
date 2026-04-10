@@ -6,7 +6,7 @@
       services.seerr.enable = true;
 
       thelessone.caddy.vHost."jellyseerr.theless.one" = {
-        proxy = { inherit (config.services.jellyseerr) port; };
+        proxy = { inherit (config.services.seerr) port; };
         useVpn = true;
       };
 
