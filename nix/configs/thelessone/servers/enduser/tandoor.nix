@@ -19,6 +19,7 @@
         database.createLocally = true;
 
         extraConfig = {
+          ALLOWED_HOSTS = "recipes.theless.one";
           SECRET_KEY_FILE = config.sops.secrets.tandoor.path;
 
           MEDIA_ROOT = "/var/lib/tandoor-recipes";
