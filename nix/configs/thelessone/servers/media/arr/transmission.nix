@@ -76,6 +76,7 @@
       systemd.services.flood = {
         requires = [ "transmission.service" ];
         after = [ "transmission.service" ];
+        serviceConfig.RestrictAddressFamilies = [ "AF_NETLINK" ];
       };
 
       services.flood = {
