@@ -48,7 +48,7 @@
           rpc-enabled = true;
           rpc-port = 58846;
           rpc-whitelist-enabled = true;
-          rpc-whitelist = "127.0.0.1,10.0.0.*,100.64.64.*";
+          rpc-whitelist = "127.0.0.1,10.200.1.*,10.0.0.*,100.64.64.*";
           rpc-authentication-required = true;
           rpc-username = "transmission";
 
