@@ -3,7 +3,7 @@
     { config, ... }:
 
     {
-      services.jellyseerr.enable = true;
+      services.seerr.enable = true;
 
       thelessone.caddy.vHost."jellyseerr.theless.one" = {
         proxy = { inherit (config.services.jellyseerr) port; };

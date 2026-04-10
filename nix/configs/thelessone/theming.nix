@@ -25,7 +25,7 @@
     };
 
   flake.homeModules.thelessone-theming =
-    { config, ... }:
+    { lib, config, ... }:
 
     {
       gtk = rec {
@@ -44,6 +44,7 @@
           gtk-decoration-layout = ":minimize,maximize,close";
         };
 
+        gtk4.theme = lib.mkForce config.gtk.theme;
         gtk4 = { inherit (gtk3) extraConfig; };
       };
     };
