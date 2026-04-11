@@ -11,18 +11,6 @@
     in
 
     {
-      sops.secrets.transmission = { };
-
-      sops.templates."transmission-settings.json" = {
-        content = builtins.toJSON {
-          rpc-password = config.sops.placeholder.transmission;
-        };
-        restartUnits = [ "transmission.service" ];
-        mode = "640";
-        owner = cfg.user;
-        inherit (cfg) group;
-      };
-
       systemd.tmpfiles.settings."10-transmission" = {
         "/mnt/raid/arr-stack/downloads/deluge".d = {
           inherit (cfg) user group;
@@ -40,7 +28,6 @@
       systemd.services.transmission.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.transmission = {
         enable = true;
-        openRPCPort = true;
         inherit (config.thelessone.arr) group;
         package = pkgs.transmission_4;
 
@@ -49,8 +36,6 @@
           rpc-port = 58846;
           rpc-whitelist-enabled = true;
           rpc-whitelist = "127.0.0.1,10.200.1.*,10.0.0.*,100.64.64.*";
-          rpc-authentication-required = true;
-          rpc-username = "transmission";
 
           speed-limit-down-enabled = true;
           speed-limit-down = 15000;
@@ -67,8 +52,6 @@
           blocklist-enabled = true;
           blocklist = "https://github.com/Naunter/BT_BlockLists/raw/refs/heads/master/bt_blocklists.gz";
         };
-
-        credentialsFile = config.sops.templates."transmission-settings.json".path;
       };
 
       services.vopono.allowedTCPPorts = [ config.services.flood.port ];
