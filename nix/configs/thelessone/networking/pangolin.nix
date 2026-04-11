@@ -43,7 +43,7 @@
 
       services.traefik.environmentFiles = [ config.sops.templates."theless.one-acme.env".path ];
       services.traefik.staticConfigOptions.entryPoints = lib.mkForce {
-        web.address = ":8080";
+        web.address = ":8880";
         websecure = {
           address = ":8443";
           transport.respondingTimeouts.readTimeout = "30m";
@@ -51,8 +51,8 @@
         };
       };
 
-      thelessone.caddy.vHost."pangolin.theless.one".proxy.port = 8080;
-      thelessone.caddy.vHost."*.theless.one".proxy.port = 8080;
+      thelessone.caddy.vHost."pangolin.theless.one".proxy.port = 8880;
+      thelessone.caddy.vHost."*.theless.one".proxy.port = 8880;
 
       services.pangolin = {
         enable = true;
