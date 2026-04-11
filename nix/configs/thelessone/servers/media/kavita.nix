@@ -24,7 +24,7 @@
         environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
         doInit = true;
 
-        paths = config.services.kavita.settings.Port;
+        paths = config.services.kavita.dataDir;
 
         encryption.mode = "none";
         compression = "zstd";
