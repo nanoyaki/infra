@@ -34,12 +34,11 @@
 
         settings = {
           rpc-enabled = true;
-          rpc-port = 58846;
-          rpc-host-whitelist-enabled = true;
-          rpc-host-whitelist = "127.0.0.1,10.200.1.*,10.0.0.*,100.64.64.*";
-          rpc-whitelist-enabled = true;
-          rpc-whitelist = "127.0.0.1,10.200.1.*,10.0.0.*,100.64.64.*";
+          rpc-port = 9091;
+          rpc-host-whitelist-enabled = false;
+          rpc-whitelist-enabled = false;
           rpc-username = "transmission";
+          rpc-password = "transmission";
 
           speed-limit-down-enabled = true;
           speed-limit-down = 15000;
