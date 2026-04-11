@@ -25,6 +25,7 @@
 
       services.vopono.systemd.services.transmission = config.services.transmission.settings.rpc-port;
 
+      systemd.services.transmission.environment.TR_SAVE_VERSION_FORMAT = "4";
       systemd.services.transmission.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.transmission = {
         enable = true;
@@ -36,7 +37,9 @@
           rpc-enabled = true;
           rpc-port = 9091;
           rpc-host-whitelist-enabled = false;
-          rpc-whitelist-enabled = false;
+          rpc-whitelist-enabled = true;
+          rpc-whitelist = "127.0.0.1,10.200.1.*";
+          rpc-authentication-required = true;
           rpc-username = "transmission";
           rpc-password = "transmission";
 
