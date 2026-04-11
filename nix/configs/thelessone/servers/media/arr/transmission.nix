@@ -28,14 +28,15 @@
       systemd.services.transmission.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.transmission = {
         enable = true;
+        openRPCPort = true;
         inherit (config.thelessone.arr) group;
         package = pkgs.transmission_4;
 
         settings = {
           rpc-enabled = true;
           rpc-port = 58846;
-          rpc-whitelist-enabled = true;
-          rpc-whitelist = "127.0.0.1,10.200.1.*,10.0.0.*,100.64.64.*";
+          rpc-host-whitelist-enabled = true;
+          rpc-host-whitelist = "127.0.0.1,10.200.1.*,10.0.0.*,100.64.64.*";
 
           speed-limit-down-enabled = true;
           speed-limit-down = 15000;
