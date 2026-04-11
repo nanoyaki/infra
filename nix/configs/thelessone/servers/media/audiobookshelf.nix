@@ -12,6 +12,7 @@
         device = "/mnt/raid/audiobookshelf";
         depends = [ "/mnt/raid" ];
         options = [ "bind" ];
+        fsType = "none";
       };
 
       systemd.services.audiobookshelf.unitConfig.RequiresMountsFor = "/mnt/raid/audiobookshelf";
