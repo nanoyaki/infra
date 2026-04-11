@@ -81,7 +81,7 @@
             start_port = 51822;
             base_endpoint = "pangolin.theless.one";
             subnet_group = "100.64.0.0/20";
-            site_block_size = "27";
+            site_block_size = 27;
           };
 
           email = {
