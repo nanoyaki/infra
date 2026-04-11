@@ -42,7 +42,6 @@
         '';
 
         virtualHosts."theless.one" = {
-          serverAliases = [ "*.theless.one" ];
           useACMEHost = "theless.one";
           inherit (config.services.caddy) logFormat;
           extraConfig = ''
