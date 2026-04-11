@@ -34,6 +34,7 @@
       thelessone-davis
       # thelessone-radicale
       thelessone-caddy
+      thelessone-kavita
       thelessone-vaultwarden
       thelessone-nanoyakiEvents
       thelessone-copyparty
