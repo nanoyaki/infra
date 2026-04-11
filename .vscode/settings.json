@@ -14,25 +14,5 @@
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
-    "nix.enableLanguageServer": true,
-    "nix.serverPath": "nixd",
-    "nix.serverSettings": {
-        "nixd": {
-            "nixpkgs": {
-                "expr": "import /home/hana/flake/nix/configs/shirayuri/_nixd-nixpkgs.nix { nixosConfig = \"/home/hana/infra\"; isFlake = true; }"
-            },
-            "formatting": {
-                "command": [ "nixfmt" ]
-            },
-            "options": {
-                "nixos": {
-                    "expr": "import /home/hana/flake/nix/configs/shirayuri/_nixd-nixos-options.nix { nixosConfig = \"/home/hana/infra\"; isFlake = true; hostname = \"thelessone\"; }"
-                },
-                "home-manager": {
-                    "expr": "import /home/hana/flake/nix/configs/shirayuri/_nixd-home-options.nix { homeConfig = \"/home/hana/infra\"; isFlake = true; username = \"thelessone\"; }"
-                }
-            }
-        }
-    },
     "nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix"
 }

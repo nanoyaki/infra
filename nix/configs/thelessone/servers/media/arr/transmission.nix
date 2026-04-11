@@ -35,6 +35,7 @@
 
         settings = {
           rpc-enabled = true;
+          rpc-bind-address = "0.0.0.0";
           rpc-port = 9091;
           rpc-host-whitelist-enabled = false;
           rpc-whitelist-enabled = true;
@@ -56,7 +57,7 @@
           ratio-limit = 2.0;
 
           blocklist-enabled = true;
-          blocklist = "https://github.com/Naunter/BT_BlockLists/raw/refs/heads/master/bt_blocklists.gz";
+          blocklist-url = "https://github.com/Naunter/BT_BlockLists/raw/refs/heads/master/bt_blocklists.gz";
         };
       };
 
@@ -72,6 +73,11 @@
         enable = true;
         host = "0.0.0.0";
         port = 24325;
+        extraArgs = [
+          "--trurl=http://10.200.1.2:${toString cfg.settings.rpc-port}/transmission/rpc"
+          "--truser=${cfg.settings.rpc-username}"
+          "--trpass=${cfg.settings.rpc-password}"
+        ];
       };
 
       thelessone.caddy.vHost."flood.theless.one" = {
