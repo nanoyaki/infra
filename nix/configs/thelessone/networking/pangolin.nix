@@ -55,7 +55,7 @@
       thelessone.caddy.vHost."*.theless.one".proxy.port = 8880;
 
       services.pangolin = {
-        enable = true;
+        enable = false;
         # TODO: activate when switching from caddy to traefik
         # openFirewall = true;
         environmentFile = config.sops.templates."pangolin.env".path;
