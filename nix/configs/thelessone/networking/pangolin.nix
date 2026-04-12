@@ -1,7 +1,6 @@
 {
   flake.nixosModules.thelessone-pangolin =
     {
-      lib,
       pkgs,
       config,
       ...
@@ -29,66 +28,22 @@
       services.gerbil.port = 51822;
       services.gerbil.environmentFile = "/etc/nixos/secrets/gerbil.env";
 
-      # TODO: activate when switching from caddy to traefik
-      # services.traefik.dynamicConfigOptions = {
-      #   http.routers.caddy-catchall = {
-      #     rule = "HostRegexp(`^.+\\.theless\\.one$`) && !Host(`pangolin.theless.one`)";
-      #     service = "caddy";
-      #     priority = 1;
-      #     tls.certResolver = "letsencrypt";
-      #   };
+      services.traefik.dynamicConfigOptions = {
+        http.routers.caddy-catchall = {
+          rule = "HostRegexp(`^.+\\.theless\\.one$`) && !Host(`pangolin.theless.one`)";
+          service = "caddy";
+          priority = 1;
+          tls.certResolver = "letsencrypt";
+        };
 
-      #   http.services.caddy.loadBalancer.servers.url = [ "http://localhost:2080" ];
-      # };
+        http.services.caddy.loadBalancer.servers.url = [ "http://localhost:2080" ];
+      };
 
       services.traefik.environmentFiles = [ config.sops.templates."theless.one-acme.env".path ];
-      services.traefik.staticConfigOptions.entryPoints = lib.mkForce {
-        web.address = ":8880";
-        websecure = {
-          address = ":8443";
-          transport.respondingTimeouts.readTimeout = "30m";
-          http.tls.certResolver = "letsencrypt";
-        };
-      };
-      # TODO: remove when switching from caddy to traefik
-      services.traefik.dynamicConfigOptions = {
-        http.middlewares = lib.mkForce { };
-
-        http.routers = lib.mkForce {
-          # Next.js router (handles everything except API and WebSocket paths)
-          next-router = {
-            rule = "Host(`pangolin.theless.one`) && !PathPrefix(`/api/v1`)";
-            service = "next-service";
-            entryPoints = [ "web" ];
-          };
-          # API router (handles /api/v1 paths)
-          api-router = {
-            rule = "Host(`pangolin.theless.one`) && PathPrefix(`/api/v1`)";
-            service = "api-service";
-            entryPoints = [ "web" ];
-          };
-          # WebSocket router
-          ws-router = {
-            rule = "Host(`pangolin.theless.one`)";
-            service = "api-service";
-            entryPoints = [ "web" ];
-          };
-          # Integration API router
-          int-api-router = {
-            rule = "Host(`api.theless.one`)";
-            service = "int-api-service";
-            entryPoints = [ "web" ];
-          };
-        };
-      };
-
-      thelessone.caddy.vHost."pangolin.theless.one".proxy.port = 8880;
-      thelessone.caddy.vHost."*.theless.one".proxy.port = 8880;
 
       services.pangolin = {
         enable = true;
-        # TODO: activate when switching from caddy to traefik
-        # openFirewall = true;
+        openFirewall = true;
         environmentFile = config.sops.templates."pangolin.env".path;
 
         baseDomain = "theless.one";

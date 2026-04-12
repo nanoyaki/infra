@@ -140,14 +140,11 @@
             level INFO
           '';
 
-          # TODO: activate when switching from caddy to traefik
-          # globalConfig = ''
-          #   {
-          #     http_port 2080
-          #     https_port 2443
-          #     auto_https off
-          #   }
-          # '';
+          globalConfig = ''
+            http_port 2080
+            https_port 2443
+            auto_https off
+          '';
 
           extraConfig = lib.mkForce ''
             (error_handling) {
