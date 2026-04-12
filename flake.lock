@@ -685,16 +685,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1775252225,
-        "narHash": "sha256-CHrBMHjRvxE78FfooYAH7NOUKNPxbHnWLMkJ4kH3Qkc=",
+        "lastModified": 1776026993,
+        "narHash": "sha256-zD/Nkk3hSTTq/30DyzxAb/3mkcZRQj5i7/q8vaeeLpU=",
         "owner": "fosrl",
         "repo": "newt",
-        "rev": "cd4782265a57ac48b75243d2b141e90c7360438f",
+        "rev": "3d2b73d417363d4c83a9a3d191c6b58b18e31485",
         "type": "github"
       },
       "original": {
         "owner": "fosrl",
-        "ref": "1.11.0",
         "repo": "newt",
         "type": "github"
       }
