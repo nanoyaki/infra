@@ -101,7 +101,6 @@
           };
 
           gerbil = {
-            start_port = 51822;
             base_endpoint = "pangolin.theless.one";
             subnet_group = "100.50.0.0/20";
             site_block_size = 27;
