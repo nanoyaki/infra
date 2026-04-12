@@ -22,7 +22,6 @@
       thelessone-filesystems
       thelessone-gpu
       thelessone-networking
-      thelessone-wireguard
       thelessone-vopono
       thelessone-systems
       thelessone-ssh

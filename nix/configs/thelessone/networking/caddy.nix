@@ -16,10 +16,7 @@
         mkEnableOption
         mapAttrs
         optionalString
-        hasInfix
         mkIf
-        elemAt
-        splitString
         filterAttrs
         ;
 
@@ -70,26 +67,10 @@
             import error_handling
           '';
           # useACMEHost = mkIf (hasInfix "theless.one" domain) "theless.one";
-          listenAddresses = mkIf vHost.useVpn (
-            (map
-              (
-                cidrSuffixed:
-
-                let
-                  address = elemAt (splitString "/" cidrSuffixed) 0;
-                in
-
-                if hasInfix ":" address then "[${address}]" else address
-              )
-              (
-                config.networking.wg-quick.interfaces.wg1.address or config.networking.wireguard.interfaces.wg1.ips
-              )
-            )
-            ++ [
-              "127.0.0.1"
-              "[::1]"
-            ]
-          );
+          listenAddresses = mkIf vHost.useVpn [
+            "127.0.0.1"
+            "[::1]"
+          ];
         }
         // (removeAttrs vHost [
           "enable"

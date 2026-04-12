@@ -39,10 +39,23 @@
         restartUnits = [ "newt.service" ];
       };
 
+      boot.kernel.sysctl = {
+        "net.ipv4.ip_forward" = true;
+        "net.ipv6.conf.all.forwarding" = true;
+      };
+
+      networking.nat = {
+        enable = true;
+        enableIPv6 = true;
+        externalInterface = "enp9s0";
+        internalInterfaces = [ "wg0" ];
+      };
+
       networking.firewall.allowedUDPPorts = [
         51820
         21820
       ];
+
       services.gerbil.port = 51820;
       services.gerbil.environmentFile = "/etc/nixos/secrets/gerbil.env";
 
@@ -59,7 +72,6 @@
 
       services.traefik.environmentFiles = [ tpl."theless.one-acme.env".path ];
 
-      networking.nat.internalInterfaces = [ "newt" ];
       services.newt = {
         enable = true;
         environmentFile = tpl."newt.env".path;
