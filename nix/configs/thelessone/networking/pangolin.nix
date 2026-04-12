@@ -6,22 +6,37 @@
       ...
     }:
 
+    let
+      plh = config.sops.placeholder;
+      tpl = config.sops.templates;
+    in
+
     {
       sops.secrets = {
         "pangolin/server-secret" = { };
         "pangolin/setup-token" = { };
+        "newt/secret" = { };
+        "newt/id" = { };
       };
 
       sops.templates."pangolin.env" = {
         file = pkgs.writeEnv "pangolin.env.template" {
-          SERVER_SECRET = config.sops.placeholder."pangolin/server-secret";
-          PANGOLIN_SETUP_TOKEN = config.sops.placeholder."pangolin/setup-token";
-          EMAIL_SMTP_PASS = config.sops.placeholder.no-reply-password;
+          SERVER_SECRET = plh."pangolin/server-secret";
+          PANGOLIN_SETUP_TOKEN = plh."pangolin/setup-token";
+          EMAIL_SMTP_PASS = plh.no-reply-password;
         };
         restartUnits = [
           "pangolin.service"
           "gerbil.service"
         ];
+      };
+
+      sops.templates."newt.env" = {
+        file = pkgs.writeEnv "newt.env.template" {
+          NEWT_SECRET = plh."newt/secret";
+          NEWT_ID = plh."newt/id";
+        };
+        restartUnits = [ "newt.service" ];
       };
 
       networking.firewall.allowedUDPPorts = [ 51822 ];
@@ -39,12 +54,18 @@
         http.services.caddy.loadBalancer.servers.url = [ "http://localhost:2080" ];
       };
 
-      services.traefik.environmentFiles = [ config.sops.templates."theless.one-acme.env".path ];
+      services.traefik.environmentFiles = [ tpl."theless.one-acme.env".path ];
+
+      services.newt = {
+        enable = true;
+        environmentFile = [ tpl."newt.env".path ];
+        settings.endpoint = "pangolin.theless.one";
+      };
 
       services.pangolin = {
         enable = true;
         openFirewall = true;
-        environmentFile = config.sops.templates."pangolin.env".path;
+        environmentFile = tpl."pangolin.env".path;
 
         baseDomain = "theless.one";
         dashboardDomain = "pangolin.theless.one";

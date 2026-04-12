@@ -13,9 +13,15 @@
         settings.port = 7500;
       };
 
-      thelessone.caddy.vHost."finances.theless.one" = {
-        proxy = { inherit (cfg.settings) port; };
-        useVpn = true;
+      services.newt.blueprint.private-resources.actual = {
+        name = "Actual";
+        mode = "host";
+        destination = "127.0.0.1";
+        site = "internal-giant-armadillo";
+        tcp-ports = "${toString cfg.settings.port}";
+        udp-ports = "";
+        alias = "actual.theless.one";
+        users = [ "contact@nanoyaki.space" ];
       };
 
       systemd.services.borgbackup-job-actual.unitConfig.RequiresMountsFor = "/mnt/raid";
