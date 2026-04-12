@@ -39,7 +39,10 @@
         restartUnits = [ "newt.service" ];
       };
 
-      networking.firewall.allowedUDPPorts = [ 51820 ];
+      networking.firewall.allowedUDPPorts = [
+        51820
+        21820
+      ];
       services.gerbil.port = 51820;
       services.gerbil.environmentFile = "/etc/nixos/secrets/gerbil.env";
 
