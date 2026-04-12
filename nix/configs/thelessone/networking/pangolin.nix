@@ -50,6 +50,8 @@
           http.tls.certResolver = "letsencrypt";
         };
       };
+      # TODO: remove when switching from caddy to traefik
+      services.traefik.dynamicConfigOptions.http.middlewares = lib.mkForce { };
 
       thelessone.caddy.vHost."pangolin.theless.one".proxy.port = 8880;
       thelessone.caddy.vHost."*.theless.one".proxy.port = 8880;
