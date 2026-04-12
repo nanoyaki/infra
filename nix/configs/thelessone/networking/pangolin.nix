@@ -56,7 +56,6 @@
         21820
       ];
 
-      services.gerbil.port = 51820;
       services.gerbil.environmentFile = "/etc/nixos/secrets/gerbil.env";
 
       services.traefik.dynamicConfigOptions = {
