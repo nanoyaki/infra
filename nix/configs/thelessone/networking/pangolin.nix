@@ -51,7 +51,36 @@
         };
       };
       # TODO: remove when switching from caddy to traefik
-      services.traefik.dynamicConfigOptions.http.middlewares = lib.mkForce { };
+      services.traefik.dynamicConfigOptions = {
+        http.middlewares = lib.mkForce { };
+
+        http.routers = lib.mkForce {
+          # Next.js router (handles everything except API and WebSocket paths)
+          next-router = {
+            rule = "Host(`pangolin.theless.one`) && !PathPrefix(`/api/v1`)";
+            service = "next-service";
+            entryPoints = [ "web" ];
+          };
+          # API router (handles /api/v1 paths)
+          api-router = {
+            rule = "Host(`pangolin.theless.one`) && PathPrefix(`/api/v1`)";
+            service = "api-service";
+            entryPoints = [ "web" ];
+          };
+          # WebSocket router
+          ws-router = {
+            rule = "Host(`pangolin.theless.one`)";
+            service = "api-service";
+            entryPoints = [ "web" ];
+          };
+          # Integration API router
+          int-api-router = {
+            rule = "Host(`api.theless.one`)";
+            service = "int-api-service";
+            entryPoints = [ "web" ];
+          };
+        };
+      };
 
       thelessone.caddy.vHost."pangolin.theless.one".proxy.port = 8880;
       thelessone.caddy.vHost."*.theless.one".proxy.port = 8880;
