@@ -55,7 +55,7 @@
       thelessone.caddy.vHost."*.theless.one".proxy.port = 8880;
 
       services.pangolin = {
-        enable = false;
+        enable = true;
         # TODO: activate when switching from caddy to traefik
         # openFirewall = true;
         environmentFile = config.sops.templates."pangolin.env".path;
@@ -80,7 +80,7 @@
           gerbil = {
             start_port = 51822;
             base_endpoint = "pangolin.theless.one";
-            subnet_group = "100.65.0.0/20";
+            subnet_group = "100.50.0.0/20";
             site_block_size = 27;
           };
 
