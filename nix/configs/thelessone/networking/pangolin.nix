@@ -58,7 +58,7 @@
 
       services.newt = {
         enable = true;
-        environmentFile = [ tpl."newt.env".path ];
+        environmentFile = tpl."newt.env".path;
         settings.endpoint = "pangolin.theless.one";
       };
 
