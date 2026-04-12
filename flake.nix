@@ -105,6 +105,8 @@
     };
     nanoyaki-space.url = "git+https://tangled.org/nanoyaki.space/nanoyaki.space";
     nanoyaki-space.inputs.nixpkgs.follows = "nixpkgs";
+    newt.url = "github:fosrl/newt/1.11.0";
+    newt.inputs.nixpkgs.follows = "nixpkgs";
 
     # Deduplication
     flake-compat.url = "github:NixOS/flake-compat";

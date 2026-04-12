@@ -1,3 +1,5 @@
+{ withSystem, ... }:
+
 {
   flake.nixosModules.thelessone-pangolin =
     {
@@ -59,6 +61,7 @@
 
       services.traefik.environmentFiles = [ tpl."theless.one-acme.env".path ];
 
+      networking.nat.internalInterfaces = [ "newt" ];
       services.newt = {
         enable = true;
         environmentFile = tpl."newt.env".path;
@@ -110,4 +113,15 @@
         };
       };
     };
+
+  flake.overlays.newt =
+    _: prev:
+
+    withSystem prev.stdenv.hostPlatform.system (
+      { inputs', ... }:
+
+      {
+        fosrl-newt = inputs'.newt.packages.pangolin-newt;
+      }
+    );
 }
