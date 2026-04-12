@@ -23,6 +23,12 @@
       sops.secrets.steam-api-key.owner = user;
       sops.secrets.app-secret.owner = user;
 
+      services.caddy.enable = true;
+      services.caddy.globalConfig = ''
+        http_port 2080
+        https_port 2443
+        auto_https off
+      '';
       systemd.services.caddy.preStart = ''
         export APP_RUNTIME_OPTIONS="$(cat ${runtimeOptsFile})"
         export DEFAULT_URI="https://nanoyaki.space"
@@ -33,8 +39,7 @@
         rm -rf "$APP_CACHE_DIR/prod"
         ${lib.getExe pkgs.php85} ${webPkg}/bin/console cache:clear --env=prod --no-debug
       '';
-      services.caddy.virtualHosts."nanoyaki.space" = {
-        useACMEHost = "nanoyaki.space";
+      services.caddy.virtualHosts.":8006" = {
         extraConfig = ''
           root * ${webPkg}/public
 
@@ -64,6 +69,19 @@
           }
           redir @dotfiles /
         '';
+      };
+
+      services.traefik.dynamicConfigOptions = {
+        nanoyaki-space.routers.attic = {
+          rule = "Host(`nanoyaki.space`)";
+          entryPoints = [ "websecure" ];
+          service = "nanoyaki-space";
+          tls.certResolver = "letsencrypt";
+        };
+
+        http.services.nanoyaki-space.loadBalancer.servers = [
+          { url = "http://127.0.0.1:8006"; }
+        ];
       };
 
       systemd.tmpfiles.settings.nanoyaki-space."/var/cache/nanoyaki-space".d = {

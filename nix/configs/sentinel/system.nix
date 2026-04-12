@@ -19,7 +19,7 @@
       sentinel-networking
       sentinel-wireguard
       sentinel-ssh
-      sentinel-caddy
+      sentinel-pangolin
       sentinel-acme
       sentinel-ddns
       sentinel-federation

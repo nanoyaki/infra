@@ -74,32 +74,54 @@
         keyFile = config.sops.secrets.camo.path;
       };
 
-      services.caddy.virtualHosts."pds.nanoyaki.space" = {
-        useACMEHost = "nanoyaki.space";
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8000
-        '';
-      };
+      services.traefik.dynamicConfigOptions = {
+        http.routers = {
+          pds = {
+            rule = "Host(`pds.nanoyaki.space`)";
+            entryPoints = [ "websecure" ];
+            service = "pds";
+            tls.certResolver = "letsencrypt";
+          };
 
-      services.caddy.virtualHosts."knot.nanoyaki.space" = {
-        useACMEHost = "nanoyaki.space";
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8001
-        '';
-      };
+          knot = {
+            rule = "Host(`knot.nanoyaki.space`)";
+            entryPoints = [ "websecure" ];
+            service = "knot";
+            tls.certResolver = "letsencrypt";
+          };
 
-      services.caddy.virtualHosts."camo.nanoyaki.space" = {
-        useACMEHost = "nanoyaki.space";
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8002
-        '';
-      };
+          camo = {
+            rule = "Host(`camo.nanoyaki.space`)";
+            entryPoints = [ "websecure" ];
+            service = "camo";
+            tls.certResolver = "letsencrypt";
+          };
 
-      services.caddy.virtualHosts."avatars.nanoyaki.space" = {
-        useACMEHost = "nanoyaki.space";
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8003
-        '';
+          avatars = {
+            rule = "Host(`avatars.nanoyaki.space`)";
+            entryPoints = [ "websecure" ];
+            service = "avatars";
+            tls.certResolver = "letsencrypt";
+          };
+        };
+
+        http.services = {
+          pds.loadBalancer.servers = [
+            { url = "http://127.0.0.1:8000"; }
+          ];
+
+          knot.loadBalancer.servers = [
+            { url = "http://127.0.0.1:8001"; }
+          ];
+
+          camo.loadBalancer.servers = [
+            { url = "http://127.0.0.1:8002"; }
+          ];
+
+          avatars.loadBalancer.servers = [
+            { url = "http://127.0.0.1:8003"; }
+          ];
+        };
       };
     };
 }

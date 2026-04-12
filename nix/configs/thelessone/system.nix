@@ -33,7 +33,7 @@
       thelessone-davis
       # thelessone-radicale
       thelessone-caddy
-      thelessone-pangolin
+      thelessone-newt
       thelessone-kavita
       thelessone-vaultwarden
       thelessone-nanoyakiEvents

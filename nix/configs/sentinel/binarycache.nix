@@ -43,8 +43,17 @@
         };
       };
 
-      services.caddy.virtualHosts."binarycache.theless.one".extraConfig = ''
-        reverse_proxy 127.0.0.1:8005
-      '';
+      services.traefik.dynamicConfigOptions = {
+        http.routers.attic = {
+          rule = "Host(`binarycache.theless.one`)";
+          entryPoints = [ "websecure" ];
+          service = "attic";
+          tls.certResolver = "letsencrypt";
+        };
+
+        http.services.attic.loadBalancer.servers = [
+          { url = "http://127.0.0.1:8005"; }
+        ];
+      };
     };
 }

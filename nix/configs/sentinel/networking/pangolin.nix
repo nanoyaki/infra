@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.thelessone-pangolin =
+  flake.nixosModules.sentinel-pangolin =
     {
       pkgs,
       config,
@@ -15,34 +15,16 @@
       sops.secrets = {
         "pangolin/server-secret" = { };
         "pangolin/setup-token" = { };
-        "newt/secret" = { };
-        "newt/id" = { };
+        "mail/no-reply" = { };
       };
 
       sops.templates."pangolin.env" = {
         file = pkgs.writeEnv "pangolin.env.template" {
           SERVER_SECRET = plh."pangolin/server-secret";
           PANGOLIN_SETUP_TOKEN = plh."pangolin/setup-token";
-          EMAIL_SMTP_PASS = plh.no-reply-password;
+          EMAIL_SMTP_PASS = plh."mail/no-reply";
         };
-        restartUnits = [
-          "pangolin.service"
-          "gerbil.service"
-        ];
-      };
-
-      sops.templates."newt.env" = {
-        file = pkgs.writeEnv "newt.env.template" {
-          NEWT_SECRET = plh."newt/secret";
-          NEWT_ID = plh."newt/id";
-        };
-        restartUnits = [ "newt.service" ];
-      };
-
-      boot.kernel.sysctl = {
-        "net.ipv4.ip_forward" = true;
-        "net.ipv6.conf.all.forwarding" = true;
-        "net.ipv6.conf.enp9s0.disable_ipv6" = true;
+        restartUnits = [ "pangolin.service" ];
       };
 
       networking.nat = {
@@ -58,26 +40,7 @@
       ];
 
       services.gerbil.environmentFile = "/etc/nixos/secrets/gerbil.env";
-
-      services.traefik.dynamicConfigOptions = {
-        http.routers.caddy-catchall = {
-          rule = "HostRegexp(`^.+\\.theless\\.one$`) && !Host(`pangolin.theless.one`)";
-          service = "caddy";
-          priority = 1;
-          tls.certResolver = "letsencrypt";
-        };
-
-        http.services.caddy.loadBalancer.servers.url = [ "http://localhost:2080" ];
-      };
-
       services.traefik.environmentFiles = [ tpl."theless.one-acme.env".path ];
-
-      services.newt = {
-        enable = true;
-        environmentFile = tpl."newt.env".path;
-        settings.endpoint = "https://pangolin.theless.one";
-      };
-
       services.pangolin = {
         enable = true;
         openFirewall = true;
