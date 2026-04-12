@@ -39,8 +39,8 @@
         restartUnits = [ "newt.service" ];
       };
 
-      networking.firewall.allowedUDPPorts = [ 51822 ];
-      services.gerbil.port = 51822;
+      networking.firewall.allowedUDPPorts = [ 51820 ];
+      services.gerbil.port = 51820;
       services.gerbil.environmentFile = "/etc/nixos/secrets/gerbil.env";
 
       services.traefik.dynamicConfigOptions = {
