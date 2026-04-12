@@ -678,26 +678,6 @@
         "url": "https://tangled.org/nanoyaki.space/nanoyaki.space"
       }
     },
-    "newt": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1776026993,
-        "narHash": "sha256-zD/Nkk3hSTTq/30DyzxAb/3mkcZRQj5i7/q8vaeeLpU=",
-        "owner": "fosrl",
-        "repo": "newt",
-        "rev": "3d2b73d417363d4c83a9a3d191c6b58b18e31485",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fosrl",
-        "repo": "newt",
-        "type": "github"
-      }
-    },
     "nix-minecraft": {
       "inputs": {
         "flake-compat": [
@@ -893,7 +873,6 @@
         "nanomodules": "nanomodules",
         "nanopkgs": "nanopkgs",
         "nanoyaki-space": "nanoyaki-space",
-        "newt": "newt",
         "nix-minecraft": "nix-minecraft",
         "nix-scpsl": "nix-scpsl",
         "nixos-branding": "nixos-branding",

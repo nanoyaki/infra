@@ -1,5 +1,3 @@
-{ withSystem, ... }:
-
 {
   flake.nixosModules.thelessone-pangolin =
     {
@@ -113,15 +111,4 @@
         };
       };
     };
-
-  flake.overlays.newt =
-    _: prev:
-
-    withSystem prev.stdenv.hostPlatform.system (
-      { inputs', ... }:
-
-      {
-        fosrl-newt = inputs'.newt.packages.pangolin-newt;
-      }
-    );
 }
