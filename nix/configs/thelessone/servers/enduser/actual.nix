@@ -18,9 +18,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-actual.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.actual = {
-        repo = "thelessone-borg@10.0.0.6:actual";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/actual";
         doInit = true;
 
         paths = "/var/lib/private/actual";

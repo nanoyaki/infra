@@ -5,9 +5,9 @@
     {
       sops.secrets.id_borg_thelessone = { };
 
+      systemd.services.borgbackup-job-postgresql-all.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.postgresql-all = {
-        repo = "thelessone-borg@10.0.0.6:postgresql-all";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/postgres";
         doInit = true;
 
         user = "postgres";

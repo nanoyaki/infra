@@ -22,9 +22,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-audiobookshelf.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.audiobookshelf = {
-        repo = "thelessone-borg@10.0.0.6:audiobookshelf";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/audiobookshelf";
         doInit = true;
 
         paths = "/mnt/raid/audiobookshelf";

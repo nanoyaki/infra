@@ -124,9 +124,9 @@
         after = [ "network-online.target" ];
       };
 
+      systemd.services.borgbackup-job-mail.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.mail = {
-        repo = "thelessone-borg@10.0.0.6:mail";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/mail";
         doInit = true;
 
         paths = "/var";

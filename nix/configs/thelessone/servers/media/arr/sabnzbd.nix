@@ -125,7 +125,6 @@
                 radarr.order = 2;
                 prowlarr.order = 3;
                 direct-prowlarr.order = 4;
-                whisparr.order = 5;
 
                 shoko.order = 6;
                 shoko.dir = "${config.thelessone.arr.home}/downloads/shoko";
@@ -141,9 +140,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-sabnzbd.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.sabnzbd = {
-        repo = "thelessone-borg@10.0.0.6:sabnzbd";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/sabnzbd";
         doInit = true;
 
         paths = "/var/lib/sabnzbd";

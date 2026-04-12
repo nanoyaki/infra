@@ -13,9 +13,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-bazarr.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.bazarr = {
-        repo = "thelessone-borg@10.0.0.6:bazarr";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/bazarr";
         doInit = true;
 
         paths = "/var/lib/bazarr";

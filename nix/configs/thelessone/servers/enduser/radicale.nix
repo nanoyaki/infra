@@ -116,9 +116,9 @@
 
       thelessone.caddy.vHost."calendar.theless.one".proxy.port = 5232;
 
+      systemd.services.borgbackup-job-dav.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.dav = {
-        repo = "thelessone-borg@10.0.0.6:dav";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/dav";
         doInit = true;
 
         paths = "/var/lib/radicale";

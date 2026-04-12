@@ -18,7 +18,6 @@
       thelessnas-networking
       thelessnas-wireguard
       thelessnas-locale
-      thelessnas-backups
       thelessnas-ssh
     ];
   };

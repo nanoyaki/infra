@@ -85,9 +85,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-transmission.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.transmission = {
-        repo = "thelessone-borg@10.0.0.6:transmission";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/transmission";
         doInit = true;
 
         paths = cfg.home;

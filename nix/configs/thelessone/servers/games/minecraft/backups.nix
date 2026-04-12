@@ -6,9 +6,9 @@
     }:
 
     {
+      systemd.services.borgbackup-job-nix-minecraft.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.nix-minecraft = {
-        repo = "thelessone-borg@10.0.0.6:nix-minecraft";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/nix-minecraft";
         doInit = true;
 
         paths = config.services.minecraft-servers.dataDir;
@@ -34,9 +34,9 @@
         };
       };
 
+      systemd.services.borgbackup-job-manual-mc.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.manual-mc = {
-        repo = "thelessone-borg@10.0.0.6:manual-mc";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/manual-mc";
         doInit = true;
 
         paths = "/home/thelessone/Dokumente/MinecraftServers";

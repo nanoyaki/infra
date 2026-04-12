@@ -65,9 +65,9 @@
         };
       };
 
+      systemd.services.borgbackup-job-suwayomi.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.suwayomi = {
-        repo = "thelessone-borg@10.0.0.6:suwayomi";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/suwayomi";
         doInit = true;
 
         paths = config.services.suwayomi.dataDir;

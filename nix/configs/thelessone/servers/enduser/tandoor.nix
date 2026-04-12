@@ -64,9 +64,9 @@
         '';
       };
 
+      systemd.services.borgbackup-job-tandoor-recipes.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.tandoor-recipes = {
-        repo = "thelessone-borg@10.0.0.6:tandoor-recipes";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/tandoor-recipes";
         doInit = true;
 
         paths = "/var/lib/tandoor-recipes";

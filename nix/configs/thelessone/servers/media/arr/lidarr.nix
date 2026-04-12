@@ -16,9 +16,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-lidarr.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.lidarr = {
-        repo = "thelessone-borg@10.0.0.6:lidarr";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/lidarr";
         doInit = true;
 
         paths = "/var/lib/lidarr";

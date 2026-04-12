@@ -243,9 +243,9 @@
         hashedPasswordFile = config.sops.secrets."mailserver/git".path;
       };
 
+      systemd.services.borgbackup-job-forgejo.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.forgejo = {
-        repo = "thelessone-borg@10.0.0.6:forgejo";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/forgejo";
         doInit = true;
 
         paths = cfg.stateDir;

@@ -166,9 +166,9 @@
         reverse_proxy unix//run/copyparty/copyparty.sock
       '';
 
+      systemd.services.borgbackup-job-copyparty.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.copyparty = {
-        repo = "thelessone-borg@10.0.0.6:copyparty";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/copyparty";
         doInit = true;
 
         paths = backupPath;

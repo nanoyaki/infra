@@ -16,9 +16,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-radarr.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.radarr = {
-        repo = "thelessone-borg@10.0.0.6:radarr";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/radarr";
         doInit = true;
 
         paths = "/var/lib/radarr";

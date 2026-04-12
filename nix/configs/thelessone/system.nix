@@ -51,7 +51,6 @@
       thelessone-lidarr
       thelessone-radarr
       thelessone-sonarr
-      # thelessone-whisparr
       thelessone-shoko
       thelessone-bazarr
       thelessone-jellyfin

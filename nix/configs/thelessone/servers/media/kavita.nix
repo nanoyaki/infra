@@ -19,9 +19,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-kavita.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.kavita = {
-        repo = "thelessone-borg@10.0.0.6:kavita";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/kavita";
         doInit = true;
 
         paths = config.services.kavita.dataDir;

@@ -25,9 +25,9 @@
         "render"
       ];
 
+      systemd.services.borgbackup-job-jellyfin.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.jellyfin = {
-        repo = "thelessone-borg@10.0.0.6:jellyfin";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/jellyfin";
         doInit = true;
 
         paths = backupPath;

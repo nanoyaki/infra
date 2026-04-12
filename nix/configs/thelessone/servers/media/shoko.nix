@@ -35,9 +35,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-shoko.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.shoko = {
-        repo = "thelessone-borg@10.0.0.6:shoko";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/shoko";
         doInit = true;
 
         paths = "/var/lib/shoko";

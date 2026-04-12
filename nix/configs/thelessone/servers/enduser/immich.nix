@@ -33,9 +33,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-immich.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.immich = {
-        repo = "thelessone-borg@10.0.0.6:immich";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/immich";
         doInit = true;
 
         paths = "/var/lib/immich";

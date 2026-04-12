@@ -80,9 +80,9 @@
       #   timerConfig.OnCalendar = "*-*-* 00/3:00:00";
       # };
 
+      systemd.services.borgbackup-job-vaultwarden.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.vaultwarden = {
-        repo = "thelessone-borg@10.0.0.6:vaultwarden";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/vaultwarden";
         doInit = true;
 
         paths = "/var";

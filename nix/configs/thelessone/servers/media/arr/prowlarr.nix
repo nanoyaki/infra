@@ -18,9 +18,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-prowlarr.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.prowlarr = {
-        repo = "thelessone-borg@10.0.0.6:prowlarr";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/prowlarr";
         doInit = true;
 
         paths = "/var/lib/private/prowlarr";

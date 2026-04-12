@@ -16,9 +16,9 @@
         useVpn = true;
       };
 
+      systemd.services.borgbackup-job-sonarr.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.sonarr = {
-        repo = "thelessone-borg@10.0.0.6:sonarr";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/sonarr";
         doInit = true;
 
         paths = "/var/lib/sonarr";

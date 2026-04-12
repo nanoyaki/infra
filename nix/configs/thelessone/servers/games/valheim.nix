@@ -34,9 +34,9 @@
         adminList = [ "76561198294979887" ];
       };
 
+      systemd.services.borgbackup-job-valheim.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.valheim = {
-        repo = "thelessone-borg@10.0.0.6:valheim";
-        environment.BORG_RSH = "ssh -i ${config.sops.secrets.id_borg_thelessone.path}";
+        repo = "/mnt/raid/borgbackup/valheim";
         doInit = true;
 
         paths = backupPath;
