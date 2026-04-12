@@ -12,17 +12,20 @@
         enable = true;
         enableIPv6 = true;
         externalInterface = "enp9s0";
-        internalInterfaces = [ "wg0" ];
+        internalInterfaces = [
+          "wg0"
+          "wg1"
+        ];
       };
 
       networking.firewall = {
-        trustedInterfaces = [ "wg0" ];
-        allowedUDPPorts = [ config.networking.wireguard.interfaces.wg0.listenPort ];
+        trustedInterfaces = [ "wg1" ];
+        allowedUDPPorts = [ config.networking.wireguard.interfaces.wg1.listenPort ];
       };
 
       sops.secrets.wg0 = { };
 
-      networking.wireguard.interfaces.wg0 = {
+      networking.wireguard.interfaces.wg1 = {
         ips = [
           "100.64.64.1/24"
           "fd64::1/64"
@@ -32,7 +35,7 @@
         privateKeyFile = config.sops.secrets.wg0.path;
       };
 
-      networking.wireguard.interfaces.wg0.peers = [
+      networking.wireguard.interfaces.wg1.peers = [
         {
           publicKey = "wN5wC+zV+7yyIa4F8DxIyYWSNPgGzk9LIZmg9wABjiw=";
           allowedIPs = [

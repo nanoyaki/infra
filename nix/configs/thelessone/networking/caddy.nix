@@ -82,7 +82,7 @@
                 if hasInfix ":" address then "[${address}]" else address
               )
               (
-                config.networking.wg-quick.interfaces.wg0.address or config.networking.wireguard.interfaces.wg0.ips
+                config.networking.wg-quick.interfaces.wg1.address or config.networking.wireguard.interfaces.wg1.ips
               )
             )
             ++ [
