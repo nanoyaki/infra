@@ -85,14 +85,14 @@
             subdomain = "mail";
           }
           # Remove this soon
-          {
-            domain = "theless.one";
-            subdomain = "";
-          }
-          {
-            domain = "theless.one";
-            subdomain = "*";
-          }
+          # {
+          #   domain = "theless.one";
+          #   subdomain = "";
+          # }
+          # {
+          #   domain = "theless.one";
+          #   subdomain = "*";
+          # }
           {
             secretapikey = config.sops.placeholder."porkbun-nano/secret-api-key";
             apikey = config.sops.placeholder."porkbun-nano/api-key";
