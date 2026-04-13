@@ -263,7 +263,21 @@
         };
       };
 
-      thelessone.caddy.vHost."git.theless.one".proxy.port = cfg.settings.server.HTTP_PORT;
+      services.newt.blueprint.public-resources.forgejo = {
+        name = "Forgejo";
+        protocol = "http";
+        full-domain = "git.theless.one";
+        targets = [
+          {
+            site = "utilized-olympic-marmot";
+            hostname = "127.0.0.1";
+            port = cfg.settings.server.HTTP_PORT;
+            method = "http";
+            path = "/";
+            path-match = "prefix";
+          }
+        ];
+      };
 
       sops.secrets."forgejo/users/nanoyaki".owner = cfg.user;
       systemd.services.forgejo.preStart = ''

@@ -14,6 +14,7 @@
       inherit (config.services.caddy) user;
     in
 
+    # TODO: move to sentinel
     {
       sops.secrets = {
         "calendar/guildId".owner = user;

@@ -40,29 +40,42 @@
 
         instances = {
           thomas = mkInstance 4555;
-          niklas = mkInstance 4556;
           hana = mkInstance 4557;
           mei = mkInstance 4558;
         };
       };
 
-      thelessone.caddy.vHost = {
-        "manga.theless.one" = {
-          proxy = { inherit (cfg.thomas.settings.server) port; };
-          useVpn = true;
-        };
-        "nik-manga.theless.one" = {
-          proxy = { inherit (cfg.niklas.settings.server) port; };
-          useVpn = true;
-        };
-        "hana-manga.theless.one" = {
-          proxy = { inherit (cfg.hana.settings.server) port; };
-          useVpn = true;
-        };
-        "mei-manga.theless.one" = {
-          proxy = { inherit (cfg.mei.settings.server) port; };
-          useVpn = true;
-        };
+      services.newt.blueprint.private-resources.suwayomi-thomas = {
+        name = "Suwayomi Thomas";
+        mode = "host";
+        destination = "127.0.0.1";
+        site = "utilized-olympic-marmot";
+        tcp-ports = toString cfg.thomas.settings.server.port;
+        udp-ports = "";
+        alias = "manga.theless.one";
+        roles = [ "Member" ];
+      };
+
+      services.newt.blueprint.private-resources.suwayomi-hana = {
+        name = "Suwayomi Hana";
+        mode = "host";
+        destination = "127.0.0.1";
+        site = "utilized-olympic-marmot";
+        tcp-ports = toString cfg.hana.settings.server.port;
+        udp-ports = "";
+        alias = "hana-manga.theless.one";
+        roles = [ "Member" ];
+      };
+
+      services.newt.blueprint.private-resources.suwayomi-mei = {
+        name = "Suwayomi Mei";
+        mode = "host";
+        destination = "127.0.0.1";
+        site = "utilized-olympic-marmot";
+        tcp-ports = toString cfg.mei.settings.server.port;
+        udp-ports = "";
+        alias = "mei-manga.theless.one";
+        roles = [ "Member" ];
       };
 
       systemd.services.borgbackup-job-suwayomi.unitConfig.RequiresMountsFor = "/mnt/raid";

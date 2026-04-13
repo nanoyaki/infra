@@ -67,7 +67,7 @@
         pipelines.workflowTimeout = "10m";
       };
 
-      thelessone.caddy.vHost."git.theless.one".proxy.port = config.services.tangled.appview.port;
-      thelessone.caddy.vHost."spindle.theless.one".proxy.port = 33191;
+      # thelessone.caddy.vHost."git.theless.one".proxy.port = config.services.tangled.appview.port;
+      # thelessone.caddy.vHost."spindle.theless.one".proxy.port = 33191;
     };
 }

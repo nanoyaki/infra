@@ -114,7 +114,22 @@
         hashedPasswordFile = config.sops.secrets."mailserver/calendar".path;
       };
 
-      thelessone.caddy.vHost."calendar.theless.one".proxy.port = 5232;
+      services.newt.blueprint.public-resources.radicale = {
+        name = "Radicale";
+        protocol = "http";
+        full-domain = "calendar.theless.one";
+        host-header = "calendar.theless.one";
+        targets = [
+          {
+            site = "utilized-olympic-marmot";
+            hostname = "127.0.0.1";
+            port = "5232";
+            method = "http";
+            path = "/";
+            path-match = "prefix";
+          }
+        ];
+      };
 
       systemd.services.borgbackup-job-dav.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.dav = {

@@ -11,9 +11,15 @@
         inherit (config.thelessone.arr) group;
       };
 
-      thelessone.caddy.vHost."radarr.theless.one" = {
-        proxy = { inherit (config.services.radarr.settings.server) port; };
-        useVpn = true;
+      services.newt.blueprint.private-resources.radarr = {
+        name = "Radarr";
+        mode = "host";
+        destination = "127.0.0.1";
+        site = "utilized-olympic-marmot";
+        tcp-ports = toString config.services.radarr.settings.server.port;
+        udp-ports = "";
+        alias = "radarr.theless.one";
+        roles = [ "Arr-Admin" ];
       };
 
       systemd.services.borgbackup-job-radarr.unitConfig.RequiresMountsFor = "/mnt/raid";

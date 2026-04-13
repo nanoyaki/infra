@@ -17,7 +17,7 @@
         name = "Actual";
         mode = "host";
         destination = "127.0.0.1";
-        site = "internal-giant-armadillo";
+        site = "utilized-olympic-marmot";
         tcp-ports = "${toString cfg.settings.port}";
         udp-ports = "";
         alias = "actual.theless.one";

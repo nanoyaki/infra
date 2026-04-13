@@ -41,6 +41,12 @@
 
       services.gerbil.environmentFile = "/etc/nixos/secrets/gerbil.env";
       services.traefik.environmentFiles = [ tpl."theless.one-acme.env".path ];
+      services.traefik.dynamicConfigOptions.tls.certificates = [
+        {
+          certFile = "/var/lib/acme/nanoyaki.space/cert.pem";
+          keyFile = "/var/lib/acme/nanoyaki.space/key.pem";
+        }
+      ];
       services.pangolin = {
         enable = true;
         openFirewall = true;
@@ -54,7 +60,10 @@
         settings = {
           app.save_logs = true;
 
-          domains.domain1 = {
+          domains.domain1.prefer_wildcard_cert = true;
+          domains.domain2 = {
+            base_domain = "nanoyaki.space";
+            cert_resolver = "letsencrypt";
             prefer_wildcard_cert = true;
           };
 

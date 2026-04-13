@@ -89,9 +89,24 @@
           path /.*
         }
         redir @dotfiles /
-
-        import error_handling
       '';
+
+      services.newt.blueprint.public-resources.davis = {
+        name = "Davis";
+        protocol = "http";
+        full-domain = "dav.theless.one";
+        host-header = "dav.theless.one";
+        targets = [
+          {
+            site = "utilized-olympic-marmot";
+            hostname = "127.0.0.1";
+            port = 2080;
+            method = "http";
+            path = "/";
+            path-match = "prefix";
+          }
+        ];
+      };
 
       systemd.tmpfiles.settings."10-davis" = {
         "/srv/webdav" = dirCfg;

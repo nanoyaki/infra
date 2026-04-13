@@ -8,9 +8,15 @@
         inherit (config.thelessone.arr) group;
       };
 
-      thelessone.caddy.vHost."bazarr.theless.one" = {
-        proxy.port = config.services.bazarr.listenPort;
-        useVpn = true;
+      services.newt.blueprint.private-resources.bazarr = {
+        name = "Bazarr";
+        mode = "host";
+        destination = "127.0.0.1";
+        site = "utilized-olympic-marmot";
+        tcp-ports = toString config.services.bazarr.listenPort;
+        udp-ports = "";
+        alias = "bazarr.theless.one";
+        roles = [ "Arr-Admin" ];
       };
 
       systemd.services.borgbackup-job-bazarr.unitConfig.RequiresMountsFor = "/mnt/raid";

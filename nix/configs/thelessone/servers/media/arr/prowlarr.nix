@@ -10,12 +10,15 @@
         openFirewall = true;
       };
 
-      thelessone.caddy.vHost."prowlarr.theless.one" = {
-        proxy = {
-          inherit (config.services.prowlarr.settings.server) port;
-          host = config.services.vopono.voponoHost;
-        };
-        useVpn = true;
+      services.newt.blueprint.private-resources.prowlarr = {
+        name = "Prowlarr";
+        mode = "host";
+        destination = config.services.vopono.voponoHost;
+        site = "utilized-olympic-marmot";
+        tcp-ports = toString config.services.prowlarr.settings.server.port;
+        udp-ports = "";
+        alias = "prowlarr.theless.one";
+        roles = [ "Arr-Admin" ];
       };
 
       systemd.services.borgbackup-job-prowlarr.unitConfig.RequiresMountsFor = "/mnt/raid";

@@ -50,9 +50,15 @@
         HOMEPAGE_VAR_LONGITUDE = config.sops.placeholder."dashboard/longitude";
       };
 
-      thelessone.caddy.vHost."home.theless.one" = {
-        proxy.port = config.services.homepage-dashboard.listenPort;
-        useVpn = true;
+      services.newt.blueprint.private-resources.dashboard = {
+        name = "Homepage Dashboard";
+        mode = "host";
+        destination = "127.0.0.1";
+        site = "utilized-olympic-marmot";
+        tcp-ports = "${toString config.services.homepage-dashboard.listenPort}";
+        udp-ports = "";
+        alias = "home.theless.one";
+        roles = [ "Member" ];
       };
 
       services.homepage-dashboard = {

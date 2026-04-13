@@ -5,9 +5,15 @@
     {
       services.seerr.enable = true;
 
-      thelessone.caddy.vHost."jellyseerr.theless.one" = {
-        proxy = { inherit (config.services.seerr) port; };
-        useVpn = true;
+      services.newt.blueprint.private-resources.seerr = {
+        name = "Seerr";
+        mode = "host";
+        destination = "127.0.0.1";
+        site = "utilized-olympic-marmot";
+        tcp-ports = toString config.services.seerr.port;
+        udp-ports = "";
+        alias = "jellyseerr.theless.one";
+        roles = [ "Member" ];
       };
 
       systemd.services.borgbackup-job-jellyseerr.unitConfig.RequiresMountsFor = "/mnt/raid";

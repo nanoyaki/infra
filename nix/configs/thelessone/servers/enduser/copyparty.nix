@@ -56,7 +56,8 @@
 
         settings = {
           # Server options
-          i = "unix:770:${cfg.group}:/run/copyparty/copyparty.sock";
+          i = "127.0.0.1";
+          p = 34652;
           hist = "/var/cache/copyparty";
           shr = "/share";
           no-reload = true;
@@ -160,11 +161,22 @@
         serviceConfig.RuntimeDirectoryMode = lib.mkForce "0770";
       };
 
-      systemd.services.caddy.serviceConfig.ReadWritePaths = [ "/run/copyparty/copyparty.sock" ];
-      users.users.${config.services.caddy.user}.extraGroups = [ cfg.group ];
-      thelessone.caddy.vHost."files.theless.one".extraConfig = ''
-        reverse_proxy unix//run/copyparty/copyparty.sock
-      '';
+      services.newt.blueprint.public-resources.copyparty = {
+        name = "Copyparty";
+        protocol = "http";
+        full-domain = "files.theless.one";
+        host-header = "files.theless.one";
+        targets = [
+          {
+            site = "utilized-olympic-marmot";
+            hostname = "127.0.0.1";
+            port = 34652;
+            method = "http";
+            path = "/";
+            path-match = "prefix";
+          }
+        ];
+      };
 
       systemd.services.borgbackup-job-copyparty.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.copyparty = {

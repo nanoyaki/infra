@@ -38,8 +38,13 @@
         internalInterfaces = [ "wg0" ];
       };
 
+      networking.firewall.allowedUDPPorts = [
+        51820
+        21820
+      ];
+
       services.newt = {
-        enable = false;
+        enable = true;
         environmentFile = tpl."newt.env".path;
         settings.endpoint = "https://pangolin.theless.one";
       };

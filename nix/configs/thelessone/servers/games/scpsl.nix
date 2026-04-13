@@ -51,5 +51,18 @@
         };
       };
     };
+
+    services.newt.blueprint.public-resources.scpsl = {
+      name = "SCP:SL";
+      protocol = "tcp";
+      proxy-port = 7777;
+      targets = [
+        {
+          site = "utilized-olympic-marmot";
+          hostname = "127.0.0.1";
+          port = 7777;
+        }
+      ];
+    };
   };
 }

@@ -339,9 +339,15 @@
 
         environment.systemPackages = [ pkgs.chromium ];
 
-        thelessone.caddy.vHost."stash.theless.one" = {
-          proxy = { inherit (cfg.settings) port; };
-          useVpn = true;
+        services.newt.blueprint.private-resources.stash = {
+          name = "Stash";
+          mode = "host";
+          destination = "127.0.0.1";
+          site = "utilized-olympic-marmot";
+          tcp-ports = toString cfg.settings.port;
+          udp-ports = "";
+          alias = "stash.theless.one";
+          roles = [ "Adult" ];
         };
       };
     };

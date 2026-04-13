@@ -17,6 +17,7 @@
         mapAttrs
         optionalString
         mkIf
+        hasInfix
         filterAttrs
         ;
 
@@ -55,7 +56,7 @@
         };
 
       mapVhosts = mapAttrs (
-        _domain: vHost:
+        domain: vHost:
         {
           extraConfig = ''
             ${vHost.extraConfig}
@@ -66,7 +67,7 @@
 
             import error_handling
           '';
-          # useACMEHost = mkIf (hasInfix "theless.one" domain) "theless.one";
+          useACMEHost = mkIf (hasInfix "theless.one" domain) "theless.one";
           listenAddresses = mkIf vHost.useVpn [
             "127.0.0.1"
             "[::1]"

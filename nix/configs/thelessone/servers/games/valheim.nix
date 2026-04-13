@@ -34,6 +34,19 @@
         adminList = [ "76561198294979887" ];
       };
 
+      services.newt.blueprint.public-resources.valheim = {
+        name = "Valheim";
+        protocol = "tcp";
+        proxy-port = 2456;
+        targets = [
+          {
+            site = "utilized-olympic-marmot";
+            hostname = "127.0.0.1";
+            port = 2456;
+          }
+        ];
+      };
+
       systemd.services.borgbackup-job-valheim.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.valheim = {
         repo = "/mnt/raid/borgbackup/valheim";

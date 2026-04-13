@@ -11,12 +11,15 @@
         settings.Port = 3300;
       };
 
-      thelessone.caddy.vHost."books.theless.one" = {
-        extraConfig = ''
-          encode gzip
-        '';
-        proxy.port = config.services.kavita.settings.Port;
-        useVpn = true;
+      services.newt.blueprint.private-resources.kavita = {
+        name = "Kavita";
+        mode = "host";
+        destination = "127.0.0.1";
+        site = "utilized-olympic-marmot";
+        tcp-ports = toString config.services.kavita.settings.Port;
+        udp-ports = "";
+        alias = "books.theless.one";
+        roles = [ "Member" ];
       };
 
       systemd.services.borgbackup-job-kavita.unitConfig.RequiresMountsFor = "/mnt/raid";

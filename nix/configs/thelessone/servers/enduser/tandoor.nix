@@ -52,16 +52,16 @@
         inherit (cfg) user group;
         mode = "750";
       };
-      users.users.caddy.extraGroups = [ cfg.group ];
-      thelessone.caddy.vHost."recipes.theless.one" = {
-        proxy.port = config.services.tandoor-recipes.port;
-        useVpn = true;
-        extraConfig = ''
-          handle_path /media/* {
-          	root * /var/lib/tandoor-recipes
-          	file_server
-          }
-        '';
+
+      services.newt.blueprint.private-resources.tandoor = {
+        name = "Tandoor Recipes";
+        mode = "host";
+        destination = "127.0.0.1";
+        site = "utilized-olympic-marmot";
+        tcp-ports = "45530";
+        udp-ports = "";
+        alias = "recipes.theless.one";
+        roles = [ "Member" ];
       };
 
       systemd.services.borgbackup-job-tandoor-recipes.unitConfig.RequiresMountsFor = "/mnt/raid";
