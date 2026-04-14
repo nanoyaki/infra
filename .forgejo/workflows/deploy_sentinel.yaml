@@ -36,6 +36,7 @@ jobs:
     needs: build
     env:
       DEPLOYMENT_KEY_SENTINEL: ${{ secrets.DEPLOYMENT_KEY_SENTINEL }}
+      NIX_SSHOPTS: '-p 2222'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
