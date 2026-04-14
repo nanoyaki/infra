@@ -31,6 +31,7 @@
       thelessone-ddns
       thelessone-mailserver
       thelessone-davis
+      thelessone-papra
       # thelessone-radicale
       thelessone-caddy
       thelessone-newt
