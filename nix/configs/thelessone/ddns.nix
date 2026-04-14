@@ -84,21 +84,6 @@
             domain = "theless.one";
             subdomain = "mail";
           }
-          # Remove this soon
-          # {
-          #   domain = "theless.one";
-          #   subdomain = "";
-          # }
-          # {
-          #   domain = "theless.one";
-          #   subdomain = "*";
-          # }
-          {
-            secretapikey = config.sops.placeholder."porkbun-nano/secret-api-key";
-            apikey = config.sops.placeholder."porkbun-nano/api-key";
-            domain = "nanoyaki.space";
-            subdomain = "*";
-          }
           {
             secretapikey = config.sops.placeholder."porkbun-ashley/secret-api-key";
             apikey = config.sops.placeholder."porkbun-ashley/api-key";

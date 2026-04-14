@@ -50,15 +50,9 @@
         HOMEPAGE_VAR_LONGITUDE = config.sops.placeholder."dashboard/longitude";
       };
 
-      services.newt.blueprint.private-resources.dashboard = {
-        name = "Homepage Dashboard";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = "${toString config.services.homepage-dashboard.listenPort}";
-        udp-ports = "";
-        alias = "home.theless.one";
-        roles = [ "Member" ];
+      thelessone.caddy.vHost."home.theless.one" = {
+        proxy.port = config.services.homepage-dashboard.listenPort;
+        pangolin.name = "Homepage Dashboard";
       };
 
       services.homepage-dashboard = {

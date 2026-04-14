@@ -17,15 +17,11 @@
 
       systemd.services.audiobookshelf.unitConfig.RequiresMountsFor = "/mnt/raid/audiobookshelf";
 
-      services.newt.blueprint.private-resources.audiobookshelf = {
-        name = "Audiobookshelf";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = toString config.services.audiobookshelf.port;
-        udp-ports = "";
-        alias = "audiobookshelf.theless.one";
-        roles = [ "Member" ];
+      thelessone.caddy.vHost."audiobookshelf.theless.one" = {
+        proxy = {
+          inherit (config.services.audiobookshelf) port;
+        };
+        pangolin.name = "Audiobookshelf";
       };
 
       systemd.services.borgbackup-job-audiobookshelf.unitConfig.RequiresMountsFor = "/mnt/raid";

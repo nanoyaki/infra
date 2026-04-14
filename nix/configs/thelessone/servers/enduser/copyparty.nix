@@ -170,10 +170,8 @@
           {
             site = "utilized-olympic-marmot";
             hostname = "127.0.0.1";
-            port = 34652;
+            port = cfg.settings.p;
             method = "http";
-            path = "/";
-            path-match = "prefix";
           }
         ];
       };

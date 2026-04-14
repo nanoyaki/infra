@@ -135,15 +135,11 @@
         };
       };
 
-      services.newt.blueprint.private-resources.sabnzbd = {
-        name = "Sabnzbd";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = toString config.services.sabnzbd.settings.misc.port;
-        udp-ports = "";
-        alias = "sabnzbd.theless.one";
-        roles = [ "Arr-Admin" ];
+      thelessone.caddy.vHost."sabnzbd.theless.one" = {
+        proxy = {
+          inherit (config.services.sabnzbd.settings.misc) port;
+        };
+        pangolin.name = "Sabnzbd";
       };
 
       systemd.services.borgbackup-job-sabnzbd.unitConfig.RequiresMountsFor = "/mnt/raid";

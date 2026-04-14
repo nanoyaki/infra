@@ -36,15 +36,9 @@
         ];
       };
 
-      services.newt.blueprint.private-resources.immich = {
-        name = "Immich";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = toString config.services.immich.port;
-        udp-ports = "";
-        alias = "immich.theless.one";
-        roles = [ "Member" ];
+      thelessone.caddy.vHost."immich.theless.one" = {
+        proxy = { inherit (config.services.immich) port; };
+        pangolin.name = "Immich";
       };
 
       systemd.services.borgbackup-job-immich.unitConfig.RequiresMountsFor = "/mnt/raid";

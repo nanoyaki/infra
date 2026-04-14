@@ -70,30 +70,6 @@
       };
 
       # FIXME: remote backup
-
-      # sops.secrets = {
-      #   "restic/100-64-64-6" = { };
-      #   "restic/vaultwarden-remote" = { };
-      # };
-
-      # sops.templates."restic-vauldwarden-repo.txt".content = ''
-      #   rest:https://restic:${
-      #     config.sops.placeholder."restic/100-64-64-6"
-      #   }@restic.hanakretzer.de/vaultwarden-thelessone
-      # '';
-
-      # config'.restic.backups.vaultwarden-remote = {
-      #   repositoryFile = config.sops.templates."restic-vauldwarden-repo.txt".path;
-      #   passwordFile = config.sops.secrets."restic/vaultwarden-remote".path;
-
-      #   paths = [
-      #     "/var/lib/vaultwarden"
-      #     config.services.vaultwarden.backupDir
-      #   ];
-
-      #   timerConfig.OnCalendar = "*-*-* 00/3:00:00";
-      # };
-
       systemd.services.borgbackup-job-vaultwarden.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.vaultwarden = {
         repo = "/mnt/raid/borgbackup/vaultwarden";

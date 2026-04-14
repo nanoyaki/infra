@@ -53,15 +53,11 @@
         mode = "750";
       };
 
-      services.newt.blueprint.private-resources.tandoor = {
-        name = "Tandoor Recipes";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = "45530";
-        udp-ports = "";
-        alias = "recipes.theless.one";
-        roles = [ "Member" ];
+      thelessone.caddy.vHost."recipes.theless.one" = {
+        proxy = {
+          inherit (config.services.tandoor-recipes) port;
+        };
+        pangolin.name = "Tandoor Recipes";
       };
 
       systemd.services.borgbackup-job-tandoor-recipes.unitConfig.RequiresMountsFor = "/mnt/raid";

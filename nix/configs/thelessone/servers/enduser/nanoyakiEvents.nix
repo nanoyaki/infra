@@ -22,32 +22,44 @@
       };
 
       users.users.${user}.extraGroups = [ "nanoyaki-events" ];
-      services.caddy.virtualHosts."events.nanoyaki.space" = {
-        useACMEHost = "nanoyaki.space";
-        extraConfig = ''
-          root * ${webPkg}/public
+      thelessone.caddy.vHost."http://events.nanoyaki.space".extraConfig = ''
+        root * ${webPkg}/public
 
-          encode zstd gzip
-          file_server
+        encode zstd gzip
+        file_server
 
-          php_fastcgi unix/${config.services.phpfpm.pools.nanoyaki-events.socket} {
-            root ${webPkg}/public
+        php_fastcgi unix/${config.services.phpfpm.pools.nanoyaki-events.socket} {
+          root ${webPkg}/public
 
-            env GUILD_ID {file.${config.sops.secrets."calendar/guildId".path}}
-            env BOT_TOKEN {file.${config.sops.secrets."calendar/botToken".path}}
-            env CACHE_DIR "${home}/cache"
-            env LOG_PATH "${home}/logs"
-            env LOG_LEVEL "info"
+          env GUILD_ID {file.${config.sops.secrets."calendar/guildId".path}}
+          env BOT_TOKEN {file.${config.sops.secrets."calendar/botToken".path}}
+          env CACHE_DIR "${home}/cache"
+          env LOG_PATH "${home}/logs"
+          env LOG_LEVEL "info"
 
-            resolve_root_symlink
+          resolve_root_symlink
+        }
+
+        @dotfiles {
+          not path /.well-known/*
+          path /.*
+        }
+        redir @dotfiles /
+      '';
+
+      services.newt.blueprint.public-resources.nanoyaki-events = {
+        name = "Nanoyaki Events";
+        protocol = "http";
+        full-domain = "events.nanoyaki.space";
+        host-header = "events.nanoyaki.space";
+        targets = [
+          {
+            site = "utilized-olympic-marmot";
+            hostname = "127.0.0.1";
+            port = 80;
+            method = "http";
           }
-
-          @dotfiles {
-            not path /.well-known/*
-            path /.*
-          }
-          redir @dotfiles /
-        '';
+        ];
       };
 
       systemd.tmpfiles.settings."10-nanoyaki-events" = {

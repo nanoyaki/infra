@@ -75,14 +75,16 @@
           gerbil = {
             base_endpoint = "pangolin.theless.one";
             subnet_group = "100.50.0.0/20";
-            site_block_size = 27;
           };
+
+          orgs.subnet_group = "100.90.128.0/20";
+          orgs.utility_subnet_group = "100.96.128.0/20";
 
           email = {
             smtp_user = "no-reply@theless.one";
             no_reply = "no-reply@theless.one";
 
-            smtp_host = "smtp.theless.one";
+            smtp_host = "at01.theless.one";
             smtp_port = 465;
             smtp_secure = true;
           };
@@ -90,6 +92,7 @@
           flags = {
             disable_signup_without_invite = true;
             disable_user_create_org = true;
+            allow_raw_resources = true;
           };
         };
       };

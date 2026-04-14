@@ -11,15 +11,9 @@
         settings.Port = 3300;
       };
 
-      services.newt.blueprint.private-resources.kavita = {
-        name = "Kavita";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = toString config.services.kavita.settings.Port;
-        udp-ports = "";
-        alias = "books.theless.one";
-        roles = [ "Member" ];
+      thelessone.caddy.vHost."books.theless.one" = {
+        proxy.port = config.services.kavita.settings.Port;
+        pangolin.name = "Kavita";
       };
 
       systemd.services.borgbackup-job-kavita.unitConfig.RequiresMountsFor = "/mnt/raid";

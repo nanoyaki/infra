@@ -74,38 +74,38 @@
         keyFile = config.sops.secrets.camo.path;
       };
 
-      services.traefik.dynamicConfigOptions = {
-        http.routers = {
+      services.traefik.dynamicConfigOptions.http = {
+        routers = {
           pds = {
             rule = "Host(`pds.nanoyaki.space`)";
             entryPoints = [ "websecure" ];
             service = "pds";
-            tls.certResolver = "letsencrypt";
+            tls = { };
           };
 
           knot = {
             rule = "Host(`knot.nanoyaki.space`)";
             entryPoints = [ "websecure" ];
             service = "knot";
-            tls.certResolver = "letsencrypt";
+            tls = { };
           };
 
           camo = {
             rule = "Host(`camo.nanoyaki.space`)";
             entryPoints = [ "websecure" ];
             service = "camo";
-            tls.certResolver = "letsencrypt";
+            tls = { };
           };
 
           avatars = {
             rule = "Host(`avatars.nanoyaki.space`)";
             entryPoints = [ "websecure" ];
             service = "avatars";
-            tls.certResolver = "letsencrypt";
+            tls = { };
           };
         };
 
-        http.services = {
+        services = {
           pds.loadBalancer.servers = [
             { url = "http://127.0.0.1:8000"; }
           ];

@@ -11,15 +11,11 @@
         inherit (config.thelessone.arr) group;
       };
 
-      services.newt.blueprint.private-resources.lidarr = {
-        name = "Lidarr";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = toString config.services.lidarr.settings.server.port;
-        udp-ports = "";
-        alias = "lidarr.theless.one";
-        roles = [ "Arr-Admin" ];
+      thelessone.caddy.vHost."lidarr.theless.one" = {
+        proxy = {
+          inherit (config.services.lidarr.settings.server) port;
+        };
+        pangolin.name = "Lidarr";
       };
 
       systemd.services.borgbackup-job-lidarr.unitConfig.RequiresMountsFor = "/mnt/raid";

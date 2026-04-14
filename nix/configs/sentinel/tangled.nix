@@ -48,26 +48,5 @@
         listen = "0.0.0.0:8002";
         keyFile = config.sops.secrets.camo.path;
       };
-
-      services.caddy.virtualHosts."knot.nanoyaki.space" = {
-        useACMEHost = "nanoyaki.space";
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8001
-        '';
-      };
-
-      services.caddy.virtualHosts."camo.nanoyaki.space" = {
-        useACMEHost = "nanoyaki.space";
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8002
-        '';
-      };
-
-      services.caddy.virtualHosts."avatars.nanoyaki.space" = {
-        useACMEHost = "nanoyaki.space";
-        extraConfig = ''
-          reverse_proxy 127.0.0.1:8003
-        '';
-      };
     };
 }

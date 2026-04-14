@@ -1,6 +1,7 @@
 {
   flake.nixosModules.thelessone-newt =
     {
+      lib,
       pkgs,
       config,
       ...
@@ -15,6 +16,8 @@
       sops.secrets = {
         "newt/secret" = { };
         "newt/id" = { };
+        "olm/secret" = { };
+        "olm/id" = { };
       };
 
       sops.templates."newt.env" = {
@@ -23,6 +26,14 @@
           NEWT_ID = plh."newt/id";
         };
         restartUnits = [ "newt.service" ];
+      };
+
+      sops.templates."olm.env" = {
+        file = pkgs.writeEnv "olm.env.template" {
+          OLM_SECRET = plh."olm/secret";
+          OLM_ID = plh."olm/id";
+        };
+        restartUnits = [ "olm.service" ];
       };
 
       boot.kernel.sysctl = {
@@ -43,10 +54,27 @@
         21820
       ];
 
+      environment.systemPackages = [ pkgs.pangolin-cli ];
+
       services.newt = {
         enable = true;
         environmentFile = tpl."newt.env".path;
         settings.endpoint = "https://pangolin.theless.one";
+      };
+
+      services.resolved.enable = true;
+      systemd.services.olm = {
+        description = "Pangolin Machine Client";
+        wantedBy = [ "multi-user.target" ];
+        wants = [ "network-online.target" ];
+        after = [ "network-online.target" ];
+
+        serviceConfig = {
+          EnvironmentFile = tpl."olm.env".path;
+          ExecStart = lib.getExe pkgs.fosrl-olm + " --endpoint https://pangolin.theless.one";
+          Type = "simple";
+          Restart = "always";
+        };
       };
     };
 }

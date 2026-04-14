@@ -25,8 +25,6 @@
 
       services.caddy.enable = true;
       services.caddy.globalConfig = ''
-        http_port 2080
-        https_port 2443
         auto_https off
       '';
       systemd.services.caddy.preStart = ''
@@ -39,47 +37,45 @@
         rm -rf "$APP_CACHE_DIR/prod"
         ${lib.getExe pkgs.php85} ${webPkg}/bin/console cache:clear --env=prod --no-debug
       '';
-      services.caddy.virtualHosts.":8006" = {
-        extraConfig = ''
-          root * ${webPkg}/public
+      services.caddy.virtualHosts.":8006".extraConfig = ''
+        root * ${webPkg}/public
 
-          encode zstd gzip
-          file_server
+        encode zstd gzip
+        file_server
 
-          php_fastcgi unix/${config.services.phpfpm.pools.nanoyaki-space.socket} {
-            root ${webPkg}/public
+        php_fastcgi unix/${config.services.phpfpm.pools.nanoyaki-space.socket} {
+          root ${webPkg}/public
 
-            env APP_SECRET {file.${config.sops.secrets.app-secret.path}}
-            env STEAM_API_KEY {file.${config.sops.secrets.steam-api-key.path}}
-            env APP_ENV "prod"
-            env APP_SHARE_DIR "/var/cache/nanoyaki-space"
-            env APP_CACHE_DIR "/var/cache/nanoyaki-space"
-            env APP_LOG_DIR "/var/log/nanoyaki-space"
-            env DEFAULT_URI "https://nanoyaki.space"
-            env APP_RUNTIME_OPTIONS {file.${runtimeOptsFile}}
-            env CHROMIUM_BIN "${lib.getExe' pkgs.nanoyaki-space.passthru.dependencies "chromium"}"
+          env APP_SECRET {file.${config.sops.secrets.app-secret.path}}
+          env STEAM_API_KEY {file.${config.sops.secrets.steam-api-key.path}}
+          env APP_ENV "prod"
+          env APP_SHARE_DIR "/var/cache/nanoyaki-space"
+          env APP_CACHE_DIR "/var/cache/nanoyaki-space"
+          env APP_LOG_DIR "/var/log/nanoyaki-space"
+          env DEFAULT_URI "https://nanoyaki.space"
+          env APP_RUNTIME_OPTIONS {file.${runtimeOptsFile}}
+          env CHROMIUM_BIN "${lib.getExe' pkgs.nanoyaki-space.passthru.dependencies "chromium"}"
 
-            capture_stderr
-            resolve_root_symlink
-          }
+          capture_stderr
+          resolve_root_symlink
+        }
 
-          @dotfiles {
-            not path /.well-known/*
-            path /.*
-          }
-          redir @dotfiles /
-        '';
-      };
+        @dotfiles {
+          not path /.well-known/*
+          path /.*
+        }
+        redir @dotfiles /
+      '';
 
-      services.traefik.dynamicConfigOptions = {
-        nanoyaki-space.routers.attic = {
+      services.traefik.dynamicConfigOptions.http = {
+        routers.nanoyaki-space = {
           rule = "Host(`nanoyaki.space`)";
           entryPoints = [ "websecure" ];
           service = "nanoyaki-space";
-          tls.certResolver = "letsencrypt";
+          tls = { };
         };
 
-        http.services.nanoyaki-space.loadBalancer.servers = [
+        services.nanoyaki-space.loadBalancer.servers = [
           { url = "http://127.0.0.1:8006"; }
         ];
       };

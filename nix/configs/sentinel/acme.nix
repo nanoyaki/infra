@@ -33,13 +33,17 @@
         };
 
         certs."nanoyaki.space" = {
+          inherit (config.services.traefik) group;
           environmentFile = config.sops.templates."nanoyaki.space-acme.env".path;
           extraDomainNames = [ "*.nanoyaki.space" ];
+          reloadServices = [ "traefik.service" ];
         };
 
         certs."theless.one" = {
+          inherit (config.services.traefik) group;
           environmentFile = config.sops.templates."theless.one-acme.env".path;
           extraDomainNames = [ "*.theless.one" ];
+          reloadServices = [ "traefik.service" ];
         };
       };
     };

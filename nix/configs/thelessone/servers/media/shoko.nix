@@ -30,15 +30,9 @@
         Group = config.thelessone.arr.group;
       };
 
-      services.newt.blueprint.private-resources.shoko = {
-        name = "Shoko";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = toString 8111;
-        udp-ports = "";
-        alias = "shoko.theless.one";
-        roles = [ "Member" ];
+      thelessone.caddy.vHost."shoko.theless.one" = {
+        proxy.port = 8111;
+        pangolin.name = "Shoko";
       };
 
       systemd.services.borgbackup-job-shoko.unitConfig.RequiresMountsFor = "/mnt/raid";

@@ -13,15 +13,9 @@
         settings.port = 7500;
       };
 
-      services.newt.blueprint.private-resources.actual = {
-        name = "Actual";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = "${toString cfg.settings.port}";
-        udp-ports = "";
-        alias = "actual.theless.one";
-        users = [ "contact@nanoyaki.space" ];
+      thelessone.caddy.vHost."actual.theless.one" = {
+        proxy = { inherit (cfg.settings) port; };
+        pangolin.name = "Actual";
       };
 
       systemd.services.borgbackup-job-actual.unitConfig.RequiresMountsFor = "/mnt/raid";

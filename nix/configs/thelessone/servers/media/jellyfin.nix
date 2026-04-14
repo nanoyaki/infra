@@ -15,15 +15,9 @@
         inherit (config.thelessone.arr) group;
       };
 
-      services.newt.blueprint.private-resources.jellyfin = {
-        name = "Jellyfin";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = "8096";
-        udp-ports = "";
-        alias = "jellyfin.theless.one";
-        roles = [ "Member" ];
+      thelessone.caddy.vHost."jellyfin.theless.one" = {
+        proxy.port = 8096;
+        pangolin.name = "Jellyfin";
       };
 
       users.users.${config.services.jellyfin.user}.extraGroups = [

@@ -19,6 +19,8 @@
         mkIf
         hasInfix
         filterAttrs
+        hasPrefix
+        mapAttrs'
         ;
 
       cfg = config.thelessone.caddy;
@@ -51,7 +53,16 @@
               default = "";
             };
 
-            useVpn = mkEnableOption "vpn only access";
+            localOnly = (mkEnableOption "bind to local host only") // {
+              default = true;
+            };
+
+            pangolin = {
+              name = mkOption {
+                type = types.nullOr types.str;
+                default = null;
+              };
+            };
           };
         };
 
@@ -67,8 +78,8 @@
 
             import error_handling
           '';
-          useACMEHost = mkIf (hasInfix "theless.one" domain) "theless.one";
-          listenAddresses = mkIf vHost.useVpn [
+          useACMEHost = mkIf (hasInfix "theless.one" domain && !(hasPrefix "http://" domain)) "theless.one";
+          listenAddresses = mkIf vHost.localOnly [
             "127.0.0.1"
             "[::1]"
           ];
@@ -77,11 +88,40 @@
           "enable"
           "proxy"
           "extraConfig"
-          "useVpn"
+          "localOnly"
+          "pangolin"
         ])
       );
 
+      mapPangolinHosts =
+        attrset:
+
+        mapAttrs' (domain: vHost: {
+          name = lib.replaceString " " "-" (lib.toLower vHost.pangolin.name);
+          value = {
+            inherit (vHost.pangolin) name;
+            mode = "host";
+            destination = "127.0.0.1";
+            site = "utilized-olympic-marmot";
+            alias = lib.removePrefix "http://" domain;
+            tcp-ports = "80,443";
+            udp-ports = "";
+            disable-icmp = false;
+            roles = [
+              "Arr-Admin"
+              "Member"
+              "Adult"
+            ];
+          };
+        }) (filterAttrs (_: vHost: vHost.pangolin.name != null) attrset);
+
       enabledHosts = filterAttrs (_: hostCfg: hostCfg.enable) cfg.vHost;
+
+      # String -> String
+      mkFileServer = directory: ''
+        root * ${directory}
+        file_server * browse
+      '';
     in
 
     # TODO: Add OAuth, OIDP, or LDAP
@@ -92,7 +132,7 @@
       };
 
       config = {
-        networking.firewall.allowedTCPPorts = [
+        networking.firewall.interfaces.wg0.allowedTCPPorts = [
           80
           443
         ];
@@ -111,6 +151,15 @@
           thelessone = "thelessone ${config.sops.placeholder."caddy-env-vars/thelessone"}";
         };
 
+        services.newt.blueprint.private-resources = mapPangolinHosts enabledHosts;
+
+        thelessone.caddy.vHost."http://theless.one".extraConfig = ''
+          root * ${pkgs.thelessDotOne}
+          file_server
+        '';
+        thelessone.caddy.vHost."http://na55l3zepb4kcg0zryqbdnay.theless.one".extraConfig =
+          mkFileServer "/var/www/theless.one";
+
         services.caddy = {
           enable = true;
           enableReload = true;
@@ -123,8 +172,6 @@
           '';
 
           globalConfig = ''
-            http_port 2080
-            https_port 2443
             auto_https off
           '';
 
@@ -140,36 +187,12 @@
             }
           '';
 
-          virtualHosts =
-            let
-              # String -> String
-              mkFileServer = directory: ''
-                root * ${directory}
-                file_server * browse
-              '';
-            in
-
-            (mapVhosts enabledHosts)
-            // {
-              "theless.one".extraConfig = ''
-                root * ${pkgs.thelessDotOne}
-                file_server
-              '';
-              "na55l3zepb4kcg0zryqbdnay.theless.one".extraConfig = mkFileServer "/var/www/theless.one";
-              "legacyfiles.theless.one".extraConfig = mkFileServer "/var/lib/caddy/files";
-            };
+          virtualHosts = mapVhosts enabledHosts;
         };
 
         systemd.services.caddy = {
-          wants = [
-            "network-online.target"
-            "copyparty.service"
-          ];
-
-          after = [
-            "network-online.target"
-            "copyparty.service"
-          ];
+          wants = [ "network-online.target" ];
+          after = [ "network-online.target" ];
         };
       };
     };

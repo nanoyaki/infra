@@ -11,15 +11,11 @@
         inherit (config.thelessone.arr) group;
       };
 
-      services.newt.blueprint.private-resources.sonarr = {
-        name = "Sonarr";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = toString config.services.sonarr.settings.server.port;
-        udp-ports = "";
-        alias = "sonarr.theless.one";
-        roles = [ "Arr-Admin" ];
+      thelessone.caddy.vHost."sonarr.theless.one" = {
+        proxy = {
+          inherit (config.services.sonarr.settings.server) port;
+        };
+        pangolin.name = "Sonarr";
       };
 
       systemd.services.borgbackup-job-sonarr.unitConfig.RequiresMountsFor = "/mnt/raid";

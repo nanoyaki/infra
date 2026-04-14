@@ -63,7 +63,7 @@
       };
 
       services.phpfpm.pools.davis.settings."listen.group" = "caddy";
-      thelessone.caddy.vHost."dav.theless.one".extraConfig = ''
+      thelessone.caddy.vHost."http://dav.theless.one".extraConfig = ''
         root * ${cfg.package}/public
         encode zstd gzip
         header {
@@ -100,10 +100,8 @@
           {
             site = "utilized-olympic-marmot";
             hostname = "127.0.0.1";
-            port = 2080;
+            port = 80;
             method = "http";
-            path = "/";
-            path-match = "prefix";
           }
         ];
       };
@@ -117,6 +115,26 @@
         "/var/log/davis".d = {
           inherit (cfg) user group;
           mode = "750";
+        };
+      };
+
+      systemd.services.borgbackup-job-dav.unitConfig.RequiresMountsFor = "/mnt/raid";
+      services.borgbackup.jobs.dav = {
+        repo = "/mnt/raid/borgbackup/davis";
+        doInit = true;
+
+        paths = cfg.dataDir;
+
+        encryption.mode = "none";
+        compression = "zstd";
+
+        startAt = "daily";
+        persistentTimer = true;
+        prune.keep = {
+          within = "1d";
+          daily = 14;
+          weekly = 12;
+          monthly = -1;
         };
       };
     };

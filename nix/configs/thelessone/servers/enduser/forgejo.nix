@@ -273,8 +273,19 @@
             hostname = "127.0.0.1";
             port = cfg.settings.server.HTTP_PORT;
             method = "http";
-            path = "/";
-            path-match = "prefix";
+          }
+        ];
+      };
+
+      services.newt.blueprint.public-resources.forgejo-ssh = {
+        name = "Forgejo SSH";
+        protocol = "tcp";
+        proxy-port = 22;
+        targets = [
+          {
+            site = "utilized-olympic-marmot";
+            hostname = "127.0.0.1";
+            port = 22;
           }
         ];
       };

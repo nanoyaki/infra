@@ -30,19 +30,22 @@
               secretapikey = config.sops.placeholder."porkbun/secret-api-key";
               apikey = config.sops.placeholder."porkbun/api-key";
               domain = "theless.one";
-              subdomain = "de01";
-            }
-            {
-              secretapikey = config.sops.placeholder."porkbun/secret-api-key";
-              apikey = config.sops.placeholder."porkbun/api-key";
-              domain = "theless.one";
-              subdomain = "binarycache";
+              subdomain = "";
+              skipIPv6 = true;
             }
             {
               secretapikey = config.sops.placeholder."porkbun/secret-api-key";
               apikey = config.sops.placeholder."porkbun/api-key";
               domain = "theless.one";
               subdomain = "*";
+              skipIPv6 = true;
+            }
+            {
+              secretapikey = config.sops.placeholder."porkbun/secret-api-key";
+              apikey = config.sops.placeholder."porkbun/api-key";
+              domain = "theless.one";
+              subdomain = "de01";
+              skipIPv6 = true;
             }
             {
               domain = "nanoyaki.space";
@@ -50,24 +53,8 @@
             }
             {
               domain = "nanoyaki.space";
-              subdomain = "pds";
+              subdomain = "*";
             }
-            {
-              domain = "nanoyaki.space";
-              subdomain = "knot";
-            }
-            {
-              domain = "nanoyaki.space";
-              subdomain = "camo";
-            }
-            {
-              domain = "nanoyaki.space";
-              subdomain = "avatars";
-            }
-            # {
-            #   domain = "nanoyaki.space";
-            #   subdomain = "knotmirror";
-            # }
           ];
         };
       };

@@ -6,6 +6,8 @@
     in
 
     {
+      services.openssh.ports = [ 2222 ];
+
       users.users = {
         root.openssh.authorizedKeys.keys = [
           id_nadesiko

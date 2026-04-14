@@ -339,15 +339,23 @@
 
         environment.systemPackages = [ pkgs.chromium ];
 
-        services.newt.blueprint.private-resources.stash = {
+        services.newt.blueprint.public-resources.stash = {
           name = "Stash";
-          mode = "host";
-          destination = "127.0.0.1";
-          site = "utilized-olympic-marmot";
-          tcp-ports = toString cfg.settings.port;
-          udp-ports = "";
-          alias = "stash.theless.one";
-          roles = [ "Adult" ];
+          protocol = "http";
+          full-domain = "stash.theless.one";
+          host-header = "stash.theless.one";
+          auth = {
+            sso-enabled = true;
+            sso-roles = [ "Adult" ];
+          };
+          targets = [
+            {
+              site = "utilized-olympic-marmot";
+              hostname = "127.0.0.1";
+              inherit (cfg.settings) port;
+              method = "http";
+            }
+          ];
         };
       };
     };

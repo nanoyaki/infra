@@ -80,15 +80,11 @@
         ];
       };
 
-      services.newt.blueprint.private-resources.flood = {
-        name = "Flood";
-        mode = "host";
-        destination = "127.0.0.1";
-        site = "utilized-olympic-marmot";
-        tcp-ports = toString config.services.flood.port;
-        udp-ports = "";
-        alias = "flood.theless.one";
-        roles = [ "Arr-Admin" ];
+      thelessone.caddy.vHost."flood.theless.one" = {
+        proxy = {
+          inherit (config.services.flood) port;
+        };
+        pangolin.name = "Flood";
       };
 
       systemd.services.borgbackup-job-transmission.unitConfig.RequiresMountsFor = "/mnt/raid";
