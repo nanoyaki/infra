@@ -12,6 +12,7 @@
 
       thelessone.caddy.vHost."prowlarr.theless.one" = {
         proxy = {
+          host = config.services.vopono.voponoHost;
           inherit (config.services.prowlarr.settings.server) port;
         };
         pangolin.name = "Prowlarr";

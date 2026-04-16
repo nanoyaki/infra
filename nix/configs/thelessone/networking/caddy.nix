@@ -93,6 +93,8 @@
         ])
       );
 
+      pangolinHosts = filterAttrs (_: vHost: vHost.pangolin.name != null);
+
       mapPangolinHosts =
         attrset:
 
@@ -113,7 +115,7 @@
               "Adult"
             ];
           };
-        }) (filterAttrs (_: vHost: vHost.pangolin.name != null) attrset);
+        }) (pangolinHosts attrset);
 
       enabledHosts = filterAttrs (_: hostCfg: hostCfg.enable) cfg.vHost;
 
@@ -152,9 +154,14 @@
         };
 
         services.newt.blueprint.private-resources = mapPangolinHosts enabledHosts;
+        networking.extraHosts = lib.concatStringsSep "\n" (
+          map (domain: "127.0.0.1 ${lib.removePrefix "http://" domain}") (
+            builtins.attrNames (pangolinHosts enabledHosts)
+          )
+        );
 
         thelessone.caddy.vHost."http://theless.one".extraConfig = ''
-          root * ${pkgs.thelessDotOne}
+          root * ${pkgs.theless-dot-one}
           file_server
         '';
         thelessone.caddy.vHost."http://na55l3zepb4kcg0zryqbdnay.theless.one".extraConfig =
@@ -178,7 +185,7 @@
           extraConfig = lib.mkForce ''
             (error_handling) {
               handle_errors {
-                root * ${pkgs.thelessDotOne}
+                root * ${pkgs.theless-dot-one}
                 try_files {path} /{err.status_code}.html /index.html
                 file_server {
                   status 200
@@ -201,12 +208,12 @@
     { pkgs, ... }:
 
     {
-      packages.thelessDotOne = pkgs.fetchFromGitea {
+      packages.theless-dot-one = pkgs.fetchFromGitea {
         domain = "git.theless.one";
         owner = "nanoyaki";
         repo = "theless.one";
-        rev = "c98e1b01f036e7bccc249cce444bc1e542efd5b3";
-        hash = "sha256-IR9Ml+/WecD+6twUzM3Mzk+CGqrYrkOKt3JHZ/N6fZ4=";
+        rev = "f14f5843d98b3fd4e15c6f2a067305cf3ed5a283";
+        hash = "sha256-XWUJ5WUEnvRj1Yuxz5hRjU5iru68P5TKqSl7//6mpAo=";
       };
     };
 
@@ -217,7 +224,7 @@
       { config, ... }:
 
       {
-        inherit (config.packages) thelessDotOne;
+        inherit (config.packages) theless-dot-one;
       }
     );
 }

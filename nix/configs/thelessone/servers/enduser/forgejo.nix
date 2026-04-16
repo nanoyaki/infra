@@ -1,7 +1,6 @@
 {
   flake.nixosModules.thelessone-forgejo =
     {
-      lib,
       pkgs,
       config,
       ...
@@ -33,23 +32,29 @@
         "forgejo/botan" = { };
         "forgejo/kigiku" = { };
         "mailserver/git" = { };
+
+        "forgejo/users/nanoyaki".owner = cfg.user;
+        "forgejo/oidc/id".owner = cfg.user;
+        "forgejo/oidc/secret".owner = cfg.user;
       };
 
-      sops.templates."kikyo.env".file = pkgs.writeEnv "kikyo.env.template" {
-        TOKEN = config.sops.placeholder."forgejo/kikyo";
-      };
+      sops.templates = {
+        "kikyo.env".file = pkgs.writeEnv "kikyo.env.template" {
+          TOKEN = config.sops.placeholder."forgejo/kikyo";
+        };
 
-      sops.templates."syakuyaku.env".file = pkgs.writeEnv "syakuyaku.env.template" {
-        TOKEN = config.sops.placeholder."forgejo/syakuyaku";
-      };
+        "syakuyaku.env".file = pkgs.writeEnv "syakuyaku.env.template" {
+          TOKEN = config.sops.placeholder."forgejo/syakuyaku";
+        };
 
-      sops.templates."botan.env".file = pkgs.writeEnv "botan.env.template" {
-        TOKEN = config.sops.placeholder."forgejo/botan";
-        REGISTRY_AUTH_FILE = config.sops.templates."auth.json".path;
-      };
+        "botan.env".file = pkgs.writeEnv "botan.env.template" {
+          TOKEN = config.sops.placeholder."forgejo/botan";
+          REGISTRY_AUTH_FILE = config.sops.templates."auth.json".path;
+        };
 
-      sops.templates."kigiku.env".file = pkgs.writeEnv "kigiku.env.template" {
-        TOKEN = config.sops.placeholder."forgejo/kigiku";
+        "kigiku.env".file = pkgs.writeEnv "kigiku.env.template" {
+          TOKEN = config.sops.placeholder."forgejo/kigiku";
+        };
       };
 
       systemd.services.gitea-runner-kikyo.environment = {
@@ -207,9 +212,17 @@
           };
 
           service = {
-            DISABLE_REGISTRATION = true;
             ENABLE_NOTIFY_MAIL = true;
+
+            # OIDC
+            DISABLE_REGISTRATION = false;
+            ALLOW_ONLY_EXTERNAL_REGISTRATION = true;
+            SHOW_REGISTRATION_BUTTON = false;
+            # Disable API non-OIDC auth
+            ENABLE_BASIC_AUTHENTICATION = false;
           };
+
+          openid.ENABLE_OPENID_SIGNUP = true;
 
           actions = {
             ENABLED = true;
@@ -263,6 +276,12 @@
         };
       };
 
+      services.anubis.instances.forgejo.settings = {
+        TARGET = "http://127.0.0.1:12500";
+        BIND = ":12501";
+        BIND_NETWORK = "tcp";
+      };
+
       services.newt.blueprint.public-resources.forgejo = {
         name = "Forgejo";
         protocol = "http";
@@ -271,7 +290,7 @@
           {
             site = "utilized-olympic-marmot";
             hostname = "127.0.0.1";
-            port = cfg.settings.server.HTTP_PORT;
+            port = 12501;
             method = "http";
           }
         ];
@@ -290,14 +309,30 @@
         ];
       };
 
-      sops.secrets."forgejo/users/nanoyaki".owner = cfg.user;
+      systemd.services.forgejo.path = [ cfg.package ];
       systemd.services.forgejo.preStart = ''
-        ${lib.getExe cfg.package} admin user create \
+        forgejo admin user create \
           --admin \
           --email "hanakretzer@gmail.com" \
           --username "nanoyaki" \
           --password "$(cat ${config.sops.secrets."forgejo/users/nanoyaki".path})" \
           || true
+
+        if ! forgejo admin auth list | grep -q PocketID; then
+          forgejo admin auth add-oauth \
+            --name "PocketID" \
+            --provider "openidConnect" \
+            --key "$(cat ${config.sops.secrets."forgejo/oidc/id".path})" \
+            --secret "$(cat ${config.sops.secrets."forgejo/oidc/secret".path})" \
+            --auto-discover-url "https://id.theless.one/.well-known/openid-configuration" \
+            --scopes "openid email profile" \
+            --icon-url "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/pocket-id.svg" \
+            --skip-local-2fa \
+            --attribute-ssh-public-key "sshpubkey" \
+            --admin-group "forgejo_admin" \
+            --restricted-group "forgejo_restricted" \
+            --group-claim-name "groups"
+        fi
       '';
     };
 }

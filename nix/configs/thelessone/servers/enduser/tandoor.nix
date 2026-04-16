@@ -1,18 +1,36 @@
 {
   flake.nixosModules.thelessone-tandoor =
-    { config, ... }:
+    { pkgs, config, ... }:
 
     let
       cfg = config.services.tandoor-recipes;
+
+      plh = config.sops.placeholder;
     in
 
     {
       sops.secrets = {
-        tandoor.owner = cfg.user;
-        tandoor_email.owner = cfg.user;
-        "mailserver/recipes" = { };
+        "tandoor/secret".owner = cfg.user;
+        "tandoor/oidc-id" = { };
+        "tandoor/oidc-secret" = { };
       };
 
+      sops.templates."tandoor.env".file = pkgs.writeEnv "tandoor.env.template" {
+        SOCIALACCOUNT_PROVIDERS = builtins.toJSON {
+          openid_connect.APPS = [
+            {
+              provider_id = "pocket-id";
+              name = "Pocket ID";
+              client_id = plh."tandoor/oidc-id";
+              secret = plh."tandoor/oidc-secret";
+              settings.server_url = "https://id.theless.one/.well-known/openid-configuration";
+            }
+          ];
+        };
+      };
+
+      systemd.services.tandoor-recipes.serviceConfig.EnvironmentFile =
+        config.sops.templates."tandoor.env".path;
       services.tandoor-recipes = {
         enable = true;
         port = 45530;
@@ -20,9 +38,9 @@
 
         extraConfig = {
           ALLOWED_HOSTS = "recipes.theless.one";
-          SECRET_KEY_FILE = config.sops.secrets.tandoor.path;
+          SECRET_KEY_FILE = config.sops.secrets."tandoor/secret".path;
 
-          MEDIA_ROOT = "/var/lib/tandoor-recipes";
+          MEDIA_ROOT = "/var/lib/tandoor-recipes/media";
           DB_ENGINE = "django.db.backends.postgresql";
           POSTGRES_HOST = "/run/postgresql";
           POSTGRES_USER = "tandoor_recipes";
@@ -35,17 +53,15 @@
           ACCOUNT_EMAIL_SUBJECT_PREFIX = "[Recipes] ";
           EMAIL_HOST = "mail.theless.one";
           EMAIL_PORT = 465;
-          DEFAULT_FROM_EMAIL = "recipes@theless.one";
-          EMAIL_HOST_USER = "recipes@theless.one";
-          EMAIL_HOST_PASSWORD_FILE = config.sops.secrets.tandoor_email.path;
+          DEFAULT_FROM_EMAIL = "no-reply@theless.one";
+          EMAIL_HOST_USER = "no-reply@theless.one";
+          EMAIL_HOST_PASSWORD_FILE = config.sops.secrets.no-reply-password.path;
           EMAIL_USE_TLS = 0;
           EMAIL_USE_SSL = 1;
-        };
-      };
 
-      mailserver.accounts."recipes@theless.one" = {
-        sendOnly = true;
-        hashedPasswordFile = config.sops.secrets."mailserver/recipes".path;
+          # OIDC
+          SOCIAL_PROVIDERS = "allauth.socialaccount.providers.openid_connect";
+        };
       };
 
       systemd.tmpfiles.settings.tandoor-recipes."/var/lib/tandoor-recipes".Z = {

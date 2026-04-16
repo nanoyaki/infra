@@ -1,6 +1,7 @@
 {
   flake.nixosModules.sentinel-pangolin =
     {
+      lib,
       pkgs,
       config,
       ...
@@ -39,14 +40,11 @@
         21820
       ];
 
+      # Dummy value since we use acme
+      services.traefik.environmentFiles = [ "/run/secrets/dummy" ];
+      systemd.services.traefik.serviceConfig.ExecStartPre = lib.mkForce "echo dummy";
+
       services.gerbil.environmentFile = "/etc/nixos/secrets/gerbil.env";
-      services.traefik.environmentFiles = [ tpl."theless.one-acme.env".path ];
-      services.traefik.dynamicConfigOptions.tls.certificates = [
-        {
-          certFile = "/var/lib/acme/nanoyaki.space/cert.pem";
-          keyFile = "/var/lib/acme/nanoyaki.space/key.pem";
-        }
-      ];
       services.pangolin = {
         enable = true;
         openFirewall = true;

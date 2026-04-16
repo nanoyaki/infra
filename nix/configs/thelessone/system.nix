@@ -32,13 +32,14 @@
       thelessone-mailserver
       thelessone-davis
       thelessone-papra
+      thelessone-pocket-id
+      thelessone-ocis
       # thelessone-radicale
       thelessone-caddy
       thelessone-newt
       thelessone-kavita
       thelessone-vaultwarden
       thelessone-nanoyakiEvents
-      thelessone-copyparty
       thelessone-forgejo
       # thelessone-tangledAppview
       thelessone-dashboard

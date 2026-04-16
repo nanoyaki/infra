@@ -108,21 +108,13 @@
               Downloads.style = "column";
             }
             {
-              "User services" = {
-                style = "column";
-              };
+              "User services".style = "column";
             }
             {
-              Manga = {
-                style = "row";
-                columns = 4;
-              };
+              Manga.style = "column";
             }
             {
-              "Arr admin" = {
-                style = "row";
-                columns = 3;
-              };
+              "Arr admin".style = "column";
             }
           ];
 
@@ -282,11 +274,27 @@
                 };
               }
               {
-                Copyparty = rec {
-                  icon = "copyparty.svg";
-                  href = "https://files.theless.one";
+                Pangolin = rec {
+                  icon = "pangolin.svg";
+                  href = "https://pangolin.theless.one";
                   siteMonitor = href;
-                  description = "File server";
+                  description = "VPN and reverse proxy";
+                };
+              }
+              {
+                "Pocket ID" = rec {
+                  icon = "pocket-id.svg";
+                  href = "https://id.theless.one";
+                  siteMonitor = href;
+                  description = "Identity management";
+                };
+              }
+              {
+                Cloud = rec {
+                  icon = "owncloud.svg";
+                  href = "https://cloud.theless.one";
+                  siteMonitor = href;
+                  description = "Cloud storage";
                 };
               }
               {
@@ -303,6 +311,14 @@
                   href = "https://git.theless.one";
                   siteMonitor = href;
                   description = "Code forge";
+                };
+              }
+              {
+                Papra = rec {
+                  icon = "papra.svg";
+                  href = "https://papra.theless.one";
+                  siteMonitor = href;
+                  description = "Document archive";
                 };
               }
             ];
@@ -399,18 +415,6 @@
                   href = "https://manga.theless.one";
                   siteMonitor = href;
                   description = "Thomas' mangas";
-                  widget = {
-                    type = "suwayomi";
-                    url = href;
-                  };
-                };
-              }
-              {
-                Nik = rec {
-                  icon = "suwayomi.svg";
-                  href = "https://nik-manga.theless.one";
-                  siteMonitor = href;
-                  description = "Nik's mangas";
                   widget = {
                     type = "suwayomi";
                     url = href;

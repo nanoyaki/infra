@@ -13,7 +13,7 @@
         settings.port = 7500;
       };
 
-      thelessone.caddy.vHost."actual.theless.one" = {
+      thelessone.caddy.vHost."finances.theless.one" = {
         proxy = { inherit (cfg.settings) port; };
         pangolin.name = "Actual";
       };

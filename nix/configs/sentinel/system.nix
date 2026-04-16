@@ -17,7 +17,7 @@
       sentinel-devices
       sentinel-locale
       sentinel-networking
-      sentinel-firewall
+      sentinel-traefik
       sentinel-ssh
       sentinel-pangolin
       sentinel-acme
