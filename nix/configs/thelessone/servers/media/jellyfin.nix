@@ -1,3 +1,5 @@
+{ withSystem, ... }:
+
 {
   flake.nixosModules.thelessone-jellyfin =
     { pkgs, config, ... }:
@@ -9,9 +11,7 @@
     {
       services.jellyfin = {
         enable = true;
-        package = pkgs.jellyfin.override {
-          jellyfin-web = pkgs.jellyfin-web-with-plugins;
-        };
+        package = pkgs.jellyfin.override { inherit (pkgs) jellyfin-web; };
         inherit (config.thelessone.arr) group;
       };
 
@@ -49,4 +49,47 @@
         };
       };
     };
+
+  perSystem =
+    { pkgs, ... }:
+
+    {
+      packages.jellyfin-web = pkgs.symlinkJoin {
+        inherit (pkgs.jellyfin-web) pname version;
+        paths = [ pkgs.jellyfin-web ];
+        postBuild =
+          let
+            introSkipper = ''<script src="configurationpage?name=skip-intro-button.js"></script>'';
+            episodePreview =
+              ''<script plugin="InPlayerEpisodePreview" version="1.5.0.0"''
+              + ''src="/InPlayerPreview/ClientScript"></script>'';
+          in
+          ''
+            install -m600 $out/share/jellyfin-web/main.jellyfin.bundle.js \
+              main.jellyfin.bundle.js
+            sed -i 's/enableBackdrops:function(){return [^}]*}/enableBackdrops:function(){return E}/' \
+              main.jellyfin.bundle.js
+            install -m444 main.jellyfin.bundle.js \
+              $out/share/jellyfin-web/main.jellyfin.bundle.js
+
+            install -m600 $out/share/jellyfin-web/index.html \
+              index.html
+            sed -i 's#</head>#${episodePreview}${introSkipper}</head>#' \
+              index.html
+            install -m444 index.html \
+              $out/share/jellyfin-web/index.html
+          '';
+      };
+    };
+
+  flake.overlays.jellyfin-web =
+    _: prev:
+
+    withSystem prev.stdenv.hostPlatform.system (
+      { config, ... }:
+
+      {
+        inherit (config.packages) jellyfin-web;
+      }
+    );
 }
