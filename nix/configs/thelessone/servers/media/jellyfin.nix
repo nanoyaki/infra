@@ -54,15 +54,12 @@
     { pkgs, ... }:
 
     {
-      packages.jellyfin-web = pkgs.symlinkJoin {
-        inherit (pkgs.jellyfin-web) pname version;
-        paths = [ pkgs.jellyfin-web ];
-        postBuild =
+      packages.jellyfin-web = pkgs.jellyfin-web.overrideAttrs {
+        postInstall =
           let
-            introSkipper = ''<script src="configurationpage?name=skip-intro-button.js"></script>'';
             episodePreview =
               ''<script plugin="InPlayerEpisodePreview" version="1.5.0.0"''
-              + ''src="/InPlayerPreview/ClientScript"></script>'';
+              + ''src="/InPlayerPreview/ClientScript" async></script>'';
           in
           ''
             install -m600 $out/share/jellyfin-web/main.jellyfin.bundle.js \
@@ -74,7 +71,7 @@
 
             install -m600 $out/share/jellyfin-web/index.html \
               index.html
-            sed -i 's#</head>#${episodePreview}${introSkipper}</head>#' \
+            sed -i 's#</body>#${episodePreview}</body>#' \
               index.html
             install -m444 index.html \
               $out/share/jellyfin-web/index.html
