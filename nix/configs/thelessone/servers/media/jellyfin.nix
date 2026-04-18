@@ -54,14 +54,20 @@
     { pkgs, ... }:
 
     {
-      packages.jellyfin-web = pkgs.jellyfin-web.overrideAttrs {
+      packages.jellyfin-web = pkgs.jellyfin-web.overrideAttrs (prevAttrs: {
+        postPatch = prevAttrs.postPatch or "" + ''
+          sed -i 's/elem\.target = [^;]*/elem.target = "_self"' \
+            src/controllers/session/login/index.js
+        '';
+
         postInstall =
           let
             episodePreview =
               ''<script plugin="InPlayerEpisodePreview" version="1.5.0.0"''
               + ''src="/InPlayerPreview/ClientScript" async></script>'';
           in
-          ''
+          prevAttrs.postInstall or ""
+          + ''
             install -m600 $out/share/jellyfin-web/main.jellyfin.bundle.js \
               main.jellyfin.bundle.js
             sed -i 's/enableBackdrops:function(){return [^}]*}/enableBackdrops:function(){return E}/' \
@@ -76,7 +82,7 @@
             install -m444 index.html \
               $out/share/jellyfin-web/index.html
           '';
-      };
+      });
     };
 
   flake.overlays.jellyfin-web =
