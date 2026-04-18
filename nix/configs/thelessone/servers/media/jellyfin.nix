@@ -56,7 +56,8 @@
     {
       packages.jellyfin-web = pkgs.jellyfin-web.overrideAttrs (prevAttrs: {
         postPatch = prevAttrs.postPatch or "" + ''
-          sed -i 's/elem\.target = [^;]*/elem.target = "_self"' \
+
+          sed -i 's/elem\.target = [^;]*/elem.target = "_self"/' \
             src/controllers/session/login/index.js
         '';
 
