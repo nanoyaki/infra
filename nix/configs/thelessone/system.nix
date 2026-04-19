@@ -33,7 +33,7 @@
       thelessone-davis
       thelessone-papra
       thelessone-pocket-id
-      thelessone-ocis
+      thelessone-oxicloud
       # thelessone-radicale
       thelessone-caddy
       thelessone-newt
