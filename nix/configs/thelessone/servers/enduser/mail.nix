@@ -17,6 +17,11 @@
         "mailserver/aslija-business" = { };
       };
 
+      networking.firewall.allowedTCPPorts = [
+        465
+        993
+      ];
+
       mailserver = {
         enable = true;
         virusScanning = true;
@@ -122,32 +127,6 @@
       systemd.services.rspamd = {
         wants = [ "network-online.target" ];
         after = [ "network-online.target" ];
-      };
-
-      services.newt.blueprint.public-resources.smtp = {
-        name = "SMTP";
-        protocol = "tcp";
-        proxy-port = 465;
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            port = 465;
-          }
-        ];
-      };
-
-      services.newt.blueprint.public-resources.imap = {
-        name = "IMAP";
-        protocol = "tcp";
-        proxy-port = 993;
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            port = 993;
-          }
-        ];
       };
 
       systemd.services.borgbackup-job-mail.unitConfig.RequiresMountsFor = "/mnt/raid";

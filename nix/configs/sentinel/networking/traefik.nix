@@ -5,8 +5,6 @@
     {
       # Tunneled ports
       networking.firewall.allowedTCPPorts = [
-        993 # IMAP
-        465 # SMTP
         22 # Forgejo SSH
 
         25565 # Minecraft
@@ -21,8 +19,6 @@
 
       services.traefik = {
         staticConfigOptions.entryPoints = {
-          tcp-993.address = ":993/tcp";
-          tcp-465.address = ":465/tcp";
           tcp-22.address = ":22/tcp";
 
           tcp-25565.address = ":25565/tcp";

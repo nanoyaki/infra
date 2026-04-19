@@ -1,7 +1,6 @@
 {
   flake.nixosModules.sentinel-pangolin =
     {
-      lib,
       pkgs,
       config,
       ...
@@ -40,11 +39,9 @@
         21820
       ];
 
-      # Dummy value since we use acme
-      services.traefik.environmentFiles = [ "/run/secrets/dummy" ];
-      systemd.services.traefik.serviceConfig.ExecStartPre = lib.mkForce "echo dummy";
-
-      services.gerbil.environmentFile = "/etc/nixos/secrets/gerbil.env";
+      # Required by pangolin
+      services.traefik.environmentFiles = [ tpl."theless.one-acme.env".path ];
+      services.gerbil.environmentFile = tpl."pangolin.env".path;
       services.pangolin = {
         enable = true;
         openFirewall = true;
@@ -82,7 +79,7 @@
             smtp_user = "no-reply@theless.one";
             no_reply = "no-reply@theless.one";
 
-            smtp_host = "at01.theless.one";
+            smtp_host = "mail.theless.one";
             smtp_port = 465;
             smtp_secure = true;
           };
