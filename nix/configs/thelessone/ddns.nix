@@ -85,6 +85,10 @@
             subdomain = "mail";
           }
           {
+            domain = "theless.one";
+            subdomain = "dav";
+          }
+          {
             secretapikey = config.sops.placeholder."porkbun-ashley/secret-api-key";
             apikey = config.sops.placeholder."porkbun-ashley/api-key";
             domain = "aslija.com";

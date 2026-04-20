@@ -63,7 +63,7 @@
       };
 
       services.phpfpm.pools.davis.settings."listen.group" = "caddy";
-      thelessone.caddy.vHost."http://dav.theless.one".extraConfig = ''
+      thelessone.caddy.vHost."dav.theless.one".extraConfig = ''
         root * ${cfg.package}/public
         encode zstd gzip
         header {
@@ -90,21 +90,6 @@
         }
         redir @dotfiles /
       '';
-
-      services.newt.blueprint.public-resources.davis = {
-        name = "Davis";
-        protocol = "http";
-        full-domain = "dav.theless.one";
-        host-header = "dav.theless.one";
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            port = 80;
-            method = "http";
-          }
-        ];
-      };
 
       systemd.tmpfiles.settings."10-davis" = {
         "/srv/webdav" = dirCfg;

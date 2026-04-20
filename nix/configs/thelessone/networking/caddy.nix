@@ -134,6 +134,7 @@
       };
 
       config = {
+        networking.firewall.allowedTCPPorts = [ 443 ];
         networking.firewall.interfaces.wg0.allowedTCPPorts = [
           80
           443
