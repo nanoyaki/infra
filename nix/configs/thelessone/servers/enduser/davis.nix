@@ -42,7 +42,7 @@
           PUBLIC_CALENDARS_ENABLED = true;
 
           AUTH_METHOD = "IMAP";
-          IMAP_AUTH_URL = "imap.theless.one:993";
+          IMAP_AUTH_URL = "mail.theless.one:993";
           IMAP_ENCRYPTION_METHOD = "tls";
           IMAP_CERTIFICATE_VALIDATION = true;
           IMAP_AUTH_USER_AUTOCREATE = true;
@@ -63,33 +63,36 @@
       };
 
       services.phpfpm.pools.davis.settings."listen.group" = "caddy";
-      thelessone.caddy.vHost."dav.theless.one".extraConfig = ''
-        root * ${cfg.package}/public
-        encode zstd gzip
-        header {
-          -Server
-          -X-Powered-By
-          Strict-Transport-Security max-age=31536000;
-          X-Content-Type-Options nosniff
-          Referrer-Policy no-referrer-when-downgrade
-        }
+      thelessone.caddy.vHost."dav.theless.one" = {
+        extraConfig = ''
+          root * ${cfg.package}/public
+          encode zstd gzip
+          header {
+            -Server
+            -X-Powered-By
+            Strict-Transport-Security max-age=31536000;
+            X-Content-Type-Options nosniff
+            Referrer-Policy no-referrer-when-downgrade
+          }
 
-        @caldav path_regexp ^/\.well-known/(caldav|carddav)$
-        redir @caldav /dav/ 301
+          @caldav path_regexp ^/\.well-known/(caldav|carddav)$
+          redir @caldav /dav/ 301
 
-        php_fastcgi unix/${config.services.phpfpm.pools.davis.socket} {
-          root ${cfg.package}/public
-          resolve_root_symlink
-        }
+          php_fastcgi unix/${config.services.phpfpm.pools.davis.socket} {
+            root ${cfg.package}/public
+            resolve_root_symlink
+          }
 
-        file_server
+          file_server
 
-        @dotfiles {
-          not path /.well-known/*
-          path /.*
-        }
-        redir @dotfiles /
-      '';
+          @dotfiles {
+            not path /.well-known/*
+            path /.*
+          }
+          redir @dotfiles /
+        '';
+        localOnly = false;
+      };
 
       systemd.tmpfiles.settings."10-davis" = {
         "/srv/webdav" = dirCfg;

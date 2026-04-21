@@ -109,11 +109,7 @@
             tcp-ports = "80,443";
             udp-ports = "";
             disable-icmp = false;
-            roles = [
-              "Arr-Admin"
-              "Member"
-              "Adult"
-            ];
+            roles = [ "Member" ];
           };
         }) (pangolinHosts attrset);
 
