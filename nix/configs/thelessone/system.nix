@@ -156,6 +156,7 @@
         "steam"
         "steam-unwrapped"
         "discord"
+        "vesktop"
 
         # minecraft
         "neoforge"
