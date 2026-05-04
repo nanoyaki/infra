@@ -106,12 +106,12 @@
 
       self.mainUser = "thelessone";
       self.mainUserHome = "/home/thelessone";
-      sops.secrets."users/thelessone".neededForUsers = true;
+      sops.secrets."users/thelessone-new".neededForUsers = true;
       users.users.thelessone = {
         isNormalUser = true;
         description = "Thelessone";
         extraGroups = [ "wheel" ];
-        hashedPasswordFile = config.sops.secrets."users/thelessone".path;
+        hashedPasswordFile = config.sops.secrets."users/thelessone-new".path;
       };
 
       security.sudo.extraRules = [
