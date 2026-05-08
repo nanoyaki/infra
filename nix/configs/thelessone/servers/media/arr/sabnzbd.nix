@@ -34,7 +34,7 @@
 
       services.vopono.allowedTCPPorts = [ 8080 ];
 
-      systemd.services.sabnzbd.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.sabnzbd.wantedBy = lib.mkForce [ "server-services.target" ];
       services.sabnzbd = {
         enable = true;
         inherit (config.thelessone.arr) group;

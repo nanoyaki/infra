@@ -3,7 +3,7 @@
     { lib, config, ... }:
 
     {
-      systemd.services.seerr.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.seerr.wantedBy = lib.mkForce [ "server-services.target" ];
       services.seerr.enable = true;
 
       thelessone.caddy.vHost."jellyseerr.theless.one" = {

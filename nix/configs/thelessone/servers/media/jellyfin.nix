@@ -14,7 +14,7 @@
     in
 
     {
-      systemd.services.jellyfin.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.jellyfin.wantedBy = lib.mkForce [ "server-services.target" ];
       services.jellyfin = {
         enable = true;
         package = pkgs.jellyfin.override { inherit (pkgs) jellyfin-web; };

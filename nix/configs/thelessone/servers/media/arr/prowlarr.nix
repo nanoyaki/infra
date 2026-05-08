@@ -5,7 +5,7 @@
     {
       services.vopono.systemd.services.prowlarr = [ config.services.prowlarr.settings.server.port ];
 
-      systemd.services.prowlarr.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.prowlarr.wantedBy = lib.mkForce [ "server-services.target" ];
       services.prowlarr = {
         enable = true;
         openFirewall = true;

@@ -9,7 +9,7 @@
     {
       sops.secrets.pocket-id-encryption.owner = "pocket-id";
 
-      systemd.services.pocket-id.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.pocket-id.wantedBy = lib.mkForce [ "server-services.target" ];
       services.pocket-id.enable = true;
       services.pocket-id.settings = {
         APP_URL = "https://id.theless.one";

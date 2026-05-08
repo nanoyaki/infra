@@ -22,7 +22,7 @@
         restartUnits = [ "vaultwarden.service" ];
       };
 
-      systemd.services.vaultwarden.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.vaultwarden.wantedBy = lib.mkForce [ "server-services.target" ];
       services.vaultwarden = {
         enable = true;
         dbBackend = "sqlite";

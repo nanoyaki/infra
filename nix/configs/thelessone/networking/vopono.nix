@@ -30,7 +30,7 @@
         '';
       };
 
-      systemd.services.vopono.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.vopono.wantedBy = lib.mkForce [ "server-services.target" ];
       services.vopono = {
         enable = true;
 

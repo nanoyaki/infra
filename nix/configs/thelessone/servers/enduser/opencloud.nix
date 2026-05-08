@@ -25,8 +25,8 @@
         OC_JWT_SECRET = plh."opencloud/jwt-secret";
       };
 
-      systemd.services.opencloud-init-config.wantedBy = lib.mkForce [ "server-services.nix" ];
-      systemd.services.opencloud.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.opencloud-init-config.wantedBy = lib.mkForce [ "server-services.target" ];
+      systemd.services.opencloud.wantedBy = lib.mkForce [ "server-services.target" ];
       services.opencloud = {
         enable = true;
         url = "https://cloud.theless.one";

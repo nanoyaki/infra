@@ -181,7 +181,7 @@
         "forgejo/mailer-password".owner = cfg.user;
       };
 
-      systemd.services.forgejo.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.forgejo.wantedBy = lib.mkForce [ "server-services.target" ];
       services.forgejo = {
         enable = true;
         lfs.enable = true;

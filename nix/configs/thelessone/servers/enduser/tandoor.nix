@@ -34,7 +34,7 @@
         };
       };
 
-      systemd.services.tandoor-recipes.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.tandoor-recipes.wantedBy = lib.mkForce [ "server-services.target" ];
       systemd.services.tandoor-recipes.serviceConfig.EnvironmentFile =
         config.sops.templates."tandoor.env".path;
       services.tandoor-recipes = {

@@ -3,7 +3,7 @@
     { lib, pkgs, ... }:
 
     {
-      systemd.services.minecraft-server-proxy.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.minecraft-server-proxy.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.proxy = {
         enable = true;
         autoStart = true;

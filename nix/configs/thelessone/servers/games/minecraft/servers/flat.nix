@@ -8,7 +8,7 @@
     }:
 
     {
-      systemd.services.minecraft-server-creative-flat.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.minecraft-server-creative-flat.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.creative-flat = {
         enable = true;
         package = pkgs.fabricServers.fabric-1_21_11;

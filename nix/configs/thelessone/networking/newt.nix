@@ -46,7 +46,7 @@
 
       environment.systemPackages = [ pkgs.pangolin-cli ];
 
-      systemd.services.newt.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.newt.wantedBy = lib.mkForce [ "server-services.target" ];
       services.newt = {
         enable = true;
         environmentFile = tpl."newt.env".path;

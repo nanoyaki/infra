@@ -164,7 +164,7 @@
         thelessone.caddy.vHost."http://na55l3zepb4kcg0zryqbdnay.theless.one".extraConfig =
           mkFileServer "/var/www/theless.one";
 
-        systemd.services.caddy.wantedBy = lib.mkForce [ "server-services.nix" ];
+        systemd.services.caddy.wantedBy = lib.mkForce [ "server-services.target" ];
         services.caddy = {
           enable = true;
           enableReload = true;

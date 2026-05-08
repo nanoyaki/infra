@@ -55,7 +55,7 @@
         pangolin.name = "Homepage Dashboard";
       };
 
-      systemd.services.homepage-dashboard.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.homepage-dashboard.wantedBy = lib.mkForce [ "server-services.target" ];
       services.homepage-dashboard = {
         enable = true;
         openFirewall = true;

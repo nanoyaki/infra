@@ -3,7 +3,7 @@
     { lib, config, ... }:
 
     {
-      systemd.services.bazarr.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.bazarr.wantedBy = lib.mkForce [ "server-services.target" ];
       services.bazarr = {
         enable = true;
         inherit (config.thelessone.arr) group;

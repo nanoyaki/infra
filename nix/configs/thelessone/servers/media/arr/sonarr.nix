@@ -5,7 +5,7 @@
     {
       services.vopono.allowedTCPPorts = [ config.services.sonarr.settings.server.port ];
 
-      systemd.services.sonarr.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.sonarr.wantedBy = lib.mkForce [ "server-services.target" ];
       services.sonarr = {
         enable = true;
         inherit (config.thelessone.arr) group;

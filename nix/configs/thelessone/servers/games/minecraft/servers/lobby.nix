@@ -5,7 +5,7 @@
     { lib, pkgs, ... }:
 
     {
-      systemd.services.minecraft-server-lobby.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.minecraft-server-lobby.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.lobby = {
         enable = true;
         enableReload = true;

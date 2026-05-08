@@ -13,7 +13,7 @@
     in
 
     {
-      systemd.services.minecraft-server-modded-test.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.minecraft-server-modded-test.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.modded-test = {
         enable = true;
 

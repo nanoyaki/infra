@@ -7,7 +7,7 @@
     in
 
     {
-      systemd.services.papra.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.papra.wantedBy = lib.mkForce [ "server-services.target" ];
       services.papra.enable = true;
       services.papra.environment = {
         SERVER_SERVE_PUBLIC_DIR = true;

@@ -8,7 +8,7 @@
     }:
 
     {
-      systemd.services.minecraft-server-smp-creative.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.minecraft-server-smp-creative.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.smp-creative = {
         enable = true;
         package = pkgs.fabricServers.fabric-1_21_11;

@@ -3,8 +3,8 @@
     { lib, config, ... }:
 
     {
-      systemd.services.immich-server.wantedBy = lib.mkForce [ "server-services.nix" ];
-      systemd.services.immich-machine-learning.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.immich-server.wantedBy = lib.mkForce [ "server-services.target" ];
+      systemd.services.immich-machine-learning.wantedBy = lib.mkForce [ "server-services.target" ];
       services.immich = {
         enable = true;
         accelerationDevices = [ "/dev/dri/renderD128" ];
@@ -15,7 +15,7 @@
         "render"
       ];
 
-      systemd.services.immich-public-proxy.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.immich-public-proxy.wantedBy = lib.mkForce [ "server-services.target" ];
       services.immich-public-proxy = {
         enable = true;
         immichUrl = "http://localhost:2283";

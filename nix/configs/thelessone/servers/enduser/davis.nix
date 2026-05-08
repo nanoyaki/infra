@@ -23,8 +23,8 @@
         smtp://no-reply:${config.sops.placeholder.no-reply-password}@theless.one
       '';
 
-      systemd.services.davis-env-setup.wantedBy = lib.mkForce [ "server-services.nix" ];
-      systemd.services.davis-db-migrate.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.davis-env-setup.wantedBy = lib.mkForce [ "server-services.target" ];
+      systemd.services.davis-db-migrate.wantedBy = lib.mkForce [ "server-services.target" ];
       services.davis = {
         enable = true;
         nginx = null;

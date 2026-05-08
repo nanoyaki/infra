@@ -23,7 +23,7 @@
         };
       };
 
-      systemd.services.valheim.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.valheim.wantedBy = lib.mkForce [ "server-services.target" ];
       services.valheim = {
         enable = true;
         openFirewall = true;

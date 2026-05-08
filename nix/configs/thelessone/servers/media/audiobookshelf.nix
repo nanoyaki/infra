@@ -15,7 +15,7 @@
         fsType = "none";
       };
 
-      systemd.services.audiobookshelf.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.audiobookshelf.wantedBy = lib.mkForce [ "server-services.target" ];
       systemd.services.audiobookshelf.unitConfig.RequiresMountsFor = "/mnt/raid/audiobookshelf";
 
       thelessone.caddy.vHost."audiobookshelf.theless.one" = {

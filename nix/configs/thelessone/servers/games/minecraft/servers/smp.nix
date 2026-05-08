@@ -13,7 +13,7 @@
     in
 
     {
-      systemd.services.minecraft-server-smp.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.minecraft-server-smp.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.smp = {
         enable = true;
         package = pkgs.fabricServers.fabric-1_21_11;

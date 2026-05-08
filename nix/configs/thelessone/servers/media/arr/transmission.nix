@@ -27,7 +27,7 @@
       services.vopono.systemd.services.transmission = config.services.transmission.settings.rpc-port;
 
       systemd.services.transmission = {
-        wantedBy = lib.mkForce [ "server-services.nix" ];
+        wantedBy = lib.mkForce [ "server-services.target" ];
         environment.TR_SAVE_VERSION_FORMAT = "4";
         unitConfig.RequiresMountsFor = "/mnt/raid";
       };
@@ -69,7 +69,7 @@
       services.vopono.allowedTCPPorts = [ config.services.flood.port ];
 
       systemd.services.flood = {
-        wantedBy = lib.mkForce [ "server-services.nix" ];
+        wantedBy = lib.mkForce [ "server-services.target" ];
         requires = [ "transmission.service" ];
         after = [ "transmission.service" ];
         serviceConfig.RestrictAddressFamilies = [ "AF_NETLINK" ];

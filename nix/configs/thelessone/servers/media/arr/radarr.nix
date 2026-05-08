@@ -5,7 +5,7 @@
     {
       services.vopono.allowedTCPPorts = [ config.services.radarr.settings.server.port ];
 
-      systemd.services.radarr.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.radarr.wantedBy = lib.mkForce [ "server-services.target" ];
       services.radarr = {
         enable = true;
         inherit (config.thelessone.arr) group;

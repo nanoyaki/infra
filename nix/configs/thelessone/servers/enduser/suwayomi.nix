@@ -35,9 +35,9 @@
       imports = [ inputs.self.nixosModules.suwayomi ];
 
       systemd.services = {
-        suwayomi-mei.wantedBy = lib.mkForce [ "server-services.nix" ];
-        suwayomi-hana.wantedBy = lib.mkForce [ "server-services.nix" ];
-        suwayomi-thomas.wantedBy = lib.mkForce [ "server-services.nix" ];
+        suwayomi-mei.wantedBy = lib.mkForce [ "server-services.target" ];
+        suwayomi-hana.wantedBy = lib.mkForce [ "server-services.target" ];
+        suwayomi-thomas.wantedBy = lib.mkForce [ "server-services.target" ];
       };
 
       services.suwayomi = {

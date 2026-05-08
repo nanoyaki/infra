@@ -7,7 +7,7 @@
     in
 
     {
-      systemd.services.actual.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.actual.wantedBy = lib.mkForce [ "server-services.target" ];
       services.actual = {
         enable = true;
         openFirewall = true;
