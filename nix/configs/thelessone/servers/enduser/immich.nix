@@ -1,8 +1,10 @@
 {
   flake.nixosModules.thelessone-immich =
-    { config, ... }:
+    { lib, config, ... }:
 
     {
+      systemd.services.immich-server.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.immich-machine-learning.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.immich = {
         enable = true;
         accelerationDevices = [ "/dev/dri/renderD128" ];
@@ -13,6 +15,7 @@
         "render"
       ];
 
+      systemd.services.immich-public-proxy.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.immich-public-proxy = {
         enable = true;
         immichUrl = "http://localhost:2283";

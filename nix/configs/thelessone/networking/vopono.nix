@@ -2,7 +2,7 @@
 
 {
   flake.nixosModules.thelessone-vopono =
-    { config, ... }:
+    { lib, config, ... }:
 
     {
       imports = [ inputs.nanomodules.nixosModules.vopono ];
@@ -30,6 +30,7 @@
         '';
       };
 
+      systemd.services.vopono.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.vopono = {
         enable = true;
 

@@ -1,8 +1,14 @@
 {
   flake.nixosModules.thelessone-minecraftCreative =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     {
+      systemd.services.minecraft-server-smp-creative.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.minecraft-servers'.servers.smp-creative = {
         enable = true;
         package = pkgs.fabricServers.fabric-1_21_11;

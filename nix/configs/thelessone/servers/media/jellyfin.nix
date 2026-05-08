@@ -2,13 +2,19 @@
 
 {
   flake.nixosModules.thelessone-jellyfin =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     let
       backupPath = "/var/lib/jellyfin";
     in
 
     {
+      systemd.services.jellyfin.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.jellyfin = {
         enable = true;
         package = pkgs.jellyfin.override { inherit (pkgs) jellyfin-web; };

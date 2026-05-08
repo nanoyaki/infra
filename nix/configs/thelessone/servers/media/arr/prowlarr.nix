@@ -1,10 +1,11 @@
 {
   flake.nixosModules.thelessone-prowlarr =
-    { config, ... }:
+    { lib, config, ... }:
 
     {
       services.vopono.systemd.services.prowlarr = [ config.services.prowlarr.settings.server.port ];
 
+      systemd.services.prowlarr.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.prowlarr = {
         enable = true;
         openFirewall = true;

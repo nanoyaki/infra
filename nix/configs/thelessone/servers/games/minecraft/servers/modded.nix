@@ -1,6 +1,7 @@
 {
   flake.nixosModules.thelessone-minecraftModded =
     {
+      lib,
       pkgs,
       config,
       ...
@@ -12,6 +13,7 @@
     in
 
     {
+      systemd.services.minecraft-server-modded-test.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.minecraft-servers'.servers.modded-test = {
         enable = true;
 

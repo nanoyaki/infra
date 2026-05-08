@@ -1,6 +1,11 @@
 {
   flake.nixosModules.thelessone-newt =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     let
       plh = config.sops.placeholder;
@@ -41,6 +46,7 @@
 
       environment.systemPackages = [ pkgs.pangolin-cli ];
 
+      systemd.services.newt.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.newt = {
         enable = true;
         environmentFile = tpl."newt.env".path;

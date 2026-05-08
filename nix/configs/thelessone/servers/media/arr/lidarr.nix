@@ -1,11 +1,11 @@
 {
   flake.nixosModules.thelessone-lidarr =
-    { config, ... }:
+    { lib, config, ... }:
 
     {
       services.vopono.allowedTCPPorts = [ config.services.lidarr.settings.server.port ];
 
-      systemd.services.lidarr.unitConfig.RequiresMountsFor = "/mnt/raid";
+      systemd.services.lidarr.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.lidarr = {
         enable = true;
         inherit (config.thelessone.arr) group;

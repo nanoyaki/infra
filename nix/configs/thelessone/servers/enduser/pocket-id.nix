@@ -1,6 +1,6 @@
 {
   flake.nixosModules.thelessone-pocket-id =
-    { config, ... }:
+    { lib, config, ... }:
 
     let
       cfg = config.services.pocket-id;
@@ -9,6 +9,7 @@
     {
       sops.secrets.pocket-id-encryption.owner = "pocket-id";
 
+      systemd.services.pocket-id.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.pocket-id.enable = true;
       services.pocket-id.settings = {
         APP_URL = "https://id.theless.one";

@@ -1,6 +1,7 @@
 {
   flake.nixosModules.thelessone-minecraftSmp =
     {
+      lib,
       pkgs,
       config,
       ...
@@ -12,6 +13,7 @@
     in
 
     {
+      systemd.services.minecraft-server-smp.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.minecraft-servers'.servers.smp = {
         enable = true;
         package = pkgs.fabricServers.fabric-1_21_11;

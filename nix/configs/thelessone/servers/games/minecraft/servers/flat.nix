@@ -1,8 +1,14 @@
 {
   flake.nixosModules.thelessone-minecraftFlat =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     {
+      systemd.services.minecraft-server-creative-flat.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.minecraft-servers'.servers.creative-flat = {
         enable = true;
         package = pkgs.fabricServers.fabric-1_21_11;

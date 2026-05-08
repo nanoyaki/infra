@@ -2,7 +2,7 @@
 
 {
   flake.nixosModules.thelessone-mailserver =
-    { config, ... }:
+    { lib, config, ... }:
 
     {
       imports = [ inputs.snm.nixosModules.mailserver ];
@@ -22,6 +22,8 @@
         993
       ];
 
+      systemd.services.postfix.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.dovecot2.wantedBy = lib.mkForce [ "server-services.nix" ];
       mailserver = {
         enable = true;
         virusScanning = true;

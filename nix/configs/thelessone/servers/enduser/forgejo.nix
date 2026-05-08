@@ -1,6 +1,7 @@
 {
   flake.nixosModules.thelessone-forgejo =
     {
+      lib,
       pkgs,
       config,
       ...
@@ -180,6 +181,7 @@
         "forgejo/mailer-password".owner = cfg.user;
       };
 
+      systemd.services.forgejo.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.forgejo = {
         enable = true;
         lfs.enable = true;

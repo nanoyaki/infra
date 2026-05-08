@@ -1,8 +1,9 @@
 {
   flake.nixosModules.thelessone-bazarr =
-    { config, ... }:
+    { lib, config, ... }:
 
     {
+      systemd.services.bazarr.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.bazarr = {
         enable = true;
         inherit (config.thelessone.arr) group;

@@ -3,6 +3,7 @@
 {
   flake.nixosModules.thelessone-valheim =
     {
+      lib,
       pkgs,
       config,
       ...
@@ -22,6 +23,7 @@
         };
       };
 
+      systemd.services.valheim.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.valheim = {
         enable = true;
         openFirewall = true;

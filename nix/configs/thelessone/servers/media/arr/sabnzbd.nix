@@ -34,7 +34,7 @@
 
       services.vopono.allowedTCPPorts = [ 8080 ];
 
-      systemd.services.sabnzbd.unitConfig.RequiresMountsFor = "/mnt/raid";
+      systemd.services.sabnzbd.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.sabnzbd = {
         enable = true;
         inherit (config.thelessone.arr) group;

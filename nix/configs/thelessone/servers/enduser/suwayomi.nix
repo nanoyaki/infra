@@ -3,6 +3,7 @@
 {
   flake.nixosModules.thelessone-suwayomi =
     {
+      lib,
       config,
       pkgs,
       ...
@@ -32,6 +33,12 @@
 
     {
       imports = [ inputs.self.nixosModules.suwayomi ];
+
+      systemd.services = {
+        suwayomi-mei.wantedBy = lib.mkForce [ "server-services.nix" ];
+        suwayomi-hana.wantedBy = lib.mkForce [ "server-services.nix" ];
+        suwayomi-thomas.wantedBy = lib.mkForce [ "server-services.nix" ];
+      };
 
       services.suwayomi = {
         enable = true;

@@ -1,6 +1,11 @@
 {
   flake.nixosModules.thelessone-opencloud =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     let
       plh = config.sops.placeholder;
@@ -20,6 +25,8 @@
         OC_JWT_SECRET = plh."opencloud/jwt-secret";
       };
 
+      systemd.services.opencloud-init-config.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.opencloud.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.opencloud = {
         enable = true;
         url = "https://cloud.theless.one";

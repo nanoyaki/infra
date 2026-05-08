@@ -15,7 +15,9 @@
         "nfsvers=4.2"
         "_netdev"
         "nofail"
+        "x-systemd.automount"
         "x-systemd.device-timeout=60s"
+        "x-systemd.mount-timeout=60s"
       ];
     };
 

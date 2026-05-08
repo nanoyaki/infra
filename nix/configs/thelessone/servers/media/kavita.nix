@@ -29,6 +29,8 @@
       };
 
       systemd.services.kavita = {
+        wantedBy = lib.mkForce [ "server-services.nix" ];
+
         serviceConfig.LoadCredential = lib.mkForce "";
         serviceConfig.ReadOnlyPaths = [ config.sops.templates."kavita.json".path ];
         preStart = lib.mkForce ''

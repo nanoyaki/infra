@@ -23,6 +23,7 @@
         homeMode = toString config.systemd.services.shoko.serviceConfig.StateDirectoryMode;
       };
 
+      systemd.services.shoko.wantedBy = lib.mkForce [ "server-services.nix" ];
       systemd.services.shoko.unitConfig.RequiresMountsFor = "/mnt/raid";
       systemd.services.shoko.serviceConfig = {
         DynamicUser = lib.mkForce false;

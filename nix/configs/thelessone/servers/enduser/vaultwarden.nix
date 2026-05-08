@@ -1,6 +1,11 @@
 {
   flake.nixosModules.thelessone-vaultwarden =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     {
       sops.secrets = {
@@ -17,6 +22,7 @@
         restartUnits = [ "vaultwarden.service" ];
       };
 
+      systemd.services.vaultwarden.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.vaultwarden = {
         enable = true;
         dbBackend = "sqlite";

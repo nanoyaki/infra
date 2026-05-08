@@ -1,12 +1,13 @@
 {
   flake.nixosModules.thelessone-actual =
-    { config, ... }:
+    { lib, config, ... }:
 
     let
       cfg = config.services.actual;
     in
 
     {
+      systemd.services.actual.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.actual = {
         enable = true;
         openFirewall = true;

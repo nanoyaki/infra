@@ -1,11 +1,11 @@
 {
   flake.nixosModules.thelessone-radarr =
-    { config, ... }:
+    { lib, config, ... }:
 
     {
       services.vopono.allowedTCPPorts = [ config.services.radarr.settings.server.port ];
 
-      systemd.services.radarr.unitConfig.RequiresMountsFor = "/mnt/raid";
+      systemd.services.radarr.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.radarr = {
         enable = true;
         inherit (config.thelessone.arr) group;

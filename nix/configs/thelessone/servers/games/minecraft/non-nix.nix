@@ -41,7 +41,7 @@
       systemd.services.non-nix-minecraft-servers = {
         enable = true;
         description = "Non-Nix Minecraft server autostart";
-        wantedBy = [ "multi-user.target" ];
+        wantedBy = [ "server-services.nix" ];
         after = [ "network.target" ];
 
         path = with pkgs; [

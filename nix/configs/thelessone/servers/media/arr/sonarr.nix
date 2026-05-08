@@ -1,11 +1,11 @@
 {
   flake.nixosModules.thelessone-sonarr =
-    { config, ... }:
+    { lib, config, ... }:
 
     {
       services.vopono.allowedTCPPorts = [ config.services.sonarr.settings.server.port ];
 
-      systemd.services.sonarr.unitConfig.RequiresMountsFor = "/mnt/raid";
+      systemd.services.sonarr.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.sonarr = {
         enable = true;
         inherit (config.thelessone.arr) group;

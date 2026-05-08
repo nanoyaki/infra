@@ -1,8 +1,9 @@
 {
   flake.nixosModules.thelessone-minecraftProxy =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
 
     {
+      systemd.services.minecraft-server-proxy.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.minecraft-servers'.servers.proxy = {
         enable = true;
         autoStart = true;

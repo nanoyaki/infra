@@ -1,6 +1,7 @@
 {
   flake.nixosModules.thelessone-transmission =
     {
+      lib,
       pkgs,
       config,
       ...
@@ -25,8 +26,12 @@
 
       services.vopono.systemd.services.transmission = config.services.transmission.settings.rpc-port;
 
-      systemd.services.transmission.environment.TR_SAVE_VERSION_FORMAT = "4";
-      systemd.services.transmission.unitConfig.RequiresMountsFor = "/mnt/raid";
+      systemd.services.transmission = {
+        wantedBy = lib.mkForce [ "server-services.nix" ];
+        environment.TR_SAVE_VERSION_FORMAT = "4";
+        unitConfig.RequiresMountsFor = "/mnt/raid";
+      };
+
       services.transmission = {
         enable = true;
         openRPCPort = true;
@@ -64,6 +69,7 @@
       services.vopono.allowedTCPPorts = [ config.services.flood.port ];
 
       systemd.services.flood = {
+        wantedBy = lib.mkForce [ "server-services.nix" ];
         requires = [ "transmission.service" ];
         after = [ "transmission.service" ];
         serviceConfig.RestrictAddressFamilies = [ "AF_NETLINK" ];

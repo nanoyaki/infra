@@ -1,6 +1,11 @@
 {
   flake.nixosModules.thelessone-tandoor =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     let
       cfg = config.services.tandoor-recipes;
@@ -29,6 +34,7 @@
         };
       };
 
+      systemd.services.tandoor-recipes.wantedBy = lib.mkForce [ "server-services.nix" ];
       systemd.services.tandoor-recipes.serviceConfig.EnvironmentFile =
         config.sops.templates."tandoor.env".path;
       services.tandoor-recipes = {
@@ -46,6 +52,7 @@
           POSTGRES_USER = "tandoor_recipes";
           POSTGRES_DB = "tandoor_recipes";
 
+          ENABLE_LLMS = 0;
           ENABLE_SIGNUP = 1;
           SPACE_AI_ENABLED = 0;
           ENABLE_PDF_EXPORT = 1;

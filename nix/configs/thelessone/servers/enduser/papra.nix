@@ -1,12 +1,13 @@
 {
   flake.nixosModules.thelessone-papra =
-    { config, ... }:
+    { lib, config, ... }:
 
     let
       cfg = config.services.papra;
     in
 
     {
+      systemd.services.papra.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.papra.enable = true;
       services.papra.environment = {
         SERVER_SERVE_PUBLIC_DIR = true;

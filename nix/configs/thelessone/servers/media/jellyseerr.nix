@@ -1,8 +1,9 @@
 {
   flake.nixosModules.thelessone-jellyseerr =
-    { config, ... }:
+    { lib, config, ... }:
 
     {
+      systemd.services.seerr.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.seerr.enable = true;
 
       thelessone.caddy.vHost."jellyseerr.theless.one" = {

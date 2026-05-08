@@ -2,9 +2,10 @@
 
 {
   flake.nixosModules.thelessone-minecraftLobby =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
 
     {
+      systemd.services.minecraft-server-lobby.wantedBy = lib.mkForce [ "server-services.nix" ];
       services.minecraft-servers'.servers.lobby = {
         enable = true;
         enableReload = true;
