@@ -23,7 +23,7 @@
       ];
 
       systemd.services.postfix.wantedBy = lib.mkForce [ "server-services.nix" ];
-      systemd.services.dovecot2.wantedBy = lib.mkForce [ "server-services.nix" ];
+      systemd.services.dovecot.wantedBy = lib.mkForce [ "server-services.nix" ];
       mailserver = {
         enable = true;
         virusScanning = true;
