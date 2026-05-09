@@ -253,6 +253,9 @@
         secrets.mailer.PASSWD = config.sops.secrets."forgejo/mailer-password".path;
       };
 
+      thelessone.caddy.vHost."git.theless.one".proxy.port =
+        config.services.forgejo.settings.server.HTTP_PORT;
+
       mailserver.accounts."git@theless.one" = {
         sendOnly = true;
         hashedPasswordFile = config.sops.secrets."mailserver/git".path;
@@ -282,33 +285,6 @@
         TARGET = "http://127.0.0.1:12500";
         BIND = ":12501";
         BIND_NETWORK = "tcp";
-      };
-
-      services.newt.blueprint.public-resources.forgejo = {
-        name = "Forgejo";
-        protocol = "http";
-        full-domain = "git.theless.one";
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            port = 12501;
-            method = "http";
-          }
-        ];
-      };
-
-      services.newt.blueprint.public-resources.forgejo-ssh = {
-        name = "Forgejo SSH";
-        protocol = "tcp";
-        proxy-port = 22;
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            port = 22;
-          }
-        ];
       };
 
       systemd.services.forgejo.path = [ cfg.package ];

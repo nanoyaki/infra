@@ -6,7 +6,10 @@
     in
 
     {
-      services.openssh.ports = [ 2222 ];
+      services.openssh.ports = [
+        22
+        2222
+      ];
 
       users.users = {
         root.openssh.authorizedKeys.keys = [

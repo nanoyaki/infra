@@ -82,6 +82,10 @@
           }
           {
             domain = "theless.one";
+            subdomain = "git";
+          }
+          {
+            domain = "theless.one";
             subdomain = "mail";
           }
           {
