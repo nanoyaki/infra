@@ -9,7 +9,6 @@
         domain = "theless.one";
         fqdn = "at01.theless.one";
 
-        useDHCP = false;
         networkmanager.enable = true;
 
         defaultGateway = {
