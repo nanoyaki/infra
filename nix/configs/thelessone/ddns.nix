@@ -11,6 +11,7 @@
           apikey = config.sops.placeholder."porkbun/api-key";
           interval = 900;
           ttl = 600;
+          skipIPv6 = true;
         };
 
         domains = [
