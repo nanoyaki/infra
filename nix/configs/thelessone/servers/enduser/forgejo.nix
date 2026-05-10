@@ -253,8 +253,10 @@
         secrets.mailer.PASSWD = config.sops.secrets."forgejo/mailer-password".path;
       };
 
-      thelessone.caddy.vHost."git.theless.one".proxy.port =
-        config.services.forgejo.settings.server.HTTP_PORT;
+      thelessone.caddy.vHost."git.theless.one" = {
+        proxy.port = config.services.forgejo.settings.server.HTTP_PORT;
+        localOnly = false;
+      };
 
       mailserver.accounts."git@theless.one" = {
         sendOnly = true;
