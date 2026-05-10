@@ -18,30 +18,36 @@
           {
             domain = "theless.one";
             subdomain = "at01";
+            skipIPv6 = true;
           }
           {
             domain = "theless.one";
             subdomain = "git";
+            skipIPv6 = true;
           }
           {
             domain = "theless.one";
             subdomain = "mail";
+            skipIPv6 = true;
           }
           {
             domain = "theless.one";
             subdomain = "dav";
+            skipIPv6 = true;
           }
           {
             secretapikey = config.sops.placeholder."porkbun-ashley/secret-api-key";
             apikey = config.sops.placeholder."porkbun-ashley/api-key";
             domain = "aslija.com";
             subdomain = "";
+            skipIPv6 = true;
           }
           {
             secretapikey = config.sops.placeholder."porkbun-ashley/secret-api-key";
             apikey = config.sops.placeholder."porkbun-ashley/api-key";
             domain = "aslija.com";
             subdomain = "*";
+            skipIPv6 = true;
           }
         ];
       };
