@@ -272,9 +272,7 @@
           {
             lib,
             stdenvNoCC,
-            runCommand,
             writeText,
-            jq,
             gamerules ? { },
           }:
 
@@ -301,37 +299,20 @@
               in
               "gamerule ${gamerule} ${toValidString gamerules.${rawGamerule}}";
 
-            jsonFiles =
-              mapAttrs
-                (
-                  name: json:
-                  writeText name (
-                    builtins.readFile (
-                      runCommand "formatted-${name}"
-                        {
-                          json = builtins.toJSON json;
-                          buildInputs = [ jq ];
-                        }
-                        ''
-                          jq -r '.' <(echo "$json") > $out
-                        ''
-                    )
-                  )
-                )
-                {
-                  loadJson.values = [ "declarative_gamerules:setup" ];
-                  packMcmeta.pack = {
-                    description = "Set minecraft gamerules using nix";
-                    min_format = [
-                      88
-                      0
-                    ];
-                    max_format = [
-                      88
-                      0
-                    ];
-                  };
-                };
+            json = mapAttrs (_: builtins.toJSON) {
+              loadJson.values = [ "declarative_gamerules:setup" ];
+              packMcmeta.pack = {
+                description = "Set minecraft gamerules using nix";
+                min_format = [
+                  88
+                  0
+                ];
+                max_format = [
+                  88
+                  0
+                ];
+              };
+            };
           in
 
           stdenvNoCC.mkDerivation {
@@ -347,8 +328,8 @@
 
               mkdir -p $out/data/{minecraft/tags/function,declarative_gamerules/function}
               ln -s ${config.packages.nix-minecraft-logomark}/icon.png $out/pack.png
-              ln -s ${jsonFiles.packMcmeta} $out/pack.mcmeta
-              ln -s ${jsonFiles.loadJson} $out/data/minecraft/tags/function/load.json
+              echo '${json.packMcmeta}' > $out/pack.mcmeta
+              echo '${json.loadJson}' > $out/data/minecraft/tags/function/load.json
               ln -s $src $out/data/declarative_gamerules/function/setup.mcfunction
 
               runHook postInstall

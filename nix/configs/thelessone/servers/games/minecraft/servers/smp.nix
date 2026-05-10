@@ -45,7 +45,7 @@
           [
             dungeons-and-taverns
             mini-blocks-datapack
-            # joshs-more-foods
+            joshs-more-foods
           ]
         );
 
