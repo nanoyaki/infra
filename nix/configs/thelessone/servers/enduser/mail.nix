@@ -22,8 +22,12 @@
         993
       ];
 
-      systemd.services.postfix.wantedBy = lib.mkForce [ "server-services.target" ];
-      systemd.services.dovecot.wantedBy = lib.mkForce [ "server-services.target" ];
+      systemd.services = {
+        rspamd.wantedBy = lib.mkForce [ "server-services.target" ];
+        postfix.wantedBy = lib.mkForce [ "server-services.target" ];
+        dovecot.wantedBy = lib.mkForce [ "server-services.target" ];
+      };
+
       mailserver = {
         enable = true;
         virusScanning = true;
@@ -125,11 +129,6 @@
         tangled.org
         notifs.tangled.org
       '';
-
-      systemd.services.rspamd = {
-        wants = [ "network-online.target" ];
-        after = [ "network-online.target" ];
-      };
 
       systemd.services.borgbackup-job-mail.unitConfig.RequiresMountsFor = "/mnt/raid";
       services.borgbackup.jobs.mail = {
