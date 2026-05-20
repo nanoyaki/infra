@@ -23,7 +23,6 @@
       thelessone-gpu
       thelessone-networking
       thelessone-vopono
-      thelessone-systems
       thelessone-ssh
       thelessone-locale
       thelessone-backups

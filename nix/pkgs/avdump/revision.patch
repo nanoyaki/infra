@@ -1,0 +1,13 @@
+diff --git a/Directory.Build.props b/Directory.Build.props
+index d435fd8..fbe170d 100644
+--- a/Directory.Build.props
++++ b/Directory.Build.props
+@@ -9,7 +9,7 @@
+ 
+   <!-- Compute git commit count and set version properties before SDK derives assembly attributes -->
+   <Target Name="SetGitVersion" BeforeTargets="GetAssemblyVersion">
+-    <Exec Command="git rev-list --count HEAD" ConsoleToMSBuild="true" ContinueOnError="WarnAndContinue">
++    <Exec Command="echo '344'" ConsoleToMSBuild="true" ContinueOnError="WarnAndContinue">
+       <Output TaskParameter="ConsoleOutput" PropertyName="GitHeight" />
+     </Exec>
+     <PropertyGroup Condition="'$(GitHeight)'==''">
