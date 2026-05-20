@@ -760,11 +760,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1779099457,
-        "narHash": "sha256-u73aVD/lUmmT3JV+kPDztl7zPwQKd0eobD1AbJltaGs=",
+        "lastModified": 1779258371,
+        "narHash": "sha256-j1iZsLy6oFApqR1oiDmHhvkwxXqcNi0aoSJj643LuwU=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "8792fab9d4a6454a9201675f01326f827ce35ead",
+        "rev": "c97bc4d15bd3473dd095e8e8ba57330ab1943a77",
         "type": "github"
       },
       "original": {
@@ -841,11 +841,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779230894,
-        "narHash": "sha256-TaNv8YZ8pasRjVsOaOtWkw3hqzULvfF4wchZCJ8zp3w=",
+        "lastModified": 1779295057,
+        "narHash": "sha256-f5Fi5arOp96quGbXiqwbIOnePBBYLw/hS0tqjOZMRv0=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "3331b7b4ad1bc3cb149733ee0f5fa104920d9dfd",
+        "rev": "9dfb56523219a31511e0d8e59d0270dcdd96bd6f",
         "type": "github"
       },
       "original": {
@@ -1084,11 +1084,11 @@
         "sqlite-lib-src": "sqlite-lib-src"
       },
       "locked": {
-        "lastModified": 1779201325,
-        "narHash": "sha256-bqPvfJ7z3HvBxv78cLczeB8N72D7YlxZgpwhhqAO/Ng=",
+        "lastModified": 1779291931,
+        "narHash": "sha256-/iSBpT4RzAR04wYdDqlO+F38orzq4em94XpPRyM/+bE=",
         "ref": "refs/heads/master",
-        "rev": "886425c7c3a7734baa848c2f1072f162179ede41",
-        "revCount": 2485,
+        "rev": "9849f353dd9f2ad568fd2a0bffab1b8c3a31d09c",
+        "revCount": 2490,
         "type": "git",
         "url": "https://tangled.org/tangled.org/core"
       },
