@@ -56,9 +56,9 @@
                   default = config.sentinel.certs.${lib.replaceString "." "-" baseDomain}.key or null;
                 };
 
-                tailnet.host = mkOption {
-                  type = types.nullOr types.str;
-                  default = null;
+                useTailnet = mkOption {
+                  type = types.bool;
+                  default = false;
                 };
 
                 internal = mkOption {
@@ -97,11 +97,13 @@
           '';
 
           virtualHosts = mapAttrs (_: domainCfg: {
-            listenAddresses = lib.optionals (domainCfg.tailnet.host != null) [
+            listenAddresses = [
               "127.0.0.1"
               "::1"
-              domainCfg.tailnet.host
-            ];
+              "100.64.0.4"
+            ]
+            ++ lib.optional (!domainCfg.useTailnet) "0.0.0.0";
+
             extraConfig = ''
               ${optionalString (
                 domainCfg.tls.cert != null && domainCfg.tls.key != null
