@@ -128,8 +128,8 @@
           in
 
           acc
-          // lib.optionalAttrs (cfg.host.${domain}.tailnet.host != null) {
-            ${finalDomain} = cfg.host.${domain}.tailnet.host;
+          // lib.optionalAttrs cfg.host.${domain}.useTailnet {
+            ${finalDomain} = "100.64.0.4";
           }
         ) { } (builtins.attrNames cfg.host);
       };
