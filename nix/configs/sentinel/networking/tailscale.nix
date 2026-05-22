@@ -2,7 +2,12 @@
 
 {
   flake.nixosModules.sentinel-tailscale =
-    { lib, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     let
       inherit (lib)
@@ -29,6 +34,17 @@
           "headplane/api-key".owner = user;
           "headplane/oidc-secret".owner = user;
           "headplane/cookie-secret".owner = user;
+          tailscale = { };
+        };
+
+        services.tailscale = {
+          enable = true;
+          useRoutingFeatures = "server";
+          authKeyFile = config.sops.secrets.tailscale.path;
+          extraUpFlags = [
+            "--login-server"
+            "https://headscale.nanoyaki.space"
+          ];
         };
 
         services.headplane = {
@@ -66,6 +82,24 @@
           settings = {
             server_url = "https://headscale.nanoyaki.space";
 
+            policy.path = pkgs.writeText "acl.hujson" (
+              builtins.toJSON {
+                acls = [
+                  {
+                    action = "accept";
+                    src = [ "*" ];
+                    dst = [
+                      "thelessone:*"
+                      "sentinel:*"
+                    ];
+                  }
+                ];
+
+                hosts.thelessone = "100.64.0.2";
+                hosts.sentinel = "100.64.0.4";
+              }
+            );
+
             oidc = {
               issuer = "https://id.theless.one";
               client_id = "8d80ec56-c0d9-45ef-8ebb-7abd0c708e76";
@@ -84,10 +118,7 @@
 
             dns =
               let
-                thelessoneDomains = lib.filterAttrs (domain: _: lib.hasInfix "theless.one" domain) (
-                  config.sentinel.caddy.host
-                  // inputs.self.nixosConfigurations.thelessone.config.thelessone.caddy.vHost
-                );
+                filterThelessone = lib.filterAttrs (domain: _: lib.hasInfix "theless.one" domain);
 
                 mkServiceName =
                   domain:
@@ -95,11 +126,23 @@
                     builtins.split ".theless.one" (lib.replaceStrings [ "http://" "https://" ] [ "" "" ] domain)
                   );
 
-                privateRecords = map (domain: {
-                  name = "${mkServiceName domain}.theless.one";
-                  type = "A";
-                  value = "100.64.0.2";
-                }) (builtins.attrNames thelessoneDomains);
+                privateRecords =
+                  map
+                    (domain: {
+                      name = "${mkServiceName domain}.theless.one";
+                      type = "A";
+                      value = "100.64.0.2";
+                    })
+                    (
+                      builtins.attrNames (
+                        filterThelessone inputs.self.nixosConfigurations.thelessone.config.thelessone.caddy.vHost
+                      )
+                    )
+                  ++ map (domain: {
+                    name = "${mkServiceName domain}.theless.one";
+                    type = "A";
+                    value = "100.64.0.4";
+                  }) (builtins.attrNames (filterThelessone config.sentinel.caddy.host));
               in
               {
                 base_domain = "theless.one";
