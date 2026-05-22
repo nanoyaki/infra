@@ -80,7 +80,7 @@
         proxy = {
           inherit (config.services.tandoor-recipes) port;
         };
-        pangolin.name = "Tandoor Recipes";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-tandoor-recipes.unitConfig.RequiresMountsFor = "/mnt/raid";

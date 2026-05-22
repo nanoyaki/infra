@@ -105,6 +105,9 @@
     };
     nanoyaki-space.url = "git+https://tangled.org/nanoyaki.space/nanoyaki.space";
     nanoyaki-space.inputs.nixpkgs.follows = "nixpkgs";
+    headplane.url = "github:tale/headplane";
+    headplane.inputs.nixpkgs.follows = "nixpkgs";
+    headplane.inputs.flake-utils.follows = "flake-utils";
 
     # Deduplication
     flake-compat.url = "github:NixOS/flake-compat";

@@ -19,7 +19,7 @@
 
       thelessone.caddy.vHost."papra.theless.one" = {
         proxy.port = cfg.environment.PORT;
-        pangolin.name = "Papra";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-papra.unitConfig.RequiresMountsFor = "/mnt/raid";

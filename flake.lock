@@ -152,6 +152,27 @@
         "type": "github"
       }
     },
+    "devshell": {
+      "inputs": {
+        "nixpkgs": [
+          "headplane",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768818222,
+        "narHash": "sha256-460jc0+CZfyaO8+w8JNtlClB2n4ui1RbHfPTLkpwhU8=",
+        "owner": "numtide",
+        "repo": "devshell",
+        "rev": "255a2b1725a20d060f566e4755dbf571bbbb5f76",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "devshell",
+        "type": "github"
+      }
+    },
     "discord-events-to-ics": {
       "inputs": {
         "flake-parts": [
@@ -405,6 +426,30 @@
       "original": {
         "owner": "nix-community",
         "repo": "gomod2nix",
+        "type": "github"
+      }
+    },
+    "headplane": {
+      "inputs": {
+        "devshell": "devshell",
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778781054,
+        "narHash": "sha256-lRJpvbIFFgQ0wECwIK2Mqc7L9ZnRIAAUpl+LnWenf64=",
+        "owner": "tale",
+        "repo": "headplane",
+        "rev": "fb4b0b1404bcf30ee5d5639f01f36d45965ed320",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tale",
+        "repo": "headplane",
         "type": "github"
       }
     },
@@ -866,6 +911,7 @@
         "git-hooks-nix": "git-hooks-nix",
         "gitignore": "gitignore",
         "gomod2nix": "gomod2nix",
+        "headplane": "headplane",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "killheal": "killheal",

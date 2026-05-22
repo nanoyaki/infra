@@ -11,7 +11,7 @@
 
       thelessone.caddy.vHost."bazarr.theless.one" = {
         proxy.port = config.services.bazarr.listenPort;
-        pangolin.name = "Bazarr";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-bazarr.unitConfig.RequiresMountsFor = "/mnt/raid";

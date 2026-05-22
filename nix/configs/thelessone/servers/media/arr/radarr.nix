@@ -15,7 +15,7 @@
         proxy = {
           inherit (config.services.radarr.settings.server) port;
         };
-        pangolin.name = "Radarr";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-radarr.unitConfig.RequiresMountsFor = "/mnt/raid";

@@ -19,18 +19,8 @@
         ENCRYPTION_KEY_FILE = config.sops.secrets.pocket-id-encryption.path;
       };
 
-      services.newt.blueprint.public-resources.pocket-id = {
-        name = "Pocket ID";
-        protocol = "http";
-        full-domain = "id.theless.one";
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            port = cfg.settings.PORT;
-            method = "http";
-          }
-        ];
+      thelessone.caddy.vHost."id.theless.one" = {
+        proxy.port = cfg.settings.PORT;
       };
 
       systemd.services.borgbackup-job-pocket-id.unitConfig.RequiresMountsFor = "/mnt/raid";

@@ -96,18 +96,6 @@
         environmentFile = tpl."opencloud.env".path;
       };
 
-      services.newt.blueprint.public-resources.opencloud = {
-        name = "Opencloud";
-        protocol = "http";
-        full-domain = "cloud.theless.one";
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            inherit (cfg) port;
-            method = "http";
-          }
-        ];
-      };
+      thelessone.caddy.vHost."cloud.theless.one".proxy = { inherit (cfg) port; };
     };
 }

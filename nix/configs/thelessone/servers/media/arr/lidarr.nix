@@ -15,7 +15,7 @@
         proxy = {
           inherit (config.services.lidarr.settings.server) port;
         };
-        pangolin.name = "Lidarr";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-lidarr.unitConfig.RequiresMountsFor = "/mnt/raid";

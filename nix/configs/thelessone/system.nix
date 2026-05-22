@@ -35,7 +35,7 @@
       thelessone-opencloud
       # thelessone-radicale
       thelessone-caddy
-      thelessone-newt
+      thelessone-tailscale
       thelessone-kavita
       thelessone-vaultwarden
       thelessone-nanoyakiEvents

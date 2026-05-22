@@ -93,7 +93,6 @@
           }
           redir @dotfiles /
         '';
-        localOnly = false;
       };
 
       systemd.tmpfiles.settings."10-davis" = {

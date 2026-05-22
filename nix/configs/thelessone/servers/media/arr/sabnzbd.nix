@@ -139,7 +139,7 @@
         proxy = {
           inherit (config.services.sabnzbd.settings.misc) port;
         };
-        pangolin.name = "Sabnzbd";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-sabnzbd.unitConfig.RequiresMountsFor = "/mnt/raid";

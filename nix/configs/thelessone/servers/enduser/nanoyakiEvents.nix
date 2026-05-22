@@ -22,7 +22,7 @@
       };
 
       users.users.${user}.extraGroups = [ "nanoyaki-events" ];
-      thelessone.caddy.vHost."http://events.nanoyaki.space".extraConfig = ''
+      thelessone.caddy.vHost."events.nanoyaki.space".extraConfig = ''
         root * ${webPkg}/public
 
         encode zstd gzip
@@ -46,21 +46,6 @@
         }
         redir @dotfiles /
       '';
-
-      services.newt.blueprint.public-resources.nanoyaki-events = {
-        name = "Nanoyaki Events";
-        protocol = "http";
-        full-domain = "events.nanoyaki.space";
-        host-header = "events.nanoyaki.space";
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            port = 80;
-            method = "http";
-          }
-        ];
-      };
 
       systemd.tmpfiles.settings."10-nanoyaki-events" = {
         "${home}/cache".d = {

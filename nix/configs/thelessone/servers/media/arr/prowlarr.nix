@@ -16,7 +16,7 @@
           host = config.services.vopono.voponoHost;
           inherit (config.services.prowlarr.settings.server) port;
         };
-        pangolin.name = "Prowlarr";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-prowlarr.unitConfig.RequiresMountsFor = "/mnt/raid";

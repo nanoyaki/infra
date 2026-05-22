@@ -11,7 +11,7 @@
     {
       options.thelessone.arr = {
         home = mkOption {
-          type = types.externalPath;
+          type = types.path;
           default = "/mnt/raid/arr-stack";
           readOnly = true;
         };

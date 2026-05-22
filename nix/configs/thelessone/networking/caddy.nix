@@ -20,7 +20,6 @@
         hasInfix
         filterAttrs
         hasPrefix
-        mapAttrs'
         ;
 
       cfg = config.thelessone.caddy;
@@ -53,16 +52,7 @@
               default = "";
             };
 
-            localOnly = (mkEnableOption "bind to local host only") // {
-              default = true;
-            };
-
-            pangolin = {
-              name = mkOption {
-                type = types.nullOr types.str;
-                default = null;
-              };
-            };
+            useTailnet = mkEnableOption "tailnet virtual host";
           };
         };
 
@@ -79,39 +69,21 @@
             import error_handling
           '';
           useACMEHost = mkIf (hasInfix "theless.one" domain && !(hasPrefix "http://" domain)) "theless.one";
-          listenAddresses = mkIf vHost.localOnly [
+          listenAddresses = [
             "127.0.0.1"
-            "[::1]"
-          ];
+            "::1"
+            "100.64.0.2"
+          ]
+          ++ lib.optional (!vHost.useTailnet) "0.0.0.0";
         }
         // (removeAttrs vHost [
           "enable"
           "proxy"
           "extraConfig"
+          "useTailnet"
           "localOnly"
-          "pangolin"
         ])
       );
-
-      pangolinHosts = filterAttrs (_: vHost: vHost.pangolin.name != null);
-
-      mapPangolinHosts =
-        attrset:
-
-        mapAttrs' (domain: vHost: {
-          name = lib.replaceString " " "-" (lib.toLower vHost.pangolin.name);
-          value = {
-            inherit (vHost.pangolin) name;
-            mode = "host";
-            destination = "127.0.0.1";
-            site = "utilized-olympic-marmot";
-            alias = lib.removePrefix "http://" domain;
-            tcp-ports = "80,443";
-            udp-ports = "";
-            disable-icmp = false;
-            roles = [ "Member" ];
-          };
-        }) (pangolinHosts attrset);
 
       enabledHosts = filterAttrs (_: hostCfg: hostCfg.enable) cfg.vHost;
 
@@ -150,11 +122,13 @@
           thelessone = "thelessone ${config.sops.placeholder."caddy-env-vars/thelessone"}";
         };
 
-        services.newt.blueprint.private-resources = mapPangolinHosts enabledHosts;
         networking.extraHosts = lib.concatStringsSep "\n" (
-          map (domain: "127.0.0.1 ${lib.removePrefix "http://" domain}") (
-            builtins.attrNames (pangolinHosts enabledHosts)
-          )
+          map (
+            domain:
+            "127.0.0.1 ${
+              builtins.head (lib.splitString "/" (lib.replaceStrings [ "http://" "https://" ] [ "" "" ] domain))
+            }"
+          ) (lib.filter (host: cfg.vHost.${host}.useTailnet) (builtins.attrNames enabledHosts))
         );
 
         thelessone.caddy.vHost."http://theless.one".extraConfig = ''

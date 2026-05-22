@@ -23,10 +23,6 @@
       sops.secrets.steam-api-key.owner = user;
       sops.secrets.app-secret.owner = user;
 
-      services.caddy.enable = true;
-      services.caddy.globalConfig = ''
-        auto_https off
-      '';
       systemd.services.caddy.preStart = ''
         export APP_RUNTIME_OPTIONS="$(cat ${runtimeOptsFile})"
         export DEFAULT_URI="https://nanoyaki.space"
@@ -37,7 +33,8 @@
         rm -rf "$APP_CACHE_DIR/prod"
         ${lib.getExe pkgs.php85} ${webPkg}/bin/console cache:clear --env=prod --no-debug
       '';
-      services.caddy.virtualHosts.":8006".extraConfig = ''
+
+      sentinel.caddy.host."nanoyaki.space".config = ''
         root * ${webPkg}/public
 
         encode zstd gzip

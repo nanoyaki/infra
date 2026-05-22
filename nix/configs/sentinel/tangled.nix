@@ -3,6 +3,7 @@
 {
   flake.nixosModules.sentinel-tangled =
     {
+      lib,
       pkgs,
       config,
       ...
@@ -27,7 +28,7 @@
         enable = true;
         stateDir = "/var/lib/tangled";
 
-        appviewEndpoint = "https://git.theless.one";
+        appviewEndpoint = "https://tangled.org";
         git.userEmail = "noreply@git.nanoyaki.space";
         server = {
           owner = "did:plc:majihettvb7ieflgmkvujecu";
@@ -38,15 +39,25 @@
       };
 
       services.tangled.avatar-server = {
-        enable = true;
+        enable = false;
         port = 8003;
         environmentFile = config.sops.templates."avatar-server.env".path;
       };
 
       services.go-camo = {
-        enable = true;
+        enable = false;
         listen = "0.0.0.0:8002";
         keyFile = config.sops.secrets.camo.path;
+      };
+
+      sentinel.caddy.host = {
+        "knot.nanoyaki.space".proxy.port = 8001;
+      }
+      // lib.optionalAttrs config.services.go-camo.enable {
+        "camo.nanoyaki.space".proxy.port = 8002;
+      }
+      // lib.optionalAttrs config.services.tangled.avatar-server.enable {
+        "avatars.nanoyaki.space".proxy.port = 8003;
       };
     };
 }

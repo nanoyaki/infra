@@ -348,40 +348,14 @@
         };
       };
 
-      services.newt.blueprint.public-resources.modded-bluemap = {
-        name = "Modded Bluemap";
-        protocol = "http";
-        full-domain = "modded.theless.one";
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            inherit
-              (config.services.minecraft-servers'.servers.modded-test.symlinks."config/bluemap/webserver.conf".value
-              )
-              port
-              ;
-            method = "http";
-            path = "/";
-            path-match = "prefix";
-          }
-        ];
+      thelessone.caddy.vHost."modded.theless.one".proxy = {
+        inherit
+          (config.services.minecraft-servers'.servers.modded-test.symlinks."config/bluemap/webserver.conf".value
+          )
+          port
+          ;
       };
 
-      services.newt.blueprint.public-resources.modded-train-map = {
-        name = "Modded Train Map";
-        protocol = "http";
-        full-domain = "trains-modded.theless.one";
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            port = 3876;
-            method = "http";
-            path = "/";
-            path-match = "prefix";
-          }
-        ];
-      };
+      thelessone.caddy.vHost."trains-modded.theless.one".proxy.port = 3876;
     };
 }

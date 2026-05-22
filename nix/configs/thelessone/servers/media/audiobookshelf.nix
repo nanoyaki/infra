@@ -22,7 +22,7 @@
         proxy = {
           inherit (config.services.audiobookshelf) port;
         };
-        pangolin.name = "Audiobookshelf";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-audiobookshelf.unitConfig.RequiresMountsFor = "/mnt/raid";

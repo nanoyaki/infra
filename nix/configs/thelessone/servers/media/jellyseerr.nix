@@ -8,7 +8,7 @@
 
       thelessone.caddy.vHost."jellyseerr.theless.one" = {
         proxy = { inherit (config.services.seerr) port; };
-        pangolin.name = "Jellyseerr";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-jellyseerr.unitConfig.RequiresMountsFor = "/mnt/raid";

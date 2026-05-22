@@ -52,7 +52,7 @@
 
       thelessone.caddy.vHost."home.theless.one" = {
         proxy.port = config.services.homepage-dashboard.listenPort;
-        pangolin.name = "Homepage Dashboard";
+        useTailnet = true;
       };
 
       systemd.services.homepage-dashboard.wantedBy = lib.mkForce [ "server-services.target" ];
@@ -272,14 +272,6 @@
                     key = "{{HOMEPAGE_VAR_TANDOOR_API_KEY}}";
                     fields = [ "recipes" ];
                   };
-                };
-              }
-              {
-                Pangolin = rec {
-                  icon = "pangolin.svg";
-                  href = "https://pangolin.theless.one";
-                  siteMonitor = href;
-                  description = "VPN and reverse proxy";
                 };
               }
               {

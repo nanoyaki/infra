@@ -215,23 +215,11 @@
         };
       };
 
-      services.newt.blueprint.public-resources.smp-bluemap = {
-        name = "SMP Bluemap";
-        protocol = "http";
-        full-domain = "map.theless.one";
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            inherit
-              (config.services.minecraft-servers'.servers.smp.symlinks."config/bluemap/webserver.conf".value)
-              port
-              ;
-            method = "http";
-            path = "/";
-            path-match = "prefix";
-          }
-        ];
+      thelessone.caddy.vHost."map.theless.one".proxy = {
+        inherit
+          (config.services.minecraft-servers'.servers.smp.symlinks."config/bluemap/webserver.conf".value)
+          port
+          ;
       };
 
       # services.postgresql = {

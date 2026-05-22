@@ -51,7 +51,7 @@
 
       thelessone.caddy.vHost."books.theless.one" = {
         proxy.port = config.services.kavita.settings.Port;
-        pangolin.name = "Kavita";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-kavita.unitConfig.RequiresMountsFor = "/mnt/raid";

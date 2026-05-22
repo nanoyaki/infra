@@ -90,7 +90,7 @@
         proxy = {
           inherit (config.services.flood) port;
         };
-        pangolin.name = "Flood";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-transmission.unitConfig.RequiresMountsFor = "/mnt/raid";

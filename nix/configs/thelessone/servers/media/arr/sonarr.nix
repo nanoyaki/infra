@@ -15,7 +15,7 @@
         proxy = {
           inherit (config.services.sonarr.settings.server) port;
         };
-        pangolin.name = "Sonarr";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-sonarr.unitConfig.RequiresMountsFor = "/mnt/raid";

@@ -55,15 +55,15 @@
       thelessone.caddy.vHost = {
         "manga.theless.one" = {
           proxy = { inherit (cfg.thomas.settings.server) port; };
-          pangolin.name = "Suwayomi Thomas";
+          useTailnet = true;
         };
         "hana-manga.theless.one" = {
           proxy = { inherit (cfg.hana.settings.server) port; };
-          pangolin.name = "Suwayomi Hana";
+          useTailnet = true;
         };
         "mei-manga.theless.one" = {
           proxy = { inherit (cfg.mei.settings.server) port; };
-          pangolin.name = "Suwayomi Mei";
+          useTailnet = true;
         };
       };
 

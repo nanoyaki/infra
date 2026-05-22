@@ -16,15 +16,16 @@
       sentinel-disks
       sentinel-devices
       sentinel-locale
-      sentinel-networking
-      sentinel-traefik
+      sentinel-host
       sentinel-ssh
-      sentinel-pangolin
       sentinel-acme
       sentinel-ddns
       sentinel-federation
       sentinel-nanoyakiSpace
       sentinel-binarycache
+      sentinel-tangled
+      sentinel-caddy
+      sentinel-tailscale
     ];
   };
 

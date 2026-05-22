@@ -58,22 +58,8 @@
         hashedPasswordFile = config.sops.secrets."mailserver/vaultwarden".path;
       };
 
-      services.newt.blueprint.public-resources.vaultwarden = {
-        name = "Vaultwarden";
-        protocol = "http";
-        full-domain = "vaultwarden.theless.one";
-        host-header = "vaultwarden.theless.one";
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            port = config.services.vaultwarden.config.ROCKET_PORT;
-            method = "http";
-            path = "/";
-            path-match = "prefix";
-          }
-        ];
-      };
+      thelessone.caddy.vHost."vaultwarden.theless.one".proxy.port =
+        config.services.vaultwarden.config.ROCKET_PORT;
 
       # FIXME: remote backup
       systemd.services.borgbackup-job-vaultwarden.unitConfig.RequiresMountsFor = "/mnt/raid";

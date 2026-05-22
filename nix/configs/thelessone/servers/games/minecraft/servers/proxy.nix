@@ -59,18 +59,5 @@
         files."forwarding.secret" = pkgs.writeText "forwarding.secret" "@PROXY_SECRET@";
         files."server-icon.png" = "${pkgs.thelessone-minecraft-logomark}/icon.png";
       };
-
-      services.newt.blueprint.public-resources.velocity = {
-        name = "Velocity";
-        protocol = "tcp";
-        proxy-port = 25565;
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            port = 25565;
-          }
-        ];
-      };
     };
 }

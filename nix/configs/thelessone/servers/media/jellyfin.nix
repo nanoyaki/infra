@@ -23,7 +23,7 @@
 
       thelessone.caddy.vHost."jellyfin.theless.one" = {
         proxy.port = 8096;
-        pangolin.name = "Jellyfin";
+        useTailnet = true;
       };
 
       users.users.${config.services.jellyfin.user}.extraGroups = [

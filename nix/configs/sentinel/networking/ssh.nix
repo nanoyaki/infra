@@ -6,6 +6,7 @@
     in
 
     {
+      services.openssh.openFirewall = true;
       services.openssh.ports = [
         22
         2222

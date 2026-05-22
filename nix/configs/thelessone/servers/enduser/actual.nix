@@ -16,7 +16,7 @@
 
       thelessone.caddy.vHost."finances.theless.one" = {
         proxy = { inherit (cfg.settings) port; };
-        pangolin.name = "Actual";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-actual.unitConfig.RequiresMountsFor = "/mnt/raid";

@@ -23,25 +23,13 @@
         settings.allowDownloadAll = 1;
       };
 
-      services.newt.blueprint.public-resources.immich-public-proxy = {
-        name = "Immich Public Proxy";
-        protocol = "http";
-        full-domain = "images.theless.one";
-        targets = [
-          {
-            site = "utilized-olympic-marmot";
-            hostname = "127.0.0.1";
-            inherit (config.services.immich-public-proxy) port;
-            method = "http";
-            path = "/";
-            path-match = "prefix";
-          }
-        ];
+      thelessone.caddy.vHost."images.theless.one".proxy = {
+        inherit (config.services.immich-public-proxy) port;
       };
 
       thelessone.caddy.vHost."immich.theless.one" = {
         proxy = { inherit (config.services.immich) port; };
-        pangolin.name = "Immich";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-immich.unitConfig.RequiresMountsFor = "/mnt/raid";

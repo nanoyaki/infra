@@ -22,17 +22,7 @@
           }
           {
             domain = "theless.one";
-            subdomain = "git";
-            skipIPv6 = true;
-          }
-          {
-            domain = "theless.one";
-            subdomain = "mail";
-            skipIPv6 = true;
-          }
-          {
-            domain = "theless.one";
-            subdomain = "dav";
+            subdomain = "*";
             skipIPv6 = true;
           }
           {

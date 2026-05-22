@@ -33,7 +33,7 @@
 
       thelessone.caddy.vHost."shoko.theless.one" = {
         proxy.port = 8111;
-        pangolin.name = "Shoko";
+        useTailnet = true;
       };
 
       systemd.services.borgbackup-job-shoko.unitConfig.RequiresMountsFor = "/mnt/raid";
