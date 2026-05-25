@@ -54,7 +54,7 @@
       thelessone-shoko
       thelessone-bazarr
       thelessone-jellyfin
-      thelessone-jellyseerr
+      thelessone-seerr
       thelessone-immich
       thelessone-tandoor
       thelessone-audiobookshelf
