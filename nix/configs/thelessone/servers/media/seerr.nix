@@ -48,6 +48,8 @@
             hash = "sha256-bfNRUlMjKmxv0uvvjktQpCvCKl26C2Krs30ykkIRz7I=";
           };
 
+          patches = [ ./oidc.patch ];
+
           pnpmDeps = pkgs.fetchPnpmDeps {
             inherit (finalAttrs) pname version src;
             pnpm = pkgs.pnpm_10.override { nodejs = pkgs.nodejs_22; };
