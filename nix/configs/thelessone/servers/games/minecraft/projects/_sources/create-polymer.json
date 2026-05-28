@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "create_polymer-1.0.3-neoforge-1.21.1.jar",
+        "url": "https://cdn.modrinth.com/data/lRH7QVdC/versions/wEyQRv6D/create_polymer-1.0.3-neoforge-1.21.1.jar",
+        "sha512": "376f114c9c0b5015609804716704aef171c9054334b65468d4ff13fb57dab71816ed921cf5fffa883e5f761a499b9956136b749a68e48022303c44773dd16fc0"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "create_polymer-1.0.3-neoforge-1.21.1.jar",
+        "url": "https://cdn.modrinth.com/data/lRH7QVdC/versions/wEyQRv6D/create_polymer-1.0.3-neoforge-1.21.1.jar",
+        "sha512": "376f114c9c0b5015609804716704aef171c9054334b65468d4ff13fb57dab71816ed921cf5fffa883e5f761a499b9956136b749a68e48022303c44773dd16fc0"
+      }
+    }
+  }
+}

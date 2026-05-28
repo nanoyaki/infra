@@ -9,7 +9,9 @@
 
       {
         ${package} =
-          if prev.lib.versionOlder config.packages.${package}.version prev.${package}.version then
+          if
+            prev.lib.versionOlder config.packages.${package}.version (prev.${package}.version or "0.0.0")
+          then
             prev.${package}
           else
             config.packages.${package};

@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "ae2wtlib-19.5.0.jar",
+        "url": "https://cdn.modrinth.com/data/pNabrMMw/versions/y9YgjcrO/ae2wtlib-19.5.0.jar",
+        "sha512": "627ce404fe1c9aeb5dc6452084b7e1473b6f27c6d2fd246452ff4c0aca0d738d7d6c0dbab5a4f8979d63cfa35b9ea6ad1872bdc3b35641ad0ad0ffe297220f32"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "ae2wtlib-19.1.4-beta.jar",
+        "url": "https://cdn.modrinth.com/data/pNabrMMw/versions/tL5vZeFg/ae2wtlib-19.1.4-beta.jar",
+        "sha512": "1e182dadc899e0ba25c1d200ef26165f525ee6890b35b74d5890e833f340a10fc07f88cdeb7b057fd862f11ecd36771a6c4eea1a6926c27419c2ea1a4ddebd4a"
+      }
+    }
+  }
+}

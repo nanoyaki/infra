@@ -673,36 +673,6 @@
         "url": "https://git.theless.one/nanoyaki/nanomodules.git"
       }
     },
-    "nanopkgs": {
-      "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "git-hooks-nix": [
-          "git-hooks-nix"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "treefmt-nix": "treefmt-nix"
-      },
-      "locked": {
-        "lastModified": 1779233562,
-        "narHash": "sha256-bCJVlg85L1mUQ4k998b3DrMPnxndW/ZN+OpDx3jGH38=",
-        "owner": "nanoyaki",
-        "repo": "nanopkgs",
-        "rev": "a9baefa9e57850fcf0fc2a01e6f1fc2ccdb2914c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nanoyaki",
-        "repo": "nanopkgs",
-        "type": "github"
-      }
-    },
     "nanoyaki-space": {
       "inputs": {
         "nixpkgs": [
@@ -786,7 +756,7 @@
         "pre-commit-hooks": [
           "git-hooks-nix"
         ],
-        "treefmt-nix": "treefmt-nix_2",
+        "treefmt-nix": "treefmt-nix",
         "typix": "typix"
       },
       "locked": {
@@ -917,7 +887,6 @@
         "killheal": "killheal",
         "lib-aggregate": "lib-aggregate",
         "nanomodules": "nanomodules",
-        "nanopkgs": "nanopkgs",
         "nanoyaki-space": "nanoyaki-space",
         "nix-minecraft": "nix-minecraft",
         "nix-scpsl": "nix-scpsl",
@@ -933,7 +902,7 @@
         "stylix": "stylix",
         "systems": "systems",
         "tangled": "tangled",
-        "treefmt-nix": "treefmt-nix_3",
+        "treefmt-nix": "treefmt-nix_2",
         "valheim-server": "valheim-server"
       }
     },
@@ -1210,27 +1179,6 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "nanopkgs",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1775636079,
-        "narHash": "sha256-pc20NRoMdiar8oPQceQT47UUZMBTiMdUuWrYu2obUP0=",
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "rev": "790751ff7fd3801feeaf96d7dc416a8d581265ba",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "treefmt-nix_2": {
-      "inputs": {
-        "nixpkgs": [
           "nixos-branding",
           "nixpkgs"
         ]
@@ -1249,7 +1197,7 @@
         "type": "github"
       }
     },
-    "treefmt-nix_3": {
+    "treefmt-nix_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"

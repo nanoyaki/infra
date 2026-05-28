@@ -1,0 +1,25 @@
+{
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "FabricProxy-Lite-2.11.0.jar",
+        "url": "https://cdn.modrinth.com/data/8dI2tmqs/versions/nR8AIdvx/FabricProxy-Lite-2.11.0.jar",
+        "sha512": "c2e1d9279f6f19a561f934b846540b28a033586b4b419b9c1aa27ac43ffc8fad2ce60e212a15406e5fa3907ff5ecbe5af7a5edb183a9ee6737a41e464aec1375"
+      }
+    },
+    "1_21_10": {
+      "latest": {
+        "name": "FabricProxy-Lite-2.11.0.jar",
+        "url": "https://cdn.modrinth.com/data/8dI2tmqs/versions/nR8AIdvx/FabricProxy-Lite-2.11.0.jar",
+        "sha512": "c2e1d9279f6f19a561f934b846540b28a033586b4b419b9c1aa27ac43ffc8fad2ce60e212a15406e5fa3907ff5ecbe5af7a5edb183a9ee6737a41e464aec1375"
+      }
+    },
+    "1_21_9": {
+      "latest": {
+        "name": "FabricProxy-Lite-2.11.0.jar",
+        "url": "https://cdn.modrinth.com/data/8dI2tmqs/versions/nR8AIdvx/FabricProxy-Lite-2.11.0.jar",
+        "sha512": "c2e1d9279f6f19a561f934b846540b28a033586b4b419b9c1aa27ac43ffc8fad2ce60e212a15406e5fa3907ff5ecbe5af7a5edb183a9ee6737a41e464aec1375"
+      }
+    }
+  }
+}

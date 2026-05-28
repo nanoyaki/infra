@@ -1,0 +1,39 @@
+{
+  "neoforge": {
+    "1_21_4": {
+      "latest": {
+        "name": "tectonic-neoforge-1.21.4-2.4.2.jar",
+        "url": "https://cdn.modrinth.com/data/lWDHr9jE/versions/gYDD8tuz/tectonic-neoforge-1.21.4-2.4.2.jar",
+        "sha512": "39c3adfef6a1faa6c2f3d10695ae4ee7608fb2b967815b6eb0505bfd3c667a5ba3c950b74978b3ed94be0881afc32d7f5c3f21f2b350e5f7a2cc44e0239173b6"
+      }
+    },
+    "1_21_3": {
+      "latest": {
+        "name": "tectonic-neoforge-1.21.4-2.4.2.jar",
+        "url": "https://cdn.modrinth.com/data/lWDHr9jE/versions/gYDD8tuz/tectonic-neoforge-1.21.4-2.4.2.jar",
+        "sha512": "39c3adfef6a1faa6c2f3d10695ae4ee7608fb2b967815b6eb0505bfd3c667a5ba3c950b74978b3ed94be0881afc32d7f5c3f21f2b350e5f7a2cc44e0239173b6"
+      }
+    },
+    "1_21_2": {
+      "latest": {
+        "name": "tectonic-neoforge-1.21.4-2.4.2.jar",
+        "url": "https://cdn.modrinth.com/data/lWDHr9jE/versions/gYDD8tuz/tectonic-neoforge-1.21.4-2.4.2.jar",
+        "sha512": "39c3adfef6a1faa6c2f3d10695ae4ee7608fb2b967815b6eb0505bfd3c667a5ba3c950b74978b3ed94be0881afc32d7f5c3f21f2b350e5f7a2cc44e0239173b6"
+      }
+    },
+    "1_21_1": {
+      "latest": {
+        "name": "tectonic-3.0.22-neoforge-21.1.jar",
+        "url": "https://cdn.modrinth.com/data/lWDHr9jE/versions/iCGkqnnx/tectonic-3.0.22-neoforge-21.1.jar",
+        "sha512": "a02d3f2bfd8aa099512005df23b45ec723694c397b4224a69ffd47b41cd06bb3d56a0f10bbfd81e8159e0fc55f61d0729656f91231410a74ed55e6fc16fd18ec"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "tectonic-3.0.1-neoforge-1.21.1.jar",
+        "url": "https://cdn.modrinth.com/data/lWDHr9jE/versions/6yg3Vohy/tectonic-3.0.1-neoforge-1.21.1.jar",
+        "sha512": "438b06509f827e3a669e30b0ede7d7593460642551a75943200b2cc4129415fa0d90d3cf0c27aa72665da0c8358a5e6d5b1603a7bb3770064505b36908f0d81c"
+      }
+    }
+  }
+}

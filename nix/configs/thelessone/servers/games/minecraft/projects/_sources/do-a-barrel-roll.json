@@ -1,0 +1,11 @@
+{
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "do_a_barrel_roll-fabric-3.8.3+1.21.11.jar",
+        "url": "https://cdn.modrinth.com/data/6FtRfnLg/versions/QyuEXDMC/do_a_barrel_roll-fabric-3.8.3%2B1.21.11.jar",
+        "sha512": "46a877167b0e5726e621b569b0ef7e9ded9787861419579b61e01e6d74cd148f09e41783ab0b2f3cc0de3f0eb9feacca1e4a02c84151afbeb1cd632945a3fdeb"
+      }
+    }
+  }
+}

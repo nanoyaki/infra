@@ -85,8 +85,7 @@
 
             # use jei as long as rei isn't
             # supported for mc 1.21.11
-            # rei
-            jei
+            rei
           ]
         );
 

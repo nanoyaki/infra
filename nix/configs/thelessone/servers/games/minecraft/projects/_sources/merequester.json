@@ -1,0 +1,11 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "merequester-neoforge-1.21.1-1.4.2.jar",
+        "url": "https://cdn.modrinth.com/data/E6BFl96N/versions/5DF41VC3/merequester-neoforge-1.21.1-1.4.2.jar",
+        "sha512": "ec0a56d33cb3d8cdb9a6598e67785da3214da98bb901e61a4a8e771ddd43fe7ba2d715bad28f74879c6245bf1051a32b9fa0b1ecc85595cd7b404d577f4f9121"
+      }
+    }
+  }
+}

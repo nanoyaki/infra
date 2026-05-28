@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "everycomp-1.21-2.11.40-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/eiktJyw1/versions/YqUPN8JN/everycomp-1.21-2.11.40-neoforge.jar",
+        "sha512": "0f356bffca3609db6a52d8927fbebc6d4cbdfdc315449e99f49fe78fb38a41aabaee21a71264e0a782fcd26f8547fa5d14d6f4da5a1a126013446eb22122b9ec"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "everycomp-1.21-2.11.40-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/eiktJyw1/versions/YqUPN8JN/everycomp-1.21-2.11.40-neoforge.jar",
+        "sha512": "0f356bffca3609db6a52d8927fbebc6d4cbdfdc315449e99f49fe78fb38a41aabaee21a71264e0a782fcd26f8547fa5d14d6f4da5a1a126013446eb22122b9ec"
+      }
+    }
+  }
+}

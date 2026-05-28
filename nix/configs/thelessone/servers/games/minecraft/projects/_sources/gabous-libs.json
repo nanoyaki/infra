@@ -1,0 +1,11 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "gaboulibs-neoforge-1.4.jar",
+        "url": "https://cdn.modrinth.com/data/N8aGZtvj/versions/LsfPosIY/gaboulibs-neoforge-1.4.jar",
+        "sha512": "154a34ebd6b57fb66514ad090de3696d79982191cf818e365a989f0e6a75d1200c62ec730d351b649932e11850c753909d6ff66d899ca20de41e77e3d4076cb3"
+      }
+    }
+  }
+}

@@ -12,10 +12,15 @@
         stopCommand = "end";
         useDefaults = false;
 
+        managementSystem = {
+          tmux.enable = false;
+          systemd-socket.enable = true;
+        };
+
         symlinks."velocity.toml" = {
           format = pkgs.formats.toml { };
           value = {
-            config-version = "2.7";
+            config-version = "2.8";
             bind = "0.0.0.0:25565";
             motd =
               "<#dce0e8>T</#dce0e8><#8caaee>h</#8caaee><#dce0e8>e</#dce0e8>"

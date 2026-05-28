@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "entityculling-neoforge-1.10.2-mc1.21.1.jar",
+        "url": "https://cdn.modrinth.com/data/NNAgCjsB/versions/2tOn8XA2/entityculling-neoforge-1.10.2-mc1.21.1.jar",
+        "sha512": "237b9cb0df379341d27e22d20f9c87d1ec5bab571131df5d481da7f19450e0dd9eb42c0a5d6cccc913975f72ff4acf2af356765ff07383b20f3357b07db4bb2d"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "entityculling-neoforge-1.8.2-mc1.21.jar",
+        "url": "https://cdn.modrinth.com/data/NNAgCjsB/versions/11PvLmko/entityculling-neoforge-1.8.2-mc1.21.jar",
+        "sha512": "34f9bbfc1773557b3b1eff0c8bc2e9faea08607d732e0090d260dda9e7738d2864d695596eec2e81f8f3d64d873297b91deb5473e45af466babb718a3ac51d57"
+      }
+    }
+  }
+}

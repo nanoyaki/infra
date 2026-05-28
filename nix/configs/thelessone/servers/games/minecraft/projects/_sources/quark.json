@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "Quark-4.1-480.jar",
+        "url": "https://cdn.modrinth.com/data/qnQsVE2z/versions/hMLnxKZx/Quark-4.1-480.jar",
+        "sha512": "b2da2bcf8db7b69d433222cb8c9effd0997acab1d5c949122681cb98eae733c1352d2a0c3dd57788b1b1ac76dc57e4d2abd69e94a18bba37136b448482816983"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "Quark-4.1-473.jar",
+        "url": "https://cdn.modrinth.com/data/qnQsVE2z/versions/hWrgyOs5/Quark-4.1-473.jar",
+        "sha512": "0eb313b2c0bb508be20e7fc558e601c1c42b721318d522b79eb12ce9527c11b85ca8ca847aa4707a4785ac3f4fe9ff3da9feea3d0332fa83f6367be9d3ab40cc"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "cristellib-neoforge-1.21.1-3.1.5.jar",
+        "url": "https://cdn.modrinth.com/data/cl223EMc/versions/JbGjwnV6/cristellib-neoforge-1.21.1-3.1.5.jar",
+        "sha512": "34ff78dc84dcac723d5a08a49b4c92a93820afc3b59dda13724a2ca29b97ea1c8315f50ae8793de9598ad5ddf3a8e5fdb329e22642051d8a3dd271fad472dd93"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "cristellib-neoforge-1.2.8.jar",
+        "url": "https://cdn.modrinth.com/data/cl223EMc/versions/oLp2OCg3/cristellib-neoforge-1.2.8.jar",
+        "sha512": "8311c3723bef5a765347d9500d0a9f5968515770a6effb3cdbfdf6e2ddd9912f9a83bbbd7fe62baf2319dd46fd5057d7cb6044abbd2e9b91e9075291ffced747"
+      }
+    }
+  }
+}

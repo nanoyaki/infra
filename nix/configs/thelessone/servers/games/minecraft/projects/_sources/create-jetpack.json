@@ -1,0 +1,11 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "create_jetpack-forge-5.1.2.jar",
+        "url": "https://cdn.modrinth.com/data/UbFnAd4l/versions/4Ndp4d21/create_jetpack-forge-5.1.2.jar",
+        "sha512": "d3d8bca23bc78de0efaef44da0dff5d6d441aad8797ac1aa85bcd4e35f6e2da41bb4faf78a6da74796f84b205fe6943781bdd2d9ce489fa38ed63501eb919f5a"
+      }
+    }
+  }
+}

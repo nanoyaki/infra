@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "stellaris-1.21-neoforge-1.4.22.jar",
+        "url": "https://cdn.modrinth.com/data/ItTQpuBn/versions/NwYPqauj/stellaris-1.21-neoforge-1.4.22.jar",
+        "sha512": "5281dfdd2ea401f5f274336b94d978d15d70e7ecf59cde5da9461b0bc641ba76a562cc7b5fbe2cf92fdae6dad293f65e78bb44124cbd4e7c913389f6e500a13e"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "stellaris-1.21-neoforge-1.4.22.jar",
+        "url": "https://cdn.modrinth.com/data/ItTQpuBn/versions/NwYPqauj/stellaris-1.21-neoforge-1.4.22.jar",
+        "sha512": "5281dfdd2ea401f5f274336b94d978d15d70e7ecf59cde5da9461b0bc641ba76a562cc7b5fbe2cf92fdae6dad293f65e78bb44124cbd4e7c913389f6e500a13e"
+      }
+    }
+  }
+}

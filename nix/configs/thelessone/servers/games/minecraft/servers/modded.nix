@@ -76,7 +76,7 @@
 
               # general
               alloy-smelter
-              almost-unified
+              almostunified
               betterdays
               ct-overhaul-village
               cloth-config
@@ -266,11 +266,12 @@
                 "::1"
                 "127.0.0.1"
                 "localhost"
+                "100.64.0.2"
               ];
             };
 
             crossStitch.enabled = true;
-            advanced.modernForwardingVersion = 4;
+            advanced.modernForwardingVersion = "MODERN_LAZY_SESSION";
           };
         };
 

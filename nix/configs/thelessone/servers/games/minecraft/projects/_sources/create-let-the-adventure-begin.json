@@ -1,0 +1,66 @@
+{
+  "quilt": {
+    "1_21_1": {
+      "latest": {
+        "name": "create_ltab-4.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/fUa6OtBG/versions/oPEFIAt3/create_ltab-4.0.1.jar",
+        "sha512": "ff5ab8d72ad0cb1adb00daad7c0d37e7ae03c4d0e2f3d11b3ed78aa62baa8334fa2fbcf4bc7719ad76f67ae4c74a2254537c5d3a0d9e2f3e8b15c01a9c9d0265"
+      }
+    },
+    "1_20_1": {
+      "latest": {
+        "name": "create_ltab-4.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/fUa6OtBG/versions/oPEFIAt3/create_ltab-4.0.1.jar",
+        "sha512": "ff5ab8d72ad0cb1adb00daad7c0d37e7ae03c4d0e2f3d11b3ed78aa62baa8334fa2fbcf4bc7719ad76f67ae4c74a2254537c5d3a0d9e2f3e8b15c01a9c9d0265"
+      }
+    }
+  },
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "create_ltab-4.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/fUa6OtBG/versions/oPEFIAt3/create_ltab-4.0.1.jar",
+        "sha512": "ff5ab8d72ad0cb1adb00daad7c0d37e7ae03c4d0e2f3d11b3ed78aa62baa8334fa2fbcf4bc7719ad76f67ae4c74a2254537c5d3a0d9e2f3e8b15c01a9c9d0265"
+      }
+    },
+    "1_20_1": {
+      "latest": {
+        "name": "create_ltab-4.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/fUa6OtBG/versions/oPEFIAt3/create_ltab-4.0.1.jar",
+        "sha512": "ff5ab8d72ad0cb1adb00daad7c0d37e7ae03c4d0e2f3d11b3ed78aa62baa8334fa2fbcf4bc7719ad76f67ae4c74a2254537c5d3a0d9e2f3e8b15c01a9c9d0265"
+      }
+    }
+  },
+  "forge": {
+    "1_21_1": {
+      "latest": {
+        "name": "create_ltab-4.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/fUa6OtBG/versions/oPEFIAt3/create_ltab-4.0.1.jar",
+        "sha512": "ff5ab8d72ad0cb1adb00daad7c0d37e7ae03c4d0e2f3d11b3ed78aa62baa8334fa2fbcf4bc7719ad76f67ae4c74a2254537c5d3a0d9e2f3e8b15c01a9c9d0265"
+      }
+    },
+    "1_20_1": {
+      "latest": {
+        "name": "create_ltab-4.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/fUa6OtBG/versions/oPEFIAt3/create_ltab-4.0.1.jar",
+        "sha512": "ff5ab8d72ad0cb1adb00daad7c0d37e7ae03c4d0e2f3d11b3ed78aa62baa8334fa2fbcf4bc7719ad76f67ae4c74a2254537c5d3a0d9e2f3e8b15c01a9c9d0265"
+      }
+    }
+  },
+  "fabric": {
+    "1_21_1": {
+      "latest": {
+        "name": "create_ltab-4.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/fUa6OtBG/versions/oPEFIAt3/create_ltab-4.0.1.jar",
+        "sha512": "ff5ab8d72ad0cb1adb00daad7c0d37e7ae03c4d0e2f3d11b3ed78aa62baa8334fa2fbcf4bc7719ad76f67ae4c74a2254537c5d3a0d9e2f3e8b15c01a9c9d0265"
+      }
+    },
+    "1_20_1": {
+      "latest": {
+        "name": "create_ltab-4.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/fUa6OtBG/versions/oPEFIAt3/create_ltab-4.0.1.jar",
+        "sha512": "ff5ab8d72ad0cb1adb00daad7c0d37e7ae03c4d0e2f3d11b3ed78aa62baa8334fa2fbcf4bc7719ad76f67ae4c74a2254537c5d3a0d9e2f3e8b15c01a9c9d0265"
+      }
+    }
+  }
+}

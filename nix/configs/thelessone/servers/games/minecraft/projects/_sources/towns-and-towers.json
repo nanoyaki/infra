@@ -1,0 +1,34 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "t_and_t-neoforge-fabric-1.13.9+1.21.1.jar",
+        "url": "https://cdn.modrinth.com/data/DjLobEOy/versions/5PS5OhIh/t_and_t-neoforge-fabric-1.13.9%2B1.21.1.jar",
+        "sha512": "a2921584bbb0a79d634b599a1f4327c04eaf44a9846c535450755437fe02a61c5bdaee9070045062e2ae3d0dc35693bc2abf3981b67df9e01e16350a92c59739"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "t_and_t-neoforge-fabric-1.13.2.jar",
+        "url": "https://cdn.modrinth.com/data/DjLobEOy/versions/MntMLupc/t_and_t-neoforge-fabric-1.13.2.jar",
+        "sha512": "e79fffaf3ab556802701f6a2ff2843b8a1894c683621e63a05d5e4ceedb5f8d36ebeb1788e9c0768b0fef5169e8a4b8da6fb2a2ad829d0b0aa1cb0504322a50e"
+      }
+    }
+  },
+  "fabric": {
+    "1_21_1": {
+      "latest": {
+        "name": "t_and_t-neoforge-fabric-1.13.9+1.21.1.jar",
+        "url": "https://cdn.modrinth.com/data/DjLobEOy/versions/5PS5OhIh/t_and_t-neoforge-fabric-1.13.9%2B1.21.1.jar",
+        "sha512": "a2921584bbb0a79d634b599a1f4327c04eaf44a9846c535450755437fe02a61c5bdaee9070045062e2ae3d0dc35693bc2abf3981b67df9e01e16350a92c59739"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "t_and_t-neoforge-fabric-1.13.2.jar",
+        "url": "https://cdn.modrinth.com/data/DjLobEOy/versions/MntMLupc/t_and_t-neoforge-fabric-1.13.2.jar",
+        "sha512": "e79fffaf3ab556802701f6a2ff2843b8a1894c683621e63a05d5e4ceedb5f8d36ebeb1788e9c0768b0fef5169e8a4b8da6fb2a2ad829d0b0aa1cb0504322a50e"
+      }
+    }
+  }
+}

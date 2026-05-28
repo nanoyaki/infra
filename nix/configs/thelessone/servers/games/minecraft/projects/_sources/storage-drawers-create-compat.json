@@ -1,0 +1,34 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "storage-drawers-create-compat-1.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/c8JYP4m3/versions/akK0oNH8/storage-drawers-create-compat-1.0.1.jar",
+        "sha512": "6c317f53d5bb5bbd8498b601b2775c44a5572212e3c82231c1ed3acb0c84c622ad7d853b2fcd9538fa18350823cd4a50533c606c7359760aa913e95fa5cb1e37"
+      }
+    },
+    "1_20_1": {
+      "latest": {
+        "name": "storage-drawers-create-compat-1.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/c8JYP4m3/versions/akK0oNH8/storage-drawers-create-compat-1.0.1.jar",
+        "sha512": "6c317f53d5bb5bbd8498b601b2775c44a5572212e3c82231c1ed3acb0c84c622ad7d853b2fcd9538fa18350823cd4a50533c606c7359760aa913e95fa5cb1e37"
+      }
+    }
+  },
+  "forge": {
+    "1_21_1": {
+      "latest": {
+        "name": "storage-drawers-create-compat-1.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/c8JYP4m3/versions/akK0oNH8/storage-drawers-create-compat-1.0.1.jar",
+        "sha512": "6c317f53d5bb5bbd8498b601b2775c44a5572212e3c82231c1ed3acb0c84c622ad7d853b2fcd9538fa18350823cd4a50533c606c7359760aa913e95fa5cb1e37"
+      }
+    },
+    "1_20_1": {
+      "latest": {
+        "name": "storage-drawers-create-compat-1.0.1.jar",
+        "url": "https://cdn.modrinth.com/data/c8JYP4m3/versions/akK0oNH8/storage-drawers-create-compat-1.0.1.jar",
+        "sha512": "6c317f53d5bb5bbd8498b601b2775c44a5572212e3c82231c1ed3acb0c84c622ad7d853b2fcd9538fa18350823cd4a50533c606c7359760aa913e95fa5cb1e37"
+      }
+    }
+  }
+}

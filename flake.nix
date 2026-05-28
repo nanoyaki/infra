@@ -67,13 +67,6 @@
       systems.follows = "systems";
       flake-parts.follows = "flake-parts";
     };
-    nanopkgs.url = "github:nanoyaki/nanopkgs";
-    nanopkgs.inputs = {
-      nixpkgs.follows = "nixpkgs";
-      flake-parts.follows = "flake-parts";
-      flake-compat.follows = "flake-compat";
-      git-hooks-nix.follows = "git-hooks-nix";
-    };
     nixos-branding.url = "github:NixOS/branding";
     nixos-branding.inputs = {
       nixpkgs.follows = "nixpkgs";

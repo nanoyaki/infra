@@ -1,0 +1,11 @@
+{
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "expresscarts-fabric-1.4.0+1.21.11.jar",
+        "url": "https://cdn.modrinth.com/data/Xog4t7Fl/versions/nLatRTOc/expresscarts-fabric-1.4.0%2B1.21.11.jar",
+        "sha512": "15ea8eeb489bfde296c8d86845e7bd8b38760142eceb66dc780ffb3e259e6b0a4ddeb20118b375ea701f406dbbc41550023b921e80e45af01cf916e60bc352a5"
+      }
+    }
+  }
+}

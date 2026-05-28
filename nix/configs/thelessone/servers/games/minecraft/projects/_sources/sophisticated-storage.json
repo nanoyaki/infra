@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "sophisticatedstorage-1.21.1-1.5.51.1755.jar",
+        "url": "https://cdn.modrinth.com/data/hMlaZH8f/versions/8MWTvoKl/sophisticatedstorage-1.21.1-1.5.51.1755.jar",
+        "sha512": "0903667b91a9fae5dafc71bf3d5c6a9b4949e7d9cefee095f349ba212c224e4a678ee3edabc61ed4d9dcd2323eac270979de8373ac121bcd8eee5857351a056b"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "sophisticatedstorage-1.21-0.10.55.953.jar",
+        "url": "https://cdn.modrinth.com/data/hMlaZH8f/versions/E1mq466c/sophisticatedstorage-1.21-0.10.55.953.jar",
+        "sha512": "eb81ef38dae7162d9d32b20b057b28b6c434a6a8bfed4922047b2135c46b7f36979f79db528d589b57037314c6ae681d434a14768d6e5620bd01a30ad15cd9ed"
+      }
+    }
+  }
+}

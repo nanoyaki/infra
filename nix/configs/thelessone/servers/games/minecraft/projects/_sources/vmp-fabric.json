@@ -1,0 +1,18 @@
+{
+  "fabric": {
+    "1_21_11-rc3": {
+      "latest": {
+        "name": "vmp-fabric-mc1.21.11-rc3-0.2.0+beta.7.219-all.jar",
+        "url": "https://cdn.modrinth.com/data/wnEe9KBa/versions/DWcuGNuY/vmp-fabric-mc1.21.11-rc3-0.2.0%2Bbeta.7.219-all.jar",
+        "sha512": "8fc53de6b79c32cd356af9d47a05320b9382ca157bfa25483f60434d6d0a60aafa9b12301a4617ec5d04170a5bb688206b1f53e9ac77e7d5a440fdb61488cfa4"
+      }
+    },
+    "1_21_11": {
+      "latest": {
+        "name": "vmp-fabric-mc1.21.11-0.2.0+beta.7.227-all.jar",
+        "url": "https://cdn.modrinth.com/data/wnEe9KBa/versions/7Cxc2cAR/vmp-fabric-mc1.21.11-0.2.0%2Bbeta.7.227-all.jar",
+        "sha512": "5534a5b0ec88b58f1a395753e4810dde9a8f0f97a88898f4b61e960bd219ec28ea60c6676d7ee24d5b465939a4ff9470520d9015bb9cdb10d9357ff82c36fdab"
+      }
+    }
+  }
+}

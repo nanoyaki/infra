@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "refined-types-1.21.1-0.3.2.jar",
+        "url": "https://cdn.modrinth.com/data/WvQIise1/versions/9afxScxr/refined-types-1.21.1-0.3.2.jar",
+        "sha512": "2cd4f8f2cd9dfdbaa2ae826944b18740183b8f521dc0e9b8850c6f1215864adbf109128651b526f6622b009450121a711316113e3a1d42f52a70c4d7dfcc98a6"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "refined-types-1.21.1-0.2.1.jar",
+        "url": "https://cdn.modrinth.com/data/WvQIise1/versions/80ESrsSX/refined-types-1.21.1-0.2.1.jar",
+        "sha512": "dc909ea5dee2197f7f800093175fea267fc3a15ebaf8ad69d643d9a322275c8c0c591d299bc4f0523d1b0943823899b297f0e53bdd75526bf6cba766915dda58"
+      }
+    }
+  }
+}

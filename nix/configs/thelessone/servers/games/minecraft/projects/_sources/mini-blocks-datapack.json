@@ -1,0 +1,123 @@
+{
+  "datapack": {
+    "26_1_2": {
+      "latest": {
+        "name": "mini-blocks-v1-6-1-mc-26-1.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/mTsGkmyo/mini-blocks-v1-6-1-mc-26-1.zip",
+        "sha512": "47825dffa31bb36ae1af40e6e0bc983f3a8f4a1bbf57fd4876b7e5f76ef0ff7287e2cb88236317241ccd00a80768a48ff289792c112aed54e8496cbfe0aeff80"
+      }
+    },
+    "26_1_1": {
+      "latest": {
+        "name": "mini-blocks-v1-6-1-mc-26-1.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/mTsGkmyo/mini-blocks-v1-6-1-mc-26-1.zip",
+        "sha512": "47825dffa31bb36ae1af40e6e0bc983f3a8f4a1bbf57fd4876b7e5f76ef0ff7287e2cb88236317241ccd00a80768a48ff289792c112aed54e8496cbfe0aeff80"
+      }
+    },
+    "26_1": {
+      "latest": {
+        "name": "mini-blocks-v1-6-1-mc-26-1.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/mTsGkmyo/mini-blocks-v1-6-1-mc-26-1.zip",
+        "sha512": "47825dffa31bb36ae1af40e6e0bc983f3a8f4a1bbf57fd4876b7e5f76ef0ff7287e2cb88236317241ccd00a80768a48ff289792c112aed54e8496cbfe0aeff80"
+      }
+    },
+    "1_21_11": {
+      "latest": {
+        "name": "mini-blocks-v1-6-1-mc-1-21-11.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/W16H07va/mini-blocks-v1-6-1-mc-1-21-11.zip",
+        "sha512": "2a2a20b040dcd2b153bed4fcec5872e2d72b02916ee381ed4cd3a55b34f7664b5e070d55267f6a95f7b27c9a40a359ca097a807baac142fc7de743358061aed5"
+      }
+    },
+    "1_21_10": {
+      "latest": {
+        "name": "mini-blocks-v1-6-0-mc-1-21-9.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/r5twtX1T/mini-blocks-v1-6-0-mc-1-21-9.zip",
+        "sha512": "f4a39a34623f76103a4b60af8e29f15c9d3cd78954317a3079f3a523715586b070e8dec1ed61c4e964d191e9c631dee368012becb6af4c510d2a4bf52c3c507d"
+      }
+    },
+    "1_21_9": {
+      "latest": {
+        "name": "mini-blocks-v1-6-0-mc-1-21-9.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/r5twtX1T/mini-blocks-v1-6-0-mc-1-21-9.zip",
+        "sha512": "f4a39a34623f76103a4b60af8e29f15c9d3cd78954317a3079f3a523715586b070e8dec1ed61c4e964d191e9c631dee368012becb6af4c510d2a4bf52c3c507d"
+      }
+    },
+    "1_21_8": {
+      "latest": {
+        "name": "mini-blocks-v1-5-0-mc-1-21-7.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/UDWYQbTE/mini-blocks-v1-5-0-mc-1-21-7.zip",
+        "sha512": "2de182e777bf8aa1e7235c18d89c0731c5de7f903e34869d51aeaabd8d3e223664ec5d51b0443b247296c8d23d289963319674e38aa0b1aea36de0cf3193eb94"
+      }
+    },
+    "1_21_7": {
+      "latest": {
+        "name": "mini-blocks-v1-5-0-mc-1-21-7.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/UDWYQbTE/mini-blocks-v1-5-0-mc-1-21-7.zip",
+        "sha512": "2de182e777bf8aa1e7235c18d89c0731c5de7f903e34869d51aeaabd8d3e223664ec5d51b0443b247296c8d23d289963319674e38aa0b1aea36de0cf3193eb94"
+      }
+    },
+    "1_21_6": {
+      "latest": {
+        "name": "mini-blocks-v1-5-0-mc-1-21-6.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/dJCCHO5Z/mini-blocks-v1-5-0-mc-1-21-6.zip",
+        "sha512": "0774bf978889efef6cbf318292df797d7b26dd61225ac9cab619922be3a4205cd2c54ec237ce1d78ab535bfa0615d87e19a56c75f861da42e0c103d8ec8af835"
+      }
+    },
+    "1_21_5": {
+      "latest": {
+        "name": "mini-blocks-v1-4-1-mc-1-21-5.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/A5pG7xuH/mini-blocks-v1-4-1-mc-1-21-5.zip",
+        "sha512": "f1187b3086c7cd92bc7c1428df71d79bc63af8f01430a9e4bdb9442adcb741678e297af7363acdec7fbcd6ae3138f5393f969e6ca9831a2fac9a0b3dd06e9936"
+      }
+    },
+    "1_21_4": {
+      "latest": {
+        "name": "mini-blocks-v1-3-0-mc-1-21-4.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/OQXsopgK/mini-blocks-v1-3-0-mc-1-21-4.zip",
+        "sha512": "b1ac5225b1af46f5b77f0e7e2ae73eea9503fcdcd218cae7c664c4a7f46953f0b1f0fd1f37483cfa31789799bdce026e1a07bffd7c30d2012710336ddf0c2bfa"
+      }
+    },
+    "1_21_3": {
+      "latest": {
+        "name": "mini-blocks-v1-2-0-mc-1-21-2.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/rl9KxH58/mini-blocks-v1-2-0-mc-1-21-2.zip",
+        "sha512": "c411f1dfa3737dfb17b65189475b773b9f1562f93b26062de28453877b102305f6e72af5306f938fb271c45b80c810ec8866e494c113a74fef06da9f7f3496ec"
+      }
+    },
+    "1_21_2": {
+      "latest": {
+        "name": "mini-blocks-v1-2-0-mc-1-21-2.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/rl9KxH58/mini-blocks-v1-2-0-mc-1-21-2.zip",
+        "sha512": "c411f1dfa3737dfb17b65189475b773b9f1562f93b26062de28453877b102305f6e72af5306f938fb271c45b80c810ec8866e494c113a74fef06da9f7f3496ec"
+      }
+    },
+    "1_21_1": {
+      "latest": {
+        "name": "mini-blocks-v1-1-1-mc-1-21.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/cK18ir0V/mini-blocks-v1-1-1-mc-1-21.zip",
+        "sha512": "dc4f5d1132d159185f879d86c167cca9849a62eac3cef7653acb445320a23ea415d16e81d55aefed26d670e38a416d10951e3abaf6b3d4d3bde47bc7629463ff"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "mini-blocks-v1-1-1-mc-1-21.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/cK18ir0V/mini-blocks-v1-1-1-mc-1-21.zip",
+        "sha512": "dc4f5d1132d159185f879d86c167cca9849a62eac3cef7653acb445320a23ea415d16e81d55aefed26d670e38a416d10951e3abaf6b3d4d3bde47bc7629463ff"
+      }
+    },
+    "1_20_6": {
+      "latest": {
+        "name": "mini-blocks-v1-0-0-mc-1-20-5.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/mBgCtcW5/mini-blocks-v1-0-0-mc-1-20-5.zip",
+        "sha512": "1a8c810c28235c40172603fccc4e7a2cf749abb0deb074baff339b5c93307a7f257ff09bd79b87993f2c91a39bfbb303bf9fa87463b852a75de5fbb218c53add"
+      }
+    },
+    "1_20_5": {
+      "latest": {
+        "name": "mini-blocks-v1-0-0-mc-1-20-5.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/mBgCtcW5/mini-blocks-v1-0-0-mc-1-20-5.zip",
+        "sha512": "1a8c810c28235c40172603fccc4e7a2cf749abb0deb074baff339b5c93307a7f257ff09bd79b87993f2c91a39bfbb303bf9fa87463b852a75de5fbb218c53add"
+      }
+    }
+  }
+}

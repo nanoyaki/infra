@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "farmersknives-neoforge-1.21.1-4.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/uc3VdfLM/versions/zEYCrbJz/farmersknives-neoforge-1.21.1-4.2.0.jar",
+        "sha512": "57c796b81b56161b9712493e0fb3f1d3e7a71444c7d2e137dfbcba309db441c6f3b92a86cddaa11bc9e5f1536083a591dd3759987a21f9f413840825e1c5ab47"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "farmersknives-neoforge-1.21.1-4.0.2.jar",
+        "url": "https://cdn.modrinth.com/data/uc3VdfLM/versions/8M9nRvGW/farmersknives-neoforge-1.21.1-4.0.2.jar",
+        "sha512": "7227b488d17bc6bb41dae2f91e252eb141834fe84fb9a47a1724058bf3e10cd40b6d2537433430287170cbe76778b986cf6dfeb749579c9fb8fb1f62c615aa06"
+      }
+    }
+  }
+}

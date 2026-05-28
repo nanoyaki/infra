@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "modernfix-neoforge-5.27.11+mc1.21.1.jar",
+        "url": "https://cdn.modrinth.com/data/nmDcB62a/versions/nWk1yGgV/modernfix-neoforge-5.27.11%2Bmc1.21.1.jar",
+        "sha512": "427abecd8cc5836744c5b62eb44d31205c99f4a48b7aed65f6d725692387d362ae0d6a99605e08983fcca70a5aaa28c6587cf1efa175cf75d6eed3ee4b5fc6c4"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "modernfix-neoforge-5.19.0+mc1.21.jar",
+        "url": "https://cdn.modrinth.com/data/nmDcB62a/versions/vNbpPeOM/modernfix-neoforge-5.19.0%2Bmc1.21.jar",
+        "sha512": "0a217feb22fc658a1239fd5036ae3c8a17a508b70b685a252fc7339efde7637924c7d7141e8a4e23eb54f47894ff37a1ff5693c406c492c87e37a08c4e53ceb8"
+      }
+    }
+  }
+}

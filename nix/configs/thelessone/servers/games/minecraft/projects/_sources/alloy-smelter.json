@@ -1,0 +1,18 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "alloy_smelter-neoforge-1.21.1-1.2.1.jar",
+        "url": "https://cdn.modrinth.com/data/qq5kJ7f2/versions/K4pYN5lU/alloy_smelter-neoforge-1.21.1-1.2.1.jar",
+        "sha512": "8572fbcf3fb2a8cd2edc88b8403fbae83304351549528c01e7144f09d6c27401a16880bed6f200077ff87f1b704e5b8437ba6210465eb530da8da3e15ad29abc"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "alloy_smelter-neoforge-1.21.1-1.2.1.jar",
+        "url": "https://cdn.modrinth.com/data/qq5kJ7f2/versions/K4pYN5lU/alloy_smelter-neoforge-1.21.1-1.2.1.jar",
+        "sha512": "8572fbcf3fb2a8cd2edc88b8403fbae83304351549528c01e7144f09d6c27401a16880bed6f200077ff87f1b704e5b8437ba6210465eb530da8da3e15ad29abc"
+      }
+    }
+  }
+}
