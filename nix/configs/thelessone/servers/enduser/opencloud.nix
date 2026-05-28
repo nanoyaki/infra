@@ -18,11 +18,15 @@
       sops.secrets = {
         "opencloud/oidc-id" = { };
         "opencloud/jwt-secret" = { };
+        "opencloud/service-account-id" = { };
+        "opencloud/service-account-secret" = { };
       };
 
       sops.templates."opencloud.env".file = pkgs.writeEnv "opencloud.env.template" {
         OC_OIDC_CLIENT_ID = plh."opencloud/oidc-id";
         OC_JWT_SECRET = plh."opencloud/jwt-secret";
+        OC_SERVICE_ACCOUNT_ID = plh."opencloud/service-account-id";
+        OC_SERVICE_ACCOUNT_SECRET = plh."opencloud/service-account-secret";
       };
 
       systemd.services.opencloud-init-config.wantedBy = lib.mkForce [ "server-services.target" ];

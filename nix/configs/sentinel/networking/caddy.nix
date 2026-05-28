@@ -13,7 +13,6 @@
         mkOption
         mapAttrs
         optionalString
-        replaceStrings
         ;
 
       cfg = config.sentinel.caddy;
@@ -80,6 +79,7 @@
 
         services.caddy = {
           enable = true;
+          enableReload = true;
           email = "contact@nanoyaki.space";
 
           globalConfig = ''
@@ -98,40 +98,31 @@
 
           virtualHosts = mapAttrs (_: domainCfg: {
             listenAddresses = [
-              "127.0.0.1"
-              "::1"
-              "100.64.0.4"
-            ]
-            ++ lib.optional (!domainCfg.useTailnet) "0.0.0.0";
+              "0.0.0.0"
+              "::"
+            ];
 
-            extraConfig = ''
-              ${optionalString (
-                domainCfg.tls.cert != null && domainCfg.tls.key != null
-              ) "tls ${domainCfg.tls.cert} ${domainCfg.tls.key}"}
+            extraConfig =
+              optionalString (domainCfg.tls.cert != null && domainCfg.tls.key != null) ''
+                tls ${domainCfg.tls.cert} ${domainCfg.tls.key}
+              ''
+              + optionalString domainCfg.useTailnet ''
+                @public not remote_ip 100.64.0.0/24 10.0.0.0/24 127.0.0.1/32 ::1/32
 
-              ${domainCfg.config}
+                handle @public {
+                  error 404
+                }
+              ''
+              + ''
+                ${domainCfg.config}
 
-              ${optionalString (
-                domainCfg.proxy.port != null
-              ) "reverse_proxy ${domainCfg.proxy.host}:${toString domainCfg.proxy.port}"}
-            '';
+                import errors
+              ''
+              + optionalString (domainCfg.proxy.port != null) ''
+                reverse_proxy ${domainCfg.proxy.host}:${toString domainCfg.proxy.port}
+              '';
           }) cfg.host;
         };
-
-        sentinel.tailscale.services = lib.foldl (
-          acc: domain:
-
-          let
-            finalDomain = builtins.elemAt (lib.splitString "." (
-              replaceStrings [ "http://" "https://" ] [ "" "" ] domain
-            )) 0;
-          in
-
-          acc
-          // lib.optionalAttrs cfg.host.${domain}.useTailnet {
-            ${finalDomain} = "100.64.0.4";
-          }
-        ) { } (builtins.attrNames cfg.host);
       };
     };
 }

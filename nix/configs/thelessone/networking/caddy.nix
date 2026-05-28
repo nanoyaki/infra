@@ -37,8 +37,8 @@
 
             proxy = {
               port = mkOption {
-                type = types.port;
-                default = 0;
+                type = types.nullOr types.port;
+                default = null;
               };
 
               host = mkOption {
@@ -59,22 +59,27 @@
       mapVhosts = mapAttrs (
         domain: vHost:
         {
-          extraConfig = ''
-            ${vHost.extraConfig}
+          extraConfig =
+            optionalString vHost.useTailnet ''
+              @public not remote_ip 100.64.0.0/24 10.0.0.0/24 127.0.0.1/32 ::1/32
 
-            ${optionalString (
-              vHost.proxy.port != 0
-            ) "reverse_proxy ${vHost.proxy.host}:${toString vHost.proxy.port}"}
+              handle @public {
+                error 404
+              }
+            ''
+            + ''
+              ${vHost.extraConfig}
 
-            import error_handling
-          '';
+              import error_handling
+            ''
+            + optionalString (vHost.proxy.port != null) ''
+              reverse_proxy ${vHost.proxy.host}:${toString vHost.proxy.port}
+            '';
           useACMEHost = mkIf (hasInfix "theless.one" domain && !(hasPrefix "http://" domain)) "theless.one";
           listenAddresses = [
-            "127.0.0.1"
-            "::1"
-            "100.64.0.2"
-          ]
-          ++ lib.optional (!vHost.useTailnet) "0.0.0.0";
+            "0.0.0.0"
+            "::"
+          ];
         }
         // (removeAttrs vHost [
           "enable"
@@ -86,12 +91,6 @@
       );
 
       enabledHosts = filterAttrs (_: hostCfg: hostCfg.enable) cfg.vHost;
-
-      # String -> String
-      mkFileServer = directory: ''
-        root * ${directory}
-        file_server * browse
-      '';
     in
 
     # TODO: Add OAuth, OIDP, or LDAP
@@ -135,8 +134,10 @@
           root * ${pkgs.theless-dot-one}
           file_server
         '';
-        thelessone.caddy.vHost."http://na55l3zepb4kcg0zryqbdnay.theless.one".extraConfig =
-          mkFileServer "/var/www/theless.one";
+        thelessone.caddy.vHost."http://na55l3zepb4kcg0zryqbdnay.theless.one".extraConfig = ''
+          root * /var/www/theless.one
+          file_server * browse
+        '';
 
         systemd.services.caddy.wantedBy = lib.mkForce [ "server-services.target" ];
         services.caddy = {
