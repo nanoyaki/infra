@@ -2,146 +2,86 @@
   "neoforge": {
     "1_21_11": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     },
     "1_21_10": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     },
     "1_21_9": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     },
     "1_21_8": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     },
     "1_21_7": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     },
     "1_21_6": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     },
     "1_21_5": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     },
     "1_21_4": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     },
     "1_21_3": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     },
     "1_21_2": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     },
     "1_21_1": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     },
     "1_21": {
       "latest": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
-      },
-      "1_1_1": {
-        "name": "tfmg-1.1.1-1.21.1.jar",
-        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/DnTu7afj/tfmg-1.1.1-1.21.1.jar",
-        "sha512": "080340574b13b918cfec3c1b9ac65034a79769fe510edd3b8a95306147006fe82aad6745c417d84236458316446458fbdaf18358aa2736daebd0b8cb4e879d90"
+        "name": "tfmg-1.2.0.jar",
+        "url": "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar",
+        "sha512": "03f2ad28c78ef565ef203c5650280acb0b846d6105dc5c84b2e31187f501be5c59733ef3adb623fbaa32c3233d113d608905259128661ffab06b26b270b1b38c"
       }
     }
   }

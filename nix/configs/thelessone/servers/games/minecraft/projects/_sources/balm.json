@@ -1,28 +1,12 @@
 {
-  "fabric": {
-    "1_21_1": {
-      "latest": {
-        "name": "balm-fabric-1.21.1-21.0.58.jar",
-        "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/p7lNrqW8/balm-fabric-1.21.1-21.0.58.jar",
-        "sha512": "c2cad8ba9eaa9d3f8142f11be1bdb5a3c3fc90c59f417c8be904ee6b32e7c57db299e9db0747ab83d7902372cabce5fd3046194e935a589978ca9aa5bc450218"
-      }
-    },
-    "1_21": {
-      "latest": {
-        "name": "balm-fabric-1.21.1-21.0.41.jar",
-        "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/yylFzYuh/balm-fabric-1.21.1-21.0.41.jar",
-        "sha512": "808a02cca4124e2f1b8fa5bf2a843e5503aff0c8e494ec2fc035b01042e3cab5544e5d13f5f84cfcb0d2582f4c177c97820ac0d0ba8005f5e43dee10e89da245"
-      }
-    },
+  "neoforge": {
     "1_21_11": {
       "latest": {
-        "name": "balm-fabric-1.21.11-21.11.9.jar",
-        "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/wk8IL07y/balm-fabric-1.21.11-21.11.9.jar",
-        "sha512": "42c894cf4d8d5f89d1806aa397f939d8ce75e079ce0c21f5a4720023eb64c861585e2b3d1ab50e4487b3e88612b03e31e09f70915093ba291d80349fcd0d56d5"
+        "name": "balm-neoforge-1.21.11-21.11.9.jar",
+        "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/rQiSqwip/balm-neoforge-1.21.11-21.11.9.jar",
+        "sha512": "b6c2112d2e3309ffc6615d1bc766e3ff60c660c95702a5c503e1a6f86a6b359875888e18ddc84c476f753fe76a027195d47014568756aac48d4a516305436ce2"
       }
-    }
-  },
-  "neoforge": {
+    },
     "1_21_1": {
       "latest": {
         "name": "balm-neoforge-1.21.1-21.0.58.jar",
@@ -36,12 +20,28 @@
         "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/RDQPXjgQ/balm-neoforge-1.21.1-21.0.41.jar",
         "sha512": "e2149b5df7d13bdc3a9e6d956333b1e623a9c2bbb4f0e47fd9a8bc54ff686921264d7439065c8e51a2805c79f8f42913f1436058cbb29c92dc9ab17623150b0c"
       }
-    },
+    }
+  },
+  "fabric": {
     "1_21_11": {
       "latest": {
-        "name": "balm-neoforge-1.21.11-21.11.9.jar",
-        "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/rQiSqwip/balm-neoforge-1.21.11-21.11.9.jar",
-        "sha512": "b6c2112d2e3309ffc6615d1bc766e3ff60c660c95702a5c503e1a6f86a6b359875888e18ddc84c476f753fe76a027195d47014568756aac48d4a516305436ce2"
+        "name": "balm-fabric-1.21.11-21.11.9.jar",
+        "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/wk8IL07y/balm-fabric-1.21.11-21.11.9.jar",
+        "sha512": "42c894cf4d8d5f89d1806aa397f939d8ce75e079ce0c21f5a4720023eb64c861585e2b3d1ab50e4487b3e88612b03e31e09f70915093ba291d80349fcd0d56d5"
+      }
+    },
+    "1_21_1": {
+      "latest": {
+        "name": "balm-fabric-1.21.1-21.0.58.jar",
+        "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/p7lNrqW8/balm-fabric-1.21.1-21.0.58.jar",
+        "sha512": "c2cad8ba9eaa9d3f8142f11be1bdb5a3c3fc90c59f417c8be904ee6b32e7c57db299e9db0747ab83d7902372cabce5fd3046194e935a589978ca9aa5bc450218"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "balm-fabric-1.21.1-21.0.41.jar",
+        "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/yylFzYuh/balm-fabric-1.21.1-21.0.41.jar",
+        "sha512": "808a02cca4124e2f1b8fa5bf2a843e5503aff0c8e494ec2fc035b01042e3cab5544e5d13f5f84cfcb0d2582f4c177c97820ac0d0ba8005f5e43dee10e89da245"
       }
     }
   }

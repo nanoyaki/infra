@@ -2,9 +2,9 @@
   "neoforge": {
     "1_21_1": {
       "latest": {
-        "name": "PuzzlesLib-v21.1.46-1.21.1-NeoForge.jar",
-        "url": "https://cdn.modrinth.com/data/QAGBst4M/versions/7IlRqegD/PuzzlesLib-v21.1.46-1.21.1-NeoForge.jar",
-        "sha512": "f0cf4cd93caaec753d258f84522daaf34bf3b6af96c30f797dc0ddd1019a7e5593f933bcdea474fca18fa065e25293c883548b475d151359d3a260d2b4ec7862"
+        "name": "PuzzlesLib-v21.1.50-1.21.1-NeoForge.jar",
+        "url": "https://cdn.modrinth.com/data/QAGBst4M/versions/T8ql5y0R/PuzzlesLib-v21.1.50-1.21.1-NeoForge.jar",
+        "sha512": "44c9f2cc6ff1f106667432f0b3d2e049d60236dc048fcbc73863ade72fc41d04cb29b28e6949b6a960e18ebb9172083423bfd4bd4221afc23ebde60d0d53f092"
       }
     }
   }

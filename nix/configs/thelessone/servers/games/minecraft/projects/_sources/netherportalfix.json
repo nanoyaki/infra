@@ -1,47 +1,47 @@
 {
-  "fabric": {
+  "neoforge": {
+    "1_21_11": {
+      "latest": {
+        "name": "netherportalfix-neoforge-1.21.11-21.11.2.jar",
+        "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/5svDEOkf/netherportalfix-neoforge-1.21.11-21.11.2.jar",
+        "sha512": "015a891248d26daee1ab6bdf2a2a0976319ec8cc3570f927367327b187d2185ab17cde7e42616935dd08dbfa51f936ffbac0d0344ee3183773f88161a49ba78c"
+      }
+    },
     "1_21_1": {
       "latest": {
-        "name": "netherportalfix-fabric-1.21.1-21.1.3.jar",
-        "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/9KrnphgC/netherportalfix-fabric-1.21.1-21.1.3.jar",
-        "sha512": "afbfb7999f7a3c3563cbf6037f52c9be3d20e122308799d9a3f22063113dde51fb2bde7463f754019798aadf5ecab113c77bb4cd04b88689d3c73c4b2e6ce369"
+        "name": "netherportalfix-neoforge-1.21.1-21.1.1.jar",
+        "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/O09BGtgh/netherportalfix-neoforge-1.21.1-21.1.1.jar",
+        "sha512": "be26c53b4e7aa9dc27b05fe4cafdd120a3d1356410b35d25381d473bd9a7aa19ce6cec1bb982fda842f2a663d15dec5d12248b50141f9479a5e9ec33ed2ab3f7"
       }
     },
     "1_21": {
       "latest": {
-        "name": "netherportalfix-fabric-1.21.1-21.1.3.jar",
-        "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/9KrnphgC/netherportalfix-fabric-1.21.1-21.1.3.jar",
-        "sha512": "afbfb7999f7a3c3563cbf6037f52c9be3d20e122308799d9a3f22063113dde51fb2bde7463f754019798aadf5ecab113c77bb4cd04b88689d3c73c4b2e6ce369"
+        "name": "netherportalfix-neoforge-1.21.1-21.1.1.jar",
+        "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/O09BGtgh/netherportalfix-neoforge-1.21.1-21.1.1.jar",
+        "sha512": "be26c53b4e7aa9dc27b05fe4cafdd120a3d1356410b35d25381d473bd9a7aa19ce6cec1bb982fda842f2a663d15dec5d12248b50141f9479a5e9ec33ed2ab3f7"
       }
-    },
+    }
+  },
+  "fabric": {
     "1_21_11": {
       "latest": {
         "name": "netherportalfix-fabric-1.21.11-21.11.2.jar",
         "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/D79IUl9r/netherportalfix-fabric-1.21.11-21.11.2.jar",
         "sha512": "9e385c30418e1eb80c2f74d1e319ed5bc45a19dfaa8408fba40b8afb6b4b49dc7a7951cb06fc3b4a1679bd818073300df56740ecee8224f47334e8dd6395bb49"
       }
-    }
-  },
-  "neoforge": {
+    },
     "1_21_1": {
       "latest": {
-        "name": "netherportalfix-neoforge-1.21.1-21.1.1.jar",
-        "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/O09BGtgh/netherportalfix-neoforge-1.21.1-21.1.1.jar",
-        "sha512": "be26c53b4e7aa9dc27b05fe4cafdd120a3d1356410b35d25381d473bd9a7aa19ce6cec1bb982fda842f2a663d15dec5d12248b50141f9479a5e9ec33ed2ab3f7"
+        "name": "netherportalfix-fabric-1.21.1-21.1.3.jar",
+        "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/9KrnphgC/netherportalfix-fabric-1.21.1-21.1.3.jar",
+        "sha512": "afbfb7999f7a3c3563cbf6037f52c9be3d20e122308799d9a3f22063113dde51fb2bde7463f754019798aadf5ecab113c77bb4cd04b88689d3c73c4b2e6ce369"
       }
     },
     "1_21": {
       "latest": {
-        "name": "netherportalfix-neoforge-1.21.1-21.1.1.jar",
-        "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/O09BGtgh/netherportalfix-neoforge-1.21.1-21.1.1.jar",
-        "sha512": "be26c53b4e7aa9dc27b05fe4cafdd120a3d1356410b35d25381d473bd9a7aa19ce6cec1bb982fda842f2a663d15dec5d12248b50141f9479a5e9ec33ed2ab3f7"
-      }
-    },
-    "1_21_11": {
-      "latest": {
-        "name": "netherportalfix-neoforge-1.21.11-21.11.2.jar",
-        "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/5svDEOkf/netherportalfix-neoforge-1.21.11-21.11.2.jar",
-        "sha512": "015a891248d26daee1ab6bdf2a2a0976319ec8cc3570f927367327b187d2185ab17cde7e42616935dd08dbfa51f936ffbac0d0344ee3183773f88161a49ba78c"
+        "name": "netherportalfix-fabric-1.21.1-21.1.3.jar",
+        "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/9KrnphgC/netherportalfix-fabric-1.21.1-21.1.3.jar",
+        "sha512": "afbfb7999f7a3c3563cbf6037f52c9be3d20e122308799d9a3f22063113dde51fb2bde7463f754019798aadf5ecab113c77bb4cd04b88689d3c73c4b2e6ce369"
       }
     }
   }

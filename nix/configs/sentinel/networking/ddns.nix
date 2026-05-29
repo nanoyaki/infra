@@ -30,13 +30,6 @@
               secretapikey = config.sops.placeholder."porkbun/secret-api-key";
               apikey = config.sops.placeholder."porkbun/api-key";
               domain = "theless.one";
-              subdomain = "";
-              skipIPv6 = true;
-            }
-            {
-              secretapikey = config.sops.placeholder."porkbun/secret-api-key";
-              apikey = config.sops.placeholder."porkbun/api-key";
-              domain = "theless.one";
               subdomain = "binarycache";
               skipIPv6 = true;
             }

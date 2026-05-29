@@ -3,9 +3,29 @@
     { lib, pkgs, ... }:
 
     {
-      users.defaultUserShell = pkgs.bash;
-      programs.bash.enable = true;
-      programs.bash.blesh.enable = true;
+      environment.pathsToLink = [ "/share/zsh" ];
+      users.defaultUserShell = pkgs.zsh;
+      programs.zsh = {
+        enable = true;
+        enableCompletion = true;
+        enableBashCompletion = true;
+        autosuggestions.enable = true;
+        syntaxHighlighting = {
+          enable = true;
+          highlighters = [
+            "main"
+            "pattern"
+          ];
+          patterns."rm -rf" = "fg=white,bold,bg=red";
+        };
+
+        histSize = 10000;
+        histFile = "$XDG_STATE_HOME/.zsh_history";
+
+        interactiveShellInit = ''
+          bindkey -e
+        '';
+      };
 
       environment.systemPackages = with pkgs; [
         alacritty
@@ -46,18 +66,22 @@
 
         zellij.enable = true;
         zellij.settings.pane_frames = false;
+        zellij.settings.default_shell = "zsh";
 
-        bash = {
+        zsh = {
           enable = true;
+          autocd = true;
           enableCompletion = true;
-          historyFile = "${config.xdg.dataHome}/bash/history";
-          shellOptions = [
-            "histappend"
-            "extglob"
-            "globstar"
-            "checkjobs"
-            "extglob"
-          ];
+          autosuggestion.enable = true;
+          syntaxHighlighting = {
+            enable = true;
+            highlighters = [
+              "main"
+              "pattern"
+            ];
+            patterns."rm -rf" = "fg=white,bold,bg=red";
+          };
+          dotDir = "${config.xdg.configHome}/zsh";
         };
 
         starship.enable = true;

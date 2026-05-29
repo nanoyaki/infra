@@ -91,7 +91,6 @@ in
         runtimeInputs = with pkgs; [ curl ];
         text = ''
           AGENT="''${AGENT:-"nanoyaki/infra/latest (contact@nanoyaki.space)"}"
-          BASE_URL="https://api.modrinth.com/v2"
           RATELIMIT_STATE="''${XDG_STATE_HOME:-$HOME/.local/state}/modrinth-ratelimit"
           [[ ! -d "$(dirname "$RATELIMIT_STATE")" ]] && mkdir -p "$(dirname "$RATELIMIT_STATE")"
           [[ ! -f "$RATELIMIT_STATE" ]] && date +%s > "$RATELIMIT_STATE"
@@ -128,7 +127,7 @@ in
 
             echo "Requesting project $project..."
             curl -A "$AGENT" \
-              -G "$BASE_URL/project/$project/version$slugVersion" "''${curlArgs[@]}" \
+              -G "https://api.modrinth.com/v2/project/$project/version$slugVersion" "''${curlArgs[@]}" \
               -D "$headers" -o "$project-data.tmp" -s
 
             remaining="$(parse_header "$headers" "x-ratelimit-remaining")"

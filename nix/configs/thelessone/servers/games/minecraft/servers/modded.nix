@@ -126,7 +126,7 @@
 
               # stellaris
               stellaris
-              tfmg-stellaris-compat
+              # tfmg-stellaris-compat
 
               # world gen
               tectonic
@@ -228,6 +228,7 @@
               delightful-creators
               create-trading-floor
               create-misc-and-things
+              create-tfmg
 
               # macaws
               macaws-bridges
@@ -248,10 +249,6 @@
           ++ (map (pkg: pkgs.minecraft.neoforge.v1_21_1.${pkg}.latest) [
             "create-track-map-(unofficial-fork)"
             "put-a-plug-in-it!"
-          ])
-          # locked packages
-          ++ (with pkgs.minecraft.neoforge.v1_21_1; [
-            create-tfmg.v1_1_1
           ]);
 
         datapacks = null;

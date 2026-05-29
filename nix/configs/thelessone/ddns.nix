@@ -17,6 +17,11 @@
         domains = [
           {
             domain = "theless.one";
+            subdomain = "";
+            skipIPv6 = true;
+          }
+          {
+            domain = "theless.one";
             subdomain = "at01";
             skipIPv6 = true;
           }
