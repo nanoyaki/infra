@@ -32,6 +32,6 @@
         useTailnet = true;
       };
 
-      thelessone.backups.forgejo.paths = [ "/var/lib/immich" ];
+      thelessone.backups.immich.paths = [ "/var/lib/immich" ];
     };
 }
