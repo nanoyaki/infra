@@ -36,24 +36,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-shoko.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.shoko = {
-        repo = "/mnt/raid/borgbackup/shoko";
-        doInit = true;
-
-        paths = "/var/lib/shoko";
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.shoko.paths = [ "/var/lib/shoko" ];
     };
 }

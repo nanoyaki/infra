@@ -142,24 +142,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-sabnzbd.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.sabnzbd = {
-        repo = "/mnt/raid/borgbackup/sabnzbd";
-        doInit = true;
-
-        paths = "/var/lib/sabnzbd";
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.sabnzbd.paths = [ "/var/lib/sabnzbd" ];
     };
 }

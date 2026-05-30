@@ -32,24 +32,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-immich.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.immich = {
-        repo = "/mnt/raid/borgbackup/immich";
-        doInit = true;
-
-        paths = "/var/lib/immich";
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.forgejo.paths = [ "/var/lib/immich" ];
     };
 }

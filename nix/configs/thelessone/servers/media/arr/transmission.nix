@@ -93,24 +93,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-transmission.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.transmission = {
-        repo = "/mnt/raid/borgbackup/transmission";
-        doInit = true;
-
-        paths = cfg.home;
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.transmission.paths = [ cfg.home ];
     };
 }

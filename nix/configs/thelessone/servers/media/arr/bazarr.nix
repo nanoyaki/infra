@@ -14,24 +14,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-bazarr.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.bazarr = {
-        repo = "/mnt/raid/borgbackup/bazarr";
-        doInit = true;
-
-        paths = "/var/lib/bazarr";
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.bazarr.paths = [ "/var/lib/bazarr" ];
     };
 }

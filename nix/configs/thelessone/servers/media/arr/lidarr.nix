@@ -18,24 +18,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-lidarr.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.lidarr = {
-        repo = "/mnt/raid/borgbackup/lidarr";
-        doInit = true;
-
-        paths = "/var/lib/lidarr";
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.lidarr.paths = [ "/var/lib/lidarr" ];
     };
 }

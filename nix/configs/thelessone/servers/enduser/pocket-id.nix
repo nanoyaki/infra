@@ -23,24 +23,6 @@
         proxy.port = cfg.settings.PORT;
       };
 
-      systemd.services.borgbackup-job-pocket-id.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.pocket-id = {
-        repo = "/mnt/raid/borgbackup/pocket-id";
-        doInit = true;
-
-        paths = cfg.dataDir;
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.pocket-id.paths = [ cfg.dataDir ];
     };
 }

@@ -130,31 +130,11 @@
         notifs.tangled.org
       '';
 
-      systemd.services.borgbackup-job-mail.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.mail = {
-        repo = "/mnt/raid/borgbackup/mail";
-        doInit = true;
-
-        paths = "/var";
-        patterns = [
-          "+ /var/vmail"
-          "+ /var/sieve"
-          "+ /var/lib/redis-rspamd"
-          "+ /var/dkim"
-          "- **"
-        ];
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.mail.paths = [
+        "/var/vmail"
+        "/var/sieve"
+        "/var/lib/redis-rspamd"
+        "/var/dkim"
+      ];
     };
 }

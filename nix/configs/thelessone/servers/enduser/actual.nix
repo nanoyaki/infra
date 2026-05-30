@@ -19,24 +19,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-actual.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.actual = {
-        repo = "/mnt/raid/borgbackup/actual";
-        doInit = true;
-
-        paths = "/var/lib/private/actual";
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.actual.paths = [ "/var/lib/private/actual" ];
     };
 }

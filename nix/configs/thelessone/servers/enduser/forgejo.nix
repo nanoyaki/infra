@@ -261,25 +261,7 @@
         hashedPasswordFile = config.sops.secrets."mailserver/git".path;
       };
 
-      systemd.services.borgbackup-job-forgejo.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.forgejo = {
-        repo = "/mnt/raid/borgbackup/forgejo";
-        doInit = true;
-
-        paths = cfg.stateDir;
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.forgejo.paths = [ cfg.stateDir ];
 
       services.anubis.instances.forgejo.settings = {
         TARGET = "http://127.0.0.1:12500";

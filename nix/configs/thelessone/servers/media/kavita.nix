@@ -54,24 +54,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-kavita.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.kavita = {
-        repo = "/mnt/raid/borgbackup/kavita";
-        doInit = true;
-
-        paths = config.services.kavita.dataDir;
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.kavita.paths = [ config.services.kavita.dataDir ];
     };
 }

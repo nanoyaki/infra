@@ -36,28 +36,6 @@
         adminList = [ "76561198294979887" ];
       };
 
-      systemd.services.borgbackup-job-valheim.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.valheim = {
-        repo = "/mnt/raid/borgbackup/valheim";
-        doInit = true;
-
-        paths = backupPath;
-        patterns = [
-          "+ ${backupPath}/Test12.*"
-          "- **"
-        ];
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "*:0/15";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.valheim.paths = [ backupPath ];
     };
 }

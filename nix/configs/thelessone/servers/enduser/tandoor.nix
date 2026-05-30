@@ -83,24 +83,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-tandoor-recipes.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.tandoor-recipes = {
-        repo = "/mnt/raid/borgbackup/tandoor-recipes";
-        doInit = true;
-
-        paths = "/var/lib/tandoor-recipes";
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.tandoor-recipes.paths = [ "/var/lib/tandoor-recipes" ];
     };
 }

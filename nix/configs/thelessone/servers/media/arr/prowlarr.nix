@@ -19,24 +19,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-prowlarr.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.prowlarr = {
-        repo = "/mnt/raid/borgbackup/prowlarr";
-        doInit = true;
-
-        paths = "/var/lib/private/prowlarr";
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.prowlarr.paths = [ "/var/lib/private/prowlarr" ];
     };
 }

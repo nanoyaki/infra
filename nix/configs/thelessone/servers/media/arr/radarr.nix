@@ -18,24 +18,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-radarr.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.radarr = {
-        repo = "/mnt/raid/borgbackup/radarr";
-        doInit = true;
-
-        paths = "/var/lib/radarr";
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.radarr.paths = [ "/var/lib/radarr" ];
     };
 }

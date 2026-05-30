@@ -67,24 +67,6 @@
         };
       };
 
-      systemd.services.borgbackup-job-suwayomi.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.suwayomi = {
-        repo = "/mnt/raid/borgbackup/suwayomi";
-        doInit = true;
-
-        paths = config.services.suwayomi.dataDir;
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.suwayomi.paths = [ config.services.suwayomi.dataDir ];
     };
 }

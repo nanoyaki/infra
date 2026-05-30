@@ -107,25 +107,7 @@
         };
       };
 
-      systemd.services.borgbackup-job-dav.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.dav = {
-        repo = "/mnt/raid/borgbackup/davis";
-        doInit = true;
-
-        paths = cfg.dataDir;
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.dav.paths = [ cfg.dataDir ];
     };
 
   perSystem =

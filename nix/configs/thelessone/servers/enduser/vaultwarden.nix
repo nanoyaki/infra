@@ -62,29 +62,9 @@
         config.services.vaultwarden.config.ROCKET_PORT;
 
       # FIXME: remote backup
-      systemd.services.borgbackup-job-vaultwarden.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.vaultwarden = {
-        repo = "/mnt/raid/borgbackup/vaultwarden";
-        doInit = true;
-
-        paths = "/var";
-        patterns = [
-          "+ /var/lib/vaultwarden"
-          "+ ${config.services.vaultwarden.backupDir}"
-          "- **"
-        ];
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "*-*-* 00/3:00:00";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.vaultwarden.paths = [
+        "/var/lib/vaultwarden"
+        config.services.vaultwarden.backupDir
+      ];
     };
 }

@@ -18,24 +18,6 @@
         useTailnet = true;
       };
 
-      systemd.services.borgbackup-job-sonarr.unitConfig.RequiresMountsFor = "/mnt/raid";
-      services.borgbackup.jobs.sonarr = {
-        repo = "/mnt/raid/borgbackup/sonarr";
-        doInit = true;
-
-        paths = "/var/lib/sonarr";
-
-        encryption.mode = "none";
-        compression = "zstd";
-
-        startAt = "daily";
-        persistentTimer = true;
-        prune.keep = {
-          within = "1d";
-          daily = 14;
-          weekly = 12;
-          monthly = -1;
-        };
-      };
+      thelessone.backups.sonarr.paths = [ "/var/lib/sonarr" ];
     };
 }
