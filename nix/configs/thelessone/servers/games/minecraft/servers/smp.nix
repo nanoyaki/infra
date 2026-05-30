@@ -215,11 +215,14 @@
         };
       };
 
-      thelessone.caddy.vHost."map.theless.one".proxy = {
-        inherit
-          (config.services.minecraft-servers'.servers.smp.symlinks."config/bluemap/webserver.conf".value)
-          port
-          ;
+      thelessone.caddy.vHost."map.theless.one" = {
+        proxy = {
+          inherit
+            (config.services.minecraft-servers'.servers.smp.symlinks."config/bluemap/webserver.conf".value)
+            port
+            ;
+        };
+        useTailnet = true;
       };
 
       # services.postgresql = {

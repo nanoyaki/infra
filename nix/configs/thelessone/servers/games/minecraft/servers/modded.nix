@@ -346,12 +346,15 @@
         };
       };
 
-      thelessone.caddy.vHost."modded.theless.one".proxy = {
-        inherit
-          (config.services.minecraft-servers'.servers.modded-test.symlinks."config/bluemap/webserver.conf".value
-          )
-          port
-          ;
+      thelessone.caddy.vHost."modded.theless.one" = {
+        proxy = {
+          inherit
+            (config.services.minecraft-servers'.servers.modded-test.symlinks."config/bluemap/webserver.conf".value
+            )
+            port
+            ;
+        };
+        useTailnet = true;
       };
 
       thelessone.caddy.vHost."trains-modded.theless.one".proxy.port = 3876;

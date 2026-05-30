@@ -75,7 +75,7 @@
           with pkgs.minecraft.datapack.v1_21_11;
           [
             dungeons-and-taverns
-            # joshs-more-foods
+            joshs-more-foods
             mini-blocks-datapack
           ]
         );
