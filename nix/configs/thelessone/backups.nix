@@ -174,7 +174,7 @@
                 (backup.paths != [ ] && backup.command == "") || (backup.paths == [ ] && backup.command != "")
               ) (builtins.attrValues cfg);
             message = ''
-              At least one backup path or command must be specified in config.thelessone.backups.<name>.paths
+              At least one backup path or command must be specified in config.thelessone.backups.<name>
             '';
           }
         ];
