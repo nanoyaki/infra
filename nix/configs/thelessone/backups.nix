@@ -72,7 +72,7 @@
       mkBackupTimer =
         name: backup:
 
-        nameValuePair "restic-backup-${name}" {
+        nameValuePair "rustic-backup-${name}" {
           inherit (backup) timerConfig;
           wantedBy = [ "timers.target" ];
         };
