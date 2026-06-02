@@ -9,6 +9,10 @@
       ...
     }:
 
+    let
+      inherit (lib) mapAttrsToList;
+    in
+
     {
       disabledModules = [ "services/networking/headplane.nix" ];
       imports = [ inputs.headplane.nixosModules.headplane ];
@@ -144,7 +148,12 @@
                   name = "${mkServiceName domain}.theless.one";
                   type = "A";
                   value = "100.64.0.4";
-                }) (builtins.attrNames (filterThelessone config.sentinel.caddy.host));
+                }) (builtins.attrNames (filterThelessone config.sentinel.caddy.host))
+                ++ mapAttrsToList (service: ip: {
+                  name = "${service}.theless.one";
+                  type = "A";
+                  value = ip;
+                }) inputs.self.nixosConfigurations.thelessone.config.thelessone.tailscale.extraRecords;
             };
         };
       };

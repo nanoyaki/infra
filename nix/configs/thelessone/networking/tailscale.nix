@@ -1,8 +1,23 @@
 {
-  flake.nixosModules.thelessone-tailscale = _: {
-    services.tailscale = {
-      enable = true;
-      useRoutingFeatures = "both";
+  flake.nixosModules.thelessone-tailscale =
+    { lib, ... }:
+
+    let
+      inherit (lib)
+        mkOption
+        types
+        ;
+    in
+
+    {
+      options.thelessone.tailscale.extraRecords = mkOption {
+        type = types.attrsOf types.str;
+        default = { };
+      };
+
+      config.services.tailscale = {
+        enable = true;
+        useRoutingFeatures = "both";
+      };
     };
-  };
 }

@@ -2,6 +2,10 @@
   flake.nixosModules.thelessone-minecraftProxy =
     { lib, pkgs, ... }:
 
+    let
+      inherit (lib) foldl;
+    in
+
     {
       systemd.services.minecraft-server-proxy.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.proxy = {
@@ -64,5 +68,14 @@
         files."forwarding.secret" = pkgs.writeText "forwarding.secret" "@PROXY_SECRET@";
         files."server-icon.png" = "${pkgs.thelessone-minecraft-logomark}/icon.png";
       };
+
+      thelessone.tailscale.extraRecords =
+        foldl (acc: service: acc // { ${service} = "100.64.0.4"; }) { }
+          [
+            "creative"
+            "lobby"
+            "flat"
+            "modded"
+          ];
     };
 }
