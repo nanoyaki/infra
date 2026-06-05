@@ -22,7 +22,6 @@
       sentinel-ddns
       sentinel-federation
       sentinel-nanoyakiSpace
-      sentinel-binarycache
       sentinel-tangled
       sentinel-caddy
       sentinel-tailscale
