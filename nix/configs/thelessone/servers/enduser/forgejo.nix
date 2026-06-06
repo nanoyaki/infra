@@ -220,6 +220,7 @@
             DISABLE_REGISTRATION = false;
             ALLOW_ONLY_EXTERNAL_REGISTRATION = true;
             SHOW_REGISTRATION_BUTTON = false;
+            ENABLE_INTERNAL_SIGNIN = false;
             # Disable API non-OIDC auth
             ENABLE_BASIC_AUTHENTICATION = false;
           };
@@ -271,13 +272,6 @@
 
       systemd.services.forgejo.path = [ cfg.package ];
       systemd.services.forgejo.preStart = ''
-        forgejo admin user create \
-          --admin \
-          --email "hanakretzer@gmail.com" \
-          --username "nanoyaki" \
-          --password "$(cat ${config.sops.secrets."forgejo/users/nanoyaki".path})" \
-          || true
-
         if ! forgejo admin auth list | grep -q PocketID; then
           forgejo admin auth add-oauth \
             --name "PocketID" \
