@@ -102,10 +102,6 @@
 
       config = {
         networking.firewall.allowedTCPPorts = [ 443 ];
-        networking.firewall.interfaces.wg0.allowedTCPPorts = [
-          80
-          443
-        ];
 
         sops.secrets = {
           "caddy-env-vars/nik" = { };
@@ -127,7 +123,7 @@
             "127.0.0.1 ${
               builtins.head (lib.splitString "/" (lib.replaceStrings [ "http://" "https://" ] [ "" "" ] domain))
             }"
-          ) (lib.filter (host: cfg.vHost.${host}.useTailnet) (builtins.attrNames enabledHosts))
+          ) (builtins.attrNames enabledHosts)
         );
 
         thelessone.caddy.vHost."http://theless.one".extraConfig = ''
@@ -153,18 +149,6 @@
 
           globalConfig = ''
             auto_https disable_certs
-          '';
-
-          extraConfig = lib.mkForce ''
-            (error_handling) {
-              handle_errors {
-                root * ${pkgs.theless-dot-one}
-                try_files {path} /{err.status_code}.html /index.html
-                file_server {
-                  status 200
-                }
-              }
-            }
           '';
 
           virtualHosts = mapVhosts enabledHosts;

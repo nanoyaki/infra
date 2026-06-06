@@ -56,12 +56,6 @@
       systems.follows = "systems";
       nur.follows = "nur";
     };
-    nanomodules.url = "git+https://git.theless.one/nanoyaki/nanomodules.git";
-    nanomodules.inputs = {
-      nixpkgs.follows = "nixpkgs";
-      systems.follows = "systems";
-      flake-parts.follows = "flake-parts";
-    };
     discord-events-to-ics.url = "github:nanoyaki/discord-events-to-ics";
     discord-events-to-ics.inputs = {
       nixpkgs.follows = "nixpkgs";
@@ -102,6 +96,8 @@
     headplane.url = "github:tale/headplane";
     headplane.inputs.nixpkgs.follows = "nixpkgs";
     headplane.inputs.flake-utils.follows = "flake-utils";
+    theless-dot-one.url = "git+https://git.theless.one/nanoyaki/theless.one.git";
+    theless-dot-one.inputs.nixpkgs.follows = "nixpkgs";
 
     # Deduplication
     flake-compat.url = "github:NixOS/flake-compat";

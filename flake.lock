@@ -617,62 +617,6 @@
         "url": "https://cdn.jsdelivr.net/npm/mermaid@11.12.3/dist/mermaid.min.js"
       }
     },
-    "nanolib": {
-      "inputs": {
-        "flake-parts": [
-          "nanomodules",
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nanomodules",
-          "nixpkgs"
-        ],
-        "systems": [
-          "nanomodules",
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1769371910,
-        "narHash": "sha256-DdUV68zPi6P4kY58jiw1kI7+7UPYHRNbLtkE5lgh9Mc=",
-        "ref": "refs/heads/main",
-        "rev": "48a9a6e41feb0cd7e0260ddb15e383ae76a6f771",
-        "revCount": 56,
-        "type": "git",
-        "url": "https://git.theless.one/nanoyaki/nanolib.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.theless.one/nanoyaki/nanolib.git"
-      }
-    },
-    "nanomodules": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nanolib": "nanolib",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1769847337,
-        "narHash": "sha256-do2fjrL2/30KMLvRS9WveX8wZFYTHWMmDUK/NX6ivOk=",
-        "ref": "refs/heads/main",
-        "rev": "f77646c242a9684355716bd348626295c6fcc168",
-        "revCount": 103,
-        "type": "git",
-        "url": "https://git.theless.one/nanoyaki/nanomodules.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.theless.one/nanoyaki/nanomodules.git"
-      }
-    },
     "nanoyaki-space": {
       "inputs": {
         "nixpkgs": [
@@ -760,11 +704,11 @@
         "typix": "typix"
       },
       "locked": {
-        "lastModified": 1780624539,
-        "narHash": "sha256-Jq3zr8lyHduuC0pf4Aw7i6KFCXeIJxk8w5GyPxpAqbg=",
+        "lastModified": 1780700430,
+        "narHash": "sha256-bEbDCox7NTmbibDjtAHuSKNYWxe0y+ToM8+Ibn3Vpxw=",
         "owner": "NixOS",
         "repo": "branding",
-        "rev": "651e03eea7ae9090a297c34930d6db7c70290240",
+        "rev": "ed5e252d7b385df876ce55acbc02bfeb54fa9006",
         "type": "github"
       },
       "original": {
@@ -811,11 +755,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1779796641,
-        "narHash": "sha256-ZsIrKmhp4vbBXoXXmR/tBXA/UCsAQiJL9vsgZEduhVY=",
+        "lastModified": 1780511130,
+        "narHash": "sha256-2v9lT4ya59Lh1FqPeLnz1MoX9y/wz2huqfe9RtQZITk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "25f538306313eae3927264466c70d7001dcea1df",
+        "rev": "535f3e6942cb1cead3929c604320d3db54b542b9",
         "type": "github"
       },
       "original": {
@@ -861,11 +805,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780680489,
-        "narHash": "sha256-Lm3o+fr49J3jPvgF1ACLfH8LlBn4pd5WMh/DsAXOQk0=",
+        "lastModified": 1780759952,
+        "narHash": "sha256-OpH3WqTU6g1PV5SfI8E3IfFkQA0hVE2U7kIPzY+8Aj8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "b08e3c79bf7128a0967d89cf5b7cde52e1391e45",
+        "rev": "51f5d9bc582d593e8b74d03c2ed756849bf6c11a",
         "type": "github"
       },
       "original": {
@@ -891,7 +835,6 @@
         "import-tree": "import-tree",
         "killheal": "killheal",
         "lib-aggregate": "lib-aggregate",
-        "nanomodules": "nanomodules",
         "nanoyaki-space": "nanoyaki-space",
         "nix-minecraft": "nix-minecraft",
         "nix-scpsl": "nix-scpsl",
@@ -907,6 +850,7 @@
         "stylix": "stylix",
         "systems": "systems",
         "tangled": "tangled",
+        "theless-dot-one": "theless-dot-one",
         "treefmt-nix": "treefmt-nix_2",
         "valheim-server": "valheim-server"
       }
@@ -942,11 +886,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780434445,
-        "narHash": "sha256-zkjbUqEQrG48LX39f9Kvdd6Re7s3iCLxbAtBij0MZhU=",
+        "lastModified": 1780702838,
+        "narHash": "sha256-6Yt57vURvmM7JblKGDXdz8wnb7iDzzVu87hhLfDWbMw=",
         "owner": "simple-nixos-mailserver",
         "repo": "nixos-mailserver",
-        "rev": "50f067f4318584cbe618a2343f5abb2dab4f18d0",
+        "rev": "124cd33453267157bf3cb15b66bd9be99b8d1067",
         "type": "gitlab"
       },
       "original": {
@@ -1055,11 +999,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1780679868,
-        "narHash": "sha256-+RB3Ija4qQ+myLGsT6vlVcIHXxc9LNxv27RGK2XVQEA=",
+        "lastModified": 1780701809,
+        "narHash": "sha256-u7AUNs6U6eD1os4+ghbr1gH4QjPWzOdKvpeM+E+XRKM=",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "dd0d01ee2cc25917e28b5df92c43b7a88762edca",
+        "rev": "3a02d9f73608641b28e08b26acb0b0b47c05f14b",
         "type": "github"
       },
       "original": {
@@ -1115,6 +1059,26 @@
       "original": {
         "type": "git",
         "url": "https://tangled.org/tangled.org/core"
+      }
+    },
+    "theless-dot-one": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1780762261,
+        "narHash": "sha256-w7EfHo1FA3OtD1QRuBePVMdM+lxyQjShOAM9oeCw7uw=",
+        "ref": "refs/heads/main",
+        "rev": "1173f6938d83356c7d3851b632585b3d4203e0e1",
+        "revCount": 12,
+        "type": "git",
+        "url": "https://git.theless.one/nanoyaki/theless.one.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.theless.one/nanoyaki/theless.one.git"
       }
     },
     "tinted-kitty": {

@@ -1,6 +1,6 @@
 {
   flake.nixosModules.thelessone-tailscale =
-    { lib, ... }:
+    { lib, config, ... }:
 
     let
       inherit (lib)
@@ -15,9 +15,13 @@
         default = { };
       };
 
-      config.services.tailscale = {
-        enable = true;
-        useRoutingFeatures = "both";
+      config = {
+        services.tailscale = {
+          enable = true;
+          useRoutingFeatures = "both";
+        };
+
+        networking.firewall.trustedInterfaces = [ config.services.tailscale.interfaceName ];
       };
     };
 }

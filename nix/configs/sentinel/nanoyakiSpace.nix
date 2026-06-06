@@ -64,19 +64,6 @@
         redir @dotfiles /
       '';
 
-      services.traefik.dynamicConfigOptions.http = {
-        routers.nanoyaki-space = {
-          rule = "Host(`nanoyaki.space`)";
-          entryPoints = [ "websecure" ];
-          service = "nanoyaki-space";
-          tls = { };
-        };
-
-        services.nanoyaki-space.loadBalancer.servers = [
-          { url = "http://127.0.0.1:8006"; }
-        ];
-      };
-
       systemd.tmpfiles.settings.nanoyaki-space."/var/cache/nanoyaki-space".d = {
         inherit (config.services.caddy) user group;
         mode = "770";

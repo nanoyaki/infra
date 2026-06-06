@@ -76,6 +76,7 @@
       thelessone-theming
       thelessone-steam
       thelessone-services
+      thelessone-theless-dot-one
     ];
   };
 
