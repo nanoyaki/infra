@@ -21,7 +21,7 @@
       sentinel-acme
       sentinel-ddns
       sentinel-federation
-      sentinel-nanoyakiSpace
+      sentinel-nanoyaki-space
       sentinel-tangled
       sentinel-caddy
       sentinel-tailscale

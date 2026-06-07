@@ -618,17 +618,13 @@
       }
     },
     "nanoyaki-space": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
+      "flake": false,
       "locked": {
-        "lastModified": 1774827236,
-        "narHash": "sha256-e6EZCkat7yMilLkLiPEssNKDpt44zddXkoI4t5I5Kas=",
+        "lastModified": 1780854319,
+        "narHash": "sha256-1BvNq6EuagRhNFkrA4Dz41Z0XxAvUViJJY9x5UsI90k=",
         "ref": "refs/heads/main",
-        "rev": "884d7bf8a71d76081a7056e5ebacb705028d25b1",
-        "revCount": 9,
+        "rev": "c624fbd6c10994c72f5121e841151d4ca3c5f518",
+        "revCount": 11,
         "type": "git",
         "url": "https://tangled.org/nanoyaki.space/nanoyaki.space"
       },

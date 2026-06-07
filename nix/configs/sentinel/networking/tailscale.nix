@@ -123,14 +123,16 @@
                 );
             in
             {
+              magic_dns = true;
               base_domain = "theless.one";
+
               override_local_dns = true;
+              nameservers.split."vpn.nanoyaki.space" = [ ];
               nameservers.global = [
                 "1.1.1.1"
                 "1.0.0.1"
-                "8.8.8.8"
-                "8.8.4.4"
               ];
+
               extra_records =
                 (map
                   (domain: {
@@ -157,6 +159,36 @@
             };
         };
       };
+
+      services.coredns.enable = true;
+      services.coredns.config = ''
+        vpn.nanoyaki.space {
+          bind 0.0.0.0
+
+          hosts {
+            100.64.0.4 de01.vpn.nanoyaki.space
+            fallthrough
+          }
+
+          template IN A {
+            answer "{{ .Name }} 60 IN A 100.64.0.2"
+          }
+
+          template IN AAAA {
+            rcode NOERROR
+          }
+
+          log
+          errors
+        }
+
+        . {
+          forward . 1.1.1.1 1.0.0.1
+          cache 300
+          log
+          errors
+        }
+      '';
 
       sentinel.caddy.host."headscale.nanoyaki.space".proxy = {
         inherit (config.services.headscale) port;

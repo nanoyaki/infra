@@ -92,7 +92,7 @@
       treefmt-nix.follows = "treefmt-nix";
     };
     nanoyaki-space.url = "git+https://tangled.org/nanoyaki.space/nanoyaki.space";
-    nanoyaki-space.inputs.nixpkgs.follows = "nixpkgs";
+    nanoyaki-space.flake = false;
     headplane.url = "github:tale/headplane";
     headplane.inputs.nixpkgs.follows = "nixpkgs";
     headplane.inputs.flake-utils.follows = "flake-utils";

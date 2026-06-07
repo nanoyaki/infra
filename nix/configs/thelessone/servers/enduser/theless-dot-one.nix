@@ -12,6 +12,15 @@
     let
       webPkg = "${pkgs.theless-dot-one}/share/php/theless-dot-one";
       inherit (config.services.caddy) user group;
+      environment = {
+        APP_ENV = "prod";
+        APP_SECRET = config.sops.placeholder."theless-dot-one/secret";
+        APP_CACHE_DIR = "/var/cache/theless-dot-one";
+        APP_SHARE_DIR = "/var/cache/theless-dot-one";
+        APP_LOG_DIR = "/var/log/theless-dot-one";
+        APP_RUNTIME_OPTIONS = builtins.toJSON { disable_dotenv = true; };
+        DEFAULT_URI = "https://theless.one";
+      };
     in
 
     {
@@ -44,10 +53,6 @@
         import theless_dot_one ""
       '';
 
-      services.caddy.virtualHosts."*.theless.one".extraConfig = ''
-        import theless_dot_one 404
-      '';
-
       systemd.tmpfiles.settings.theless-dot-one = {
         "/var/log/theless-dot-one".d = {
           inherit user group;
@@ -59,58 +64,49 @@
         };
       };
 
-      sops.secrets."theless-dot-one/secret".owner = user;
-      sops.templates."theless-dot-one.env".file = pkgs.writeEnv "theless-dot-one.env.template" {
-        APP_SECRET = config.sops.placeholder."theless-dot-one/secret";
-      };
+      sops.secrets."theless-dot-one/secret" = { };
+      sops.templates."theless-dot-one.env".file =
+        pkgs.writeEnv "theless-dot-one.env.template" environment;
 
       systemd.services.phpfpm-theless-dot-one = {
         serviceConfig.EnvironmentFile = config.sops.templates."theless-dot-one.env".path;
-        environment = {
-          APP_RUNTIME_OPTIONS = builtins.toJSON { disable_dotenv = true; };
-          APP_CACHE_DIR = "/var/cache/theless-dot-one";
-          DEFAULT_URI = "https://theless.one";
-        };
-
         preStart = ''
-          rm -rf "$APP_CACHE_DIR/prod"
-          ${lib.getExe pkgs.php85} ${webPkg}/bin/console cache:clear --env=prod --no-debug
+          rm -rf "$APP_CACHE_DIR/$APP_ENV"
+          ${lib.getExe pkgs.php85} ${webPkg}/bin/console cache:warm
+          chown -R ${user}:${group} "$APP_CACHE_DIR"
         '';
       };
 
       services.phpfpm.pools.theless-dot-one = {
         inherit user group;
         phpPackage = pkgs.php85;
-        phpOptions = ''
-          memory_limit = 256M
-          display_errors = 0
-          error_reporting = E_ALL
-          date.timezone = "Europe/Berlin"
-        '';
 
-        phpEnv = {
-          APP_ENV = "prod";
-          APP_SECRET = "$APP_SECRET";
-          APP_SHARE_DIR = "$APP_CACHE_DIR";
-          APP_CACHE_DIR = "$APP_CACHE_DIR";
-          APP_LOG_DIR = "/var/log/theless-dot-one";
-          APP_RUNTIME_OPTIONS = "$APP_RUNTIME_OPTIONS";
-          DEFAULT_URI = "$DEFAULT_URI";
-        };
-
+        phpEnv = lib.mapAttrs (name: _: "\$${name}") environment;
         settings = {
+          # Access
           "listen.owner" = user;
           "listen.group" = group;
           "listen.mode" = "0660";
+
+          # Performance
           "pm" = "dynamic";
-          "pm.max_children" = 5;
-          "pm.start_servers" = 1;
-          "pm.min_spare_servers" = 1;
+          "pm.max_children" = 10;
+          "pm.start_servers" = 3;
+          "pm.min_spare_servers" = 2;
           "pm.max_spare_servers" = 5;
-          "pm.max_requests" = 50;
-          "php_admin_value[error_log]" = "stderr";
+          "pm.max_requests" = 500;
+          "request_terminate_timeout" = "30s";
+          "php_admin_value[memory_limit]" = "396M";
+
+          # App config
+          "php_admin_value[date.timezone]" = "Europe/Berlin";
+
+          # Logging
+          "php_admin_value[error_reporting]" = "E_ALL";
           "php_admin_flag[log_errors]" = true;
+          "php_admin_flag[display_errors]" = false;
           "catch_workers_output" = true;
+          "decorate_workers_output" = false;
         };
       };
     };

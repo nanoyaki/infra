@@ -69,11 +69,12 @@
             ''
             + ''
               ${vHost.extraConfig}
-
-              import error_handling
             ''
             + optionalString (vHost.proxy.port != null) ''
               reverse_proxy ${vHost.proxy.host}:${toString vHost.proxy.port}
+            ''
+            + ''
+              import error_handling
             '';
           useACMEHost = mkIf (hasInfix "theless.one" domain && !(hasPrefix "http://" domain)) "theless.one";
           listenAddresses = [
@@ -142,7 +143,7 @@
           environmentFile = config.sops.templates."caddy-users.env".path;
           email = "contact@nanoyaki.space";
 
-          logFormat = ''
+          logFormat = lib.mkForce ''
             format console
             level INFO
           '';
