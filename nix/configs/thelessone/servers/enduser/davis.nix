@@ -16,7 +16,6 @@
       sops.secrets = {
         davis-app-secret = { };
         davis-admin-password = { };
-        no-reply-password = { };
       };
 
       sops.templates.mailer-dsn.content = ''

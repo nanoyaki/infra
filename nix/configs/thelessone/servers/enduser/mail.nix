@@ -15,7 +15,14 @@
         "mailserver/meilyne" = { };
         "mailserver/aslija-personal" = { };
         "mailserver/aslija-business" = { };
+
+        no-reply-password = {
+          mode = "0440";
+          group = "no-reply";
+        };
       };
+
+      users.groups.no-reply = { };
 
       networking.firewall.allowedTCPPorts = [
         465

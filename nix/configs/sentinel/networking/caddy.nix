@@ -2,7 +2,6 @@
   flake.nixosModules.sentinel-caddy =
     {
       lib,
-      pkgs,
       config,
       ...
     }:
@@ -84,16 +83,6 @@
 
           globalConfig = ''
             auto_https disable_certs
-          '';
-
-          extraConfig = ''
-            (errors) {
-              handle_errors {
-                root * ${pkgs.theless-dot-one}
-                try_files /{http.error.status_code}.html /index.html
-                file_server
-              }
-            }
           '';
 
           virtualHosts = mapAttrs (_: domainCfg: {

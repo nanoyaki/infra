@@ -16,7 +16,7 @@
 
       sops.templates."vaultwarden.env" = {
         file = pkgs.writeEnv "vaultwarden.env.template" {
-          SMTP_PASSWORD = config.sops.placeholder.vaultwarden-smtp-password;
+          SMTP_PASSWORD = config.sops.placeholder.no-reply-password;
           # ADMIN_TOKEN= "'${config.sops.placeholder.vaultwarden-admin-token}'";
         };
         restartUnits = [ "vaultwarden.service" ];
@@ -39,8 +39,8 @@
           SMTP_SECURITY = "force_tls";
           SMTP_DEBUG = true;
 
-          SMTP_USERNAME = "vaultwarden@theless.one";
-          SMTP_FROM = "vaultwarden@theless.one";
+          SMTP_USERNAME = "no-reply@theless.one";
+          SMTP_FROM = "no-reply@theless.one";
           SMTP_FROM_NAME = "Vaultwarden Theless.one";
 
           SIGNUPS_ALLOWED = false;
@@ -51,11 +51,6 @@
         };
 
         environmentFile = config.sops.templates."vaultwarden.env".path;
-      };
-
-      mailserver.accounts."vaultwarden@theless.one" = {
-        sendOnly = true;
-        hashedPasswordFile = config.sops.secrets."mailserver/vaultwarden".path;
       };
 
       thelessone.caddy.vHost."vaultwarden.theless.one".proxy.port =

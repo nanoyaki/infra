@@ -32,7 +32,7 @@
 
           pnpmDeps = pkgs.fetchPnpmDeps {
             inherit (finalAttrs) pname version src;
-            pnpm = pkgs.pnpm_10.override { nodejs = pkgs.nodejs_22; };
+            pnpm = pkgs.pnpm_10.override { nodejs-slim = pkgs.nodejs_22; };
             fetcherVersion = 3;
             hash = "sha256-7nBkeXGJfDRSvNesOjOK+Mtzp6SlBvbytyfsQl9eh/Y=";
           };

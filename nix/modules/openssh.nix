@@ -1,6 +1,6 @@
 {
   flake.nixosModules.openssh =
-    { lib, config, ... }:
+    { config, ... }:
 
     let
       id_nadesiko = "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIGTdis9sEaWC/dHRq6a5sTrcBQmQuDQ+OxzJQuhnx/daAAAABHNzaDo=";
@@ -18,14 +18,6 @@
       systemd.services.sshd = {
         unitConfig.DefaultDependencies = false;
         serviceConfig.Restart = "always";
-      };
-
-      services.fail2ban = {
-        enable = true;
-        maxretry = 5;
-        bantime-increment.enable = true;
-
-        jails.sshd = lib.mkForce { };
       };
 
       users.users.root.openssh.authorizedKeys.keys = [ id_nadesiko ];

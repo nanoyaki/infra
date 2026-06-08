@@ -20,12 +20,12 @@
         "dashboard/flood-username" = { };
         "dashboard/flood-password" = { };
         "dashboard/sabnzbd" = { };
-        "dashboard/tandoor" = { };
         "dashboard/radarr" = { };
         "dashboard/sonarr" = { };
         "dashboard/lidarr" = { };
         "dashboard/bazarr" = { };
         "dashboard/prowlarr" = { };
+        "dashboard/speedtest" = { };
 
         "dashboard/latitude" = { };
         "dashboard/longitude" = { };
@@ -39,12 +39,12 @@
         HOMEPAGE_VAR_FLOOD_USERNAME = config.sops.placeholder."dashboard/flood-username";
         HOMEPAGE_VAR_FLOOD_PASSWORD = config.sops.placeholder."dashboard/flood-password";
         HOMEPAGE_VAR_SABNZBD_API_KEY = config.sops.placeholder."dashboard/sabnzbd";
-        HOMEPAGE_VAR_TANDOOR_API_KEY = config.sops.placeholder."dashboard/tandoor";
         HOMEPAGE_VAR_RADARR_API_KEY = config.sops.placeholder."dashboard/radarr";
         HOMEPAGE_VAR_SONARR_API_KEY = config.sops.placeholder."dashboard/sonarr";
         HOMEPAGE_VAR_LIDARR_API_KEY = config.sops.placeholder."dashboard/lidarr";
         HOMEPAGE_VAR_BAZARR_API_KEY = config.sops.placeholder."dashboard/bazarr";
         HOMEPAGE_VAR_PROWLARR_API_KEY = config.sops.placeholder."dashboard/prowlarr";
+        HOMEPAGE_VAR_SPEEDTEST_API_KEY = config.sops.placeholder."dashboard/speedtest";
 
         HOMEPAGE_VAR_LATITUDE = config.sops.placeholder."dashboard/latitude";
         HOMEPAGE_VAR_LONGITUDE = config.sops.placeholder."dashboard/longitude";
@@ -64,7 +64,7 @@
           "home.theless.one"
           "localhost:33189"
           "127.0.0.1:33189"
-          "100.64.64.1:33189"
+          "100.64.0.1:33189"
           "[fd64::1]:33189"
         ];
         environmentFiles = [ config.sops.templates."homepage-secrets.env".path ];
@@ -89,11 +89,13 @@
             saturate = 50;
             opacity = 50;
           };
-          favicon = "https://theless.one/favicon.ico";
+          favicon = "https://theless.one/assets/favicon.ico";
           theme = "dark";
           color = "slate";
           cardBlur = "xs";
 
+          statusStyle = "dot";
+          useEqualHeights = true;
           layout = [
             {
               General = {
@@ -103,19 +105,53 @@
               };
             }
             {
-              Media.style = "column";
+              Resources = {
+                header = false;
+                style = "row";
+                columns = 4;
+              };
             }
             {
-              Downloads.style = "column";
+              Media = {
+                header = false;
+                style = "row";
+                columns = 4;
+              };
             }
             {
-              "User services".style = "column";
+              Public = {
+                header = false;
+                style = "row";
+                columns = 4;
+              };
             }
             {
-              Manga.style = "column";
+              Private = {
+                header = false;
+                style = "row";
+                columns = 4;
+              };
             }
             {
-              "Arr admin".style = "column";
+              Manga = {
+                header = false;
+                style = "row";
+                columns = 3;
+              };
+            }
+            {
+              Downloads = {
+                style = "row";
+                columns = 2;
+                initiallyCollapsed = true;
+              };
+            }
+            {
+              Administration = {
+                style = "row";
+                columns = 4;
+                initiallyCollapsed = true;
+              };
             }
           ];
 
@@ -134,14 +170,6 @@
 
         widgets = [
           { logo.icon = "https://theless.one/assets/logo.svg"; }
-          {
-            search = {
-              provider = "duckduckgo";
-              target = "_blank";
-              showSearchSuggestions = true;
-              focus = true;
-            };
-          }
           {
             openmeteo = {
               label = "Austria - Server";
@@ -191,6 +219,63 @@
 
         services = [
           {
+            Resources =
+              let
+                glances = metric: {
+                  widget = {
+                    type = "glances";
+                    url = "http://127.0.0.1:${toString config.services.glances.port}";
+                    inherit metric;
+                    version = 4;
+                    pointsLimit = 20;
+                  };
+                };
+              in
+              [
+                {
+                  "CPU Usage" = glances "cpu";
+                }
+                {
+                  "Memory Usage" = glances "memory";
+                }
+                {
+                  "Network Attached Storage".widget = {
+                    type = "glances";
+                    url = "http://10.0.0.6:${toString config.services.glances.port}";
+                    metric = "fs:/moon";
+                    version = 4;
+                    pointsLimit = 20;
+                  };
+                }
+                {
+                  "Internal Storage" = glances "fs:/";
+                }
+                {
+                  "Network Usage" = glances "network:enp9s0";
+                }
+                {
+                  "VPN Network Usage" = glances "network:${config.services.tailscale.interfaceName}";
+                }
+                {
+                  Speedtest.widget = {
+                    type = "speedtest";
+                    url = "http://localhost:28920";
+                    version = 2;
+                    key = "{{HOMEPAGE_VAR_SPEEDTEST_API_KEY}}";
+                    bitratePrecision = 3;
+                    fields = [
+                      "download"
+                      "upload"
+                      "ping"
+                    ];
+                  };
+                }
+                {
+                  Processes = glances "process";
+                }
+              ];
+          }
+          {
             Media = [
               {
                 Jellyfin = rec {
@@ -202,12 +287,31 @@
                     type = "jellyfin";
                     url = href;
                     key = "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}";
+                    version = 2;
                     enableNowPlaying = false;
                     enableMediaControl = false;
                     fields = [
                       "movies"
                       "series"
                       "episodes"
+                    ];
+                  };
+                };
+              }
+              {
+                Jellyseerr = rec {
+                  icon = "jellyseerr.svg";
+                  href = "https://jellyseerr.theless.one";
+                  siteMonitor = href;
+                  description = "Media requests";
+                  widget = {
+                    type = "jellyseerr";
+                    url = href;
+                    key = "{{HOMEPAGE_VAR_JELLYSEERR_API_KEY}}";
+                    fields = [
+                      "pending"
+                      "available"
+                      "issues"
                     ];
                   };
                 };
@@ -251,7 +355,43 @@
             ];
           }
           {
-            "User services" = [
+            Public = [
+              {
+                "Pocket ID" = rec {
+                  icon = "pocket-id.svg";
+                  href = "https://id.theless.one";
+                  siteMonitor = href;
+                  description = "Identity management";
+                };
+              }
+              {
+                Vaultwarden = rec {
+                  icon = "vaultwarden.svg";
+                  href = "https://vaultwarden.theless.one";
+                  siteMonitor = href;
+                  description = "Password manager";
+                };
+              }
+              {
+                Speedtest = rec {
+                  icon = "sh-speedtest-tracker-dark.svg";
+                  href = "https://speedtest.theless.one";
+                  siteMonitor = href;
+                  description = "Network speed monitor";
+                };
+              }
+              {
+                Forgejo = rec {
+                  icon = "forgejo.svg";
+                  href = "https://git.theless.one";
+                  siteMonitor = href;
+                  description = "Code forge";
+                };
+              }
+            ];
+          }
+          {
+            Private = [
               {
                 Actual = rec {
                   icon = "actual-budget.svg";
@@ -266,20 +406,6 @@
                   href = "https://recipes.theless.one";
                   siteMonitor = href;
                   description = "Recipe management";
-                  widget = {
-                    type = "tandoor";
-                    url = href;
-                    key = "{{HOMEPAGE_VAR_TANDOOR_API_KEY}}";
-                    fields = [ "recipes" ];
-                  };
-                };
-              }
-              {
-                "Pocket ID" = rec {
-                  icon = "pocket-id.svg";
-                  href = "https://id.theless.one";
-                  siteMonitor = href;
-                  description = "Identity management";
                 };
               }
               {
@@ -291,87 +417,11 @@
                 };
               }
               {
-                Vaultwarden = rec {
-                  icon = "vaultwarden.svg";
-                  href = "https://vaultwarden.theless.one";
-                  siteMonitor = href;
-                  description = "Password manager";
-                };
-              }
-              {
-                Forgejo = rec {
-                  icon = "forgejo.svg";
-                  href = "https://git.theless.one";
-                  siteMonitor = href;
-                  description = "Code forge";
-                };
-              }
-              {
                 Papra = rec {
                   icon = "papra.svg";
                   href = "https://papra.theless.one";
                   siteMonitor = href;
                   description = "Document archive";
-                };
-              }
-            ];
-          }
-          {
-            Downloads = [
-              {
-                Jellyseerr = rec {
-                  icon = "jellyseerr.svg";
-                  href = "https://jellyseerr.theless.one";
-                  siteMonitor = href;
-                  description = "Media requests";
-                  widget = {
-                    type = "jellyseerr";
-                    url = href;
-                    key = "{{HOMEPAGE_VAR_JELLYSEERR_API_KEY}}";
-                    fields = [
-                      "pending"
-                      "available"
-                      "issues"
-                    ];
-                  };
-                };
-              }
-              {
-                Flood = rec {
-                  icon = "flood.svg";
-                  href = "https://flood.theless.one";
-                  siteMonitor = href;
-                  description = "Webinterface for deluge";
-                  widget = {
-                    type = "flood";
-                    url = href;
-                    username = "{{HOMEPAGE_VAR_FLOOD_USERNAME}}";
-                    password = "{{HOMEPAGE_VAR_FLOOD_PASSWORD}}";
-                    fields = [
-                      "leech"
-                      "seed"
-                      "download"
-                      "upload"
-                    ];
-                  };
-                };
-              }
-              {
-                Sabnzbd = rec {
-                  icon = "sabnzbd.svg";
-                  href = "https://sabnzbd.theless.one";
-                  siteMonitor = href;
-                  description = "Newznab client";
-                  widget = {
-                    type = "sabnzbd";
-                    url = href;
-                    key = "{{HOMEPAGE_VAR_SABNZBD_API_KEY}}";
-                    fields = [
-                      "rate"
-                      "queue"
-                      "timeleft"
-                    ];
-                  };
                 };
               }
             ];
@@ -417,7 +467,25 @@
             ];
           }
           {
-            "Arr admin" = [
+            Administration = [
+              {
+                Sonarr = rec {
+                  icon = "sonarr.svg";
+                  href = "https://sonarr.theless.one";
+                  siteMonitor = href;
+                  description = "Show management";
+                  widget = {
+                    type = "sonarr";
+                    url = href;
+                    key = "{{HOMEPAGE_VAR_SONARR_API_KEY}}";
+                    enableQueue = true;
+                    fields = [
+                      "wanted"
+                      "queued"
+                    ];
+                  };
+                };
+              }
               {
                 Radarr = rec {
                   icon = "radarr.svg";
@@ -432,24 +500,6 @@
                     fields = [
                       "wanted"
                       "missing"
-                      "queued"
-                    ];
-                  };
-                };
-              }
-              {
-                Sonarr = rec {
-                  icon = "sonarr.svg";
-                  href = "https://sonarr.theless.one";
-                  siteMonitor = href;
-                  description = "Show management";
-                  widget = {
-                    type = "sonarr";
-                    url = href;
-                    key = "{{HOMEPAGE_VAR_SONARR_API_KEY}}";
-                    enableQueue = true;
-                    fields = [
-                      "wanted"
                       "queued"
                     ];
                   };
@@ -474,11 +524,20 @@
                 };
               }
               {
-                Shoko = rec {
-                  icon = "shoko.svg";
-                  href = "https://shoko.theless.one";
+                Prowlarr = rec {
+                  icon = "prowlarr.svg";
+                  href = "https://prowlarr.theless.one";
                   siteMonitor = href;
-                  description = "Anime management";
+                  description = "Indexer management";
+                  widget = {
+                    type = "prowlarr";
+                    url = href;
+                    key = "{{HOMEPAGE_VAR_PROWLARR_API_KEY}}";
+                    fields = [
+                      "numberOfGrabs"
+                      "numberOfQueries"
+                    ];
+                  };
                 };
               }
               {
@@ -499,18 +558,59 @@
                 };
               }
               {
-                Prowlarr = rec {
-                  icon = "prowlarr.svg";
-                  href = "https://prowlarr.theless.one";
+                Shoko = rec {
+                  icon = "shoko.svg";
+                  href = "https://shoko.theless.one";
                   siteMonitor = href;
-                  description = "Indexer management";
+                  description = "Anime management";
+                };
+              }
+              {
+                Glances = rec {
+                  icon = "glances.svg";
+                  href = "https://glances.theless.one";
+                  siteMonitor = href;
+                  description = "Resource monitor";
+                };
+              }
+            ];
+          }
+          {
+            Downloads = [
+              {
+                Flood = rec {
+                  icon = "flood.svg";
+                  href = "https://flood.theless.one";
+                  siteMonitor = href;
+                  description = "Webinterface for deluge";
                   widget = {
-                    type = "prowlarr";
+                    type = "flood";
                     url = href;
-                    key = "{{HOMEPAGE_VAR_PROWLARR_API_KEY}}";
+                    username = "{{HOMEPAGE_VAR_FLOOD_USERNAME}}";
+                    password = "{{HOMEPAGE_VAR_FLOOD_PASSWORD}}";
                     fields = [
-                      "numberOfGrabs"
-                      "numberOfQueries"
+                      "leech"
+                      "seed"
+                      "download"
+                      "upload"
+                    ];
+                  };
+                };
+              }
+              {
+                Sabnzbd = rec {
+                  icon = "sabnzbd.svg";
+                  href = "https://sabnzbd.theless.one";
+                  siteMonitor = href;
+                  description = "Newznab client";
+                  widget = {
+                    type = "sabnzbd";
+                    url = href;
+                    key = "{{HOMEPAGE_VAR_SABNZBD_API_KEY}}";
+                    fields = [
+                      "rate"
+                      "queue"
+                      "timeleft"
                     ];
                   };
                 };

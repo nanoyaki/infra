@@ -19,6 +19,7 @@
       thelessnas-wireguard
       thelessnas-locale
       thelessnas-ssh
+      thelessnas-glances
     ];
   };
 

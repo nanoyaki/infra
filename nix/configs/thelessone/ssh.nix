@@ -1,6 +1,6 @@
 {
   flake.nixosModules.thelessone-ssh =
-    { config, ... }:
+    { lib, config, ... }:
 
     {
       sops.secrets.hostkey-rsa = { };
@@ -61,6 +61,14 @@
         # Sentinel
         "85.215.152.236".publicKey =
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAQEccskyRqrMdwPWEIafcrA9f3bi0A56tclI49HbZV3";
+      };
+
+      services.fail2ban = {
+        enable = true;
+        maxretry = 5;
+        bantime-increment.enable = true;
+
+        jails.sshd = lib.mkForce { };
       };
     };
 }

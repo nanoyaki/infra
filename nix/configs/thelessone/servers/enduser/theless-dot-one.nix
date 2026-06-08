@@ -24,7 +24,7 @@
     in
 
     {
-      services.caddy.extraConfig = lib.mkForce ''
+      services.caddy.extraConfig = ''
         (theless_dot_one) {
           root * ${webPkg}/public
 

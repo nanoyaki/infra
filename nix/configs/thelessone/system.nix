@@ -77,6 +77,8 @@
       thelessone-steam
       thelessone-services
       thelessone-theless-dot-one
+      thelessone-speedtest-tracker
+      thelessone-glances
     ];
   };
 
@@ -162,6 +164,8 @@
         # minecraft
         "neoforge"
       ];
+
+      services.speedtest-tracker.acknowledgeUnfree = true;
 
       system.stateVersion = "24.11";
     };

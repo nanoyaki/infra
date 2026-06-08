@@ -40,6 +40,7 @@
 
         serviceConfig = {
           ExecStart = "${lib.getExe pkgs.zfs} share moon";
+          ExecStartPost = "${lib.getExe pkgs.zfs} mount moon";
           Type = "oneshot";
         };
       };
