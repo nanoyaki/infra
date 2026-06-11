@@ -4,10 +4,22 @@
   # Tangled is nowhere close to mature
   # enough yet even for basic usage
   flake.nixosModules.thelessone-tangledAppview =
-    { config, pkgs, ... }:
+    {
+      lib,
+      config,
+      pkgs,
+      ...
+    }:
 
     let
-      plh = config.sops.placeholder;
+      inherit (config)
+        dmn
+        prt
+        plh
+        tpl
+        ;
+
+      sentinel = inputs.self.nixosConfigurations.sentinel.config;
     in
 
     {
@@ -16,7 +28,12 @@
         inputs.tangled.nixosModules.spindle
       ];
 
-      sops.secrets = {
+      prt.tangled-appview = 8012;
+      prt.tangled-spindle = 8013;
+      dmn.git = lib.mkDefault "git.theless.one";
+      dmn.tangled-spindle = "spindle.theless.one";
+
+      sec = {
         "tangled/camo" = { };
         "tangled/client-secret" = { };
         "tangled/client-kid" = { };
@@ -27,7 +44,7 @@
         "tangled/avatar-secret" = { };
       };
 
-      sops.templates."tangled-appview.env".file = pkgs.writeEnv "tangled-appview.env.template" {
+      tpl."tangled-appview.env".file = pkgs.writeEnv "tangled-appview.env.template" {
         TANGLED_CAMO_SHARED_SECRET = plh."tangled/camo";
         TANGLED_OAUTH_CLIENT_SECRET = plh."tangled/client-secret";
         TANGLED_OAUTH_CLIENT_KID = plh."tangled/client-kid";
@@ -41,23 +58,23 @@
       systemd.services.appview.environment.TANGLED_KNOTMIRROR_URL = "";
       services.tangled.appview = {
         enable = true;
-        port = 33190;
-        environmentFile = config.sops.templates."tangled-appview.env".path;
+        port = prt.tangled-appview;
+        environmentFile = tpl."tangled-appview.env".path;
 
-        appviewHost = "git.theless.one";
+        appviewHost = dmn.git;
         jetstream.endpoint = "wss://jetstream2.us-east.bsky.network/subscribe";
-        resend.sentFrom = "noreply@git.theless.one";
-        pds.host = "https://pds.nanoyaki.space";
-        camo.host = "https://camo.nanoyaki.space";
-        avatar.host = "https://avatars.nanoyaki.space";
+        resend.sentFrom = "noreply@${dmn.git}";
+        pds.host = "https://${sentinel.dmn.pds}";
+        camo.host = "https://${sentinel.dmn.camo}";
+        avatar.host = "https://${sentinel.dmn.avatar-server}";
       };
 
       services.tangled.spindle = {
         enable = true;
 
         server = {
-          listenAddr = "0.0.0.0:33191";
-          hostname = "spindle.theless.one";
+          listenAddr = "0.0.0.0:${toString prt.tangled-spindle}";
+          hostname = dmn.tangled-spindle;
           jetstreamEndpoint = "wss://jetstream2.us-east.bsky.network/subscribe";
           owner = "did:plc:majihettvb7ieflgmkvujecu";
           maxJobCount = 4;
@@ -67,7 +84,7 @@
         pipelines.workflowTimeout = "10m";
       };
 
-      # thelessone.caddy.vHost."git.theless.one".proxy.port = config.services.tangled.appview.port;
-      # thelessone.caddy.vHost."spindle.theless.one".proxy.port = 33191;
+      # thelessone.caddy.vHost.${dmn.git}.proxy.port = prt.tangled-appview;
+      # thelessone.caddy.vHost.${dmn.tangled-spindle}.proxy.port = prt.tangled-spindle;
     };
 }

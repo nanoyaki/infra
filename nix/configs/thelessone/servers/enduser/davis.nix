@@ -6,6 +6,15 @@
 
     let
       cfg = config.services.davis;
+
+      inherit (config)
+        prt
+        dmn
+        sec
+        plh
+        tpl
+        ;
+
       dirCfg.d = {
         inherit (cfg) user group;
         mode = "700";
@@ -13,27 +22,29 @@
     in
 
     {
-      sops.secrets = {
+      sec = {
         davis-app-secret = { };
         davis-admin-password = { };
       };
 
-      sops.templates.mailer-dsn.content = ''
-        smtp://no-reply:${config.sops.placeholder.no-reply-password}@theless.one
+      tpl.mailer-dsn.content = ''
+        smtp://no-reply:${plh.no-reply-password}@theless.one
       '';
+
+      dmn.davis = "dav.theless.one";
 
       systemd.services.davis-env-setup.wantedBy = lib.mkForce [ "server-services.target" ];
       systemd.services.davis-db-migrate.wantedBy = lib.mkForce [ "server-services.target" ];
       services.davis = {
         enable = true;
         nginx = null;
-        hostname = "dav.theless.one";
-        appSecretFile = config.sops.secrets.davis-app-secret.path;
+        hostname = dmn.davis;
+        appSecretFile = sec.davis-app-secret.path;
 
         adminLogin = "admin";
-        adminPasswordFile = config.sops.secrets.davis-admin-password.path;
+        adminPasswordFile = sec.davis-admin-password.path;
 
-        mail.dsnFile = config.sops.templates.mailer-dsn.path;
+        mail.dsnFile = tpl.mailer-dsn.path;
         mail.inviteFromAddress = "no-reply@theless.one";
 
         config = {
@@ -43,7 +54,7 @@
           PUBLIC_CALENDARS_ENABLED = true;
 
           AUTH_METHOD = "IMAP";
-          IMAP_AUTH_URL = "mail.theless.one:993";
+          IMAP_AUTH_URL = "${dmn.mail}:${toString prt.imap-tls}";
           IMAP_ENCRYPTION_METHOD = "tls";
           IMAP_CERTIFICATE_VALIDATION = true;
           IMAP_AUTH_USER_AUTOCREATE = true;
@@ -55,7 +66,7 @@
           # misc
           BIRTHDAY_REMINDER_OFFSET = "PT9H";
           LOG_FILE_PATH = lib.mkForce "/var/log/davis/%kernel.environment%.log";
-          SYMFONY_TRUSTED_PROXIES = "127.0.0.1,dav.theless.one";
+          SYMFONY_TRUSTED_PROXIES = "127.0.0.1,${dmn.davis}";
           APP_ENV = "prod";
         };
 
@@ -64,7 +75,8 @@
       };
 
       services.phpfpm.pools.davis.settings."listen.group" = "caddy";
-      thelessone.caddy.vHost."dav.theless.one" = {
+      thelessone.caddy.vHost.${dmn.davis} = {
+        serverAliases = [ dmn.mail ];
         extraConfig = ''
           root * ${cfg.package}/public
           encode zstd gzip

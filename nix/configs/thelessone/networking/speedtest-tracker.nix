@@ -4,6 +4,7 @@
 
     let
       inherit (lib) mkEnableOption;
+      inherit (config) prt dmn sec;
 
       cfg = config.services.speedtest-tracker;
     in
@@ -16,7 +17,10 @@
           "Speedtest-tracker uses the unfree package `ookla-speedtest`. Set `speedtest-tracker.acknowledgeUnfree` to disable this warning."
         ];
 
-        sops.secrets."speedtest-tracker/app-key".owner = cfg.user;
+        prt.speedtest-internal = 8001;
+        dmn.speedtest-tracker = "speedtest.theless.one";
+
+        sec."speedtest-tracker/app-key".owner = cfg.user;
 
         users.users.${cfg.user}.extraGroups = [ "no-reply" ];
         services.speedtest-tracker = {
@@ -25,9 +29,9 @@
           group = cfg.user;
 
           settings = {
-            APP_KEY_FILE = config.sops.secrets."speedtest-tracker/app-key".path;
+            APP_KEY_FILE = sec."speedtest-tracker/app-key".path;
 
-            APP_URL = "https://speedtest.theless.one";
+            APP_URL = "https://${dmn.speedtest-tracker}";
             APP_TIMEZONE = "Europe/Vienna";
             DISPLAY_TIMEZONE = "Europe/Vienna";
             PUBLIC_DASHBOARD = true;
@@ -37,10 +41,10 @@
             SPEEDTEST_SCHEDULE = "0 */6 * * *";
 
             MAIL_MAILER = "smtp";
-            MAIL_HOST = "mail.theless.one";
-            MAIL_PORT = 465;
-            MAIL_USERNAME = "no-reply@theless.one";
-            MAIL_PASSWORD_FILE = config.sops.secrets.no-reply-password.path;
+            MAIL_HOST = dmn.mail;
+            MAIL_PORT = prt.smtp-tls;
+            MAIL_USERNAME = "no-reply@${dmn.self}";
+            MAIL_PASSWORD_FILE = sec.no-reply-password.path;
             MAIL_FROM_NAME = "Speedtest Theless.one";
 
             LOG_CHANNEL = "syslog";
@@ -74,11 +78,11 @@
           }
         '';
 
-        thelessone.caddy.vHost."http://localhost:28920".extraConfig = ''
+        thelessone.caddy.vHost."http://localhost:${toString prt.speedtest-internal}".extraConfig = ''
           import speedtest
         '';
 
-        thelessone.caddy.vHost."speedtest.theless.one" = {
+        thelessone.caddy.vHost.${dmn.speedtest-tracker} = {
           extraConfig = ''
             import speedtest
           '';

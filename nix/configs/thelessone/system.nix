@@ -103,18 +103,22 @@
   flake.nixosModules.thelessone-system =
     { config, ... }:
 
+    let
+      inherit (config) sec;
+    in
+
     {
       sops.defaultSopsFile = ./secrets.yaml;
       programs.nh.flake = "${config.self.mainUserHome}/flake";
 
       self.mainUser = "thelessone";
       self.mainUserHome = "/home/thelessone";
-      sops.secrets."users/thelessone-new".neededForUsers = true;
+      sec."users/thelessone-new".neededForUsers = true;
       users.users.thelessone = {
         isNormalUser = true;
         description = "Thelessone";
         extraGroups = [ "wheel" ];
-        hashedPasswordFile = config.sops.secrets."users/thelessone-new".path;
+        hashedPasswordFile = sec."users/thelessone-new".path;
       };
 
       security.sudo.extraRules = [

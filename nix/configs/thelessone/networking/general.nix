@@ -3,6 +3,9 @@
     _:
 
     {
+      dmn.self = "theless.one";
+      dmn.self-fqdn = "at01.theless.one";
+
       networking = {
         hostId = "f617b7b6";
         hostName = "thelessone";

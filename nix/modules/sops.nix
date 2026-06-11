@@ -2,10 +2,24 @@
 
 {
   flake.nixosModules.sops =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
+
+    let
+      inherit (lib) mkAliasOptionModule;
+    in
 
     {
-      imports = [ inputs.sops-nix.nixosModules.default ];
+      imports = [
+        inputs.sops-nix.nixosModules.default
+        (mkAliasOptionModule [ "sec" ] [ "sops" "secrets" ])
+        (mkAliasOptionModule [ "tpl" ] [ "sops" "templates" ])
+        (mkAliasOptionModule [ "plh" ] [ "sops" "placeholder" ])
+      ];
 
       environment.systemPackages = [ pkgs.sops ];
       sops = {

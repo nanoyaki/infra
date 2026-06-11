@@ -14,6 +14,8 @@
         optionalString
         ;
 
+      inherit (config) prt;
+
       cfg = config.sentinel.caddy;
     in
 
@@ -71,9 +73,9 @@
       };
 
       config = {
-        networking.firewall.allowedTCPPorts = [
-          80
-          443
+        networking.firewall.allowedTCPPorts = with prt; [
+          http
+          https
         ];
 
         services.caddy = {
@@ -83,6 +85,18 @@
 
           globalConfig = ''
             auto_https disable_certs
+          '';
+
+          logFormat = ''
+            format console
+          '';
+
+          extraConfig = ''
+            (errors) {
+              handle_errors {
+                respond "{err.status_code} - {err.message}"
+              }
+            }
           '';
 
           virtualHosts = mapAttrs (_: domainCfg: {

@@ -7,18 +7,26 @@
     }:
 
     let
-      plh = config.sops.placeholder;
+      inherit (config)
+        prt
+        dmn
+        plh
+        tpl
+        ;
     in
 
     {
-      sops.secrets = {
+      prt.bsky-pds = 8000;
+      dmn.bsky-pds = "pds.nanoyaki.space";
+
+      sec = {
         "pds/jwt" = { };
         "pds/admin-password" = { };
         "pds/k256-key" = { };
         "pds/smtp-dsn" = { };
       };
 
-      sops.templates."bluesky-pds.env".file = pkgs.writeEnv "bluesky-pds.env.template" {
+      tpl."bluesky-pds.env".file = pkgs.writeEnv "bluesky-pds.env.template" {
         PDS_JWT_SECRET = plh."pds/jwt";
         PDS_ADMIN_PASSWORD = plh."pds/admin-password";
         PDS_PLC_ROTATION_KEY_K256_PRIVATE_KEY_HEX = plh."pds/k256-key";
@@ -27,13 +35,13 @@
 
       services.bluesky-pds = {
         enable = true;
-        environmentFiles = [ config.sops.templates."bluesky-pds.env".path ];
+        environmentFiles = [ tpl."bluesky-pds.env".path ];
 
-        settings.PDS_PORT = 8000;
-        settings.PDS_HOSTNAME = "pds.nanoyaki.space";
-        settings.PDS_EMAIL_FROM_ADDRESS = "no-reply@theless.one";
+        settings.PDS_PORT = prt.bsky-pds;
+        settings.PDS_HOSTNAME = dmn.bsky-pds;
+        settings.PDS_EMAIL_FROM_ADDRESS = "no-reply@${dmn.self}";
       };
 
-      sentinel.caddy.host."pds.nanoyaki.space".proxy.port = 8000;
+      sentinel.caddy.host.${dmn.bsky-pds}.proxy.port = prt.bsky-pds;
     };
 }

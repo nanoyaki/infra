@@ -8,6 +8,14 @@
     }:
 
     let
+      inherit (config)
+        dmn
+        prt
+        sec
+        plh
+        tpl
+        ;
+
       cfg = config.services.forgejo;
 
       user = "git";
@@ -27,7 +35,7 @@
         extraGroups = [ "podman" ];
       };
 
-      sops.secrets = {
+      sec = {
         "forgejo/kikyo" = { };
         "forgejo/syakuyaku" = { };
         "forgejo/botan" = { };
@@ -39,22 +47,22 @@
         "forgejo/oidc/secret".owner = cfg.user;
       };
 
-      sops.templates = {
+      tpl = {
         "kikyo.env".file = pkgs.writeEnv "kikyo.env.template" {
-          TOKEN = config.sops.placeholder."forgejo/kikyo";
+          TOKEN = plh."forgejo/kikyo";
         };
 
         "syakuyaku.env".file = pkgs.writeEnv "syakuyaku.env.template" {
-          TOKEN = config.sops.placeholder."forgejo/syakuyaku";
+          TOKEN = plh."forgejo/syakuyaku";
         };
 
         "botan.env".file = pkgs.writeEnv "botan.env.template" {
-          TOKEN = config.sops.placeholder."forgejo/botan";
-          REGISTRY_AUTH_FILE = config.sops.templates."auth.json".path;
+          TOKEN = plh."forgejo/botan";
+          REGISTRY_AUTH_FILE = tpl."auth.json".path;
         };
 
         "kigiku.env".file = pkgs.writeEnv "kigiku.env.template" {
-          TOKEN = config.sops.placeholder."forgejo/kigiku";
+          TOKEN = plh."forgejo/kigiku";
         };
       };
 
@@ -73,8 +81,8 @@
           kikyo = {
             enable = true;
             name = "kikyo";
-            url = "https://git.theless.one";
-            tokenFile = config.sops.templates."kikyo.env".path;
+            url = "https://${dmn.git}";
+            tokenFile = tpl."kikyo.env".path;
 
             settings.runner.capacity = 8;
 
@@ -109,19 +117,19 @@
 
           syakuyaku = kikyo // {
             name = "syakuyaku";
-            tokenFile = config.sops.templates."syakuyaku.env".path;
+            tokenFile = tpl."syakuyaku.env".path;
           };
 
           kigiku = kikyo // {
             name = "kigiku";
-            tokenFile = config.sops.templates."kigiku.env".path;
+            tokenFile = tpl."kigiku.env".path;
           };
 
           botan = {
             enable = true;
             name = "botan";
-            url = "https://git.theless.one";
-            tokenFile = config.sops.templates."botan.env".path;
+            url = "https://${dmn.git}";
+            tokenFile = tpl."botan.env".path;
 
             settings.runner.capacity = 8;
 
@@ -139,10 +147,10 @@
         };
       };
 
-      sops.secrets."containers/docker" = { };
-      sops.templates."auth.json" = {
+      sec."containers/docker" = { };
+      tpl."auth.json" = {
         content = builtins.toJSON {
-          auths."docker.io".auth = config.sops.placeholder."containers/docker";
+          auths."docker.io".auth = plh."containers/docker";
         };
 
         path = "/etc/containers/auth.json";
@@ -151,7 +159,7 @@
       };
 
       systemd.tmpfiles.settings.podman."/root/.config/containers/auth.json"."L+".argument =
-        config.sops.templates."auth.json".path;
+        tpl."auth.json".path;
 
       # Use podman instead since rootless docker
       # isn't supported by the forgejo nixos module
@@ -175,11 +183,14 @@
 
       networking.firewall.interfaces."\"podman*\"".allowedUDPPorts = [ 53 ];
 
-      sops.secrets = {
+      sec = {
         "forgejo/signing".owner = cfg.user;
         "forgejo/signing.pub".owner = cfg.user;
         "forgejo/mailer-password".owner = cfg.user;
       };
+
+      prt.forgejo = 8004;
+      dmn.git = "git.theless.one";
 
       systemd.services.forgejo.wantedBy = lib.mkForce [ "server-services.target" ];
       services.forgejo = {
@@ -206,9 +217,9 @@
 
         settings = {
           server = {
-            DOMAIN = "git.theless.one";
-            ROOT_URL = "https://${cfg.settings.server.DOMAIN}/";
-            HTTP_PORT = 12500;
+            DOMAIN = dmn.git;
+            ROOT_URL = "https://${dmn.git}/";
+            HTTP_PORT = prt.forgejo;
 
             DISABLE_SSH = false;
           };
@@ -236,38 +247,47 @@
 
           mailer = {
             ENABLED = true;
-            FROM = "git@theless.one";
+            FROM = "git@${dmn.self}";
             PROTOCOL = "smtps";
-            SMTP_ADDR = "mail.theless.one";
-            SMTP_PORT = 465;
-            USER = "git@theless.one";
+            SMTP_ADDR = dmn.mail;
+            SMTP_PORT = prt.smtp-tls;
+            USER = "git@${dmn.self}";
           };
 
           "repository.signing" = {
             FORMAT = "ssh";
-            SIGNING_KEY = config.sops.secrets."forgejo/signing.pub".path;
-            SIGNING_NAME = "forgejo git.theless.one";
-            SIGNING_EMAIL = "git@theless.one";
+            SIGNING_KEY = sec."forgejo/signing.pub".path;
+            SIGNING_NAME = "forgejo ${dmn.git}";
+            SIGNING_EMAIL = "git@${dmn.self}";
           };
         };
 
-        secrets.mailer.PASSWD = config.sops.secrets."forgejo/mailer-password".path;
+        secrets.mailer.PASSWD = sec."forgejo/mailer-password".path;
       };
 
-      thelessone.caddy.vHost."git.theless.one".proxy.port =
-        config.services.forgejo.settings.server.HTTP_PORT;
+      thelessone.caddy.vHost.${dmn.git}.extraConfig = ''
+        reverse_proxy http://127.0.0.1:${toString prt.forgejo-anubis} {
+          header_up X-Real-Ip {remote_host}
+          header_up X-Http-Version {http.request.proto}
+        }
+      '';
 
-      mailserver.accounts."git@theless.one" = {
+      mailserver.accounts."git@${dmn.self}" = {
         sendOnly = true;
-        hashedPasswordFile = config.sops.secrets."mailserver/git".path;
+        hashedPasswordFile = sec."mailserver/git".path;
       };
 
       thelessone.backups.forgejo.paths = [ cfg.stateDir ];
 
+      prt.forgejo-anubis = 8005;
+
       services.anubis.instances.forgejo.settings = {
-        TARGET = "http://127.0.0.1:12500";
-        BIND = ":12501";
+        TARGET = "http://127.0.0.1:${toString prt.forgejo}";
+        BIND = ":${toString prt.forgejo-anubis}";
         BIND_NETWORK = "tcp";
+        SERVE_ROBOTS_TXT = true;
+        WEBMASTER_EMAIL = "contact@nanoyaki.space";
+        DIFFICULTY = 5;
       };
 
       systemd.services.forgejo.path = [ cfg.package ];
@@ -276,9 +296,9 @@
           forgejo admin auth add-oauth \
             --name "PocketID" \
             --provider "openidConnect" \
-            --key "$(cat ${config.sops.secrets."forgejo/oidc/id".path})" \
-            --secret "$(cat ${config.sops.secrets."forgejo/oidc/secret".path})" \
-            --auto-discover-url "https://id.theless.one/.well-known/openid-configuration" \
+            --key "$(cat ${sec."forgejo/oidc/id".path})" \
+            --secret "$(cat ${sec."forgejo/oidc/secret".path})" \
+            --auto-discover-url "https://${dmn.pocket-id}/.well-known/openid-configuration" \
             --scopes "openid email profile" \
             --icon-url "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/pocket-id.svg" \
             --skip-local-2fa \

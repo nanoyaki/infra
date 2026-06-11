@@ -11,9 +11,14 @@
 
     let
       backupPath = "/var/lib/jellyfin";
+
+      inherit (config) dmn;
     in
 
     {
+      prt.jellyfin = lib.mkForce 8096;
+      dmn.jellyfin = "jellyfin.theless.one";
+
       systemd.services.jellyfin.wantedBy = lib.mkForce [ "server-services.target" ];
       services.jellyfin = {
         enable = true;
@@ -21,7 +26,7 @@
         inherit (config.thelessone.arr) group;
       };
 
-      thelessone.caddy.vHost."jellyfin.theless.one" = {
+      thelessone.caddy.vHost.${dmn.jellyfin} = {
         proxy.port = 8096;
         useTailnet = true;
       };

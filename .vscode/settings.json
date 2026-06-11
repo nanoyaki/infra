@@ -2,7 +2,9 @@
     "[nix]": {
         "editor.defaultFormatter": "jnoortheen.nix-ide"
     },
-    "nix.formatterPath": [ "nixfmt" ],
+    "nix.formatterPath": [
+        "nixfmt"
+    ],
     "yaml.format.singleQuote": true,
     "[yaml]": {
         "editor.defaultFormatter": "redhat.vscode-yaml",
@@ -14,5 +16,30 @@
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
-    "nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix"
+    "nixEnvSelector.nixFile": "${workspaceFolder}/flake.nix",
+    "nix.enableLanguageServer": true,
+    "nix.serverPath": "nixd",
+    "nix.serverSettings": {
+        "nixd": {
+            "nixpkgs": {
+                "expr": "import (builtins.getFlake (toString ./.)).inputs.nixpkgs { }"
+            },
+            "formatting": {
+                "command": [
+                    "nixfmt"
+                ]
+            },
+            "options": {
+                "nixos": {
+                    "expr": "let configs = (builtins.getFlake (toString ./.)).nixosConfigurations; in configs.sentinel.options // configs.thelessnas.options // configs.thelessone.options"
+                },
+                "home_manager": {
+                    "expr": "(builtins.getFlake (toString ./.)).homeConfigurations.thelessone.options"
+                },
+                "flake_parts": {
+                    "expr": "let flake = builtins.getFlake (toString ./.); in flake.debug.options // flake.currentSystem.options"
+                }
+            }
+        }
+    }
 }

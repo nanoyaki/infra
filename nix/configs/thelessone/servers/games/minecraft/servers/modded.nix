@@ -10,9 +10,20 @@
     let
       inherit (pkgs) formats;
       inherit (config.services.minecraft-servers.managementSystem.systemd-socket) stdinSocket;
+      inherit (config) prt dmn;
     in
 
     {
+      prt = {
+        minecraft-server-modded = 30055;
+        modded-bluemap = 8014;
+        # Can't be changed declaratively (i think)
+        modded-train-map = lib.mkForce 3876;
+      };
+
+      dmn.modded = "modded.theless.one";
+      dmn.modded-train-map = "trains-modded.theless.one";
+
       systemd.services.minecraft-server-modded-test.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.modded-test = {
         enable = true;
@@ -26,7 +37,7 @@
         packageOverrides.jre_headless = pkgs.zulu21;
         appendJvmOpts = "-Dowo.handshake.disable=true";
 
-        serverProperties.server-port = 30055;
+        serverProperties.server-port = prt.minecraft-server-modded;
         serverProperties.online-mode = false;
 
         gamerules = {
@@ -334,7 +345,7 @@
             value = {
               enabled = true;
               webroot = "bluemap/web";
-              port = 8101;
+              port = prt.modded-bluemap;
 
               log = {
                 file = "logs/bluemap.log";
@@ -346,17 +357,11 @@
         };
       };
 
-      thelessone.caddy.vHost."modded.theless.one" = {
-        proxy = {
-          inherit
-            (config.services.minecraft-servers'.servers.modded-test.symlinks."config/bluemap/webserver.conf".value
-            )
-            port
-            ;
-        };
+      thelessone.caddy.vHost.${dmn.modded} = {
+        proxy.port = prt.modded-bluemap;
         useTailnet = true;
       };
 
-      thelessone.caddy.vHost."trains-modded.theless.one".proxy.port = 3876;
+      thelessone.caddy.vHost.${dmn.modded-train-map}.proxy.port = prt.modded-train-map;
     };
 }

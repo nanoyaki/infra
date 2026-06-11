@@ -10,6 +10,8 @@
     }:
 
     let
+      inherit (config) plh tpl;
+
       backupPath = "/var/lib/valheim/.config/unity3d/IronGate/Valheim/worlds_local";
     in
 
@@ -19,7 +21,7 @@
       sops = {
         secrets.valheim-password = { };
         templates."valheim-password.env".file = pkgs.writeEnv "valheim-password.env.template" {
-          VH_SERVER_PASSWORD = config.sops.placeholder.valheim-password;
+          VH_SERVER_PASSWORD = plh.valheim-password;
         };
       };
 
@@ -27,7 +29,7 @@
       services.valheim = {
         enable = true;
         openFirewall = true;
-        passwordEnvFile = config.sops.templates."valheim-password.env".path;
+        passwordEnvFile = tpl."valheim-password.env".path;
 
         noGraphics = true;
         public = true;

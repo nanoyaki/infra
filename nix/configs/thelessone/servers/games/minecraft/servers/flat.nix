@@ -7,7 +7,14 @@
       ...
     }:
 
+    let
+      inherit (config) prt;
+    in
+
     {
+      prt.minecraft-server-flat = 30054;
+      dmn.flat = "flat.theless.one";
+
       systemd.services.minecraft-server-creative-flat.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.creative-flat = {
         enable = true;
@@ -15,7 +22,7 @@
         jvmOpts = "-Xms8G -Xmx8G";
 
         serverProperties = {
-          server-port = 30054;
+          server-port = prt.minecraft-server-flat;
 
           gamemode = "creative";
           difficulty = "normal";

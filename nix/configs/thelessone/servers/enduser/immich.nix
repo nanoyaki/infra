@@ -2,11 +2,21 @@
   flake.nixosModules.thelessone-immich =
     { lib, config, ... }:
 
+    let
+      inherit (config) prt dmn;
+    in
+
     {
+      prt.immich = 8006;
+      prt.immich-public-proxy = 8007;
+      dmn.immich = "immich.theless.one";
+      dmn.immich-public-proxy = "images.theless.one";
+
       systemd.services.immich-server.wantedBy = lib.mkForce [ "server-services.target" ];
       systemd.services.immich-machine-learning.wantedBy = lib.mkForce [ "server-services.target" ];
       services.immich = {
         enable = true;
+        port = prt.immich;
         accelerationDevices = [ "/dev/dri/renderD128" ];
       };
 
@@ -18,17 +28,14 @@
       systemd.services.immich-public-proxy.wantedBy = lib.mkForce [ "server-services.target" ];
       services.immich-public-proxy = {
         enable = true;
-        immichUrl = "http://localhost:2283";
-        port = 19220;
+        immichUrl = "http://localhost:${toString prt.immich}";
+        port = prt.immich-public-proxy;
         settings.allowDownloadAll = 1;
       };
 
-      thelessone.caddy.vHost."images.theless.one".proxy = {
-        inherit (config.services.immich-public-proxy) port;
-      };
-
-      thelessone.caddy.vHost."immich.theless.one" = {
-        proxy = { inherit (config.services.immich) port; };
+      thelessone.caddy.vHost.${dmn.immich-public-proxy}.proxy.port = prt.immich-public-proxy;
+      thelessone.caddy.vHost.${dmn.immich} = {
+        proxy.port = prt.immich;
         useTailnet = true;
       };
 

@@ -10,18 +10,30 @@
     }:
 
     let
-      zfsCompatibleKernelPackages = lib.filterAttrs (
+      inherit (lib)
+        filterAttrs
+        match
+        tryEval
+        last
+        sort
+        versionOlder
+        ;
+
+      zfsCompatibleKernelPackages = filterAttrs (
         name: kernelPackages:
-        (builtins.match "linux_[0-9]+_[0-9]+" name) != null
-        && (builtins.tryEval kernelPackages).success
+        (match "linux_[0-9]+_[0-9]+" name) != null
+        && (tryEval kernelPackages).success
         && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
       ) pkgs.linuxKernel.packages;
-      latestKernelPackage = lib.last (
-        lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
+      latestKernelPackage = last (
+        sort (a: b: versionOlder a.kernel.version b.kernel.version) (
           builtins.attrValues zfsCompatibleKernelPackages
         )
       );
+
+      inherit (config) prt;
     in
+
     {
       imports = [ inputs.nixos-hardware.nixosModules.common-pc-ssd ];
 
@@ -46,7 +58,7 @@
       };
 
       services.nfs.server.enable = true;
-      networking.firewall.allowedTCPPorts = [ 2049 ];
+      networking.firewall.allowedTCPPorts = [ prt.nfs ];
 
       fileSystems."/" = {
         device = "/dev/disk/by-uuid/732c4fe7-e780-408f-94f1-70e919db209e";

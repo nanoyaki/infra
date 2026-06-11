@@ -3,19 +3,22 @@
     { lib, config, ... }:
 
     let
-      cfg = config.services.actual;
+      inherit (config) prt dmn;
     in
 
     {
+      prt.actual = 8003;
+      dmn.actual = "finances.theless.one";
+
       systemd.services.actual.wantedBy = lib.mkForce [ "server-services.target" ];
       services.actual = {
         enable = true;
         openFirewall = true;
-        settings.port = 7500;
+        settings.port = prt.actual;
       };
 
-      thelessone.caddy.vHost."finances.theless.one" = {
-        proxy = { inherit (cfg.settings) port; };
+      thelessone.caddy.vHost.${dmn.actual} = {
+        proxy.port = prt.actual;
         useTailnet = true;
       };
 

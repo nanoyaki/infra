@@ -10,6 +10,8 @@
     }:
 
     let
+      inherit (config) dmn;
+
       webPkg = "${pkgs.nanoyaki-space}/share/php/nanoyaki-space";
       inherit (config.services.caddy) user group;
       php = pkgs.php85.withExtensions ({ enabled, all }: enabled ++ (with all; [ redis ]));
@@ -21,7 +23,7 @@
         APP_CACHE_DIR = "/var/cache/nanoyaki-space";
         APP_SHARE_DIR = "/var/cache/nanoyaki-space";
         APP_LOG_DIR = "/var/log/nanoyaki-space";
-        DEFAULT_URI = "https://nanoyaki.space";
+        DEFAULT_URI = "https://${dmn.nanoyaki-space}";
         REDIS_DSN = "redis://${config.services.redis.servers.nanoyaki-space.unixSocket}";
         STEAM_API_KEY = config.sops.placeholder."nanoyaki-space/steam-api-key";
         CHROMIUM_BIN = lib.getExe' pkgs.nanoyaki-space.passthru.dependencies "chromium";
@@ -30,7 +32,9 @@
     in
 
     {
-      sentinel.caddy.host."nanoyaki.space".config = ''
+      dmn.nanoyaki-space = "nanoyaki.space";
+
+      sentinel.caddy.host.${dmn.nanoyaki-space}.config = ''
         root * ${webPkg}/public
 
         encode zstd gzip

@@ -1,4 +1,4 @@
-{ withSystem, ... }:
+{ inputs, withSystem, ... }:
 
 {
   flake.nixosModules.thelessone-dashboard =
@@ -9,10 +9,20 @@
       ...
     }:
 
+    let
+      inherit (config)
+        prt
+        dmn
+        plh
+        tpl
+        ;
+
+      thelessnas = inputs.self.nixosConfigurations.thelessnas.config;
+    in
     # TODO: create a proper module to reuse and order code
 
     {
-      sops.secrets = {
+      sec = {
         "dashboard/jellyfin" = { };
         "dashboard/audiobookshelf" = { };
         "dashboard/immich" = { };
@@ -31,27 +41,30 @@
         "dashboard/longitude" = { };
       };
 
-      sops.templates."homepage-secrets.env".file = pkgs.writeEnv "homepage-secrets.env.template" {
-        HOMEPAGE_VAR_JELLYFIN_API_KEY = config.sops.placeholder."dashboard/jellyfin";
-        HOMEPAGE_VAR_AUDIOBOOKSHELF_API_KEY = config.sops.placeholder."dashboard/audiobookshelf";
-        HOMEPAGE_VAR_IMMICH_API_KEY = config.sops.placeholder."dashboard/immich";
-        HOMEPAGE_VAR_JELLYSEERR_API_KEY = config.sops.placeholder."dashboard/jellyseerr";
-        HOMEPAGE_VAR_FLOOD_USERNAME = config.sops.placeholder."dashboard/flood-username";
-        HOMEPAGE_VAR_FLOOD_PASSWORD = config.sops.placeholder."dashboard/flood-password";
-        HOMEPAGE_VAR_SABNZBD_API_KEY = config.sops.placeholder."dashboard/sabnzbd";
-        HOMEPAGE_VAR_RADARR_API_KEY = config.sops.placeholder."dashboard/radarr";
-        HOMEPAGE_VAR_SONARR_API_KEY = config.sops.placeholder."dashboard/sonarr";
-        HOMEPAGE_VAR_LIDARR_API_KEY = config.sops.placeholder."dashboard/lidarr";
-        HOMEPAGE_VAR_BAZARR_API_KEY = config.sops.placeholder."dashboard/bazarr";
-        HOMEPAGE_VAR_PROWLARR_API_KEY = config.sops.placeholder."dashboard/prowlarr";
-        HOMEPAGE_VAR_SPEEDTEST_API_KEY = config.sops.placeholder."dashboard/speedtest";
+      tpl."homepage-secrets.env".file = pkgs.writeEnv "homepage-secrets.env.template" {
+        HOMEPAGE_VAR_JELLYFIN_API_KEY = plh."dashboard/jellyfin";
+        HOMEPAGE_VAR_AUDIOBOOKSHELF_API_KEY = plh."dashboard/audiobookshelf";
+        HOMEPAGE_VAR_IMMICH_API_KEY = plh."dashboard/immich";
+        HOMEPAGE_VAR_JELLYSEERR_API_KEY = plh."dashboard/jellyseerr";
+        HOMEPAGE_VAR_FLOOD_USERNAME = plh."dashboard/flood-username";
+        HOMEPAGE_VAR_FLOOD_PASSWORD = plh."dashboard/flood-password";
+        HOMEPAGE_VAR_SABNZBD_API_KEY = plh."dashboard/sabnzbd";
+        HOMEPAGE_VAR_RADARR_API_KEY = plh."dashboard/radarr";
+        HOMEPAGE_VAR_SONARR_API_KEY = plh."dashboard/sonarr";
+        HOMEPAGE_VAR_LIDARR_API_KEY = plh."dashboard/lidarr";
+        HOMEPAGE_VAR_BAZARR_API_KEY = plh."dashboard/bazarr";
+        HOMEPAGE_VAR_PROWLARR_API_KEY = plh."dashboard/prowlarr";
+        HOMEPAGE_VAR_SPEEDTEST_API_KEY = plh."dashboard/speedtest";
 
-        HOMEPAGE_VAR_LATITUDE = config.sops.placeholder."dashboard/latitude";
-        HOMEPAGE_VAR_LONGITUDE = config.sops.placeholder."dashboard/longitude";
+        HOMEPAGE_VAR_LATITUDE = plh."dashboard/latitude";
+        HOMEPAGE_VAR_LONGITUDE = plh."dashboard/longitude";
       };
 
-      thelessone.caddy.vHost."home.theless.one" = {
-        proxy.port = config.services.homepage-dashboard.listenPort;
+      prt.homepage-dashboard = 8002;
+      dmn.homepage-dashboard = "home.theless.one";
+
+      thelessone.caddy.vHost.${dmn.homepage-dashboard} = {
+        proxy.port = prt.homepage-dashboard;
         useTailnet = true;
       };
 
@@ -59,21 +72,15 @@
       services.homepage-dashboard = {
         enable = true;
         openFirewall = true;
-        listenPort = 33189;
-        allowedHosts = lib.concatStringsSep "," [
-          "home.theless.one"
-          "localhost:33189"
-          "127.0.0.1:33189"
-          "100.64.0.1:33189"
-          "[fd64::1]:33189"
-        ];
-        environmentFiles = [ config.sops.templates."homepage-secrets.env".path ];
+        listenPort = prt.homepage-dashboard;
+        allowedHosts = dmn.homepage-dashboard;
+        environmentFiles = [ tpl."homepage-secrets.env".path ];
 
         settings = {
           # Meta
-          title = "theless.one";
+          title = "Theless.one";
           description = "A list of all services running on theless.one";
-          startUrl = "https://home.theless.one";
+          startUrl = "https://${dmn.homepage-dashboard}";
           language = "en";
           disableIndexing = true;
           # We use nix after all
@@ -169,7 +176,7 @@
         };
 
         widgets = [
-          { logo.icon = "https://theless.one/assets/logo.svg"; }
+          { logo.icon = "https://${dmn.self}/assets/logo.svg"; }
           {
             openmeteo = {
               label = "Austria - Server";
@@ -208,7 +215,7 @@
                 Issues = [
                   {
                     icon = "forgejo.svg";
-                    href = "https://git.theless.one/nanoyaki/theless.one-issues/issues";
+                    href = "https://${dmn.git}/nanoyaki/theless.one-issues/issues";
                     description = "Report issues here";
                   }
                 ];
@@ -224,7 +231,7 @@
                 glances = metric: {
                   widget = {
                     type = "glances";
-                    url = "http://127.0.0.1:${toString config.services.glances.port}";
+                    url = "http://127.0.0.1:${toString prt.glances}";
                     inherit metric;
                     version = 4;
                     pointsLimit = 20;
@@ -241,7 +248,7 @@
                 {
                   "Network Attached Storage".widget = {
                     type = "glances";
-                    url = "http://10.0.0.6:${toString config.services.glances.port}";
+                    url = "http://10.0.0.6:${toString thelessnas.prt.glances}";
                     metric = "fs:/moon";
                     version = 4;
                     pointsLimit = 20;
@@ -259,7 +266,7 @@
                 {
                   Speedtest.widget = {
                     type = "speedtest";
-                    url = "http://localhost:28920";
+                    url = "http://localhost:${toString prt.speedtest-internal}";
                     version = 2;
                     key = "{{HOMEPAGE_VAR_SPEEDTEST_API_KEY}}";
                     bitratePrecision = 3;
@@ -280,7 +287,7 @@
               {
                 Jellyfin = rec {
                   icon = "jellyfin.svg";
-                  href = "https://jellyfin.theless.one";
+                  href = "https://${dmn.jellyfin}";
                   siteMonitor = href;
                   description = "Media library";
                   widget = {
@@ -301,7 +308,7 @@
               {
                 Jellyseerr = rec {
                   icon = "jellyseerr.svg";
-                  href = "https://jellyseerr.theless.one";
+                  href = "https://${dmn.seerr}";
                   siteMonitor = href;
                   description = "Media requests";
                   widget = {
@@ -319,7 +326,7 @@
               {
                 Audiobookshelf = rec {
                   icon = "audiobookshelf.svg";
-                  href = "https://audiobookshelf.theless.one";
+                  href = "https://${dmn.audiobookshelf}";
                   siteMonitor = href;
                   description = "Photo backups";
                   widget = {
@@ -336,7 +343,7 @@
               {
                 Immich = rec {
                   icon = "immich.svg";
-                  href = "https://immich.theless.one/";
+                  href = "https://${dmn.immich}";
                   siteMonitor = href;
                   description = "Photo backups";
                   widget = {
@@ -359,7 +366,7 @@
               {
                 "Pocket ID" = rec {
                   icon = "pocket-id.svg";
-                  href = "https://id.theless.one";
+                  href = "https://${dmn.pocket-id}";
                   siteMonitor = href;
                   description = "Identity management";
                 };
@@ -367,7 +374,7 @@
               {
                 Vaultwarden = rec {
                   icon = "vaultwarden.svg";
-                  href = "https://vaultwarden.theless.one";
+                  href = "https://${dmn.vaultwarden}";
                   siteMonitor = href;
                   description = "Password manager";
                 };
@@ -375,7 +382,7 @@
               {
                 Speedtest = rec {
                   icon = "sh-speedtest-tracker-dark.svg";
-                  href = "https://speedtest.theless.one";
+                  href = "https://${dmn.speedtest-tracker}";
                   siteMonitor = href;
                   description = "Network speed monitor";
                 };
@@ -383,7 +390,7 @@
               {
                 Forgejo = rec {
                   icon = "forgejo.svg";
-                  href = "https://git.theless.one";
+                  href = "https://${dmn.git}";
                   siteMonitor = href;
                   description = "Code forge";
                 };
@@ -395,7 +402,7 @@
               {
                 Actual = rec {
                   icon = "actual-budget.svg";
-                  href = "https://finances.theless.one";
+                  href = "https://${dmn.actual}";
                   siteMonitor = href;
                   description = "Finance management";
                 };
@@ -403,7 +410,7 @@
               {
                 Tandoor = rec {
                   icon = "tandoor-recipes.svg";
-                  href = "https://recipes.theless.one";
+                  href = "https://${dmn.tandoor-recipes}";
                   siteMonitor = href;
                   description = "Recipe management";
                 };
@@ -411,7 +418,7 @@
               {
                 Cloud = rec {
                   icon = "owncloud.svg";
-                  href = "https://cloud.theless.one";
+                  href = "https://${dmn.opencloud}";
                   siteMonitor = href;
                   description = "Cloud storage";
                 };
@@ -419,7 +426,7 @@
               {
                 Papra = rec {
                   icon = "papra.svg";
-                  href = "https://papra.theless.one";
+                  href = "https://${dmn.papra}";
                   siteMonitor = href;
                   description = "Document archive";
                 };
@@ -431,7 +438,7 @@
               {
                 Mei = rec {
                   icon = "suwayomi.svg";
-                  href = "https://mei-manga.theless.one";
+                  href = "https://${dmn.suwayomi-mei}";
                   siteMonitor = href;
                   description = "Mei's mangas";
                   widget = {
@@ -443,7 +450,7 @@
               {
                 Hana = rec {
                   icon = "suwayomi.svg";
-                  href = "https://hana-manga.theless.one";
+                  href = "https://${dmn.suwayomi-hana}";
                   siteMonitor = href;
                   description = "Hana's mangas";
                   widget = {
@@ -455,7 +462,7 @@
               {
                 Thomas = rec {
                   icon = "suwayomi.svg";
-                  href = "https://manga.theless.one";
+                  href = "https://${dmn.suwayomi-thomas}";
                   siteMonitor = href;
                   description = "Thomas' mangas";
                   widget = {
@@ -471,7 +478,7 @@
               {
                 Sonarr = rec {
                   icon = "sonarr.svg";
-                  href = "https://sonarr.theless.one";
+                  href = "https://${dmn.sonarr}";
                   siteMonitor = href;
                   description = "Show management";
                   widget = {
@@ -489,7 +496,7 @@
               {
                 Radarr = rec {
                   icon = "radarr.svg";
-                  href = "https://radarr.theless.one";
+                  href = "https://${dmn.radarr}";
                   siteMonitor = href;
                   description = "Movie management";
                   widget = {
@@ -508,7 +515,7 @@
               {
                 Lidarr = rec {
                   icon = "lidarr.svg";
-                  href = "https://lidarr.theless.one";
+                  href = "https://${dmn.lidarr}";
                   siteMonitor = href;
                   description = "Music management";
                   widget = {
@@ -526,7 +533,7 @@
               {
                 Prowlarr = rec {
                   icon = "prowlarr.svg";
-                  href = "https://prowlarr.theless.one";
+                  href = "https://${dmn.prowlarr}";
                   siteMonitor = href;
                   description = "Indexer management";
                   widget = {
@@ -543,7 +550,7 @@
               {
                 Bazarr = rec {
                   icon = "bazarr.svg";
-                  href = "https://bazarr.theless.one";
+                  href = "https://${dmn.bazarr}";
                   siteMonitor = href;
                   description = "Subtitle management";
                   widget = {
@@ -560,7 +567,7 @@
               {
                 Shoko = rec {
                   icon = "shoko.svg";
-                  href = "https://shoko.theless.one";
+                  href = "https://${dmn.shoko}";
                   siteMonitor = href;
                   description = "Anime management";
                 };
@@ -568,7 +575,7 @@
               {
                 Glances = rec {
                   icon = "glances.svg";
-                  href = "https://glances.theless.one";
+                  href = "https://${dmn.glances}";
                   siteMonitor = href;
                   description = "Resource monitor";
                 };
@@ -580,7 +587,7 @@
               {
                 Flood = rec {
                   icon = "flood.svg";
-                  href = "https://flood.theless.one";
+                  href = "https://${dmn.flood}";
                   siteMonitor = href;
                   description = "Webinterface for deluge";
                   widget = {
@@ -600,7 +607,7 @@
               {
                 Sabnzbd = rec {
                   icon = "sabnzbd.svg";
-                  href = "https://sabnzbd.theless.one";
+                  href = "https://${dmn.sabnzbd}";
                   siteMonitor = href;
                   description = "Newznab client";
                   widget = {

@@ -2,9 +2,22 @@
 
 {
   flake.nixosModules.thelessone-minecraftLobby =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
+
+    let
+      inherit (config) prt dmn;
+    in
 
     {
+      prt.minecraft-server-lobby = 30052;
+      prt.minecraft-server-lobby-vc = 24456;
+      dmn.lobby = "lobby.theless.one";
+
       systemd.services.minecraft-server-lobby.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.lobby = {
         enable = true;
@@ -13,7 +26,7 @@
         jvmOpts = "-Xms2G -Xmx2G";
 
         serverProperties = {
-          server-port = 30052;
+          server-port = prt.minecraft-server-lobby;
 
           gamemode = "adventure";
           difficulty = "normal";
@@ -74,8 +87,8 @@
         datapacks = [ pkgs.killheal-wrapped ];
 
         symlinks."config/voicechat/voicechat-server.properties".value = {
-          port = 24456;
-          voice_host = "theless.one:24456";
+          port = prt.minecraft-server-lobby-vc;
+          voice_host = "${dmn.self}:${toString prt.minecraft-server-lobby-vc}";
         };
       };
     };
@@ -84,11 +97,9 @@
     { inputs', pkgs, ... }:
 
     {
-      packages.killheal-wrapped =
-        pkgs.runCommand "killheal" { inherit (inputs'.killheal.packages) killheal; }
-          ''
-            ln -s $killheal $out
-          '';
+      packages.killheal-wrapped = pkgs.runCommand "killheal" { } ''
+        ln -s ${inputs'.killheal.packages.killheal} $out
+      '';
     };
 
   flake.overlays.minecraft-lobby-datapacks =

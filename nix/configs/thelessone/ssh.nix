@@ -2,19 +2,23 @@
   flake.nixosModules.thelessone-ssh =
     { lib, config, ... }:
 
+    let
+      inherit (config) sec dmn;
+    in
+
     {
-      sops.secrets.hostkey-rsa = { };
-      sops.secrets.hostkey-ed25519 = { };
+      sec.hostkey-rsa = { };
+      sec.hostkey-ed25519 = { };
 
       services.openssh = {
         hostKeys = [
           {
             type = "rsa";
-            inherit (config.sops.secrets.hostkey-rsa) path;
+            inherit (sec.hostkey-rsa) path;
           }
           {
             type = "ed25519";
-            inherit (config.sops.secrets.hostkey-ed25519) path;
+            inherit (sec.hostkey-ed25519) path;
           }
         ];
 
@@ -46,7 +50,7 @@
         # Self
         "100.64.64.1".publicKey =
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAMMGaMOd8S0N/fUetBkdMehGP47/88C8LDjobmuvwjS";
-        "theless.one".publicKey =
+        ${dmn.self}.publicKey =
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAMMGaMOd8S0N/fUetBkdMehGP47/88C8LDjobmuvwjS";
         "10.0.0.5".publicKey =
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAMMGaMOd8S0N/fUetBkdMehGP47/88C8LDjobmuvwjS";

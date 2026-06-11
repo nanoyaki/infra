@@ -10,6 +10,8 @@
     }:
 
     let
+      inherit (config) prt dmn;
+
       mkInstance = port: {
         enable = true;
 
@@ -27,8 +29,6 @@
           flareSolverrSessionName = "suwayomi-${toString port}";
         };
       };
-
-      cfg = config.services.suwayomi.instances;
     in
 
     {
@@ -40,29 +40,43 @@
         suwayomi-thomas.wantedBy = lib.mkForce [ "server-services.target" ];
       };
 
+      prt = {
+        suwayomi-thomas = 8026;
+        suwayomi-hana = 8027;
+        suwayomi-mei = 8028;
+      };
+
+      dmn = {
+        suwayomi-thomas = "manga.theless.one";
+        suwayomi-hana = "hana-manga.theless.one";
+        suwayomi-mei = "mei-manga.theless.one";
+      };
+
       services.suwayomi = {
         enable = true;
 
         package = pkgs.suwayomi-server;
 
         instances = {
-          thomas = mkInstance 4555;
-          hana = mkInstance 4557;
-          mei = mkInstance 4558;
+          thomas = mkInstance prt.suwayomi-thomas;
+          hana = mkInstance prt.suwayomi-hana;
+          mei = mkInstance prt.suwayomi-mei;
         };
       };
 
       thelessone.caddy.vHost = {
-        "manga.theless.one" = {
-          proxy = { inherit (cfg.thomas.settings.server) port; };
+        ${dmn.suwayomi-thomas} = {
+          proxy.port = prt.suwayomi-thomas;
           useTailnet = true;
         };
-        "hana-manga.theless.one" = {
-          proxy = { inherit (cfg.hana.settings.server) port; };
+
+        ${dmn.suwayomi-hana} = {
+          proxy.port = prt.suwayomi-hana;
           useTailnet = true;
         };
-        "mei-manga.theless.one" = {
-          proxy = { inherit (cfg.mei.settings.server) port; };
+
+        ${dmn.suwayomi-mei} = {
+          proxy.port = prt.suwayomi-mei;
           useTailnet = true;
         };
       };

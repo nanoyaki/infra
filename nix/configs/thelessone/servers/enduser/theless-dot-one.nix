@@ -10,11 +10,12 @@
     }:
 
     let
+      inherit (config) plh tpl;
       webPkg = "${pkgs.theless-dot-one}/share/php/theless-dot-one";
       inherit (config.services.caddy) user group;
       environment = {
         APP_ENV = "prod";
-        APP_SECRET = config.sops.placeholder."theless-dot-one/secret";
+        APP_SECRET = plh."theless-dot-one/secret";
         APP_CACHE_DIR = "/var/cache/theless-dot-one";
         APP_SHARE_DIR = "/var/cache/theless-dot-one";
         APP_LOG_DIR = "/var/log/theless-dot-one";
@@ -64,12 +65,11 @@
         };
       };
 
-      sops.secrets."theless-dot-one/secret" = { };
-      sops.templates."theless-dot-one.env".file =
-        pkgs.writeEnv "theless-dot-one.env.template" environment;
+      sec."theless-dot-one/secret" = { };
+      tpl."theless-dot-one.env".file = pkgs.writeEnv "theless-dot-one.env.template" environment;
 
       systemd.services.phpfpm-theless-dot-one = {
-        serviceConfig.EnvironmentFile = config.sops.templates."theless-dot-one.env".path;
+        serviceConfig.EnvironmentFile = tpl."theless-dot-one.env".path;
         preStart = ''
           rm -rf "$APP_CACHE_DIR/$APP_ENV"
           ${lib.getExe pkgs.php85} ${webPkg}/bin/console cache:warm

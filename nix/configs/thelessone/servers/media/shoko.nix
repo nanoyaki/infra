@@ -7,7 +7,16 @@
       ...
     }:
 
+    let
+      inherit (lib) mkForce;
+      inherit (config) prt dmn;
+    in
+
     {
+      # Can't be changed declaratively in versions before 6.0.0
+      prt.shoko = mkForce 8111;
+      dmn.shoko = "shoko.theless.one";
+
       services.shoko = {
         enable = true;
         plugins = with pkgs; [
@@ -23,16 +32,18 @@
         homeMode = toString config.systemd.services.shoko.serviceConfig.StateDirectoryMode;
       };
 
-      systemd.services.shoko.wantedBy = lib.mkForce [ "server-services.target" ];
-      systemd.services.shoko.unitConfig.RequiresMountsFor = "/mnt/raid";
-      systemd.services.shoko.serviceConfig = {
-        DynamicUser = lib.mkForce false;
-        User = "shoko";
-        Group = config.thelessone.arr.group;
+      systemd.services.shoko = {
+        wantedBy = mkForce [ "server-services.target" ];
+        unitConfig.RequiresMountsFor = "/mnt/raid";
+        serviceConfig = {
+          DynamicUser = mkForce false;
+          User = "shoko";
+          Group = config.thelessone.arr.group;
+        };
       };
 
-      thelessone.caddy.vHost."shoko.theless.one" = {
-        proxy.port = 8111;
+      thelessone.caddy.vHost.${dmn.shoko} = {
+        proxy.port = prt.shoko;
         useTailnet = true;
       };
 

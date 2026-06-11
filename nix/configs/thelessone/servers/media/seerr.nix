@@ -4,12 +4,22 @@
   flake.nixosModules.thelessone-seerr =
     { lib, config, ... }:
 
+    let
+      inherit (config) prt dmn;
+    in
+
     {
+      prt.seerr = 8029;
+      dmn.seerr-legacy = "jellyseerr.theless.one";
+      dmn.seerr = "seerr.theless.one";
+
       systemd.services.seerr.wantedBy = lib.mkForce [ "server-services.target" ];
       services.seerr.enable = true;
+      services.seerr.port = prt.seerr;
 
-      thelessone.caddy.vHost."jellyseerr.theless.one" = {
-        proxy = { inherit (config.services.seerr) port; };
+      thelessone.caddy.vHost.${dmn.seerr} = {
+        serverAliases = [ dmn.seerr-legacy ];
+        proxy.port = prt.seerr;
         useTailnet = true;
       };
 

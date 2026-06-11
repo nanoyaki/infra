@@ -4,10 +4,14 @@
   flake.nixosModules.thelessone-mailserver =
     { lib, config, ... }:
 
+    let
+      inherit (config) prt dmn sec;
+    in
+
     {
       imports = [ inputs.snm.nixosModules.mailserver ];
 
-      sops.secrets = {
+      sec = {
         "mailserver/postmaster" = { };
         "mailserver/nanoyaki" = { };
         "mailserver/thelessone" = { };
@@ -25,8 +29,8 @@
       users.groups.no-reply = { };
 
       networking.firewall.allowedTCPPorts = [
-        465
-        993
+        prt.smtp-tls
+        prt.imap-tls
       ];
 
       systemd.services = {
@@ -35,69 +39,75 @@
         dovecot.wantedBy = lib.mkForce [ "server-services.target" ];
       };
 
+      dmn = {
+        mail = "mail.theless.one";
+        nanoyaki-space = "nanoyaki.space";
+        aslija-com = "aslija.com";
+      };
+
       mailserver = {
         enable = true;
         virusScanning = true;
         stateVersion = 3;
-        fqdn = "mail.theless.one";
+        fqdn = dmn.mail;
         domains = [
-          "theless.one"
-          "nanoyaki.space"
-          "aslija.com"
+          dmn.self
+          dmn.nanoyaki-space
+          dmn.aslija-com
         ];
 
         accounts = {
-          "postmaster@theless.one" = {
-            hashedPasswordFile = config.sops.secrets."mailserver/postmaster".path;
-            aliases = [ "postmaster@nanoyaki.space" ];
+          "postmaster@${dmn.self}" = {
+            hashedPasswordFile = sec."mailserver/postmaster".path;
+            aliases = [ "postmaster@${dmn.nanoyaki-space}" ];
           };
 
-          "nanoyaki@theless.one" = {
-            hashedPasswordFile = config.sops.secrets."mailserver/nanoyaki".path;
+          "nanoyaki@${dmn.self}" = {
+            hashedPasswordFile = sec."mailserver/nanoyaki".path;
             aliases = [
-              "hana@theless.one"
-              "hanakretzer@nanoyaki.space"
-              "hana@nanoyaki.space"
-              "nanoyaki@nanoyaki.space"
-              "nano@nanoyaki.space"
-              "contact@nanoyaki.space"
+              "hana@${dmn.self}"
+              "hanakretzer@${dmn.nanoyaki-space}"
+              "hana@${dmn.nanoyaki-space}"
+              "nanoyaki@${dmn.nanoyaki-space}"
+              "nano@${dmn.nanoyaki-space}"
+              "contact@${dmn.nanoyaki-space}"
 
-              "scpsl@theless.one"
+              "scpsl@${dmn.self}"
             ];
             aliasesRegexp = [ ''/^.*(\.|\+).*@nanoyaki\.space$/'' ];
             catchAll = [ "nanoyaki.space" ];
           };
 
-          "thelessone@theless.one" = {
-            hashedPasswordFile = config.sops.secrets."mailserver/thelessone".path;
+          "thelessone@${dmn.self}" = {
+            hashedPasswordFile = sec."mailserver/thelessone".path;
             aliases = [
-              "thomas@theless.one"
-              "contact@theless.one"
+              "thomas@${dmn.self}"
+              "contact@${dmn.self}"
             ];
           };
 
-          "meilyne@nanoyaki.space" = {
-            hashedPasswordFile = config.sops.secrets."mailserver/meilyne".path;
+          "meilyne@${dmn.nanoyaki-space}" = {
+            hashedPasswordFile = sec."mailserver/meilyne".path;
             aliasesRegexp = [ ''/^meilyne(\.|\+).*@nanoyaki\.space$/'' ];
           };
 
-          "personal@aslija.com" = {
-            hashedPasswordFile = config.sops.secrets."mailserver/aslija-personal".path;
+          "personal@${dmn.aslija-com}" = {
+            hashedPasswordFile = sec."mailserver/aslija-personal".path;
             aliasesRegexp = [ ''/^personal\+.*@aslija\.com$/'' ];
           };
 
-          "business@aslija.com" = {
-            hashedPasswordFile = config.sops.secrets."mailserver/aslija-business".path;
-            aliases = [ "inquiry@aslija.com" ];
+          "business@${dmn.aslija-com}" = {
+            hashedPasswordFile = sec."mailserver/aslija-business".path;
+            aliases = [ "inquiry@${dmn.aslija-com}" ];
           };
 
-          "no-reply@theless.one" = {
-            hashedPasswordFile = config.sops.secrets."mailserver/no-reply".path;
+          "no-reply@${dmn.self}" = {
+            hashedPasswordFile = sec."mailserver/no-reply".path;
             sendOnly = true;
           };
         };
 
-        x509.useACMEHost = "theless.one";
+        x509.useACMEHost = dmn.self;
 
         dkim.enable = true;
         dkim.defaults = {

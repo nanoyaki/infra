@@ -1,5 +1,3 @@
-{ withSystem, ... }:
-
 {
   flake.nixosModules.thelessone-caddy =
     {
@@ -21,6 +19,8 @@
         filterAttrs
         hasPrefix
         ;
+
+      inherit (config) dmn plh tpl;
 
       cfg = config.thelessone.caddy;
 
@@ -76,7 +76,7 @@
             + ''
               import error_handling
             '';
-          useACMEHost = mkIf (hasInfix "theless.one" domain && !(hasPrefix "http://" domain)) "theless.one";
+          useACMEHost = mkIf (hasInfix dmn.self domain && !(hasPrefix "http://" domain)) dmn.self;
           listenAddresses = [
             "0.0.0.0"
             "::"
@@ -104,18 +104,20 @@
       config = {
         networking.firewall.allowedTCPPorts = [ 443 ];
 
-        sops.secrets = {
+        sec = {
           "caddy-env-vars/nik" = { };
           "caddy-env-vars/hana" = { };
           "caddy-env-vars/shared" = { };
           "caddy-env-vars/thelessone" = { };
         };
 
-        sops.templates."caddy-users.env".file = pkgs.writeEnv "caddy-users.env" {
-          nik = "nik ${config.sops.placeholder."caddy-env-vars/nik"}";
-          hana = "hana ${config.sops.placeholder."caddy-env-vars/hana"}";
-          shared = "user ${config.sops.placeholder."caddy-env-vars/shared"}";
-          thelessone = "thelessone ${config.sops.placeholder."caddy-env-vars/thelessone"}";
+        dmn.file-server = "na55l3zepb4kcg0zryqbdnay.theless.one";
+
+        tpl."caddy-users.env".file = pkgs.writeEnv "caddy-users.env" {
+          nik = "nik ${plh."caddy-env-vars/nik"}";
+          hana = "hana ${plh."caddy-env-vars/hana"}";
+          shared = "user ${plh."caddy-env-vars/shared"}";
+          thelessone = "thelessone ${plh."caddy-env-vars/thelessone"}";
         };
 
         networking.extraHosts = lib.concatStringsSep "\n" (
@@ -127,11 +129,7 @@
           ) (builtins.attrNames enabledHosts)
         );
 
-        thelessone.caddy.vHost."http://theless.one".extraConfig = ''
-          root * ${pkgs.theless-dot-one}
-          file_server
-        '';
-        thelessone.caddy.vHost."http://na55l3zepb4kcg0zryqbdnay.theless.one".extraConfig = ''
+        thelessone.caddy.vHost."http://${dmn.file-server}".extraConfig = ''
           root * /var/www/theless.one
           file_server * browse
         '';
@@ -140,7 +138,7 @@
         services.caddy = {
           enable = true;
           enableReload = true;
-          environmentFile = config.sops.templates."caddy-users.env".path;
+          environmentFile = tpl."caddy-users.env".path;
           email = "contact@nanoyaki.space";
 
           logFormat = lib.mkForce ''
@@ -161,28 +159,4 @@
         };
       };
     };
-
-  perSystem =
-    { pkgs, ... }:
-
-    {
-      packages.theless-dot-one = pkgs.fetchFromGitea {
-        domain = "git.theless.one";
-        owner = "nanoyaki";
-        repo = "theless.one";
-        rev = "f14f5843d98b3fd4e15c6f2a067305cf3ed5a283";
-        hash = "sha256-XWUJ5WUEnvRj1Yuxz5hRjU5iru68P5TKqSl7//6mpAo=";
-      };
-    };
-
-  flake.overlays.caddy =
-    _: prev:
-
-    withSystem prev.stdenv.hostPlatform.system (
-      { config, ... }:
-
-      {
-        inherit (config.packages) theless-dot-one;
-      }
-    );
 }

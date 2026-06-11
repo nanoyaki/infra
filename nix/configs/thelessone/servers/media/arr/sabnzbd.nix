@@ -2,8 +2,20 @@
   flake.nixosModules.thelessone-sabnzbd =
     { lib, config, ... }:
 
+    let
+      inherit (config)
+        prt
+        dmn
+        plh
+        tpl
+        ;
+    in
+
     {
-      sops.secrets = {
+      prt.sabnzbd = 8021;
+      dmn.sabnzbd = "sabnzbd.theless.one";
+
+      sec = {
         "sabnzbd/api-key" = { };
         "sabnzbd/nzb-key" = { };
 
@@ -14,25 +26,25 @@
         "sabnzbd/eweka-password" = { };
       };
 
-      sops.templates."secrets.ini" = {
+      tpl."secrets.ini" = {
         content = ''
           [misc]
-          username = ${config.sops.placeholder."sabnzbd/username"}
-          password = ${config.sops.placeholder."sabnzbd/password"}
+          username = ${plh."sabnzbd/username"}
+          password = ${plh."sabnzbd/password"}
 
-          api_key = ${config.sops.placeholder."sabnzbd/api-key"}
-          nzb_key = ${config.sops.placeholder."sabnzbd/nzb-key"}
+          api_key = ${plh."sabnzbd/api-key"}
+          nzb_key = ${plh."sabnzbd/nzb-key"}
 
           [servers]
           [[news.eweka.nl]]
-          username = ${config.sops.placeholder."sabnzbd/eweka-username"}
-          password = ${config.sops.placeholder."sabnzbd/eweka-password"}
+          username = ${plh."sabnzbd/eweka-username"}
+          password = ${plh."sabnzbd/eweka-password"}
         '';
 
         owner = config.services.sabnzbd.user;
       };
 
-      services.vopono.allowedTCPPorts = [ 8080 ];
+      services.vopono.allowedTCPPorts = [ prt.sabnzbd ];
 
       systemd.services.sabnzbd.wantedBy = lib.mkForce [ "server-services.target" ];
       services.sabnzbd = {
@@ -41,7 +53,7 @@
         configFile = null;
 
         allowConfigWrite = false;
-        secretFiles = [ config.sops.templates."secrets.ini".path ];
+        secretFiles = [ tpl."secrets.ini".path ];
         settings = {
           misc = {
             # Webinterface
@@ -51,8 +63,8 @@
             # Proxy
             host = "127.0.0.1";
             inet_exposure = 4;
-            port = 8080;
-            host_whitelist = "sabnzbd.theless.one";
+            port = prt.sabnzbd;
+            host_whitelist = dmn.sabnzbd;
             verify_xff_header = 1;
             # LAN and VPN
             local_ranges = "10.0.0.0/24, 100.64.64.0/24";
@@ -90,7 +102,7 @@
             displayname = "Eweka";
             name = "news.eweka.nl";
             host = "news.eweka.nl";
-            port = 563;
+            port = prt.nntps;
             timeout = 60;
             connections = 50;
             ssl = true;
@@ -135,10 +147,8 @@
         };
       };
 
-      thelessone.caddy.vHost."sabnzbd.theless.one" = {
-        proxy = {
-          inherit (config.services.sabnzbd.settings.misc) port;
-        };
+      thelessone.caddy.vHost.${dmn.sabnzbd} = {
+        proxy.port = prt.sabnzbd;
         useTailnet = true;
       };
 

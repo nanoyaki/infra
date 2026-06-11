@@ -2,10 +2,17 @@
   flake.nixosModules.thelessone-audiobookshelf =
     { lib, config, ... }:
 
+    let
+      inherit (config) prt dmn;
+    in
+
     {
+      prt.audiobookshelf = 8018;
+      dmn.audiobookshelf = "audiobookshelf.theless.one";
+
       services.audiobookshelf = {
         enable = true;
-        port = 46551;
+        port = prt.audiobookshelf;
       };
 
       fileSystems."/var/lib/audiobookshelf" = {
@@ -18,10 +25,8 @@
       systemd.services.audiobookshelf.wantedBy = lib.mkForce [ "server-services.target" ];
       systemd.services.audiobookshelf.unitConfig.RequiresMountsFor = "/mnt/raid/audiobookshelf";
 
-      thelessone.caddy.vHost."audiobookshelf.theless.one" = {
-        proxy = {
-          inherit (config.services.audiobookshelf) port;
-        };
+      thelessone.caddy.vHost.${dmn.audiobookshelf} = {
+        proxy.port = prt.audiobookshelf;
         useTailnet = true;
       };
 

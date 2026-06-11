@@ -8,19 +8,28 @@
     }:
 
     let
-      cfg = config.services.tandoor-recipes;
+      inherit (config)
+        prt
+        dmn
+        sec
+        tpl
+        plh
+        ;
 
-      plh = config.sops.placeholder;
+      cfg = config.services.tandoor-recipes;
     in
 
     {
-      sops.secrets = {
+      prt.tandoor-recipes = 8010;
+      dmn.tandoor-recipes = "recipes.theless.one";
+
+      sec = {
         "tandoor/secret".owner = cfg.user;
         "tandoor/oidc-id" = { };
         "tandoor/oidc-secret" = { };
       };
 
-      sops.templates."tandoor.env".file = pkgs.writeEnv "tandoor.env.template" {
+      tpl."tandoor.env".file = pkgs.writeEnv "tandoor.env.template" {
         SOCIALACCOUNT_PROVIDERS = builtins.toJSON {
           openid_connect.APPS = [
             {
@@ -28,23 +37,22 @@
               name = "Pocket ID";
               client_id = plh."tandoor/oidc-id";
               secret = plh."tandoor/oidc-secret";
-              settings.server_url = "https://id.theless.one/.well-known/openid-configuration";
+              settings.server_url = "https://${dmn.pocket-id}/.well-known/openid-configuration";
             }
           ];
         };
       };
 
       systemd.services.tandoor-recipes.wantedBy = lib.mkForce [ "server-services.target" ];
-      systemd.services.tandoor-recipes.serviceConfig.EnvironmentFile =
-        config.sops.templates."tandoor.env".path;
+      systemd.services.tandoor-recipes.serviceConfig.EnvironmentFile = tpl."tandoor.env".path;
       services.tandoor-recipes = {
         enable = true;
-        port = 45530;
+        port = prt.tandoor-recipes;
         database.createLocally = true;
 
         extraConfig = {
-          ALLOWED_HOSTS = "recipes.theless.one";
-          SECRET_KEY_FILE = config.sops.secrets."tandoor/secret".path;
+          ALLOWED_HOSTS = dmn.tandoor-recipes;
+          SECRET_KEY_FILE = sec."tandoor/secret".path;
 
           MEDIA_ROOT = "/var/lib/tandoor-recipes/media";
           DB_ENGINE = "django.db.backends.postgresql";
@@ -58,11 +66,11 @@
           ENABLE_PDF_EXPORT = 1;
 
           ACCOUNT_EMAIL_SUBJECT_PREFIX = "[Recipes] ";
-          EMAIL_HOST = "mail.theless.one";
-          EMAIL_PORT = 465;
-          DEFAULT_FROM_EMAIL = "no-reply@theless.one";
-          EMAIL_HOST_USER = "no-reply@theless.one";
-          EMAIL_HOST_PASSWORD_FILE = config.sops.secrets.no-reply-password.path;
+          EMAIL_HOST = dmn.mail;
+          EMAIL_PORT = prt.smtp-tls;
+          DEFAULT_FROM_EMAIL = "no-reply@${dmn.self}";
+          EMAIL_HOST_USER = "no-reply@${dmn.self}";
+          EMAIL_HOST_PASSWORD_FILE = sec.no-reply-password.path;
           EMAIL_USE_TLS = 0;
           EMAIL_USE_SSL = 1;
 
@@ -76,10 +84,8 @@
         mode = "750";
       };
 
-      thelessone.caddy.vHost."recipes.theless.one" = {
-        proxy = {
-          inherit (config.services.tandoor-recipes) port;
-        };
+      thelessone.caddy.vHost.${dmn.tandoor-recipes} = {
+        proxy.port = prt.tandoor-recipes;
         useTailnet = true;
       };
 

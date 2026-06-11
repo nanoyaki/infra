@@ -4,26 +4,27 @@
 
     let
       inherit (pkgs) formats;
+      inherit (config) plh tpl;
     in
 
     {
-      sops.secrets = {
+      sec = {
         proxy.sopsFile = ./secrets.yaml;
         bot-token.sopsFile = ./secrets.yaml;
         smp-ledger-postgres-password.sopsFile = ./secrets.yaml;
       };
 
-      sops.templates."minecraft-secrets.env".file = pkgs.writeEnv "minecraft-secrets.env" {
-        DISCORDMCCHAT_BOT_TOKEN = config.sops.placeholder.bot-token;
-        PROXY_SECRET = config.sops.placeholder.proxy;
-        SMP_LEDGER_POSTGRES_PASSWORD = config.sops.placeholder.smp-ledger-postgres-password;
+      tpl."minecraft-secrets.env".file = pkgs.writeEnv "minecraft-secrets.env" {
+        DISCORDMCCHAT_BOT_TOKEN = plh.bot-token;
+        PROXY_SECRET = plh.proxy;
+        SMP_LEDGER_POSTGRES_PASSWORD = plh.smp-ledger-postgres-password;
       };
 
       users.users.thelessone.extraGroups = [ config.services.minecraft-servers.group ];
       services.minecraft-servers = {
         enable = true;
         eula = true;
-        environmentFile = config.sops.templates."minecraft-secrets.env".path;
+        environmentFile = tpl."minecraft-secrets.env".path;
         openFirewall = true;
       };
 

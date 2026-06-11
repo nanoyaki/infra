@@ -9,19 +9,39 @@
       ...
     }:
 
+    let
+      inherit (config)
+        prt
+        dmn
+        tpl
+        plh
+        sec
+        ;
+    in
+
     {
       imports = [
         inputs.tangled.nixosModules.knot
         inputs.avatar-server.nixosModules.avatar-server
       ];
 
-      sops.secrets = {
-        camo = { };
-        "avatar-server/secret" = { };
+      sec.camo = { };
+      sec."avatar-server/secret" = { };
+
+      tpl."avatar-server.env".file = pkgs.writeEnv "avatar-server.env.template" {
+        AVATAR_SHARED_SECRET = plh."avatar-server/secret";
       };
 
-      sops.templates."avatar-server.env".file = pkgs.writeEnv "avatar-server.env.template" {
-        AVATAR_SHARED_SECRET = config.sops.placeholder."avatar-server/secret";
+      prt = {
+        knot = 8001;
+        camo = 8002;
+        avatar-server = 8003;
+      };
+
+      dmn = {
+        knot = "knot.nanoyaki.space";
+        camo = "camo.nanoyaki.space";
+        avatar-server = "avatars.nanoyaki.space";
       };
 
       services.tangled.knot = {
@@ -33,31 +53,31 @@
         server = {
           owner = "did:plc:majihettvb7ieflgmkvujecu";
           jetstreamEndpoint = "wss://jetstream2.us-east.bsky.network/subscribe";
-          hostname = "knot.nanoyaki.space";
-          listenAddr = "0.0.0.0:8001";
+          hostname = dmn.knot;
+          listenAddr = "0.0.0.0:${toString prt.knot}";
         };
-      };
-
-      services.tangled.avatar-server = {
-        enable = false;
-        port = 8003;
-        environmentFile = config.sops.templates."avatar-server.env".path;
       };
 
       services.go-camo = {
         enable = false;
-        listen = "0.0.0.0:8002";
-        keyFile = config.sops.secrets.camo.path;
+        listen = "0.0.0.0:${toString prt.camo}";
+        keyFile = sec.camo.path;
+      };
+
+      services.tangled.avatar-server = {
+        enable = false;
+        port = prt.avatar-server;
+        environmentFile = tpl."avatar-server.env".path;
       };
 
       sentinel.caddy.host = {
-        "knot.nanoyaki.space".proxy.port = 8001;
+        ${dmn.knot}.proxy.port = prt.knot;
       }
       // lib.optionalAttrs config.services.go-camo.enable {
-        "camo.nanoyaki.space".proxy.port = 8002;
+        ${dmn.camo}.proxy.port = prt.camo;
       }
       // lib.optionalAttrs config.services.tangled.avatar-server.enable {
-        "avatars.nanoyaki.space".proxy.port = 8003;
+        ${dmn.avatar-server}.proxy.port = prt.avatar-server;
       };
     };
 }

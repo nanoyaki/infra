@@ -13,6 +13,8 @@
         mkOption
         mapAttrs'
         ;
+
+      inherit (config) dmn;
     in
 
     {
@@ -81,9 +83,9 @@
             reloadServices = [ "caddy.service" ];
           };
 
-          certs."theless.one" = {
+          certs.${dmn.self} = {
             environmentFile = config.sops.templates."theless.one-acme.env".path;
-            extraDomainNames = [ "*.theless.one" ];
+            extraDomainNames = [ "*.${dmn.self}" ];
             reloadServices = [ "caddy.service" ];
           };
         };

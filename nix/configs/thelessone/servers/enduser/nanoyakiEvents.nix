@@ -12,11 +12,12 @@
       webPkg = "${pkgs.discord-events-to-ics}/share/php/discord-events-to-ics";
       home = "/var/lib/caddy/nanoyaki-events";
       inherit (config.services.caddy) user;
+      inherit (config) sec;
     in
 
     # TODO: move to sentinel
     {
-      sops.secrets = {
+      sec = {
         "calendar/guildId".owner = user;
         "calendar/botToken".owner = user;
       };
@@ -31,8 +32,8 @@
         php_fastcgi unix/${config.services.phpfpm.pools.nanoyaki-events.socket} {
           root ${webPkg}/public
 
-          env GUILD_ID {file.${config.sops.secrets."calendar/guildId".path}}
-          env BOT_TOKEN {file.${config.sops.secrets."calendar/botToken".path}}
+          env GUILD_ID {file.${sec."calendar/guildId".path}}
+          env BOT_TOKEN {file.${sec."calendar/botToken".path}}
           env CACHE_DIR "${home}/cache"
           env LOG_PATH "${home}/logs"
           env LOG_LEVEL "info"

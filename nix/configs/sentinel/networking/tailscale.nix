@@ -10,14 +10,17 @@
     }:
 
     let
-      inherit (lib) mapAttrsToList;
+      inherit (lib) filter;
+      inherit (config) prt dmn sec;
+
+      server = inputs.self.nixosConfigurations.thelessone.config;
     in
 
     {
       disabledModules = [ "services/networking/headplane.nix" ];
       imports = [ inputs.headplane.nixosModules.headplane ];
 
-      sops.secrets = with config.services.headscale; {
+      sec = with config.services.headscale; {
         "headscale/oidc-secret".owner = user;
         "headplane/api-key".owner = user;
         "headplane/oidc-secret".owner = user;
@@ -25,50 +28,30 @@
         tailscale = { };
       };
 
+      prt.headscale = 8004;
+      prt.headplane = 8005;
+
+      dmn.headscale = "headscale.nanoyaki.space";
+      dmn.headplane = "headplane.nanoyaki.space";
+
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "server";
-        authKeyFile = config.sops.secrets.tailscale.path;
+        authKeyFile = sec.tailscale.path;
         extraUpFlags = [
           "--login-server"
-          "https://headscale.nanoyaki.space"
+          "https://${dmn.headscale}"
         ];
-      };
-
-      services.headplane = {
-        enable = true;
-
-        settings = {
-          server = {
-            base_url = "https://headplane.nanoyaki.space";
-            port = 8009;
-            cookie_secret_path = config.sops.secrets."headplane/cookie-secret".path;
-          };
-
-          headscale = {
-            url = "https://headscale.nanoyaki.space";
-            config_path = config.services.headscale.configFile;
-            api_key_path = config.sops.secrets."headplane/api-key".path;
-          };
-
-          oidc = {
-            issuer = "https://id.theless.one";
-            client_id = "e9368c4e-fa05-4cf8-83c8-04555cb3e1ce";
-            client_secret_path = config.sops.secrets."headplane/oidc-secret".path;
-            disable_api_key_login = true;
-            use_pkce = true;
-          };
-        };
       };
 
       services.headscale = {
         enable = true;
 
         address = "127.0.0.1";
-        port = 8008;
+        port = prt.headscale;
 
         settings = {
-          server_url = "https://headscale.nanoyaki.space";
+          server_url = "https://${dmn.headscale}";
 
           policy.path = pkgs.writeText "acl.hujson" (
             builtins.toJSON {
@@ -97,9 +80,9 @@
           );
 
           oidc = {
-            issuer = "https://id.theless.one";
+            issuer = "https://${server.dmn.pocket-id}";
             client_id = "8d80ec56-c0d9-45ef-8ebb-7abd0c708e76";
-            client_secret_path = config.sops.secrets."headscale/oidc-secret".path;
+            client_secret_path = sec."headscale/oidc-secret".path;
             pkce.enabled = true;
             pkce.method = "S256";
 
@@ -112,96 +95,63 @@
             expiry = 0;
           };
 
-          dns =
-            let
-              filterThelessone = lib.filterAttrs (domain: _: lib.hasInfix "theless.one" domain);
+          dns = {
+            magic_dns = true;
+            base_domain = dmn.self;
 
-              mkServiceName =
-                domain:
-                builtins.head (
-                  builtins.split ".theless.one" (lib.replaceStrings [ "http://" "https://" ] [ "" "" ] domain)
-                );
-            in
-            {
-              magic_dns = true;
-              base_domain = "theless.one";
+            override_local_dns = true;
+            nameservers.global = [
+              "1.1.1.1"
+              "1.0.0.1"
+            ];
 
-              override_local_dns = true;
-              nameservers.split."vpn.nanoyaki.space" = [ ];
-              nameservers.global = [
-                "1.1.1.1"
-                "1.0.0.1"
-              ];
-
-              extra_records =
-                (map
-                  (domain: {
-                    name = "${mkServiceName domain}.theless.one";
-                    type = "A";
-                    value = "100.64.0.2";
-                  })
-                  (
-                    builtins.attrNames (
-                      filterThelessone inputs.self.nixosConfigurations.thelessone.config.thelessone.caddy.vHost
-                    )
-                  )
-                )
-                ++ map (domain: {
-                  name = "${mkServiceName domain}.theless.one";
-                  type = "A";
-                  value = "100.64.0.4";
-                }) (builtins.attrNames (filterThelessone config.sentinel.caddy.host))
-                ++ mapAttrsToList (service: ip: {
-                  name = "${service}.theless.one";
-                  type = "A";
-                  value = ip;
-                }) inputs.self.nixosConfigurations.thelessone.config.thelessone.tailscale.extraRecords;
-            };
+            extra_records =
+              (map (domain: {
+                name = domain;
+                type = "A";
+                value = "100.64.0.2";
+              }) (filter (lib.hasInfix dmn.self) (builtins.attrValues server.dmn)))
+              ++ map (domain: {
+                name = domain;
+                type = "A";
+                value = "100.64.0.4";
+              }) (filter (lib.hasInfix dmn.self) (builtins.attrValues dmn));
+          };
         };
       };
 
-      services.coredns.enable = true;
-      services.coredns.config = ''
-        vpn.nanoyaki.space {
-          bind 0.0.0.0
+      services.headplane = {
+        enable = true;
 
-          hosts {
-            100.64.0.4 de01.vpn.nanoyaki.space
-            fallthrough
-          }
+        settings = {
+          server = {
+            base_url = "https://${dmn.headplane}";
+            port = prt.headplane;
+            cookie_secret_path = sec."headplane/cookie-secret".path;
+          };
 
-          template IN A {
-            answer "{{ .Name }} 60 IN A 100.64.0.2"
-          }
+          headscale = {
+            url = "https://${dmn.headscale}";
+            config_path = config.services.headscale.configFile;
+            api_key_path = sec."headplane/api-key".path;
+          };
 
-          template IN AAAA {
-            rcode NOERROR
-          }
-
-          log
-          errors
-        }
-
-        . {
-          forward . 1.1.1.1 1.0.0.1
-          cache 300
-          log
-          errors
-        }
-      '';
-
-      sentinel.caddy.host."headscale.nanoyaki.space".proxy = {
-        inherit (config.services.headscale) port;
+          oidc = {
+            issuer = "https://${server.dmn.pocket-id}";
+            client_id = "e9368c4e-fa05-4cf8-83c8-04555cb3e1ce";
+            client_secret_path = sec."headplane/oidc-secret".path;
+            disable_api_key_login = true;
+            use_pkce = true;
+          };
+        };
       };
 
-      sentinel.caddy.host."headplane.nanoyaki.space" = {
+      sentinel.caddy.host.${dmn.headscale}.proxy.port = prt.headscale;
+      sentinel.caddy.host.${dmn.headplane} = {
+        proxy.port = prt.headplane;
         config = ''
           redir / /admin
         '';
-
-        proxy = {
-          inherit (config.services.headplane.settings.server) port;
-        };
       };
     };
 }

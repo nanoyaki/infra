@@ -9,9 +9,14 @@
 
     let
       cfg = config.services.transmission;
+      inherit (config) prt dmn;
     in
 
     {
+      prt.transmission-rpc = 8022;
+      prt.flood = 8023;
+      dmn.flood = "flood.theless.one";
+
       systemd.tmpfiles.settings."10-transmission" = {
         "/mnt/raid/arr-stack/downloads/deluge".d = {
           inherit (cfg) user group;
@@ -41,7 +46,7 @@
         settings = {
           rpc-enabled = true;
           rpc-bind-address = "0.0.0.0";
-          rpc-port = 9091;
+          rpc-port = prt.transmission-rpc;
           rpc-host-whitelist-enabled = false;
           rpc-whitelist-enabled = true;
           rpc-whitelist = "127.0.0.1,10.200.1.*";
@@ -78,18 +83,16 @@
       services.flood = {
         enable = true;
         host = "0.0.0.0";
-        port = 24325;
+        port = prt.flood;
         extraArgs = [
-          "--trurl=http://10.200.1.2:${toString cfg.settings.rpc-port}/transmission/rpc"
+          "--trurl=http://10.200.1.2:${toString prt.transmission-rpc}/transmission/rpc"
           "--truser=${cfg.settings.rpc-username}"
           "--trpass=${cfg.settings.rpc-password}"
         ];
       };
 
-      thelessone.caddy.vHost."flood.theless.one" = {
-        proxy = {
-          inherit (config.services.flood) port;
-        };
+      thelessone.caddy.vHost.${dmn.flood} = {
+        proxy.port = prt.flood;
         useTailnet = true;
       };
 

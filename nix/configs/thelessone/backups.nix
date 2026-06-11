@@ -18,6 +18,8 @@
         getExe
         ;
 
+      inherit (config) sec;
+
       cfg = config.thelessone.backups;
       format = pkgs.formats.toml { };
 
@@ -39,7 +41,7 @@
 
           repository = {
             repository = "/mnt/raid/backup.d/${name}";
-            password-file = config.sops.secrets.restic-encryption.path;
+            password-file = sec.restic-encryption.path;
             no-cache = true; # unnecessary for local repos
           }
           // (backup.repository or { });
@@ -179,7 +181,7 @@
           }
         ];
 
-        sops.secrets.restic-encryption = { };
+        sec.restic-encryption = { };
 
         environment.systemPackages = map (
           name:

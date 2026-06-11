@@ -7,7 +7,13 @@
       ...
     }:
 
+    let
+      inherit (config) dmn;
+    in
+
     {
+      dmn.nanoyaki-space = "nanoyaki.space";
+
       sops = {
         secrets = {
           "porkbun/secret-api-key" = { };
@@ -21,7 +27,7 @@
           global = {
             secretapikey = config.sops.placeholder."porkbun/pds-secret-api-key";
             apikey = config.sops.placeholder."porkbun/pds-api-key";
-            interval = 900;
+            interval = 3600;
             ttl = 600;
           };
 
@@ -29,16 +35,16 @@
             {
               secretapikey = config.sops.placeholder."porkbun/secret-api-key";
               apikey = config.sops.placeholder."porkbun/api-key";
-              domain = "theless.one";
+              domain = dmn.self;
               subdomain = "de01";
               skipIPv6 = true;
             }
             {
-              domain = "nanoyaki.space";
+              domain = dmn.nanoyaki-space;
               subdomain = "";
             }
             {
-              domain = "nanoyaki.space";
+              domain = dmn.nanoyaki-space;
               subdomain = "*";
             }
           ];

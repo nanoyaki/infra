@@ -1,12 +1,20 @@
 {
   flake.nixosModules.thelessone-minecraftProxy =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     let
-      inherit (lib) foldl;
+      inherit (lib) mkForce;
+      inherit (config) prt dmn;
     in
 
     {
+      prt.minecraft = mkForce 25565;
+
       systemd.services.minecraft-server-proxy.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.proxy = {
         enable = true;
@@ -25,7 +33,7 @@
           format = pkgs.formats.toml { };
           value = {
             config-version = "2.8";
-            bind = "0.0.0.0:25565";
+            bind = "0.0.0.0:${toString prt.minecraft}";
             motd =
               "<#dce0e8>T</#dce0e8><#8caaee>h</#8caaee><#dce0e8>e</#dce0e8>"
               + "<#8caaee>l</#8caaee><#dce0e8>e</#dce0e8><#8caaee>s</#8caaee><#dce0e8>s</#dce0e8>"
@@ -41,24 +49,21 @@
             sample-players-in-ping = true;
 
             servers = {
-              smp = "127.0.0.1:30050";
-              creative = "127.0.0.1:30051";
-              lobby = "127.0.0.1:30052";
-              flat = "127.0.0.1:30054";
-              modded = "127.0.0.1:30055";
+              smp = "127.0.0.1:${toString prt.minecraft-server-smp}";
+              creative = "127.0.0.1:${toString prt.minecraft-server-creative}";
+              # lobby = "127.0.0.1:${toString prt.minecraft-server-lobby}";
+              flat = "127.0.0.1:${toString prt.minecraft-server-flat}";
+              modded = "127.0.0.1:${toString prt.minecraft-server-modded}";
 
-              try = [
-                "smp"
-                "lobby"
-              ];
+              try = [ "smp" ];
             };
 
             forced-hosts = {
-              "theless.one" = [ "smp" ];
-              "creative.theless.one" = [ "creative" ];
-              "lobby.theless.one" = [ "lobby" ];
-              "flat.theless.one" = [ "flat" ];
-              "modded.theless.one" = [ "modded" ];
+              ${dmn.self} = [ "smp" ];
+              ${dmn.creative} = [ "creative" ];
+              # ${dmn.lobby} = [ "lobby" ];
+              ${dmn.flat} = [ "flat" ];
+              ${dmn.modded} = [ "modded" ];
             };
 
             query.enabled = false;
@@ -68,14 +73,5 @@
         files."forwarding.secret" = pkgs.writeText "forwarding.secret" "@PROXY_SECRET@";
         files."server-icon.png" = "${pkgs.thelessone-minecraft-logomark}/icon.png";
       };
-
-      thelessone.tailscale.extraRecords =
-        foldl (acc: service: acc // { ${service} = "100.64.0.4"; }) { }
-          [
-            "creative"
-            "lobby"
-            "flat"
-            "modded"
-          ];
     };
 }

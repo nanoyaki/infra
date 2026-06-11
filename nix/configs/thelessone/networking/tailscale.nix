@@ -1,27 +1,13 @@
 {
   flake.nixosModules.thelessone-tailscale =
-    { lib, config, ... }:
-
-    let
-      inherit (lib)
-        mkOption
-        types
-        ;
-    in
+    { config, ... }:
 
     {
-      options.thelessone.tailscale.extraRecords = mkOption {
-        type = types.attrsOf types.str;
-        default = { };
+      services.tailscale = {
+        enable = true;
+        useRoutingFeatures = "both";
       };
 
-      config = {
-        services.tailscale = {
-          enable = true;
-          useRoutingFeatures = "both";
-        };
-
-        networking.firewall.trustedInterfaces = [ config.services.tailscale.interfaceName ];
-      };
+      networking.firewall.trustedInterfaces = [ config.services.tailscale.interfaceName ];
     };
 }

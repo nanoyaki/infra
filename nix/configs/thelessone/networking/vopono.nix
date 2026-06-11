@@ -4,20 +4,24 @@
   flake.nixosModules.thelessone-vopono =
     { lib, config, ... }:
 
+    let
+      inherit (config) plh tpl;
+    in
+
     {
       imports = [ inputs.self.nixosModules.vopono ];
 
-      sops.secrets = {
+      sec = {
         wireguard-private = { };
         wireguard-address = { };
         wireguard-public = { };
         wireguard-endpoint = { };
       };
 
-      sops.templates."wireguard.conf" = {
+      tpl."wireguard.conf" = {
         owner = "vopono";
         restartUnits = [ "vopono.service" ];
-        content = with config.sops.placeholder; ''
+        content = with plh; ''
           [Interface]
           PrivateKey = ${wireguard-private}
           Address = ${wireguard-address}
@@ -35,7 +39,7 @@
         enable = true;
 
         interface = "enp9s0";
-        configFile = config.sops.templates."wireguard.conf".path;
+        configFile = tpl."wireguard.conf".path;
         protocol = "Wireguard";
         namespace = "vp0";
       };

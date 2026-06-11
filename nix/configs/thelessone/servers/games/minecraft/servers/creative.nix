@@ -7,7 +7,15 @@
       ...
     }:
 
+    let
+      inherit (config) prt dmn;
+    in
+
     {
+      prt.minecraft-server-creative = 30051;
+      prt.minecraft-server-creative-vc = 24455;
+      dmn.creative = "creative.theless.one";
+
       systemd.services.minecraft-server-smp-creative.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.smp-creative = {
         enable = true;
@@ -15,7 +23,7 @@
         jvmOpts = "-Xms8G -Xmx8G";
 
         serverProperties = {
-          server-port = 30051;
+          server-port = prt.minecraft-server-creative;
 
           gamemode = "creative";
           difficulty = "normal";
@@ -81,8 +89,8 @@
         );
 
         symlinks."config/voicechat/voicechat-server.properties".value = {
-          port = 24455;
-          voice_host = "theless.one:24455";
+          port = prt.minecraft-server-creative-vc;
+          voice_host = "${dmn.self}:${toString prt.minecraft-server-creative-vc}";
         };
       };
     };

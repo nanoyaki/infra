@@ -4,17 +4,26 @@
 
     let
       cfg = config.services.kavita;
-      plh = config.sops.placeholder;
+
+      inherit (config)
+        prt
+        dmn
+        plh
+        tpl
+        ;
     in
 
     {
-      sops.secrets = {
+      prt.kavita = 8017;
+      dmn.kavita = "books.theless.one";
+
+      sec = {
         "kavita/key" = { };
         "kavita/oidc-id" = { };
         "kavita/oidc-secret" = { };
       };
 
-      sops.templates."kavita.json" = {
+      tpl."kavita.json" = {
         content = builtins.toJSON (
           lib.recursiveUpdate cfg.settings {
             TokenKey = plh."kavita/key";
@@ -32,25 +41,25 @@
         wantedBy = lib.mkForce [ "server-services.target" ];
 
         serviceConfig.LoadCredential = lib.mkForce "";
-        serviceConfig.ReadOnlyPaths = [ config.sops.templates."kavita.json".path ];
+        serviceConfig.ReadOnlyPaths = [ tpl."kavita.json".path ];
         preStart = lib.mkForce ''
-          ln -sf ${config.sops.templates."kavita.json".path} ${cfg.dataDir}/config/appsettings.json
+          ln -sf ${tpl."kavita.json".path} ${cfg.dataDir}/config/appsettings.json
         '';
       };
 
       services.kavita = {
         enable = true;
         tokenKeyFile = "/run/secrets/dummy";
-        settings.Port = 3300;
+        settings.Port = prt.kavita;
         settings.OpenIdConnectSettings = {
           Enabled = true;
-          Authority = "https://id.theless.one";
+          Authority = "https://${dmn.pocket-id}";
           CustomScopes = [ ];
         };
       };
 
-      thelessone.caddy.vHost."books.theless.one" = {
-        proxy.port = config.services.kavita.settings.Port;
+      thelessone.caddy.vHost.${dmn.kavita} = {
+        proxy.port = prt.kavita;
         useTailnet = true;
       };
 

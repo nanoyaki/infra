@@ -10,9 +10,18 @@
     let
       inherit (pkgs) formats;
       inherit (config.services.minecraft-servers.managementSystem.systemd-socket) stdinSocket;
+      inherit (config) prt dmn;
     in
 
     {
+      prt = {
+        minecraft-server-smp = 30050;
+        minecraft-server-smp-vc = 24454;
+        smp-bluemap = 8015;
+      };
+
+      dmn.smp-bluemap = "map.theless.one";
+
       systemd.services.minecraft-server-smp.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.smp = {
         enable = true;
@@ -24,7 +33,7 @@
         '';
 
         serverProperties = {
-          server-port = 30050;
+          server-port = prt.minecraft-server-smp;
           initial-enabled-packs = "vanilla";
           difficulty = "normal";
         };
@@ -138,8 +147,8 @@
           };
 
           "config/voicechat/voicechat-server.properties".value = {
-            port = 24454;
-            voice_host = "theless.one:24454";
+            port = prt.minecraft-server-smp-vc;
+            voice_host = "theless.one:${toString prt.minecraft-server-smp-vc}";
           };
 
           "config/bluemap/core.conf" = {
@@ -203,7 +212,7 @@
             value = {
               enabled = true;
               webroot = "bluemap/web";
-              port = 8100;
+              port = prt.smp-bluemap;
 
               log = {
                 file = "logs/bluemap.log";
@@ -215,26 +224,9 @@
         };
       };
 
-      thelessone.caddy.vHost."map.theless.one" = {
-        proxy = {
-          inherit
-            (config.services.minecraft-servers'.servers.smp.symlinks."config/bluemap/webserver.conf".value)
-            port
-            ;
-        };
+      thelessone.caddy.vHost.${dmn.smp-bluemap} = {
+        proxy.port = prt.smp-bluemap;
         useTailnet = true;
       };
-
-      # services.postgresql = {
-      #   ensureDatabases = [ "smp-ledger" ];
-      #   ensureUsers = [
-      #     {
-      #       name = "smp-ledger";
-      #       ensureDBOwnership = true;
-      #       # Don't know how to feel about this...
-      #       ensureClauses.password = "SCRAM-SHA-256$4096:5v42qnWdS02ImuTiBnwtVw==$RRgNdaf05jbHaNmmeqdlt8QCS9lpxN+etnGl3SqB+zE=:3AbP2vlYrJxttAKNTYrYTpzuQXj4EEcmOktKtKfYMr4=";
-      #     }
-      #   ];
-      # };
     };
 }

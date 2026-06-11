@@ -2,19 +2,25 @@
   flake.nixosModules.thelessone-radarr =
     { lib, config, ... }:
 
+    let
+      inherit (config) prt dmn;
+    in
+
     {
-      services.vopono.allowedTCPPorts = [ config.services.radarr.settings.server.port ];
+      prt.radarr = 8033;
+      dmn.radarr = "radarr.theless.one";
+
+      services.vopono.allowedTCPPorts = [ prt.radarr ];
 
       systemd.services.radarr.wantedBy = lib.mkForce [ "server-services.target" ];
       services.radarr = {
         enable = true;
+        settings.server.port = prt.radarr;
         inherit (config.thelessone.arr) group;
       };
 
-      thelessone.caddy.vHost."radarr.theless.one" = {
-        proxy = {
-          inherit (config.services.radarr.settings.server) port;
-        };
+      thelessone.caddy.vHost.${dmn.radarr} = {
+        proxy.port = prt.radarr;
         useTailnet = true;
       };
 

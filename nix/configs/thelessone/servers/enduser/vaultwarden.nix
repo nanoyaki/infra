@@ -7,17 +7,29 @@
       ...
     }:
 
+    let
+      inherit (config)
+        prt
+        dmn
+        tpl
+        plh
+        ;
+    in
+
     {
-      sops.secrets = {
+      prt.vaultwarden = 8011;
+      dmn.vaultwarden = "vaultwarden.theless.one";
+
+      sec = {
         vaultwarden-smtp-password = { };
         vaultwarden-admin-token = { };
         "mailserver/vaultwarden" = { };
       };
 
-      sops.templates."vaultwarden.env" = {
+      tpl."vaultwarden.env" = {
         file = pkgs.writeEnv "vaultwarden.env.template" {
-          SMTP_PASSWORD = config.sops.placeholder.no-reply-password;
-          # ADMIN_TOKEN= "'${config.sops.placeholder.vaultwarden-admin-token}'";
+          SMTP_PASSWORD = plh.no-reply-password;
+          # ADMIN_TOKEN= "'${plh.vaultwarden-admin-token}'";
         };
         restartUnits = [ "vaultwarden.service" ];
       };
@@ -29,13 +41,13 @@
         backupDir = "/var/backup/vaultwarden";
 
         config = {
-          DOMAIN = "https://vaultwarden.theless.one";
+          DOMAIN = "https://${dmn.vaultwarden}";
 
           ROCKET_ADDRESS = "127.0.0.1";
-          ROCKET_PORT = 8222;
+          ROCKET_PORT = prt.vaultwarden;
 
-          SMTP_HOST = "mail.theless.one";
-          SMTP_PORT = 465;
+          SMTP_HOST = dmn.mail;
+          SMTP_PORT = prt.smtp-tls;
           SMTP_SECURITY = "force_tls";
           SMTP_DEBUG = true;
 
@@ -50,11 +62,10 @@
           ORG_CREATION_USERS = "hanakretzer@gmail.com";
         };
 
-        environmentFile = config.sops.templates."vaultwarden.env".path;
+        environmentFile = tpl."vaultwarden.env".path;
       };
 
-      thelessone.caddy.vHost."vaultwarden.theless.one".proxy.port =
-        config.services.vaultwarden.config.ROCKET_PORT;
+      thelessone.caddy.vHost.${dmn.vaultwarden}.proxy.port = prt.vaultwarden;
 
       # FIXME: remote backup
       thelessone.backups.vaultwarden.paths = [

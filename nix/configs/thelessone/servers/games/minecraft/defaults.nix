@@ -229,19 +229,17 @@
     {
       packages = {
         thelessone-minecraft-logomark =
-          pkgs.runCommand "thelessone-minecraft-logomark"
-            {
-              env.logomarkSvg = pkgs.fetchurl {
-                url = "https://git.theless.one/marumarukyun/Theless.one-branding/raw/commit/5f39d64a4070648449fad4c385b9532939cd36e6/svg/thelessone-filled-rainbow.svg";
-                hash = "sha256-4QUo+nY8JOP5UGR9h/oQBCQH0AH5FO6a77FJZ+tyPlw=";
-              };
-              nativeBuildInputs = [ pkgs.imagemagick ];
-            }
+          pkgs.runCommand "thelessone-minecraft-logomark" { nativeBuildInputs = [ pkgs.imagemagick ]; }
             ''
               mkdir -p $out
               magick \
                 -background none \
-                $logomarkSvg \
+                ${
+                  pkgs.fetchurl {
+                    url = "https://git.theless.one/marumarukyun/Theless.one-branding/raw/commit/5f39d64a4070648449fad4c385b9532939cd36e6/svg/thelessone-filled-rainbow.svg";
+                    hash = "sha256-4QUo+nY8JOP5UGR9h/oQBCQH0AH5FO6a77FJZ+tyPlw=";
+                  }
+                } \
                 -trim \
                 -resize 64x64 \
                 -gravity center \
@@ -250,17 +248,12 @@
             '';
 
         nix-minecraft-logomark =
-          pkgs.runCommand "nix-minecraft-logomark"
-            {
-              env.logomarkSvg =
-                inputs'.nixos-branding.legacyPackages.nixos-branding.artifacts.media-kit.nixos-logomark-rainbow-gradient-recommended;
-              nativeBuildInputs = [ pkgs.imagemagick ];
-            }
+          pkgs.runCommand "nix-minecraft-logomark" { nativeBuildInputs = [ pkgs.imagemagick ]; }
             ''
               mkdir -p $out
               magick \
                 -background none \
-                $logomarkSvg/nixos-logomark-rainbow-gradient-recommended.svg \
+                ${inputs'.nixos-branding.legacyPackages.nixos-branding.artifacts.media-kit.nixos-logomark-rainbow-gradient-recommended}/nixos-logomark-rainbow-gradient-recommended.svg \
                 -trim \
                 -resize 64x64 \
                 -gravity center \
