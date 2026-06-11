@@ -565,14 +565,6 @@
                 };
               }
               {
-                Shoko = rec {
-                  icon = "shoko.svg";
-                  href = "https://${dmn.shoko}";
-                  siteMonitor = href;
-                  description = "Anime management";
-                };
-              }
-              {
                 Glances = rec {
                   icon = "glances.svg";
                   href = "https://${dmn.glances}";

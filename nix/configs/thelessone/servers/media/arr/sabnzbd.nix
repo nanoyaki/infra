@@ -22,8 +22,8 @@
         "sabnzbd/username" = { };
         "sabnzbd/password" = { };
 
-        "sabnzbd/eweka-username" = { };
-        "sabnzbd/eweka-password" = { };
+        "sabnzbd/hitnews-username" = { };
+        "sabnzbd/hitnews-password" = { };
       };
 
       tpl."secrets.ini" = {
@@ -36,9 +36,9 @@
           nzb_key = ${plh."sabnzbd/nzb-key"}
 
           [servers]
-          [[news.eweka.nl]]
-          username = ${plh."sabnzbd/eweka-username"}
-          password = ${plh."sabnzbd/eweka-password"}
+          [[news.hitnews.com]]
+          username = ${plh."sabnzbd/hitnews-username"}
+          password = ${plh."sabnzbd/hitnews-password"}
         '';
 
         owner = config.services.sabnzbd.user;
@@ -95,20 +95,20 @@
 
           logging.log_level = 2;
 
-          servers."news.eweka.nl" = {
+          servers."news.hitnews.com" = {
             enable = true;
             required = true;
 
-            displayname = "Eweka";
-            name = "news.eweka.nl";
-            host = "news.eweka.nl";
+            displayname = "Hitnews";
+            name = "news.hitnews.com";
+            host = "news.hitnews.com";
             port = prt.nntps;
             timeout = 60;
             connections = 50;
             ssl = true;
             ssl_verify = 3;
 
-            expire_date = "2026-06-06";
+            expire_date = "2026-12-11";
           };
 
           categories =
@@ -137,9 +137,6 @@
                 radarr.order = 2;
                 prowlarr.order = 3;
                 direct-prowlarr.order = 4;
-
-                shoko.order = 6;
-                shoko.dir = "${config.thelessone.arr.home}/downloads/shoko";
 
                 beets.order = 7;
                 beets.dir = "${config.thelessone.arr.home}/downloads/beets";
