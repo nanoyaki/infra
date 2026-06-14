@@ -28,7 +28,7 @@
                   all = attrValues (removeAttrs config.prt [ "free" ]);
                 in
                 (foldl (
-                  highest: port: if port > highest && port >= 8000 && port < 8100 then port else highest
+                  highest: port: if port > highest && port >= 8000 && port < 8090 then port else highest
                 ) 7999 all)
                 + 1;
               readOnly = true;

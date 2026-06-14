@@ -401,8 +401,8 @@
             Private = [
               {
                 Actual = rec {
-                  icon = "actual-budget.svg";
-                  href = "https://${dmn.actual}";
+                  icon = "actual.svg";
+                  href = "https://${dmn.finances}";
                   siteMonitor = href;
                   description = "Finance management";
                 };

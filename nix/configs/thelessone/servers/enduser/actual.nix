@@ -8,7 +8,7 @@
 
     {
       prt.actual = 8003;
-      dmn.actual = "finances.theless.one";
+      dmn.finances = "finances.theless.one";
 
       systemd.services.actual.wantedBy = lib.mkForce [ "server-services.target" ];
       services.actual = {
@@ -17,7 +17,7 @@
         settings.port = prt.actual;
       };
 
-      thelessone.caddy.vHost.${dmn.actual} = {
+      thelessone.caddy.vHost.${dmn.finances} = {
         proxy.port = prt.actual;
         useTailnet = true;
       };

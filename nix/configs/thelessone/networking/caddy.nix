@@ -20,7 +20,10 @@
         hasPrefix
         ;
 
-      inherit (config) dmn plh tpl;
+      inherit (config)
+        dmn
+        prt
+        ;
 
       cfg = config.thelessone.caddy;
 
@@ -102,23 +105,9 @@
       };
 
       config = {
-        networking.firewall.allowedTCPPorts = [ 443 ];
-
-        sec = {
-          "caddy-env-vars/nik" = { };
-          "caddy-env-vars/hana" = { };
-          "caddy-env-vars/shared" = { };
-          "caddy-env-vars/thelessone" = { };
-        };
+        networking.firewall.allowedTCPPorts = [ prt.https ];
 
         dmn.file-server = "na55l3zepb4kcg0zryqbdnay.theless.one";
-
-        tpl."caddy-users.env".file = pkgs.writeEnv "caddy-users.env" {
-          nik = "nik ${plh."caddy-env-vars/nik"}";
-          hana = "hana ${plh."caddy-env-vars/hana"}";
-          shared = "user ${plh."caddy-env-vars/shared"}";
-          thelessone = "thelessone ${plh."caddy-env-vars/thelessone"}";
-        };
 
         networking.extraHosts = lib.concatStringsSep "\n" (
           map (
@@ -138,8 +127,11 @@
         services.caddy = {
           enable = true;
           enableReload = true;
-          environmentFile = tpl."caddy-users.env".path;
           email = "contact@nanoyaki.space";
+          package = pkgs.caddy.withPlugins {
+            plugins = [ "github.com/greenpau/caddy-security@v1.1.62" ];
+            hash = "sha256-rv1d7FumBwro6pTNmoiwY2bCtDIfAF7NwXjYoocniao=";
+          };
 
           logFormat = lib.mkForce ''
             format console

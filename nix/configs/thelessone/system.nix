@@ -57,7 +57,7 @@
       thelessone-immich
       thelessone-tandoor
       thelessone-audiobookshelf
-      thelessone-actual
+      # thelessone-actual
       thelessone-scpsl
       # thelessone-valheim
       thelessone-minecraft
@@ -78,6 +78,7 @@
       thelessone-theless-dot-one
       thelessone-speedtest-tracker
       thelessone-glances
+      thelessone-firefly-iii
     ];
   };
 
