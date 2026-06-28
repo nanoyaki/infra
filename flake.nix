@@ -98,6 +98,9 @@
     headplane.inputs.flake-utils.follows = "flake-utils";
     theless-dot-one.url = "git+https://git.theless.one/nanoyaki/theless.one.git";
     theless-dot-one.inputs.nixpkgs.follows = "nixpkgs";
+    nixbot.url = "github:Mic92/nixbot";
+    nixbot.inputs.nixpkgs.follows = "nixpkgs";
+    nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
 
     # Deduplication
     flake-compat.url = "github:NixOS/flake-compat";

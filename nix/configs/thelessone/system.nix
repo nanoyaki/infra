@@ -79,6 +79,7 @@
       thelessone-speedtest-tracker
       thelessone-glances
       thelessone-firefly-iii
+      # thelessone-nixbot
     ];
   };
 
