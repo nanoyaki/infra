@@ -122,6 +122,10 @@
         hashedPasswordFile = sec."users/thelessone-new".path;
       };
 
+      nixpkgs.config.permittedInsecurePackages = [
+        "pnpm-10.29.2"
+      ];
+
       security.sudo.extraRules = [
         {
           users = [ "thelessone" ];

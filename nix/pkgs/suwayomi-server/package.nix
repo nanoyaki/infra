@@ -27,7 +27,7 @@
 
         stdenvNoCC.mkDerivation (finalAttrs: {
           pname = "suwayomi-server";
-          version = "2.2.2100";
+          version = "2.3.2230";
 
           strictDeps = true;
 
@@ -35,7 +35,7 @@
             owner = "Suwayomi";
             repo = "Suwayomi-Server";
             tag = "v${finalAttrs.version}";
-            hash = "sha256-RPVz2BDBtFXmXzc3DlSIzkwsjfd+WNGV3O0llJF4P1A=";
+            hash = "sha256-WFy49gW6PJYMqT62eZYpJMFmNHTxbzi1TVd+A42bvVA=";
           };
 
           patches = [
@@ -43,11 +43,18 @@
           ];
 
           postPatch = ''
+            WEBVIEW_VERSION=$(
+              grep -oP 'webviewJbrRelease = "\K[\w\-\.\d]+' \
+              buildSrc/src/main/kotlin/Constants.kt
+            )
+
             echo 'const val MainClass = "suwayomi.tachidesk.MainKt"
             val getTachideskVersion = { "v${finalAttrs.version}" }
             val webUIRevisionTag = "r${suwayomi-webui.revision}"
             val getTachideskRevision = { "r${lib.versions.patch finalAttrs.version}" }
             ' > buildSrc/src/main/kotlin/Constants.kt
+
+            echo "val webviewJbrRelease = \"$WEBVIEW_VERSION\"" >> buildSrc/src/main/kotlin/Constants.kt
 
             substituteInPlace server/src/main/kotlin/suwayomi/tachidesk/server/util/WebInterfaceManager.kt \
               --replace-fail "fetchMD5SumFor(flavor, currentVersion)" '"'"$(cat ${suwayomi-webui}/share/suwayomi-server/md5sum)"'"'
@@ -68,6 +75,7 @@
           mitmCache = gradle_9.fetchDeps {
             pkg = finalAttrs;
             data = ./deps.json;
+            useBwrap = false;
           };
 
           gradleFlags = [
