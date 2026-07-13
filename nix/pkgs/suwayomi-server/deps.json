@@ -87,8 +87,8 @@
   "kotlin/kotlin-build-tools-impl/maven-metadata": {
    "xml": {
     "groupId": "org.jetbrains.kotlin",
-    "lastUpdated": "20260629154821",
-    "release": "2.4.20-dev-8332"
+    "lastUpdated": "20260713122519",
+    "release": "2.4.20-ij262-29"
    }
   }
  },
@@ -2038,7 +2038,7 @@
   "org/jetbrains/kotlin/kotlin-build-tools-impl/maven-metadata": {
    "xml": {
     "groupId": "org.jetbrains.kotlin",
-    "lastUpdated": "20260625074602",
+    "lastUpdated": "20260707113603",
     "release": "2.4.20-Beta1"
    }
   },
