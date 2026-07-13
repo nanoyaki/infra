@@ -39,7 +39,7 @@
         acceptTerms = true;
         defaults = {
           inherit (config.services.caddy) group;
-          email = "contact@${dmn.nanoyaki-space}";
+          email = "contact@nanoyaki.space";
 
           dnsProvider = "porkbun";
           dnsResolver = "173.245.58.37:53";
@@ -49,16 +49,6 @@
         certs.${dmn.self} = {
           environmentFile = tpl."theless.one-acme.env".path;
           extraDomainNames = [ "*.${dmn.self}" ];
-        };
-
-        certs.${dmn.nanoyaki-space} = {
-          environmentFile = tpl."nanoyaki.space-acme.env".path;
-          extraDomainNames = [ "*.${dmn.nanoyaki-space}" ];
-        };
-
-        certs.${dmn.aslija-com} = {
-          environmentFile = tpl."aslija.com-acme.env".path;
-          extraDomainNames = [ "*.${dmn.aslija-com}" ];
         };
       };
     };

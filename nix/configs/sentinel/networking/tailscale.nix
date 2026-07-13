@@ -79,6 +79,7 @@
             }
           );
 
+          node.expiry = 0;
           oidc = {
             issuer = "https://${server.dmn.pocket-id}";
             client_id = "8d80ec56-c0d9-45ef-8ebb-7abd0c708e76";
@@ -92,7 +93,6 @@
               "email"
               "groups"
             ];
-            expiry = 0;
           };
 
           dns = {

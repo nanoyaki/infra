@@ -41,7 +41,7 @@
           APP_ENV = "production";
           APP_KEY_FILE = sec."firefly-iii/secret".path;
           APP_URL = "https://finances.theless.one";
-          SITE_OWNER = "contact@${dmn.nanoyaki-space}";
+          SITE_OWNER = "contact@nanoyaki.space";
           TZ = "Europe/Vienna";
           LOG_CHANNEL = "syslog";
 

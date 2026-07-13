@@ -31,7 +31,7 @@
             },
             "options": {
                 "nixos": {
-                    "expr": "let configs = (builtins.getFlake (toString ./.)).nixosConfigurations; in configs.sentinel.options // configs.thelessnas.options // configs.thelessone.options"
+                    "expr": "let flake = builtins.getFlake (toString ./.); inherit (flake.inputs.nixpkgs) lib; configs = flake.nixosConfigurations; in lib.recursiveUpdate (lib.recursiveUpdate configs.sentinel.options configs.thelessnas.options) configs.thelessone.options"
                 },
                 "home_manager": {
                     "expr": "(builtins.getFlake (toString ./.)).homeConfigurations.thelessone.options"

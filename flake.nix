@@ -76,11 +76,8 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
-    git-hooks-nix.inputs = {
-      nixpkgs.follows = "nixpkgs";
-      flake-compat.follows = "flake-compat";
-      gitignore.follows = "gitignore";
-    };
+    git-hooks-nix.inputs.nixpkgs.follows = "nixpkgs";
+    git-hooks-nix.inputs.flake-compat.follows = "flake-compat";
     tangled.url = "git+https://tangled.org/tangled.org/core";
     tangled.inputs.nixpkgs.follows = "nixpkgs";
     tangled.inputs.gomod2nix.follows = "gomod2nix";

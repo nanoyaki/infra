@@ -15,7 +15,6 @@
         mapAttrs'
         nameValuePair
         optionalAttrs
-        getExe
         ;
 
       inherit (config) sec;
@@ -84,6 +83,7 @@
 
         let
           profileName = "rustic-backup-${name}";
+          exec = lib.getExe pkgs.rustic;
         in
 
         nameValuePair profileName {
@@ -91,12 +91,14 @@
           after = [ "mnt-raid.mount" ];
 
           preStart = ''
-            [[ ! -d ${configs.${name}.repository.repository} ]] && ${getExe pkgs.rustic} init -P ${profileName}
+            if [[ ! -d ${configs.${name}.repository.repository} ]]; then
+              ${exec} init -P ${profileName} --log-level debug
+            fi
           '';
 
           serviceConfig = {
-            ExecStart = "${getExe pkgs.rustic} backup -P ${profileName}";
-            ExecStopPost = "${getExe pkgs.rustic} forget -P ${profileName}";
+            ExecStart = "${exec} backup -P ${profileName} --log-level debug";
+            ExecStopPost = "${exec} forget -P ${profileName} --log-level debug";
             Type = "oneshot";
             Restart = "no";
 

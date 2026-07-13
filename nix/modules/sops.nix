@@ -24,7 +24,7 @@
       environment.systemPackages = [ pkgs.sops ];
       sops = {
         defaultSopsFormat = "yaml";
-        age.keyFile = "${config.self.mainUserHome}/.config/sops/age/keys.txt";
+        age.keyFile = lib.mkDefault "${config.self.mainUserHome}/.config/sops/age/keys.txt";
       };
     };
 }

@@ -23,7 +23,6 @@
       sec = {
         vaultwarden-smtp-password = { };
         vaultwarden-admin-token = { };
-        "mailserver/vaultwarden" = { };
       };
 
       tpl."vaultwarden.env" = {

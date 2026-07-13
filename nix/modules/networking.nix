@@ -75,6 +75,7 @@
           ssh = mkForce 22;
           nntps = mkForce 563;
           nfs = mkForce 2049;
+          manage-sieve = mkForce 4190;
         };
 
         networking = {

@@ -11,6 +11,7 @@
       networking
       openssh
       shell
+      dns
       sentinel-system
       sentinel-boot
       sentinel-disks
@@ -25,6 +26,7 @@
       sentinel-tangled
       sentinel-caddy
       sentinel-tailscale
+      sentinel-mail
     ];
   };
 
@@ -57,6 +59,10 @@
         extraGroups = [ "wheel" ];
         hashedPasswordFile = config.sops.secrets."users/sentinel".path;
       };
+
+      nixpkgs.config.permittedInsecurePackages = [
+        "pnpm-9.15.9"
+      ];
 
       home-manager.users.sentinel.imports = with inputs.self.homeModules; [ sentinel-system ];
       home-manager.sharedModules = with inputs.self.homeModules; [

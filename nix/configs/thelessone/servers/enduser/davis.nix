@@ -74,6 +74,7 @@
         database.createLocally = true;
       };
 
+      dmn.mail = "mail.theless.one";
       services.phpfpm.pools.davis.settings."listen.group" = "caddy";
       thelessone.caddy.vHost.${dmn.davis} = {
         serverAliases = [ dmn.mail ];

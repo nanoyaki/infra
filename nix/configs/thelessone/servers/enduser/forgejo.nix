@@ -40,7 +40,6 @@
         "forgejo/syakuyaku" = { };
         "forgejo/botan" = { };
         "forgejo/kigiku" = { };
-        "mailserver/git" = { };
 
         "forgejo/users/nanoyaki".owner = cfg.user;
         "forgejo/oidc/id".owner = cfg.user;
@@ -247,22 +246,22 @@
 
           mailer = {
             ENABLED = true;
-            FROM = "git@${dmn.self}";
+            FROM = "no-reply@theless.one";
             PROTOCOL = "smtps";
             SMTP_ADDR = dmn.mail;
             SMTP_PORT = prt.smtp-tls;
-            USER = "git@${dmn.self}";
+            USER = "no-reply@theless.one";
           };
 
           "repository.signing" = {
             FORMAT = "ssh";
             SIGNING_KEY = sec."forgejo/signing.pub".path;
-            SIGNING_NAME = "forgejo ${dmn.git}";
-            SIGNING_EMAIL = "git@${dmn.self}";
+            SIGNING_NAME = "Forgejo ${dmn.git}";
+            SIGNING_EMAIL = "no-reply@theless.one";
           };
         };
 
-        secrets.mailer.PASSWD = sec."forgejo/mailer-password".path;
+        secrets.mailer.PASSWD = sec.no-reply-password.path;
       };
 
       thelessone.caddy.vHost.${dmn.git}.extraConfig = ''
@@ -271,11 +270,6 @@
           header_up X-Http-Version {http.request.proto}
         }
       '';
-
-      mailserver.accounts."git@${dmn.self}" = {
-        sendOnly = true;
-        hashedPasswordFile = sec."mailserver/git".path;
-      };
 
       thelessone.backups.forgejo.paths = [ cfg.stateDir ];
 

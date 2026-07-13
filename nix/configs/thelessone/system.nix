@@ -9,6 +9,7 @@
       nix
       sops
       networking
+      dns
       openssh
       fonts
       shell
