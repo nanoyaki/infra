@@ -3,6 +3,8 @@ keys:
   - &thelessone age1t5w4gj3d8ulk2xud6kgkdpgtugcycd3vqeu05jth6wcflvu3fd0qucklu8
   - &thelessnas age1a82mdpvl5w2j0ahyccngc2wvwgrhezrnwn5te99yxy254f9nm54qex3r0y
   - &sentinel age1xqlmklzh0he8xr23wal8kjdhlhqsp8fhvvxqnzn0mkrg2d4ud5ssgq89cj
+  - &tubaki age1grmge2p98vjv0r6dw466pxacdrtham02l5q9x0h7hw4h483wwans400zd9
+  - &sumire age12d2u488fyjp496t9676ufn629clsrza8h8wcfvgqql995clxfq6qy6j4hz
 creation_rules:
   - path_regex: nix/configs/thelessone/secrets\.yaml$
     key_groups:
@@ -18,6 +20,16 @@ creation_rules:
     key_groups:
       - age:
           - *sentinel
+          - *shirayuri
+  - path_regex: nix/configs/tubaki/secrets\.yaml$
+    key_groups:
+      - age:
+          - *tubaki
+          - *shirayuri
+  - path_regex: nix/configs/sumire/secrets\.yaml$
+    key_groups:
+      - age:
+          - *sumire
           - *shirayuri
   - path_regex: modules/systems/all/.*\.yaml$
     key_groups:
