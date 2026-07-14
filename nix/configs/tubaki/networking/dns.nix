@@ -38,6 +38,9 @@
           cname.autodiscover.value = "discover";
           cname.de02.value = "mail";
 
+          cname.imap.value = "mail";
+          cname.smtp.value = "mail";
+
           dkim = singleton {
             selector = "mail";
             keytype = "rsa";
@@ -76,6 +79,9 @@
           cname.de02.value = "mail.nanoyaki.space.";
           cname.zuhause.value = "vpn";
 
+          cname.imap.value = "mail";
+          cname.smtp.value = "mail";
+
           mx = singleton {
             subdomain = "@";
             value = "mail.nanoyaki.space.";
@@ -111,6 +117,9 @@
           cname.autoconfig.value = "discover.nanoyaki.space.";
           cname.autodiscover.value = "discover.nanoyaki.space.";
           cname.de03.value = "mail.nanoyaki.space.";
+
+          cname.imap.value = "mail";
+          cname.smtp.value = "mail";
 
           mx = singleton {
             subdomain = "@";
@@ -148,6 +157,9 @@
           cname.mail.value = "mail.nanoyaki.space.";
           cname.autoconfig.value = "discover.nanoyaki.space.";
           cname.autodiscover.value = "discover.nanoyaki.space.";
+
+          cname.imap.value = "mail";
+          cname.smtp.value = "mail";
 
           mx = singleton {
             subdomain = "@";

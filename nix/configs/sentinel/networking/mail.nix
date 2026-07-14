@@ -8,23 +8,15 @@
     }:
 
     let
-      inherit (lib) mkOption types;
+      inherit (lib) mkOption;
 
       format = pkgs.formats.xml { };
       cfg = config.services.mailserver.autodiscovery;
     in
 
     {
-      options.services.mailserver.autodiscovery = {
-        thunderbird.config = mkOption {
-          type = types.nullOr format.type;
-          default = null;
-        };
-
-        microsoft.config = mkOption {
-          type = types.nullOr format.type;
-          default = null;
-        };
+      options.services.mailserver.autodiscovery.thunderbird.config = mkOption {
+        inherit (format) type;
       };
 
       config = {
@@ -81,29 +73,17 @@
             };
           };
         };
-        services.mailserver.autodiscovery.microsoft.config = null;
 
-        services.caddy.virtualHosts."discover.nanoyaki.space".extraConfig =
-          (lib.optionalString (cfg.microsoft.config != null) ''
-            @microsoft {
-              method POST
-              path /
-            }
+        services.caddy.virtualHosts."discover.nanoyaki.space".extraConfig = ''
+          @thunderbird {
+            method GET
+            path /mail/config-v1.1.xml
+          }
 
-            handle @microsoft {
-              try_files ${(format.generate "microsoft.xml" cfg.microsoft.config).outPath} 
-            }
-          '')
-          + (lib.optionalString (cfg.thunderbird.config != null) ''
-            @thunderbird {
-              method GET
-              path /mail/config-v1.1.xml
-            }
-
-            handle @thunderbird {
-              try_files ${(format.generate "config-v1.1.xml" cfg.thunderbird.config).outPath}
-            }
-          '');
+          handle @thunderbird {
+            try_files ${(format.generate "config-v1.1.xml" cfg.thunderbird.config).outPath}
+          }
+        '';
       };
     };
 }
