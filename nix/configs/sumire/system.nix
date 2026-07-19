@@ -20,6 +20,12 @@
       sumire-acme
       sumire-devices
       sumire-dns
+      sumire-continuwuity
+      sumire-livekit
+      sumire-coturn
+      sumire-caddy
+      sumire-kanidm
+      sumire-knot-resolver
     ];
   };
 

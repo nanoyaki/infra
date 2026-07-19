@@ -1,9 +1,17 @@
 {
   flake.nixosModules.sumire-livekit =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     let
-      inherit (config) plh tpl;
+      inherit (lib) mkForce;
+      inherit (config) plh tpl sec;
+
+      cfg = config.services.livekit;
     in
 
     {
@@ -14,12 +22,49 @@
         ${plh."livekit/matrix-rtc-key"} = plh."livekit/matrix-rtc-secret";
       };
 
+      networking.firewall.allowedTCPPorts = [ cfg.settings.rtc.tcp_port ];
+      networking.firewall.allowedUDPPortRanges = [
+        {
+          from = cfg.settings.rtc.port_range_start;
+          to = cfg.settings.rtc.port_range_end;
+        }
+      ];
+
+      security.acme.certs."rtc.serdexmethylpheni.date" = {
+        environmentFile = tpl."porkbun.env".path;
+        reloadServices = [ "caddy.service" ];
+      };
+
+      services.caddy.virtualHosts."rtc.serdexmethylpheni.date" = {
+        useACMEHost = "rtc.serdexmethylpheni.date";
+        extraConfig = ''
+          @jwt path /sfu/get* /healthz* /get_token*
+          handle @jwt {
+            reverse_proxy [::1]:${toString config.services.lk-jwt-service.port}
+          }
+
+          reverse_proxy [::1]:${toString config.services.livekit.settings.port}
+        '';
+      };
+
+      users.groups.livekit = { };
+      users.users.livekit = {
+        description = "Livekit SFU Service User";
+        group = "livekit";
+        isSystemUser = true;
+        extraGroups = [ "turn-secret" ];
+      };
+
+      systemd.services.livekit.serviceConfig = {
+        DynamicUser = mkForce false;
+        User = "livekit";
+        Group = "livekit";
+        ReadOnlyPaths = [ sec."coturn/auth-secret".path ];
+      };
+
       services.livekit = {
         enable = true;
-        openFirewall = true;
         keyFile = tpl."livekit.keys".path;
-
-        ingress.enable = true;
 
         settings = {
           port = 7880;
@@ -28,8 +73,29 @@
           rtc = {
             tcp_port = 7881;
             use_external_ip = true;
-            port_range_start = 50000;
-            port_range_end = 50100;
+            port_range_start = 50100;
+            port_range_end = 50200;
+
+            turn_servers = [
+              {
+                host = "turn.serdexmethylpheni.date";
+                port = 3478;
+                protocol = "udp";
+                secret_file = sec."coturn/auth-secret".path;
+              }
+              {
+                host = "turn.serdexmethylpheni.date";
+                port = 3478;
+                protocol = "tcp";
+                secret_file = sec."coturn/auth-secret".path;
+              }
+              {
+                host = "turn.serdexmethylpheni.date";
+                port = 5349;
+                protocol = "tls";
+                secret_file = sec."coturn/auth-secret".path;
+              }
+            ];
           };
         };
       };

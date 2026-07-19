@@ -6,8 +6,8 @@
       networking = {
         hostId = "b4bd4c12";
         hostName = "sumire";
-        domain = "nanoyaki.space";
-        fqdn = "matrix.nanoyaki.space";
+        domain = "serdexmethylpheni.date";
+        fqdn = "serdexmethylpheni.date";
       };
 
       networking.interfaces.ens18 = {
@@ -31,5 +31,12 @@
         address = "fe80::1";
         interface = "ens18";
       };
+
+      networking.nameservers = [
+        "9.9.9.9"
+        "149.112.112.112"
+        "2620:fe::fe"
+        "2620:fe::9"
+      ];
     };
 }

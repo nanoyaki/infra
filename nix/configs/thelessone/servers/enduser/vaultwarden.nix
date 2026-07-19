@@ -20,10 +20,7 @@
       prt.vaultwarden = 8011;
       dmn.vaultwarden = "vaultwarden.theless.one";
 
-      sec = {
-        vaultwarden-smtp-password = { };
-        vaultwarden-admin-token = { };
-      };
+      # sec.vaultwarden-admin-token = { };
 
       tpl."vaultwarden.env" = {
         file = pkgs.writeEnv "vaultwarden.env.template" {

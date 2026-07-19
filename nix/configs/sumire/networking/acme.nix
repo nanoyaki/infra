@@ -3,7 +3,7 @@
     { pkgs, config, ... }:
 
     let
-      inherit (config) plh tpl;
+      inherit (config) plh;
     in
 
     {
@@ -27,9 +27,6 @@
           dnsResolver = "173.245.58.37:53";
           dnsPropagationCheck = true;
         };
-
-        certs."serdexmethylpheni.date".environmentFile = tpl."porkbun.env".path;
-        certs."serdexmethylpheni.date".extraDomainNames = [ "id.serdexmethylpheni.date" ];
       };
     };
 }

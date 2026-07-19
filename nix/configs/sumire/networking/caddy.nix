@@ -3,7 +3,6 @@
     { lib, config, ... }:
 
     let
-      inherit (config) prt;
       inherit (lib) mkForce;
 
       cfg = config.services.caddy;
@@ -17,9 +16,11 @@
 
       services.caddy = {
         enable = true;
+        openFirewall = true;
         email = "contact@nanoyaki.space";
 
         globalConfig = ''
+          auto_https disable_certs
           storage file_system {
             root /var/cache/caddy
           }
@@ -30,28 +31,9 @@
             roll_size 100mb
             roll_keep 10
           }
+          output stderr
           format console
           level INFO
-        '';
-
-        virtualHosts."serdexmethylpheni.date".extraConfig = ''
-          @livekitwss {
-            path /_livekit/sfu /_livekit/sfu/*
-          }
-
-          handle @livekitwss {
-            reverse_proxy [::1]:${toString config.services.livekit.settings.port}
-          }
-
-          @livekitjwt {
-            path /_livekit/jwt /_livekit/jwt/*
-          }
-
-          handle @livekitjwt {
-            reverse_proxy [::1]:${toString config.services.lk-jwt-service.port}
-          }
-
-          reverse_proxy [::1]:${toString prt.continuwuity}
         '';
       };
     };
