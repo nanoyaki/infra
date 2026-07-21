@@ -22,7 +22,6 @@
           }
         ];
 
-        settings.GSSAPIAuthentication = false;
         settings.AcceptEnv = [ "GIT_PROTOCOL" ];
       };
 
