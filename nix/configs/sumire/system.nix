@@ -24,7 +24,7 @@
       sumire-livekit
       sumire-coturn
       sumire-caddy
-      sumire-kanidm
+      sumire-pocket-id
       sumire-knot-resolver
     ];
   };

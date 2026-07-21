@@ -15,13 +15,7 @@
         mode = "400";
       };
 
-      sec."continuwuity/oidc-secret" = {
-        group = "continuwuity-oidc";
-        owner = cfg.user;
-        mode = "440";
-      };
-
-      users.groups.continuwuity-oidc = { };
+      sec."continuwuity/oidc-secret".owner = cfg.user;
 
       security.acme.certs."serdexmethylpheni.date".environmentFile = tpl."porkbun.env".path;
       services.caddy.virtualHosts."serdexmethylpheni.date" = {
@@ -156,8 +150,8 @@
           registration_token_file = sec."continuwuity/registration".path;
 
           oauth.oidc = {
-            discovery_url = "https://id.serdexmethylpheni.date/oauth2/oidc/continuwuity";
-            client_id = "continuwuity";
+            discovery_url = "https://id.serdexmethylpheni.date";
+            client_id = "9a4974c7-dce6-498e-aca3-59ee7535d24f";
             client_secret_file = sec."continuwuity/oidc-secret".path;
 
             # Claims
@@ -203,20 +197,6 @@
             "turns:turn.serdexmethylpheni.date?transport=tcp"
           ];
         };
-      };
-
-      users.users.kanidm.extraGroups = [ "continuwuity-oidc" ];
-      services.kanidm.provision.systems.oauth2.continuwuity = {
-        displayName = "Matrix";
-        originLanding = "https://serdexmethylpheni.date";
-        originUrl = "https://serdexmethylpheni.date/_continuwuity/oidc/complete";
-        basicSecretFile = sec."continuwuity/oidc-secret".path;
-        preferShortUsername = true;
-        scopeMaps.user = [
-          "openid"
-          "email"
-          "profile"
-        ];
       };
     };
 }
