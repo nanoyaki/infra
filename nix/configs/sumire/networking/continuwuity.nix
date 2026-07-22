@@ -1,21 +1,35 @@
 {
   flake.nixosModules.sumire-continuwuity =
-    { lib, config, ... }:
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
 
     let
-      inherit (config) sec tpl;
+      inherit (config) sec tpl plh;
 
       cfg = config.services.matrix-continuwuity;
     in
 
     {
-      sec."continuwuity/registration" = {
-        inherit (cfg) group;
-        owner = cfg.user;
-        mode = "400";
+      sec = {
+        "continuwuity/registration" = {
+          inherit (cfg) group;
+          owner = cfg.user;
+          mode = "400";
+        };
+
+        "continuwuity/oidc-secret".owner = cfg.user;
+        "mail/no-reply@serdexmethylpheni.date" = { };
       };
 
-      sec."continuwuity/oidc-secret".owner = cfg.user;
+      tpl."continuwuity.env".file = pkgs.writeEnv "continuwuity.env.template" {
+        CONTINUWUITY_SMTP__CONNECTION_URI = "smtps://no-reply%40serdexmethylpheni.date:${
+          plh."mail/no-reply@serdexmethylpheni.date"
+        }@mail.nanoyaki.space:465";
+      };
 
       security.acme.certs."serdexmethylpheni.date".environmentFile = tpl."porkbun.env".path;
       services.caddy.virtualHosts."serdexmethylpheni.date" = {
@@ -133,6 +147,8 @@
       };
 
       users.users.${cfg.user}.extraGroups = [ "turn-secret" ];
+
+      systemd.services.continuwuity.serviceConfig.EnvironmentFile = tpl."continuwuity.env".path;
       services.matrix-continuwuity = {
         enable = true;
 
@@ -147,14 +163,23 @@
           ip_lookup_strategy = 4;
           # Caddy's default "real ip" header
           request_ip_source = "x_forwarded_for";
-          registration_token_file = sec."continuwuity/registration".path;
 
+          registration_token_file = sec."continuwuity/registration".path;
+          allow_registration = true;
+          suspend_on_register = true;
+
+          oauth.compatibility_mode = "hybrid";
           oauth.oidc = {
             discovery_url = "https://id.serdexmethylpheni.date";
             client_id = "9a4974c7-dce6-498e-aca3-59ee7535d24f";
             client_secret_file = sec."continuwuity/oidc-secret".path;
 
             # Claims
+            additional_scopes = [
+              "openid"
+              "profile"
+              "email"
+            ];
             email_claim = "email";
             profile_key_map = {
               avatar_url = "picture";
@@ -162,6 +187,8 @@
             };
             profile_key_import_mode = "on_login";
           };
+
+          smtp.sender = "Matrix <no-reply@serdexmethylpheni.date>";
 
           url_preview_check_root_domain = true;
           url_preview_domain_explicit_allowlist = [

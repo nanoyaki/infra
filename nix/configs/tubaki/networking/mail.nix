@@ -29,6 +29,7 @@
         "dkim/aslija.com" = mkDKIMSecret "aslija.com";
         "dkim/theless.one" = mkDKIMSecret "theless.one";
         "dkim/hanakretzer.de" = mkDKIMSecret "hanakretzer.de";
+        "dkim/serdexmethylpheni.date" = mkDKIMSecret "serdexmethylpheni.date";
 
         "mail/postmaster@nanoyaki.space" = { };
         "mail/no-reply@theless.one" = { };
@@ -37,6 +38,7 @@
         "mail/business@aslija.com" = { };
         "mail/personal@aslija.com" = { };
         "mail/thelessone@theless.one" = { };
+        "mail/no-reply@serdexmethylpheni.date" = { };
       };
 
       networking.firewall.allowedTCPPorts = [
@@ -59,6 +61,7 @@
           "theless.one"
           "aslija.com"
           "hanakretzer.de"
+          "serdexmethylpheni.date"
         ];
 
         dkim.enable = true;
@@ -124,6 +127,11 @@
             "postmaster@theless.one"
           ];
           hashedPasswordFile = sec."mail/postmaster@nanoyaki.space".path;
+        };
+
+        "no-reply@serdexmethylpheni.date" = {
+          hashedPasswordFile = sec."mail/no-reply@serdexmethylpheni.date".path;
+          sendOnly = true;
         };
 
         "no-reply@theless.one" = {

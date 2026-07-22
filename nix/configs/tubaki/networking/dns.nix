@@ -68,6 +68,43 @@
           };
         };
 
+        "serdexmethylpheni.date" = {
+          registrar = "porkbun";
+          provider = "porkbun";
+
+          cname.mail.value = "mail.nanoyaki.space.";
+          cname.imap.value = "mail";
+          cname.smtp.value = "mail";
+          cname.autoconfig.value = "discover.nanoyaki.space.";
+          cname.autodiscover.value = "discover.nanoyaki.space.";
+
+          mx = singleton {
+            subdomain = "@";
+            value = "mail.nanoyaki.space.";
+            priority = 10;
+          };
+
+          dkim = singleton {
+            selector = "mail";
+            keytype = "rsa";
+            pubkey = "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAmJndxp+agpE0SAJnfqQETQV5bJX2mRHEZL3mXfM6HIFlairyYKURUjjej5p4Pfs8obVfV4RpvBFbI5vVnDH0iT7qr6kyXAWMsV6Oylcl5l+A6MbQac+3P3NGKdMxivFZbbWvS1HJGjAjAn/5UQIckOTly88+X0aCBrXjZMvv3axDjZ6QWTZTmv8cNEASNe2Mdlo31ceYriKYxpi45E4X2gkR9NvXgSqpmkE1u6NZ37KZt8bWIaUGQERZe5q1j7NkQyc9V8kYkpD3g29T1m2F3lU9pdXjMO/DUWmNQWxJgkx6s2FQNK/kFF7JavDNbKKBtsJ4iG7zqlV3aXxJPBVqLA/AczqPq6ZOyYSwvGpgVjEouqh2OOKLmoIQIeERrN9zLo+4ngQjPDZMYHWoUov37yUGh4q0jNyYK0e0yfes8fqB5mAwow5xEGJCewY30p1dFT/sLRDDJB9aQydQaAIC1BtmcEuEq+qdw7EoQVXZ1pJF5MymsLtPhAlRMDyjF9i8Bo7BcwNQcCD2Y2fPq0YsyLufDHeEILZqbHfg/b9XaZZ7o8stJ1zGWAzuJyEIW1CNYdFDEB43BSXYNEnGJ2n4qF0uJmDXkMvkYVSHOehZtBsjiiXrKMmNAU0U9l3j8Hgxx/WDMaQxCN5iqvHgTPirhx9s9fG9A2xqWEJXyUkW+UcCAwEAAQ==";
+          };
+
+          dmarc = singleton {
+            policy = "reject";
+            alignmentSPF = "strict";
+            alignmentDKIM = "strict";
+          };
+
+          spf = singleton {
+            parts = [
+              "v=spf1"
+              "mx"
+              "~all"
+            ];
+          };
+        };
+
         "hanakretzer.de" = {
           registrar = "porkbun";
           provider = "porkbun";
