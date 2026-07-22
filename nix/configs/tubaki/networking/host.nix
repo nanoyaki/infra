@@ -23,7 +23,7 @@
       };
 
       networking.defaultGateway = {
-        address = "85.215.152.1";
+        address = "31.70.93.1";
         interface = "ens6";
       };
 
