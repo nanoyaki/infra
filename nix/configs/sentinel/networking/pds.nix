@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.sentinel-federation =
+  flake.nixosModules.sentinel-pds =
     {
       pkgs,
       config,
@@ -35,11 +35,13 @@
 
       services.bluesky-pds = {
         enable = true;
+        pdsadmin.enable = true;
         environmentFiles = [ tpl."bluesky-pds.env".path ];
 
         settings.PDS_PORT = prt.bsky-pds;
         settings.PDS_HOSTNAME = dmn.bsky-pds;
         settings.PDS_EMAIL_FROM_ADDRESS = "no-reply@${dmn.self}";
+        settings.PDS_ADMIN_EMAIL = "contact@nanoyaki.space";
       };
 
       sentinel.caddy.host.${dmn.bsky-pds}.proxy.port = prt.bsky-pds;

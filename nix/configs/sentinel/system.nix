@@ -21,7 +21,7 @@
       sentinel-ssh
       sentinel-acme
       sentinel-ddns
-      sentinel-federation
+      sentinel-pds
       sentinel-nanoyaki-space
       sentinel-tangled
       sentinel-caddy
