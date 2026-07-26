@@ -14,7 +14,7 @@
     }:
 
     let
-      inherit (lib) mapAttrs' nameValuePair;
+      inherit (lib) mapAttrs mapAttrs' nameValuePair;
     in
 
     {
@@ -35,6 +35,10 @@
       });
 
       formatter = pkgs.nixfmt-tree;
+
+      packages = mapAttrs (
+        _: nixosConfig: nixosConfig.config.system.build.toplevel
+      ) inputs.self.nixosConfigurations;
     };
 
   systems = import inputs.systems;

@@ -1,3 +1,5 @@
+{ withSystem, ... }:
+
 {
   flake.nixosModules.thelessone-vaultwarden =
     {
@@ -69,4 +71,35 @@
         config.services.vaultwarden.backupDir
       ];
     };
+
+  perSystem = { lib, pkgs, ... }: {
+    packages.vaultwarden =
+      if lib.versionAtLeast pkgs.vaultwarden.version "1.37.0" then
+        pkgs.vaultwarden
+      else
+        pkgs.vaultwarden.overrideAttrs (
+          finalAttrs: _prevAttrs: {
+            version = "1.37.0";
+            src = pkgs.fetchFromGitHub {
+              owner = "dani-garcia";
+              repo = "vaultwarden";
+              tag = finalAttrs.version;
+              hash = "sha256-7l9tIBCfk8DeQDtIoENnjGUzVWJM3aZxw6eA+YaktlM=";
+            };
+
+            cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+              inherit (finalAttrs) src;
+              hash = "sha256-sza4ZQz2+QJJJ03Upt6sGXAv+1VPImN2qZHXaTSALFQ=";
+            };
+          }
+        );
+  };
+
+  flake.overlays.vaultwarden =
+    _: prev:
+    withSystem prev.stdenv.hostPlatform.system (
+      { config, ... }: {
+        inherit (config.packages) vaultwarden;
+      }
+    );
 }
