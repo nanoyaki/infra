@@ -130,7 +130,7 @@
           email = "contact@nanoyaki.space";
           package = pkgs.caddy.withPlugins {
             plugins = [ "github.com/greenpau/caddy-security@v1.1.62" ];
-            hash = "sha256-jEfl5UaTHulvkpFnOuadca4jYbZaYt8Z704ts08jHlM=";
+            hash = "sha256-mAzLheoR8JnZwRymeCQtDi/m/b3XFJPF5Rst6Wml8vE=";
           };
 
           logFormat = lib.mkForce ''

@@ -28,7 +28,7 @@
       thelessone-locale
       thelessone-backups
       thelessone-acme
-      thelessone-ddns
+      thelessone-dns
       thelessone-mailserver
       thelessone-davis
       thelessone-papra

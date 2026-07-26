@@ -12,6 +12,7 @@
         mkSPF
         mkSRV
         mkCNAME
+        mkALIAS
         mkDKIM
         mkDMARC
         mkTXT
@@ -61,6 +62,7 @@
       mkAAAA = aaaa: ''AAAA("${aaaa.subdomain}", "${aaaa.address}"${coerceTtl aaaa.ttl})'';
       mkMX = mx: ''MX("${mx.subdomain}", ${toString mx.priority}, "${mx.value}"${coerceTtl mx.ttl})'';
       mkCNAME = cname: ''CNAME("${cname.subdomain}", "${cname.value}"${coerceTtl cname.ttl})'';
+      mkALIAS = alias: ''ALIAS("${alias.subdomain}", "${alias.value}"${coerceTtl alias.ttl})'';
       mkSRV =
         srv:
         ''SRV("_${srv.service}._${srv.protocol}${
@@ -90,6 +92,7 @@
             ++ (coerceRecordList mkAAAA entry.aaaa)
             ++ (map mkMX entry.mx)
             ++ (coerceRecordList mkCNAME entry.cname)
+            ++ (coerceRecordList mkALIAS entry.alias)
             ++ (map mkSRV entry.srv)
             ++ (map mkDKIM entry.dkim)
             ++ (map mkDMARC entry.dmarc)
@@ -341,6 +344,22 @@
 
                         value = mkOption {
                           type = types.strMatching cnameRegex;
+                        };
+                      };
+                    }
+                  );
+                  default = { };
+                };
+
+                alias = mkOption {
+                  type = types.attrsOf (
+                    types.submodule {
+                      options = {
+                        inherit ttl;
+
+                        value = mkOption {
+                          # Same as MX
+                          type = types.strMatching mxRegex;
                         };
                       };
                     }

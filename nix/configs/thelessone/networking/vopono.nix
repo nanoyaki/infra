@@ -12,25 +12,29 @@
       imports = [ inputs.self.nixosModules.vopono ];
 
       sec = {
-        wireguard-private = { };
-        wireguard-address = { };
-        wireguard-public = { };
-        wireguard-endpoint = { };
+        "wireguard/private-key" = { };
+        "wireguard/preshared-key" = { };
+        "wireguard/address" = { };
+        "wireguard/public-key" = { };
+        "wireguard/endpoint" = { };
       };
 
       tpl."wireguard.conf" = {
         owner = "vopono";
         restartUnits = [ "vopono.service" ];
-        content = with plh; ''
+        content = ''
           [Interface]
-          PrivateKey = ${wireguard-private}
-          Address = ${wireguard-address}
-          DNS = 10.64.0.1
+          PrivateKey = ${plh."wireguard/private-key"}
+          Address = ${plh."wireguard/address"}
+          MTU = 1320
+          DNS = 10.128.0.1, fd7d:76ee:e68f:a993::1
 
           [Peer]
-          PublicKey = ${wireguard-public}
-          AllowedIPs = 0.0.0.0/0,::0/0
-          Endpoint = ${wireguard-endpoint}
+          PublicKey = ${plh."wireguard/public-key"}
+          PresharedKey = ${plh."wireguard/preshared-key"}
+          Endpoint = ${plh."wireguard/endpoint"}
+          AllowedIPs = 0.0.0.0/0,::/0
+          PersistentKeepalive = 15
         '';
       };
 
