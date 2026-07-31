@@ -26,17 +26,18 @@
             },
             "formatting": {
                 "command": [
-                    "nixfmt"
+                    "nix",
+                    "fmt"
                 ]
             },
             "options": {
                 "nixos": {
                     "expr": "let flake = builtins.getFlake (toString ./.); inherit (flake.inputs.nixpkgs) lib; configs = flake.nixosConfigurations; in lib.recursiveUpdate (lib.recursiveUpdate configs.sentinel.options configs.thelessnas.options) configs.thelessone.options"
                 },
-                "home_manager": {
+                "home-manager": {
                     "expr": "(builtins.getFlake (toString ./.)).homeConfigurations.thelessone.options"
                 },
-                "flake_parts": {
+                "flake-parts": {
                     "expr": "let flake = builtins.getFlake (toString ./.); in flake.debug.options // flake.currentSystem.options"
                 }
             }

@@ -34,7 +34,7 @@
         buildInputs = (prevAttrs.buildInputs or [ ]) ++ (with pkgs; [ git ]);
       });
 
-      formatter = pkgs.nixfmt-tree;
+      formatter = pkgs.nixfmt;
 
       packages = mapAttrs (
         _: nixosConfig: nixosConfig.config.system.build.toplevel

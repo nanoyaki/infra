@@ -26,11 +26,6 @@
       git-hooks.follows = "git-hooks-nix";
       nixpkgs.follows = "nixpkgs";
     };
-    copyparty.url = "github:9001/copyparty";
-    copyparty.inputs = {
-      nixpkgs.follows = "nixpkgs";
-      flake-utils.follows = "flake-utils";
-    };
     nix-scpsl.url = "github:nanoyaki/nix-scpsl";
     nix-scpsl.inputs = {
       nixpkgs.follows = "nixpkgs";
@@ -98,14 +93,6 @@
     nixbot.url = "github:Mic92/nixbot";
     nixbot.inputs.nixpkgs.follows = "nixpkgs";
     nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
-    authentik-nix.url = "github:nix-community/authentik-nix";
-    authentik-nix.inputs = {
-      nixpkgs.follows = "nixpkgs";
-      flake-parts.follows = "flake-parts";
-      flake-compat.follows = "flake-compat";
-      flake-utils.follows = "flake-utils";
-      systems.follows = "systems";
-    };
 
     # Deduplication
     flake-compat.url = "github:NixOS/flake-compat";

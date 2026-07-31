@@ -31,6 +31,11 @@
 
             {
               options = {
+                hosts = mkOption {
+                  type = types.listOf types.str;
+                  default = [ ];
+                };
+
                 config = mkOption {
                   type = types.str;
                   default = "";
@@ -100,6 +105,7 @@
           '';
 
           virtualHosts = mapAttrs (_: domainCfg: {
+            serverAliases = domainCfg.hosts;
             listenAddresses = [
               "0.0.0.0"
               "::"

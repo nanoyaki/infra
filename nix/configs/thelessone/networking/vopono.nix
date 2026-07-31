@@ -2,41 +2,58 @@
 
 {
   flake.nixosModules.thelessone-vopono =
-    { lib, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     let
-      inherit (config) plh tpl;
+      inherit (config) tpl plh;
+
+      sopsCfg.sopsFile = ./wireguard.yaml;
     in
 
     {
       imports = [ inputs.self.nixosModules.vopono ];
 
       sec = {
-        "wireguard/private-key" = { };
-        "wireguard/preshared-key" = { };
-        "wireguard/address" = { };
-        "wireguard/public-key" = { };
-        "wireguard/endpoint" = { };
+        "wireguard/private-key" = sopsCfg;
+        "wireguard/address" = sopsCfg;
+        "wireguard/public-key" = sopsCfg;
+        "wireguard/preshared-key" = sopsCfg;
+        "wireguard/endpoint" = sopsCfg;
       };
 
-      tpl."wireguard.conf" = {
-        owner = "vopono";
-        restartUnits = [ "vopono.service" ];
-        content = ''
-          [Interface]
-          PrivateKey = ${plh."wireguard/private-key"}
-          Address = ${plh."wireguard/address"}
-          MTU = 1320
-          DNS = 10.128.0.1, fd7d:76ee:e68f:a993::1
+      tpl."wireguard.conf".owner = "vopono";
+      tpl."wireguard.conf".file =
+        (pkgs.formats.ini {
+          listToValue = lib.concatStringsSep ",";
+        }).generate
+          "wireguard.conf.template"
+          {
+            Interface = {
+              Address = plh."wireguard/address";
+              PrivateKey = plh."wireguard/private-key";
+              MTU = 1320;
+              DNS = [
+                "10.128.0.1"
+                "fd7d:76ee:e68f:a993::1"
+              ];
+            };
 
-          [Peer]
-          PublicKey = ${plh."wireguard/public-key"}
-          PresharedKey = ${plh."wireguard/preshared-key"}
-          Endpoint = ${plh."wireguard/endpoint"}
-          AllowedIPs = 0.0.0.0/0,::/0
-          PersistentKeepalive = 15
-        '';
-      };
+            Peer = {
+              PublicKey = plh."wireguard/public-key";
+              PresharedKey = plh."wireguard/preshared-key";
+              Endpoint = plh."wireguard/endpoint";
+              AllowedIPs = [
+                "0.0.0.0/0"
+                "::/0"
+              ];
+              PersistentKeepalive = 15;
+            };
+          };
 
       systemd.services.vopono.wantedBy = lib.mkForce [ "server-services.target" ];
       services.vopono = {
@@ -216,7 +233,7 @@
               Type = "simple";
               Restart = "on-failure";
               RestartSec = "5s";
-              ExecStart = "${lib.getExe cfg.package} daemon";
+              ExecStart = "${lib.getExe cfg.package} daemon -v";
             };
           };
 
@@ -244,8 +261,17 @@
                 --custom ${cfg.configFile} \
                 --protocol ${cfg.protocol} \
                 --custom-netns-name ${cfg.namespace} \
-                "${pkgs.writeShellScript "keep-alive" ''
-                  while true; do sleep 3600; done
+                --firewall ${if config.networking.nftables.enable then "NfTables" else "IpTables"} \
+                --verbose \
+                --create-netns-only "${pkgs.writeShellScript "keep-alive.sh" ''
+                  sleep infinity & PID=$!
+                  trap "kill $PID" INT TERM
+
+                  echo "Vopono should be running now!"
+
+                  wait
+
+                  echo "Bye bye!"
                 ''}"
             '';
 

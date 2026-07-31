@@ -6,6 +6,11 @@ keys:
   - &tubaki age1grmge2p98vjv0r6dw466pxacdrtham02l5q9x0h7hw4h483wwans400zd9
   - &sumire age12d2u488fyjp496t9676ufn629clsrza8h8wcfvgqql995clxfq6qy6j4hz
 creation_rules:
+  - path_regex: nix/configs/thelessone/networking/wireguard\.yaml$
+    key_groups:
+      - age:
+          - *thelessone
+          - *shirayuri
   - path_regex: nix/configs/thelessone/secrets\.yaml$
     key_groups:
       - age:

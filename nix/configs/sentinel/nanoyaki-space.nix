@@ -34,20 +34,23 @@
     {
       dmn.nanoyaki-space = "nanoyaki.space";
 
-      sentinel.caddy.host.${dmn.nanoyaki-space}.config = ''
-        root * ${webPkg}/public
+      sentinel.caddy.host.${dmn.nanoyaki-space} = {
+        hosts = [ "hanakretzer.de" ];
+        config = ''
+          root * ${webPkg}/public
 
-        encode zstd gzip
-        file_server
+          encode zstd gzip
+          file_server
 
-        php_fastcgi unix/${config.services.phpfpm.pools.nanoyaki-space.socket} {
-          root ${webPkg}/public
-          capture_stderr
-          resolve_root_symlink
-        }
+          php_fastcgi unix/${config.services.phpfpm.pools.nanoyaki-space.socket} {
+            root ${webPkg}/public
+            capture_stderr
+            resolve_root_symlink
+          }
 
-        redir /.* /
-      '';
+          redir /.* /
+        '';
+      };
 
       systemd.tmpfiles.settings.nanoyaki-space = {
         "/var/cache/nanoyaki-space".d = {
@@ -67,7 +70,7 @@
       fonts.fontconfig.defaultFonts.emoji = [ "Twitter Color Emoji" ];
 
       # Necessary to screenshot the rendered twig page
-      security.wrappers."__chromium-suid-sandbox" = {
+      security.wrappers.__chromium-suid-sandbox = {
         source = "${pkgs.ungoogled-chromium.sandbox}/bin/__chromium-suid-sandbox";
         owner = "root";
         group = "root";

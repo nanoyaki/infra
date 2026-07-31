@@ -75,5 +75,11 @@
           }
         ];
       };
+
+      programs.dnscontrol.domains."hanakretzer.de" = {
+        provider = "porkbun";
+        registrar = "porkbun";
+        a."@".address = "85.215.152.236";
+      };
     };
 }
