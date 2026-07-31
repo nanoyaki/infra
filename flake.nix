@@ -93,13 +93,6 @@
     nixbot.url = "github:Mic92/nixbot";
     nixbot.inputs.nixpkgs.follows = "nixpkgs";
     nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
-    colemna.url = "github:nix-community/colmena";
-    colemna.inputs = {
-      nixpkgs.follows = "nixpkgs";
-      stable.follows = "nixpkgs-stable";
-      flake-utils.follows = "flake-utils";
-      flake-compat.follows = "flake-compat";
-    };
 
     # Deduplication
     flake-compat.url = "github:NixOS/flake-compat";

@@ -129,36 +129,6 @@
         "type": "gitlab"
       }
     },
-    "colemna": {
-      "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nix-github-actions": "nix-github-actions",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "stable": [
-          "nixpkgs-stable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1784448989,
-        "narHash": "sha256-XC0OkWCiTM91msCp0o7zfM+iBv06mLlCzFxkP8vf+ac=",
-        "owner": "nix-community",
-        "repo": "colmena",
-        "rev": "e5eda626e459f7043868fd2e3b3bf8ce0d1992e6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "colmena",
-        "type": "github"
-      }
-    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -499,11 +469,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785496534,
-        "narHash": "sha256-EASdusMYLuPhOCrE3LmsAGOvGhX3vnKBLxFvj9lI8tU=",
+        "lastModified": 1785531816,
+        "narHash": "sha256-vkMnV0JIyw+g/NmcfoajlGaAO+9a0ezia+FZohQJrik=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e8827fbbb12015a8dd9f66285aec79d655bcb9f6",
+        "rev": "bf9ce9fec78f95f374e8dd3b503863a3ec128ebe",
         "type": "github"
       },
       "original": {
@@ -706,27 +676,6 @@
         "url": "https://tangled.org/nanoyaki.space/nanoyaki.space"
       }
     },
-    "nix-github-actions": {
-      "inputs": {
-        "nixpkgs": [
-          "colemna",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1737420293,
-        "narHash": "sha256-F1G5ifvqTpJq7fdkT34e/Jy9VCyzd5XfJ9TO8fHhJWE=",
-        "owner": "nix-community",
-        "repo": "nix-github-actions",
-        "rev": "f4158fa080ef4503c8f4c820967d946c2af31ec9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix-github-actions",
-        "type": "github"
-      }
-    },
     "nix-minecraft": {
       "inputs": {
         "flake-compat": [
@@ -918,11 +867,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785528211,
-        "narHash": "sha256-nGlN/Xucx12Bk58wo9juk06aBDaTf+r0nZWnADbUfio=",
+        "lastModified": 1785536485,
+        "narHash": "sha256-oB1qkZIvX/0PuSdizc1suZ/7kAYdyO61OPnNYYrywdg=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "9b862e68d49bdfb14ae51aaddd789ba7eb274665",
+        "rev": "ba86f788f081a60480e8e9ef3e5ddcb82a69b32e",
         "type": "github"
       },
       "original": {
@@ -934,7 +883,6 @@
     "root": {
       "inputs": {
         "avatar-server": "avatar-server",
-        "colemna": "colemna",
         "discord-events-to-ics": "discord-events-to-ics",
         "disko": "disko",
         "flake-compat": "flake-compat",
