@@ -40,7 +40,7 @@
 
         settings.PDS_PORT = prt.bsky-pds;
         settings.PDS_HOSTNAME = dmn.bsky-pds;
-        settings.PDS_EMAIL_FROM_ADDRESS = "no-reply@${dmn.self}";
+        settings.PDS_EMAIL_FROM_ADDRESS = "no-reply@theless.one";
         settings.PDS_ADMIN_EMAIL = "contact@nanoyaki.space";
       };
 

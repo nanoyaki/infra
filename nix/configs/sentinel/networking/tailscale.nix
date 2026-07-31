@@ -97,7 +97,7 @@
 
           dns = {
             magic_dns = true;
-            base_domain = dmn.self;
+            base_domain = "theless.one";
 
             override_local_dns = true;
             nameservers.global = [
@@ -110,12 +110,12 @@
                 name = domain;
                 type = "A";
                 value = "100.64.0.2";
-              }) (filter (lib.hasInfix dmn.self) (builtins.attrValues server.dmn)))
+              }) (filter (lib.hasInfix "theless.one") (builtins.attrValues server.dmn)))
               ++ map (domain: {
                 name = domain;
                 type = "A";
                 value = "100.64.0.4";
-              }) (filter (lib.hasInfix dmn.self) (builtins.attrValues dmn));
+              }) (filter (lib.hasInfix "theless.one") (builtins.attrValues dmn));
           };
         };
       };

@@ -1,20 +1,13 @@
 {
   flake.nixosModules.sentinel-host =
-    { lib, config, ... }:
-
-    let
-      inherit (config) dmn;
-    in
+    { lib, ... }:
 
     {
-      dmn.self = "theless.one";
-      dmn.self-fqdn = "de01.theless.one";
-
       networking = {
         hostId = "3077d2d8";
         hostName = "sentinel";
-        domain = "theless.one";
-        fqdn = dmn.self-fqdn;
+        domain = "nanoyaki.space";
+        fqdn = "nanoyaki.space";
       };
 
       networking.interfaces.ens6 = {
