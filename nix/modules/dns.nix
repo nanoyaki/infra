@@ -13,6 +13,8 @@
         mkSRV
         mkCNAME
         mkALIAS
+        mkURL
+        mkURL301
         mkDKIM
         mkDMARC
         mkTXT
@@ -62,6 +64,8 @@
       mkAAAA = aaaa: ''AAAA("${aaaa.subdomain}", "${aaaa.address}"${coerceTtl aaaa.ttl})'';
       mkMX = mx: ''MX("${mx.subdomain}", ${toString mx.priority}, "${mx.value}"${coerceTtl mx.ttl})'';
       mkCNAME = cname: ''CNAME("${cname.subdomain}", "${cname.value}"${coerceTtl cname.ttl})'';
+      mkURL = url: ''URL("${url.subdomain}", "${url.target}"${coerceTtl url.ttl})'';
+      mkURL301 = url301: ''URL301("${url301.subdomain}", "${url301.target}"${coerceTtl url301.ttl})'';
       mkALIAS = alias: ''ALIAS("${alias.subdomain}", "${alias.value}"${coerceTtl alias.ttl})'';
       mkSRV =
         srv:
@@ -93,6 +97,8 @@
             ++ (map mkMX entry.mx)
             ++ (coerceRecordList mkCNAME entry.cname)
             ++ (coerceRecordList mkALIAS entry.alias)
+            ++ (coerceRecordList mkURL entry.url)
+            ++ (coerceRecordList mkURL301 entry.url301)
             ++ (map mkSRV entry.srv)
             ++ (map mkDKIM entry.dkim)
             ++ (map mkDMARC entry.dmarc)
@@ -648,6 +654,36 @@
                     }
                   );
                   default = [ ];
+                };
+
+                url = mkOption {
+                  type = types.attrsOf (
+                    types.submodule {
+                      options = {
+                        inherit ttl;
+
+                        target = mkOption {
+                          type = types.strMatching "^https?:\/\/[^\/]+\/?$";
+                        };
+                      };
+                    }
+                  );
+                  default = { };
+                };
+
+                url301 = mkOption {
+                  type = types.attrsOf (
+                    types.submodule {
+                      options = {
+                        inherit ttl;
+
+                        target = mkOption {
+                          type = types.strMatching "^https?:\/\/[^\/]+\/?$";
+                        };
+                      };
+                    }
+                  );
+                  default = { };
                 };
               };
             }
