@@ -2,7 +2,12 @@
 
 {
   flake.nixosModules.nix =
-    { lib, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
 
     {
       options.nixpkgs.allowUnfreeNames = lib.mkOption {
@@ -37,6 +42,9 @@
             map (overlay: overlays.${overlay}) (lib.attrNames overlays)
           ) (builtins.filter (input: inputs.${input} ? overlays) (builtins.attrNames inputs))
         );
+
+        # Beautiful --builders flag...
+        nix.package = pkgs.nixVersions.latest;
 
         nix.settings = {
           extra-substituters = [

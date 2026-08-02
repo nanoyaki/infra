@@ -42,10 +42,7 @@
       # Based on sodiboo's proprietary code of
       # which i stole a bunch https://github.com/sodiboo/system
       systemd.sockets.continuwuity-proxy = {
-        after = [ "continuwuity.service" ];
         wantedBy = [ "sockets.target" ];
-        before = [ "sockets.target" ];
-        requiredBy = [ "continuwuity-proxy.service" ];
 
         listenStreams = [ "@continuwuity" ];
         socketConfig = {
@@ -67,8 +64,14 @@
       };
 
       systemd.services.continuwuity-proxy = {
-        bindsTo = [ "continuwuity.service" ];
-        after = [ "continuwuity.service" ];
+        requires = [
+          "continuwuity.service"
+          "continuwuity-proxy.socket"
+        ];
+        after = [
+          "continuwuity.service"
+          "continuwuity-proxy.socket"
+        ];
 
         unitConfig = {
           ConditionPathExists = [ cfg.settings.global.unix_socket_path ];

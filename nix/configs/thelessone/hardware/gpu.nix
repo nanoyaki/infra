@@ -2,7 +2,8 @@
 
 {
   flake.nixosModules.thelessone-gpu =
-    { ... }:
+    _:
+
     {
       imports = [
         inputs.nixos-hardware.nixosModules.common-gpu-intel
@@ -28,9 +29,11 @@
       hardware.intelgpu = {
         driver = "xe";
         loadInInitrd = true;
+        enableHybridCodec = true;
+
+        # OpenCL
         computeRuntime = "default";
         vaapiDriver = null; # use vaapi and media driver
-        enableHybridCodec = true;
       };
 
       services.xserver.videoDrivers = [ "modesetting" ];
