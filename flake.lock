@@ -661,13 +661,25 @@
       }
     },
     "nanoyaki-space": {
-      "flake": false,
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "process-compose-flake": "process-compose-flake",
+        "services-flake": "services-flake",
+        "systems": [
+          "systems"
+        ]
+      },
       "locked": {
-        "lastModified": 1780854319,
-        "narHash": "sha256-1BvNq6EuagRhNFkrA4Dz41Z0XxAvUViJJY9x5UsI90k=",
+        "lastModified": 1786201364,
+        "narHash": "sha256-GrGxdgelJx/bwlhzVl5GVBIU1/GAkEliwekDM9jvioo=",
         "ref": "refs/heads/main",
-        "rev": "c624fbd6c10994c72f5121e841151d4ca3c5f518",
-        "revCount": 11,
+        "rev": "fd8a544e755e8730af66ae87d65e0001cfce31ec",
+        "revCount": 12,
         "type": "git",
         "url": "https://tangled.org/nanoyaki.space/nanoyaki.space"
       },
@@ -689,11 +701,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785728294,
-        "narHash": "sha256-NVjWahSbNC/G2EY6oX4LfKBzcDajVpgh+xJR8PUjmlg=",
+        "lastModified": 1786154692,
+        "narHash": "sha256-+KyMg7tMfMcfFjUg59BD3OMUzehv9xsNK7ZMY3ZepGc=",
         "owner": "Infinidoge",
         "repo": "nix-minecraft",
-        "rev": "06ca981f5d463e4448bdc32677c993a83122e6f1",
+        "rev": "fad712d66c18a08c582214c3f52c3d12e0cc16f9",
         "type": "github"
       },
       "original": {
@@ -801,11 +813,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1785692966,
-        "narHash": "sha256-vUfIeBEfpbAfZ5zjgIkYk7eHBeVfCYVjLbWnMkseYnk=",
+        "lastModified": 1785967620,
+        "narHash": "sha256-IItrdb7Puk05RqOBWZYFC5X6Wl1sJmCfh5MWVHw5iMM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "643809054d65fdd466a63e3155b8c498cb483c04",
+        "rev": "b7c2ada94fe99c15b0dbcf4d11fd7850b957a436",
         "type": "github"
       },
       "original": {
@@ -844,11 +856,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785751506,
-        "narHash": "sha256-/bPTL5QxSHPnDtHRWGqX9PIWfDiV3uNncZGY+0Hx9rM=",
+        "lastModified": 1786007099,
+        "narHash": "sha256-2eNP36P5dBAsPh7zD3WmmsRVtoRhkYKuWORpciHzpxQ=",
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
-        "rev": "f79d1a8d89a0dae8140e3a66d1f7f612e3eac729",
+        "rev": "e60984525ae0b9081a704c7859cdf67aaa384c38",
         "type": "github"
       },
       "original": {
@@ -867,16 +879,31 @@
         ]
       },
       "locked": {
-        "lastModified": 1785763976,
-        "narHash": "sha256-qNf+VR0wEsClFpR1m9bM5c3Xo6+EfIci1YclnNbBoBc=",
+        "lastModified": 1786200462,
+        "narHash": "sha256-6SZNboGV9L81ig3DoWEGo/f4UTFQC+5kYXDiN3paxac=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "847065794fffee5126a8f2ef5037f80dae8ecfa8",
+        "rev": "a8942a893b6e6542324827b57087b089120b9352",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "process-compose-flake": {
+      "locked": {
+        "lastModified": 1782060835,
+        "narHash": "sha256-Q8HH2t1l3MITtWCWY4ytcH5F/Q7aAHo3Iq/QTMAKTe0=",
+        "owner": "Platonic-Systems",
+        "repo": "process-compose-flake",
+        "rev": "464ff6880737f063c3f0d3d2c7781fda9190868f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Platonic-Systems",
+        "repo": "process-compose-flake",
         "type": "github"
       }
     },
@@ -931,6 +958,21 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "services-flake": {
+      "locked": {
+        "lastModified": 1784799366,
+        "narHash": "sha256-aK4fmqmGbk0J2sUhex79NAZTd1002DNWNsfubO6aic0=",
+        "owner": "juspay",
+        "repo": "services-flake",
+        "rev": "eed1ab55413afbb8fd7bc929076c73894e5104e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "juspay",
+        "repo": "services-flake",
         "type": "github"
       }
     },
@@ -1144,11 +1186,11 @@
         "tailwindcss-animated-src": "tailwindcss-animated-src"
       },
       "locked": {
-        "lastModified": 1785745218,
-        "narHash": "sha256-grr+mndPykoSZvyNmvNw+ZfbZi9KLPsmbegGys1eibc=",
+        "lastModified": 1786139879,
+        "narHash": "sha256-oYlJNYs9Jeo81eaMexSwwVvJutsGyeKwWlGtItnm/gI=",
         "ref": "refs/heads/master",
-        "rev": "09db9a7c867c87ea4815b1b0e7722d8693b3e69d",
-        "revCount": 3076,
+        "rev": "72600e09bab5acdfb3252394870ed8f04f372c7d",
+        "revCount": 3094,
         "type": "git",
         "url": "https://tangled.org/tangled.org/core"
       },
@@ -1164,11 +1206,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780762261,
-        "narHash": "sha256-w7EfHo1FA3OtD1QRuBePVMdM+lxyQjShOAM9oeCw7uw=",
+        "lastModified": 1786188274,
+        "narHash": "sha256-3a4fmb3v+evUvqowdJzd50pqz0+gXrwIVM91LBkB4+I=",
         "ref": "refs/heads/main",
-        "rev": "1173f6938d83356c7d3851b632585b3d4203e0e1",
-        "revCount": 12,
+        "rev": "c73e79ae64dba442dbb44fa8aef746559d1c9199",
+        "revCount": 13,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/theless.one.git"
       },

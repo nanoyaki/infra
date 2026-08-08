@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ withSystem, ... }:
 
 {
   flake.nixosModules.sentinel-nanoyaki-space =
@@ -127,7 +127,12 @@
       };
     };
 
-  flake.overlays.nanoyaki-space = final: _: {
-    nanoyaki-space = final.callPackage (import "${inputs.nanoyaki-space}/package.nix") { };
-  };
+  flake.overlays.nanoyaki-space =
+    _: prev:
+
+    withSystem prev.stdenv.hostPlatform.system (
+      { inputs', ... }: {
+        nanoyaki-space = inputs'.nanoyaki-space.packages.nanoyaki-space;
+      }
+    );
 }
