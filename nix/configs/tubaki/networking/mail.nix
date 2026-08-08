@@ -140,7 +140,10 @@
         };
 
         "contact@hanakretzer.de" = {
-          aliases = [ "contact@nanoyaki.space" ];
+          aliases = [
+            "contact@nanoyaki.space"
+            "contact@serdexmethylpheni.date"
+          ];
           catchAll = [
             "nanoyaki.space"
             "hanakretzer.de"

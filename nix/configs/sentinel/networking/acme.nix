@@ -81,8 +81,6 @@
             reloadServices = [ "caddy.service" ];
           };
 
-          certs."hanakretzer.de".environmentFile = config.sops.templates."nanoyaki.space-acme.env".path;
-
           certs."theless.one" = {
             environmentFile = config.sops.templates."theless.one-acme.env".path;
             extraDomainNames = [ "*.theless.one" ];
