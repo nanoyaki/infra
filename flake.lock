@@ -1206,11 +1206,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786188274,
-        "narHash": "sha256-3a4fmb3v+evUvqowdJzd50pqz0+gXrwIVM91LBkB4+I=",
+        "lastModified": 1786203226,
+        "narHash": "sha256-pT7VUFpu+XzLB2JLq3TEJ1fmroJpJDWg5936/DcyyHw=",
         "ref": "refs/heads/main",
-        "rev": "c73e79ae64dba442dbb44fa8aef746559d1c9199",
-        "revCount": 13,
+        "rev": "bd932b89a8a04a7a86253be618ad7352852f7d0b",
+        "revCount": 14,
         "type": "git",
         "url": "https://git.theless.one/nanoyaki/theless.one.git"
       },
