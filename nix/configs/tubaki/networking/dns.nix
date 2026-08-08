@@ -109,12 +109,17 @@
           registrar = "porkbun";
           provider = "porkbun";
 
+          alias."@".value = "l2vn6xe7fds8kwk9.myfritz.net.";
+          alias."*".value = "l2vn6xe7fds8kwk9.myfritz.net.";
+          cname.de01.value = "@";
+
           a.vpn.address = "100.64.0.11";
+          cname.zuhause.value = "vpn";
+
+          cname.de02.value = "mail.nanoyaki.space.";
           cname.mail.value = "mail.nanoyaki.space.";
           cname.autoconfig.value = "discover.nanoyaki.space.";
           cname.autodiscover.value = "discover.nanoyaki.space.";
-          cname.de02.value = "mail.nanoyaki.space.";
-          cname.zuhause.value = "vpn";
 
           cname.imap.value = "mail";
           cname.smtp.value = "mail";
