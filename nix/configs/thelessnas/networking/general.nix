@@ -20,6 +20,10 @@
             address = "fd1e:5501:7e00::3";
             prefixLength = 64;
           }
+          {
+            address = "2001:4bb8:1cf:ff47::1e5:5017:e003";
+            prefixLength = 64;
+          }
         ];
 
         ipv4.addresses = [

@@ -37,10 +37,11 @@
       services.tailscale = {
         enable = true;
         useRoutingFeatures = "server";
-        authKeyFile = sec.tailscale.path;
+        authKeyFile = config.sec.tailscale.path;
         extraUpFlags = [
-          "--login-server"
-          "https://${dmn.headscale}"
+          "--login-server=https://${dmn.headscale}"
+          "--force-reauth"
+          "--accept-dns=true"
         ];
       };
 
