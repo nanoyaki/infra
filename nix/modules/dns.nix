@@ -380,7 +380,7 @@
                         inherit ttl;
 
                         service = mkOption {
-                          type = types.strMatching ''\w+'';
+                          type = types.strMatching ".+";
                         };
 
                         protocol = mkOption {
@@ -412,7 +412,7 @@
                         };
 
                         target = mkOption {
-                          type = types.strMatching ''^(\w+\.)*\w+\.\w+\.$'';
+                          type = types.strMatching ''^([^\.]+\.)*[^\.]+\.[^\.]+\.$'';
                         };
                       };
                     }

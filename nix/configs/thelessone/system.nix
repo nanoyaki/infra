@@ -60,7 +60,7 @@
       thelessone-audiobookshelf
       # thelessone-actual
       thelessone-scpsl
-      # thelessone-valheim
+      thelessone-valheim
       thelessone-minecraft
       thelessone-minecraftDefaults
       thelessone-minecraftWhitelist
@@ -80,6 +80,7 @@
       thelessone-speedtest-tracker
       thelessone-glances
       thelessone-firefly-iii
+      thelessone-fredy
       # thelessone-nixbot
     ];
   };
@@ -169,6 +170,7 @@
         "steam"
         "steam-unwrapped"
         "discord"
+        "discord-unwrapped"
         "vesktop"
 
         # minecraft

@@ -20,13 +20,12 @@
       sentinel-host
       sentinel-ssh
       sentinel-acme
-      sentinel-ddns
+      sentinel-dns
       sentinel-pds
       sentinel-nanoyaki-space
       sentinel-tangled
       sentinel-caddy
       sentinel-tailscale
-      sentinel-mail
     ];
   };
 

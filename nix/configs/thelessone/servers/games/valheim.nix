@@ -11,18 +11,14 @@
 
     let
       inherit (config) plh tpl;
-
-      backupPath = "/var/lib/valheim/.config/unity3d/IronGate/Valheim/worlds_local";
     in
 
     {
       imports = [ inputs.valheim-server.nixosModules.default ];
 
-      sops = {
-        secrets.valheim-password = { };
-        templates."valheim-password.env".file = pkgs.writeEnv "valheim-password.env.template" {
-          VH_SERVER_PASSWORD = plh.valheim-password;
-        };
+      sec.valheim-password = { };
+      tpl."valheim-password.env".file = pkgs.writeEnv "valheim-password.env.template" {
+        VH_SERVER_PASSWORD = plh.valheim-password;
       };
 
       systemd.services.valheim.wantedBy = lib.mkForce [ "server-services.target" ];
@@ -33,11 +29,33 @@
 
         noGraphics = true;
         public = true;
-        serverName = "Cozy server x3";
-        worldName = "Test12";
+        serverName = "LSQ Gaming";
+        worldName = "pre-v1";
         adminList = [ "76561198294979887" ];
       };
 
-      thelessone.backups.valheim.paths = [ backupPath ];
+      # Turn off the server for a few weeks
+      systemd.services.valheim.enable = false;
+
+      programs.dnscontrol.domains."theless.one" = {
+        srv = [
+          {
+            service = "valheim";
+            protocol = "tcp";
+            subdomain = "valheim";
+            inherit (config.services.valheim) port;
+            target = "at01.theless.one.";
+          }
+        ];
+      };
+
+      thelessone.backups.valheim.paths = [
+        "/var/lib/valheim/.config/unity3d/IronGate/Valheim/worlds_local"
+      ];
+
+      nixpkgs.allowUnfreeNames = [
+        "steamworks-sdk-redist"
+        "valheim-server"
+      ];
     };
 }

@@ -15,5 +15,9 @@
       cname.at01.value = "@";
       cname.at02.value = "@";
     };
+
+    services.knot-resolver.enable = true;
+    services.knot-resolver.settings = { };
+    services.resolved.enable = false;
   };
 }

@@ -20,6 +20,7 @@
       tubaki-acme
       tubaki-devices
       tubaki-dns
+      tubaki-web
       tubaki-mail
     ];
   };

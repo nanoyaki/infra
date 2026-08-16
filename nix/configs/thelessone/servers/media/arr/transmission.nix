@@ -39,7 +39,6 @@
 
       services.transmission = {
         enable = true;
-        openRPCPort = true;
         inherit (config.thelessone.arr) group;
         package = pkgs.transmission_4;
 

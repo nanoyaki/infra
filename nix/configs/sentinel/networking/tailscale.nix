@@ -53,29 +53,57 @@
         settings = {
           server_url = "https://${dmn.headscale}";
 
+          prefixes.v4 = "100.64.0.0/10";
+          prefixes.v6 = "fd7a:115c:a1e0::/48";
+
           policy.path = pkgs.writeText "acl.hujson" (
             builtins.toJSON {
-              acls = [
+              grants = [
                 {
-                  action = "accept";
-                  src = [ "*" ];
+                  src = [ "autogroup:member" ];
+                  dst = [ "autogroup:self" ];
+                  ip = [ "*" ];
+                }
+                {
+                  src = [ "autogroup:member" ];
                   dst = [
-                    "thelessone:*"
-                    "sentinel:*"
+                    "tag:infra"
+                    "thelessone"
+                    "sentinel"
+                  ];
+                  ip = [
+                    "443"
+                    "80"
                   ];
                 }
                 {
-                  action = "accept";
-                  src = [ "contact@nanoyaki.space" ];
-                  dst = [ "kanokoyuri:*" ];
+                  src = [
+                    "contact@nanoyaki.space"
+                    "tag:hana"
+                  ];
+                  dst = [ "tag:hana" ];
+                  ip = [ "*" ];
                 }
               ];
 
+              tagOwners = {
+                "tag:infra" = [ ];
+                "tag:hana" = [ "contact@nanoyaki.space" ];
+              };
+
+              # Temporary
               hosts = {
                 thelessone = "100.64.0.2";
                 sentinel = "100.64.0.4";
                 kanokoyuri = "100.64.0.11";
               };
+
+              nodeAttrs = [
+                {
+                  target = [ "*" ];
+                  attr = [ "magicdns-aaaa" ];
+                }
+              ];
             }
           );
 

@@ -35,6 +35,7 @@
         acceptTerms = true;
         defaults = {
           email = "contact@nanoyaki.space";
+          group = "caddy";
 
           dnsProvider = "porkbun";
           dnsResolver = "173.245.58.37:53";

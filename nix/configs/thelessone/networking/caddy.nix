@@ -64,7 +64,7 @@
         {
           extraConfig =
             optionalString vHost.useTailnet ''
-              @public not remote_ip 100.64.0.0/24 10.0.0.0/24 127.0.0.1/32 ::1/32
+              @public not remote_ip 100.64.0.0/24 fd7a:115c:a1e0::/48 10.0.0.0/24 fd1e:5501:7e00::/64 127.0.0.1/32 ::1/32
 
               handle @public {
                 error 404

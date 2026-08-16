@@ -34,8 +34,8 @@
 
           a.mail.address = "31.70.93.127";
           aaaa.mail.address = "2a01:239:43e:2c00::1";
-          cname.autoconfig.value = "discover";
-          cname.autodiscover.value = "discover";
+          cname.autoconfig.value = "mail";
+          cname.autodiscover.value = "mail";
           cname.de02.value = "mail";
 
           cname.imap.value = "mail";
@@ -75,8 +75,8 @@
           cname.mail.value = "mail.nanoyaki.space.";
           cname.imap.value = "mail";
           cname.smtp.value = "mail";
-          cname.autoconfig.value = "discover.nanoyaki.space.";
-          cname.autodiscover.value = "discover.nanoyaki.space.";
+          cname.autoconfig.value = "mail";
+          cname.autodiscover.value = "mail";
 
           mx = singleton {
             subdomain = "@";
@@ -109,17 +109,16 @@
           registrar = "porkbun";
           provider = "porkbun";
 
-          alias."@".value = "l2vn6xe7fds8kwk9.myfritz.net.";
+          alias.de01.value = "l2vn6xe7fds8kwk9.myfritz.net.";
           alias."*".value = "l2vn6xe7fds8kwk9.myfritz.net.";
-          cname.de01.value = "@";
 
           a.vpn.address = "100.64.0.11";
           cname.zuhause.value = "vpn";
 
           cname.de02.value = "mail.nanoyaki.space.";
           cname.mail.value = "mail.nanoyaki.space.";
-          cname.autoconfig.value = "discover.nanoyaki.space.";
-          cname.autodiscover.value = "discover.nanoyaki.space.";
+          cname.autoconfig.value = "mail";
+          cname.autodiscover.value = "mail";
 
           cname.imap.value = "mail";
           cname.smtp.value = "mail";
@@ -156,8 +155,8 @@
           provider = "porkbun-thelessone";
 
           cname.mail.value = "mail.nanoyaki.space.";
-          cname.autoconfig.value = "discover.nanoyaki.space.";
-          cname.autodiscover.value = "discover.nanoyaki.space.";
+          cname.autoconfig.value = "mail";
+          cname.autodiscover.value = "mail";
           cname.de03.value = "mail.nanoyaki.space.";
 
           cname.imap.value = "mail";
@@ -197,8 +196,8 @@
           a."@".address = "31.70.93.127";
           aaaa."@".address = "2a01:239:43e:2c00::1";
           cname.mail.value = "mail.nanoyaki.space.";
-          cname.autoconfig.value = "discover.nanoyaki.space.";
-          cname.autodiscover.value = "discover.nanoyaki.space.";
+          cname.autoconfig.value = "mail";
+          cname.autodiscover.value = "mail";
 
           cname.imap.value = "mail";
           cname.smtp.value = "mail";

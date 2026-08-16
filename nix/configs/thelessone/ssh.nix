@@ -1,6 +1,6 @@
 {
   flake.nixosModules.thelessone-ssh =
-    { lib, config, ... }:
+    { config, ... }:
 
     let
       inherit (config) sec dmn;
@@ -74,8 +74,7 @@
         enable = true;
         maxretry = 5;
         bantime-increment.enable = true;
-
-        jails.sshd = lib.mkForce { };
+        bantime-increment.maxtime = "5w";
       };
     };
 }

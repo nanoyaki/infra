@@ -97,6 +97,8 @@
     nixbot.url = "github:Mic92/nixbot";
     nixbot.inputs.nixpkgs.follows = "nixpkgs";
     nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
+    cloakbrowser.url = "github:CloakHQ/CloakBrowser";
+    cloakbrowser.inputs.nixpkgs.follows = "nixpkgs";
 
     # Deduplication
     flake-compat.url = "github:NixOS/flake-compat";

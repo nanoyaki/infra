@@ -1,16 +1,10 @@
-{ inputs, ... }:
+{ preferNewerOverlay, inputs, ... }:
 
 {
   flake.nixosModules.tubaki-mail =
-    {
-      lib,
-      pkgs,
-      config,
-      ...
-    }:
+    { config, ... }:
 
     let
-      inherit (lib) mkForce;
       inherit (config) prt sec;
 
       mkDKIMSecret = domain: {
@@ -192,24 +186,41 @@
         notifs.tangled.org
       '';
 
-      environment.etc."fail2ban/filter.d".source = mkForce "${
-        pkgs.symlinkJoin {
-          pname = "${pkgs.fail2ban.pname}-dovecot-conf";
-          inherit (pkgs.fail2ban) version;
-          paths = [ "${pkgs.fail2ban}/etc/fail2ban/filter.d" ];
-          postBuild = ''
-            cp $out/dovecot.conf .
-            rm $out/dovecot.conf
-            patch -p1 < ${./dovecot.patch}
-            install -m644 dovecot.conf $out/dovecot.conf
-          '';
-        }
-      }/*.conf";
-      services.fail2ban.jails.dovecot.settings = {
-        # block IPs which failed to log-in
-        # aggressive mode add blocking for aborted connections
-        filter = "dovecot[mode=aggressive]";
-        maxretry = 5;
+      services.fail2ban.jails = {
+        dovecot.enabled = true;
+        dovecot.settings = {
+          # block IPs which failed to log-in
+          # aggressive mode also blocks aborted connections
+          filter = "dovecot[mode=aggressive]";
+          action = "nftables-allports";
+          maxretry = 5;
+        };
+
+        postfix.enabled = true;
+        postfix.settings = {
+          filter = "postfix[mode=extra]";
+          action = "nftables-allports";
+          maxretry = 5;
+        };
       };
     };
+
+  perSystem =
+    { pkgs, ... }:
+
+    {
+      packages.fail2ban = pkgs.fail2ban.overrideAttrs {
+        version = "1.1.1";
+        src = pkgs.fetchFromGitHub {
+          owner = "fail2ban";
+          repo = "fail2ban";
+          rev = "f0fe7a57ff1b82f90c14dc76d3aa7fd2a0ead30c";
+          hash = "sha256-zhDmNFsEkSwnflA2x/BRKUTwqHO5KeFCcfKoMmbOjdA=";
+        };
+
+        patches = [ ];
+      };
+    };
+
+  flake.overlays.fail2ban = preferNewerOverlay "fail2ban";
 }

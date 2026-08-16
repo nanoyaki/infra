@@ -24,4 +24,15 @@
             config.packages.${package};
       }
     );
+
+  _module.args.selfOverlay =
+    package: _: prev:
+
+    withSystem prev.stdenv.hostPlatform.system (
+      { config, ... }:
+
+      {
+        ${package} = config.packages.${package} or config.legacyPackages.${package};
+      }
+    );
 }

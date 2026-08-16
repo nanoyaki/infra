@@ -71,7 +71,6 @@
       systemd.services.homepage-dashboard.wantedBy = lib.mkForce [ "server-services.target" ];
       services.homepage-dashboard = {
         enable = true;
-        openFirewall = true;
         listenPort = prt.homepage-dashboard;
         allowedHosts = dmn.homepage-dashboard;
         environmentFiles = [ tpl."homepage-secrets.env".path ];

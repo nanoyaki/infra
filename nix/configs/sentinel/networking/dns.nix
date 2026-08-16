@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.sentinel-ddns =
+  flake.nixosModules.sentinel-dns =
     { config, ... }:
 
     let
@@ -80,7 +80,7 @@
         provider = "porkbun";
         registrar = "porkbun";
 
-        url301."@".target = "https://nanoyaki.space";
+        a."@".address = "85.215.152.236";
       };
     };
 }
