@@ -37,9 +37,29 @@
             }
           ];
 
+          ipv6.routes = [
+            {
+              address = "fd1e:5501:7e00::";
+              prefixLength = 64;
+              via = "fe80::6b4:feff:fe15:19e5";
+            }
+            {
+              address = "2001:4bb8:1cf:ff47::";
+              prefixLength = 64;
+              via = "fe80::6b4:feff:fe15:19e5";
+            }
+          ];
+
           ipv4.addresses = [
             {
               address = "10.0.0.5";
+              prefixLength = 24;
+            }
+          ];
+
+          ipv4.routes = [
+            {
+              address = "10.0.0.0";
               prefixLength = 24;
             }
           ];
