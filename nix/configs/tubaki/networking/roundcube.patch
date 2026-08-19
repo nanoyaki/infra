@@ -1,0 +1,16 @@
+diff --git a/config/filter.d/roundcube-auth.conf b/config/filter.d/roundcube-auth.conf
+index 9599bb26..2e8a2fee 100644
+--- a/config/filter.d/roundcube-auth.conf
++++ b/config/filter.d/roundcube-auth.conf
+@@ -13,9 +13,9 @@ before = common.conf
+ 
+ [Definition]
+ 
+-prefregex = ^\s*(\[\])?(%(__hostname)s\s*(?:roundcube(?:\[(\d*)\])?:)?\s*(<[\w]+>)? IMAP Error)?: (?:<[\w]+> )?<F-CONTENT>.+</F-CONTENT>$
++prefregex = ^\s*(?:\S+\s+roundcube(?:\[\d+\])?:\s*)?<F-CONTENT>.+</F-CONTENT>$
+ 
+-failregex = ^(?:Login failed|(?i:Failed) login) for <F-USER>(?:(?P<simple>\S+)|.*)</F-USER> (?:against \S+ )?from <ADDR>(?:(?:\([^\)]*\))?\.(?! from ) (?(simple)(?:\S+(?! from ) )*|(?:(?! from ).)*(?: user=(?P=user))? )in \S+\.php on line \d+| in session \w+)?(?: \([^\)]*\))?$
++failregex = ^<[\w]+> (?:IMAP Error: )?(?:Login failed|(?i:Failed) login) for \S+ (?:against \S+ )?from <ADDR>\b
+ 
+ ignoreregex = 
+ 

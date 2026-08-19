@@ -152,15 +152,10 @@
         services.roundcube = {
           enable = true;
           configureNginx = false;
-          package = pkgs.roundcube.withPlugins (plugins: with plugins; [ persistent_login ]);
           hostName = "mail.nanoyaki.space";
           maxAttachmentSize = config.mailserver.messageSizeLimit / 1024 / 1024;
 
-          plugins = [
-            "persistent_login"
-            "managesieve"
-          ];
-
+          plugins = [ "managesieve" ];
           dicts = with pkgs.aspellDicts; [
             en
             de

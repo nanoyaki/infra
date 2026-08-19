@@ -214,11 +214,11 @@
         src = pkgs.fetchFromGitHub {
           owner = "fail2ban";
           repo = "fail2ban";
-          rev = "f0fe7a57ff1b82f90c14dc76d3aa7fd2a0ead30c";
-          hash = "sha256-zhDmNFsEkSwnflA2x/BRKUTwqHO5KeFCcfKoMmbOjdA=";
+          rev = "1e12c5a7c78efc00f7b9146d8f9c4e92fc19e5c1";
+          hash = "sha256-K1Rzt5S/BHIqDlwC6hKRMsUdc2ShyvPpAjMUq5Yn/uk=";
         };
 
-        patches = [ ];
+        patches = [ ./roundcube.patch ];
       };
     };
 
