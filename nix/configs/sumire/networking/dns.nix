@@ -18,6 +18,7 @@
         cname.de01.value = "@";
         cname."turn".value = "@";
         cname."id".value = "@";
+        cname."rtc".value = "@";
       };
     };
 }

@@ -31,13 +31,51 @@
         }@mail.nanoyaki.space:465";
       };
 
+      # Matrix port
+      networking.firewall.allowedTCPPorts = [ 8448 ];
+
       security.acme.certs."serdexmethylpheni.date".environmentFile = tpl."porkbun.env".path;
       services.caddy.virtualHosts."serdexmethylpheni.date" = {
         useACMEHost = "serdexmethylpheni.date";
         extraConfig = ''
-          reverse_proxy unix/@continuwuity
+          import continuwuity_https
         '';
       };
+
+      services.caddy.virtualHosts."serdexmethylpheni.date:8448" = {
+        useACMEHost = "serdexmethylpheni.date";
+        extraConfig = ''
+          import continuwuity_federation
+        '';
+      };
+
+      services.caddy.extraConfig = ''
+        (continuwuity_https) {
+          @https {
+            path /_matrix* /_continuwuity* /.well-known/matrix*
+            # Do not explicitly block federation on this port?
+            # not path /_matrix/federation* /_matrix/key*
+          }
+          
+          @frontend path /home
+          handle @frontend {
+            rewrite /
+            reverse_proxy unix/@continuwuity
+          }
+          
+          handle @https {
+            reverse_proxy unix/@continuwuity   
+          }
+        }
+
+        (continuwuity_federation) {
+          @federation path /_matrix/federation* /_matrix/key*
+
+          handle @federation {
+            reverse_proxy unix/@continuwuity
+          }
+        }
+      '';
 
       # Based on sodiboo's proprietary code of
       # which i stole a bunch https://github.com/sodiboo/system
