@@ -72,12 +72,24 @@
             dst = [ "tag:hana" ];
             ip = [ "*" ];
           }
+          {
+            src = [
+              "contact@nanoyaki.space"
+              "tag:hana"
+            ];
+            dst = [ "autogroup:internet" ];
+            via = [ "tag:exit" ];
+            ip = [ "*" ];
+          }
         ];
 
         tagOwners = {
+          "tag:exit" = [ ];
           "tag:server" = [ ];
           "tag:hana" = [ "contact@nanoyaki.space" ];
         };
+
+        autoApprovers.exitNode = [ "tag:exit" ];
 
         nodeAttrs = [
           {
@@ -114,8 +126,13 @@
           "--login-server=https://${dmn.headscale}"
           "--force-reauth"
           "--accept-dns=true"
+          "--advertise-exit-node"
         ];
       };
+
+      systemd.services.tailscaled-autoconnect.postStart = ''
+        ${pkgs.ethtool}/sbin/ethtool -K ens6 rx-udp-gro-forwarding on rx-gro-list off
+      '';
 
       environment.etc."headscale/policy.json".source = policyJson;
       systemd.services.headscale.reloadTriggers = [ policyJson ];
