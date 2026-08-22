@@ -98,7 +98,7 @@
             featuredCommunities.rooms = [ "#general:serdexmethylpheni.date" ];
             featuredCommunities.servers = [
               "unredacted.org"
-              "matrix.4d2.org"
+              "4d2.org"
             ];
           };
         }
