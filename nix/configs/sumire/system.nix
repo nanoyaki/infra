@@ -26,6 +26,7 @@
       sumire-caddy
       sumire-pocket-id
       sumire-knot-resolver
+      sumire-sable
     ];
   };
 

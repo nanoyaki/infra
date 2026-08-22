@@ -8,7 +8,7 @@
     }:
 
     let
-      inherit (lib) mkForce;
+      inherit (lib) mkForce mkIf;
       inherit (config) plh tpl sec;
 
       cfg = config.services.livekit;
@@ -39,7 +39,7 @@
         useACMEHost = "rtc.serdexmethylpheni.date";
         extraConfig = ''
           @jwt path /sfu/get* /healthz* /get_token*
-          handle @jwt {
+          route @jwt {
             reverse_proxy [::1]:${toString config.services.lk-jwt-service.port}
           }
 
@@ -105,8 +105,21 @@
       services.lk-jwt-service = {
         enable = true;
         port = 8080;
-        livekitUrl = "wss://serdexmethylpheni.date/_livekit/sfu";
+        livekitUrl = "wss://rtc.serdexmethylpheni.date";
         keyFile = tpl."livekit.keys".path;
       };
+
+      services.matrix-continuwuity =
+        mkIf (config.services.lk-jwt-service.enable && config.services.livekit.enable)
+          {
+            settings.global.matrix_rtc.foci = [
+              {
+                type = "livekit";
+                livekit_service_url = "https://rtc.serdexmethylpheni.date";
+              }
+            ];
+          };
+
+      programs.dnscontrol.domains."serdexmethylpheni.date".cname.rtc.value = "@";
     };
 }

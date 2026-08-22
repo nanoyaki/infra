@@ -1,8 +1,9 @@
 {
   flake.nixosModules.sumire-coturn =
-    { config, ... }:
+    { lib, config, ... }:
 
     let
+      inherit (lib) mkIf;
       inherit (config) sec tpl;
 
       cfg = config.services.coturn;
@@ -88,5 +89,18 @@
         reloadServices = [ "coturn.service" ];
         group = "turnserver";
       };
+
+      services.matrix-continuwuity = mkIf config.services.coturn.enable {
+        settings.global = {
+          turn_ttl = 86400;
+          turn_secret_file = sec."coturn/auth-secret".path;
+          turn_uris = [
+            "turns:turn.serdexmethylpheni.date?transport=udp"
+            "turns:turn.serdexmethylpheni.date?transport=tcp"
+          ];
+        };
+      };
+
+      programs.dnscontrol.domains."serdexmethylpheni.date".cname.turn.value = "@";
     };
 }

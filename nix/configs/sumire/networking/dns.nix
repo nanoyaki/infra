@@ -16,9 +16,6 @@
         a."@".address = "5.175.180.4";
         aaaa."@".address = "2a0f:6284:4300:101::110d";
         cname.de01.value = "@";
-        cname."turn".value = "@";
-        cname."id".value = "@";
-        cname."rtc".value = "@";
       };
     };
 }

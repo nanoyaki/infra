@@ -21,7 +21,7 @@
         writeEnv' =
           opts: name: attrs:
           (pkgs.formats.keyValue opts).generate name (toEnv attrs);
-        writeYaml = name: attrs: (pkgs.formats.yaml { }).generate name attrs;
+        writeYaml = name: attrs: (pkgs.formats.yaml_1_2 { }).generate name attrs;
       };
     };
 

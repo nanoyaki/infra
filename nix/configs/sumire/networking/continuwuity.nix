@@ -52,7 +52,7 @@
       services.caddy.extraConfig = ''
         (continuwuity_https) {
           @https {
-            path /_matrix* /_continuwuity* /.well-known/matrix*
+            path /_matrix* /_continuwuity* /.well-known/*
             # Do not explicitly block federation on this port?
             # not path /_matrix/federation* /_matrix/key*
           }
@@ -208,32 +208,12 @@
         allow_registration = true;
         suspend_on_register = true;
 
-        oauth.compatibility_mode = "hybrid";
-        oauth.oidc = {
-          discovery_url = "https://id.serdexmethylpheni.date";
-          client_id = "9a4974c7-dce6-498e-aca3-59ee7535d24f";
-          client_secret_file = sec."continuwuity/oidc-secret".path;
-
-          # Claims
-          additional_scopes = [
-            "openid"
-            "profile"
-            "email"
-          ];
-          email_claim = "email";
-          profile_key_map = {
-            avatar_url = "picture";
-            display_name = "preferred_username";
-          };
-          profile_key_import_mode = "on_registration";
-        };
+        oauth.compatibility_mode = "exclusive";
 
         smtp.sender = "Matrix <no-reply@serdexmethylpheni.date>";
 
         url_preview_check_root_domain = true;
         url_preview_domain_explicit_allowlist = [
-          "duckduckgo.com"
-
           # Own domains
           "nanoyaki.space"
           "theless.one"
@@ -244,28 +224,11 @@
         url_preview_max_spider_size = 1024 * 1024 * 10;
         url_preview_allow_audio_video = true;
 
-        trusted_servers = [
-          "matrix.org"
-          "federation.nexus"
-        ];
+        trusted_servers = [ "4d2.org" ];
         well_known = {
           client = "https://serdexmethylpheni.date";
           server = "serdexmethylpheni.date:443";
         };
-
-        matrix_rtc.foci = [
-          {
-            type = "livekit";
-            livekit_service_url = "https://rtc.serdexmethylpheni.date";
-          }
-        ];
-
-        turn_ttl = 86400;
-        turn_secret_file = sec."coturn/auth-secret".path;
-        turn_uris = [
-          "turns:turn.serdexmethylpheni.date?transport=udp"
-          "turns:turn.serdexmethylpheni.date?transport=tcp"
-        ];
       };
     };
 }
