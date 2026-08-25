@@ -2,9 +2,9 @@
   "neoforge": {
     "1_21_1": {
       "latest": {
-        "name": "createstellaris-1.4.0.jar",
-        "url": "https://cdn.modrinth.com/data/qdwnWxwq/versions/ndjl4hQy/createstellaris-1.4.0.jar",
-        "sha512": "bd99c0b42814a317858d216df6372d71059b84a5bd8a87b06d6e8f887d2a247441d5c080806a5a9a3efa84aa842f23354919e9ebdad89979d286d38599b4da97"
+        "name": "createstellaris-1.6.0.jar",
+        "url": "https://cdn.modrinth.com/data/qdwnWxwq/versions/rY2reEgS/createstellaris-1.6.0.jar",
+        "sha512": "a7ec057cff3a00768394433adc6175a536799933f68c325f39d880f1cb9e8c60b41589255cb27c6cc4a834070976c3c9e62f5f33b073d65637e4d1503213f8bd"
       }
     }
   }

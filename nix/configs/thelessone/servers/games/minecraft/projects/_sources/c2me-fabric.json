@@ -9,9 +9,9 @@
     },
     "1_21_11": {
       "latest": {
-        "name": "c2me-fabric-mc1.21.11-0.3.7+alpha.0.10.jar",
-        "url": "https://cdn.modrinth.com/data/VSNURh3q/versions/UeCYljaE/c2me-fabric-mc1.21.11-0.3.7%2Balpha.0.10.jar",
-        "sha512": "2bec8077fc0209082776730b183633f08e328e570ecea9b3095bded6b09526cb694d0165046538c13f456e67c66895cd4dc2cebf91e2588f1cca76dc522b9962"
+        "name": "c2me-fabric-mc1.21.11-0.4.0-alpha.0.26.jar",
+        "url": "https://cdn.modrinth.com/data/VSNURh3q/versions/879vA5z6/c2me-fabric-mc1.21.11-0.4.0-alpha.0.26.jar",
+        "sha512": "bdb6ce049ae7c779f9afdd80b21d266deece2ef76a2af8033f5554d2a50e3734a9d044433c0c96f0cb27ee70a1881b97ebed78673ee21c3aabfdcad5828253e5"
       }
     }
   }

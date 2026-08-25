@@ -72,16 +72,16 @@
     },
     "1_21_1": {
       "latest": {
-        "name": "papi-1.21.1-neoforge-1.1.1.jar",
-        "url": "https://cdn.modrinth.com/data/xedaBnSm/versions/y2wCW8V6/papi-1.21.1-neoforge-1.1.1.jar",
-        "sha512": "e1e2bc2c00209e899652efb3e4960a283a9e3af62007fe020b14e504deb618acc7a50dffb2586fb626e27192aefc4eca8d7bb0f8d7034166b91ddc9655201957"
+        "name": "papi-neoforge-1.21.1-1.2.1.jar",
+        "url": "https://cdn.modrinth.com/data/xedaBnSm/versions/k2bRvJqS/papi-neoforge-1.21.1-1.2.1.jar",
+        "sha512": "9b90bea4c9e8eaafd3f4e6abff2d9bc405fe48293ffd2be1abeded4ad9182d0c20b95ad9f7fc2cf78844d237af5ec2bf1f34ebebdd6091e9b1e91c876304e3bf"
       }
     },
     "1_21": {
       "latest": {
-        "name": "papi-1.21.1-neoforge-1.1.1.jar",
-        "url": "https://cdn.modrinth.com/data/xedaBnSm/versions/y2wCW8V6/papi-1.21.1-neoforge-1.1.1.jar",
-        "sha512": "e1e2bc2c00209e899652efb3e4960a283a9e3af62007fe020b14e504deb618acc7a50dffb2586fb626e27192aefc4eca8d7bb0f8d7034166b91ddc9655201957"
+        "name": "papi-neoforge-1.21.1-1.2.1.jar",
+        "url": "https://cdn.modrinth.com/data/xedaBnSm/versions/k2bRvJqS/papi-neoforge-1.21.1-1.2.1.jar",
+        "sha512": "9b90bea4c9e8eaafd3f4e6abff2d9bc405fe48293ffd2be1abeded4ad9182d0c20b95ad9f7fc2cf78844d237af5ec2bf1f34ebebdd6091e9b1e91c876304e3bf"
       }
     }
   }

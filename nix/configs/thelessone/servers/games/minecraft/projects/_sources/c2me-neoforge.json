@@ -2,9 +2,9 @@
   "neoforge": {
     "1_21_1": {
       "latest": {
-        "name": "c2me-neoforge-mc1.21.1-0.3.0+alpha.0.93.jar",
-        "url": "https://cdn.modrinth.com/data/COlSi5iR/versions/KmfiVd28/c2me-neoforge-mc1.21.1-0.3.0%2Balpha.0.93.jar",
-        "sha512": "7dbb5cabc4669b900c570547fc636ce77b24e08451f4c699db76ec9ed3c805a256323862d7823e7d8c5acd10baa15e83c27dae3384ed5ea765f7e883a41f6045"
+        "name": "c2me-neoforge-mc1.21.1-0.4.0-alpha.0.120.jar",
+        "url": "https://cdn.modrinth.com/data/COlSi5iR/versions/kvrPcTsz/c2me-neoforge-mc1.21.1-0.4.0-alpha.0.120.jar",
+        "sha512": "0076f7c9cb63f061f9e36f9648b11b483c904bdc289943ea673c67e264647da2d55d01e8a60aa3ea93df059442a97abe3c00b23ec70da6c0b170e2af5f186efc"
       }
     }
   }

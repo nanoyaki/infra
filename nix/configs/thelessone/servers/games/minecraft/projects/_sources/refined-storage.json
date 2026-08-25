@@ -2,9 +2,9 @@
   "neoforge": {
     "1_21_1": {
       "latest": {
-        "name": "refinedstorage-neoforge-2.0.8.jar",
-        "url": "https://cdn.modrinth.com/data/KDvYkUg3/versions/kxRNbIBe/refinedstorage-neoforge-2.0.8.jar",
-        "sha512": "835640a9b17f3e9d1d86b6af87f69979489b6df950cf2616d528aef67ea39e7682a84c4bcc8fb774ff67fc557008927073e6d02472ce65465219b5884c425ee3"
+        "name": "refinedstorage-neoforge-2.0.9.jar",
+        "url": "https://cdn.modrinth.com/data/KDvYkUg3/versions/lHHiI26k/refinedstorage-neoforge-2.0.9.jar",
+        "sha512": "b98a938b8af859f1952bfb35fb6db712835a7dead88fa15258ac0f4f06b26b08ebfa49fd9a35b2c81f7a745b3cd4370ced98c242d0fe7473ba019d92da8f6c57"
       }
     }
   }

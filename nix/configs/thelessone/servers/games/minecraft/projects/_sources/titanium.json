@@ -2,16 +2,16 @@
   "neoforge": {
     "1_21_1": {
       "latest": {
-        "name": "titanium-1.21-4.0.43.jar",
-        "url": "https://cdn.modrinth.com/data/1Ro7m06l/versions/ENONQ5aP/titanium-1.21-4.0.43.jar",
-        "sha512": "2ea83a004b1037410a40899bb17e22832a5adb129495b68bdf13fbdff75a6d9599860876dc2f8fb00446351de3e6be866c93b962f8e4c23b88e3434b3cefd7da"
+        "name": "titanium-1.21-4.0.45.jar",
+        "url": "https://cdn.modrinth.com/data/1Ro7m06l/versions/7AWtSmd7/titanium-1.21-4.0.45.jar",
+        "sha512": "42a386e1cfbeb96049fbdd79fe438c71826a6864f86933e0e62cf4a50728a9d5b6bdce360d70316b234e5c991076c61eb2f922999624ad4cb2a1f612acb8ace3"
       }
     },
     "1_21": {
       "latest": {
-        "name": "titanium-1.21-4.0.43.jar",
-        "url": "https://cdn.modrinth.com/data/1Ro7m06l/versions/ENONQ5aP/titanium-1.21-4.0.43.jar",
-        "sha512": "2ea83a004b1037410a40899bb17e22832a5adb129495b68bdf13fbdff75a6d9599860876dc2f8fb00446351de3e6be866c93b962f8e4c23b88e3434b3cefd7da"
+        "name": "titanium-1.21-4.0.45.jar",
+        "url": "https://cdn.modrinth.com/data/1Ro7m06l/versions/7AWtSmd7/titanium-1.21-4.0.45.jar",
+        "sha512": "42a386e1cfbeb96049fbdd79fe438c71826a6864f86933e0e62cf4a50728a9d5b6bdce360d70316b234e5c991076c61eb2f922999624ad4cb2a1f612acb8ace3"
       }
     }
   }

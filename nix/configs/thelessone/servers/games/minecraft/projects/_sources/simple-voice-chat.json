@@ -2,9 +2,9 @@
   "fabric": {
     "1_21_11": {
       "latest": {
-        "name": "voicechat-fabric-1.21.11-2.6.18.jar",
-        "url": "https://cdn.modrinth.com/data/9eGKb6K1/versions/SbkJQ0KX/voicechat-fabric-1.21.11-2.6.18.jar",
-        "sha512": "b91b1df7f5f8a1a1edfca6957e5278c13279e6a659da7614b8ab89a38d842934736a8c15453604bb95d99c69e44bc1e1e11f59977a03d8bbad37779350c1a768"
+        "name": "voicechat-fabric-1.21.11-2.6.22.jar",
+        "url": "https://cdn.modrinth.com/data/9eGKb6K1/versions/CN53keBo/voicechat-fabric-1.21.11-2.6.22.jar",
+        "sha512": "dab29df8577b220e1c2ad97b784c5acb837501c8ba42d83205c085f44b4a6df75bce2477b8c2c7905285d248fd2d195b3dc77f169cb11a226dc2965e23f5859a"
       }
     }
   }

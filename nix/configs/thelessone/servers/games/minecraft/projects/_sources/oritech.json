@@ -2,16 +2,16 @@
   "neoforge": {
     "1_21_1": {
       "latest": {
-        "name": "oritech-neoforge-1.21.1-1.2.6.jar",
-        "url": "https://cdn.modrinth.com/data/4sYI62kA/versions/DFvNRIVi/oritech-neoforge-1.21.1-1.2.6.jar",
-        "sha512": "de4f580b347b3b943d54ac07bf43542d846edf95d90f0ee1a9128e38cad6b83057eb59990107c3c882b797c69bfe60e5e2def6d86a6cc709d99d5aa7f19f9196"
+        "name": "oritech-neoforge-1.21.1-1.2.10.jar",
+        "url": "https://cdn.modrinth.com/data/4sYI62kA/versions/yODlAz6I/oritech-neoforge-1.21.1-1.2.10.jar",
+        "sha512": "6e6d7d816a4af76e52818f3ce0cbee9be96a79681778add7f3083f3fbc5a80fc95089ed4a9d687ae958d83ae939b7bf45bbf014770b983439642c315f7cf4bb2"
       }
     },
     "1_21": {
       "latest": {
-        "name": "oritech-neoforge-1.21.1-1.2.6.jar",
-        "url": "https://cdn.modrinth.com/data/4sYI62kA/versions/DFvNRIVi/oritech-neoforge-1.21.1-1.2.6.jar",
-        "sha512": "de4f580b347b3b943d54ac07bf43542d846edf95d90f0ee1a9128e38cad6b83057eb59990107c3c882b797c69bfe60e5e2def6d86a6cc709d99d5aa7f19f9196"
+        "name": "oritech-neoforge-1.21.1-1.2.10.jar",
+        "url": "https://cdn.modrinth.com/data/4sYI62kA/versions/yODlAz6I/oritech-neoforge-1.21.1-1.2.10.jar",
+        "sha512": "6e6d7d816a4af76e52818f3ce0cbee9be96a79681778add7f3083f3fbc5a80fc95089ed4a9d687ae958d83ae939b7bf45bbf014770b983439642c315f7cf4bb2"
       }
     }
   }

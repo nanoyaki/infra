@@ -20,7 +20,7 @@
 
       systemd.services.minecraft-server-lobby.wantedBy = lib.mkForce [ "server-services.target" ];
       services.minecraft-servers'.servers.lobby = {
-        enable = true;
+        enable = false;
         enableReload = true;
         package = pkgs.fabricServers.fabric-1_21_11;
         jvmOpts = "-Xms2G -Xmx2G";

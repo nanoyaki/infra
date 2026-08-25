@@ -2,9 +2,9 @@
   "neoforge": {
     "1_21_1": {
       "latest": {
-        "name": "sophisticatedcore-1.21.1-1.4.42.1892.jar",
-        "url": "https://cdn.modrinth.com/data/nmoqTijg/versions/SdStULv0/sophisticatedcore-1.21.1-1.4.42.1892.jar",
-        "sha512": "028b4cff8a9db7d92b1c16a1dd16e7b9b08feea99f852c4ce9e9cfe5175fe1bdb50dd4d5b7a74e3f5f1a5d9868b7d2b3fcf01f2607cfddd4815ff4a430f14a1a"
+        "name": "sophisticatedcore-1.21.1-1.4.90.2299.jar",
+        "url": "https://cdn.modrinth.com/data/nmoqTijg/versions/zvRSOlro/sophisticatedcore-1.21.1-1.4.90.2299.jar",
+        "sha512": "aa335c59b20d93aedb88e59ec85c04121fa682fab1ea4a080d7b88d7b545db83ef7c019f2334f0aee5605da2a6997c442e58a295cf9656b57bba986bf2427104"
       }
     },
     "1_21": {

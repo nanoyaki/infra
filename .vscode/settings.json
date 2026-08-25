@@ -26,7 +26,8 @@
             },
             "formatting": {
                 "command": [
-                    "nixfmt"
+                    "nixfmt",
+                    "-"
                 ]
             },
             "options": {

@@ -2,9 +2,9 @@
   "neoforge": {
     "1_21_1": {
       "latest": {
-        "name": "AdvancedPeripherals-1.21.1-0.7.61b.jar",
-        "url": "https://cdn.modrinth.com/data/SOw6jD6x/versions/Q4pvAMQj/AdvancedPeripherals-1.21.1-0.7.61b.jar",
-        "sha512": "256eada010294dc64b6a912b7fe0ea02e9fcc5c0aba73eba228953f38031ea4f9e718049c814c0a6dfeb00d46812cfc7123844513cd8ea58cfae1f6499ebd19e"
+        "name": "AdvancedPeripherals-1.21.1-0.8.0a.jar",
+        "url": "https://cdn.modrinth.com/data/SOw6jD6x/versions/Awt8eCuo/AdvancedPeripherals-1.21.1-0.8.0a.jar",
+        "sha512": "d6c9ed9d041fa6228131889bd03523d524cc3411fef32363c8364c916c90c8be8a9d1fc72985a3766195a72a918813f87f32516155744cccb9745ca20cbe38a7"
       }
     }
   }

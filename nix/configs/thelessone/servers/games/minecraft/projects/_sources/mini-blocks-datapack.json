@@ -1,5 +1,12 @@
 {
   "datapack": {
+    "26_2": {
+      "latest": {
+        "name": "mini-blocks-v1-7-0-mc-26-2.zip",
+        "url": "https://cdn.modrinth.com/data/sqhvLNrE/versions/iYPlahk0/mini-blocks-v1-7-0-mc-26-2.zip",
+        "sha512": "865fda136632f2db5ffe733508a55b5285e25e28c261341a580fab95338cca3aac8d46dcce701faa532dd85ad222c1e7b6cc2930bdde0503bda9e5b65ab2a99d"
+      }
+    },
     "26_1_2": {
       "latest": {
         "name": "mini-blocks-v1-6-1-mc-26-1.zip",

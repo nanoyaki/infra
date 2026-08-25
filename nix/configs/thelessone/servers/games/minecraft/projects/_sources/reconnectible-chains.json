@@ -2,9 +2,9 @@
   "neoforge": {
     "1_21_1": {
       "latest": {
-        "name": "connectiblechains-neoforge-1.21.1-1.2.5.jar",
-        "url": "https://cdn.modrinth.com/data/5pzBXDS3/versions/haHsKT7H/connectiblechains-neoforge-1.21.1-1.2.5.jar",
-        "sha512": "acf743ba736ac6ae996a2a026966fa276b235f6b416f0d400c7db3da39d9bb740fcf89c9624efb596b9a5cc83408940e29f24283106741ddea071eb30feabd13"
+        "name": "connectiblechains-neoforge-1.21.1-2.3.2.jar",
+        "url": "https://cdn.modrinth.com/data/5pzBXDS3/versions/r0Fmy4vA/connectiblechains-neoforge-1.21.1-2.3.2.jar",
+        "sha512": "8a53e5eeafe08472afe81fc35251c52a9e67e3f026d243a65df1b4233e2ccd8e4c9434b16ed74774b781303933cba445d569315b9af724ec72a2992b62df6f05"
       }
     }
   }

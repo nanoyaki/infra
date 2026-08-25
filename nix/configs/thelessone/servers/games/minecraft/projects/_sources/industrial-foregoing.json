@@ -2,16 +2,16 @@
   "neoforge": {
     "1_21_1": {
       "latest": {
-        "name": "industrialforegoing-1.21-3.6.38.jar",
-        "url": "https://cdn.modrinth.com/data/lWxpUd04/versions/os5V2Plx/industrialforegoing-1.21-3.6.38.jar",
-        "sha512": "275ba1c87f13ca967c5a65bf3b120a101fe2c292d89565401167b268ae8ad20bc2fb6665e53813166f2c6a1b53c268ef7f3f9e3956026e11c4ba0712efb9e639"
+        "name": "industrialforegoing-1.21-3.6.39.jar",
+        "url": "https://cdn.modrinth.com/data/lWxpUd04/versions/7otXKx1D/industrialforegoing-1.21-3.6.39.jar",
+        "sha512": "a8a52f0e79fe019d8b77cc50a8b04b36d5532c92f75dff51bc528e70fb23eb67f8a9bfd37551cf91636027086f0af4f3010cb07f1903b20fc31b4d11cb3e2a02"
       }
     },
     "1_21": {
       "latest": {
-        "name": "industrialforegoing-1.21-3.6.38.jar",
-        "url": "https://cdn.modrinth.com/data/lWxpUd04/versions/os5V2Plx/industrialforegoing-1.21-3.6.38.jar",
-        "sha512": "275ba1c87f13ca967c5a65bf3b120a101fe2c292d89565401167b268ae8ad20bc2fb6665e53813166f2c6a1b53c268ef7f3f9e3956026e11c4ba0712efb9e639"
+        "name": "industrialforegoing-1.21-3.6.39.jar",
+        "url": "https://cdn.modrinth.com/data/lWxpUd04/versions/7otXKx1D/industrialforegoing-1.21-3.6.39.jar",
+        "sha512": "a8a52f0e79fe019d8b77cc50a8b04b36d5532c92f75dff51bc528e70fb23eb67f8a9bfd37551cf91636027086f0af4f3010cb07f1903b20fc31b4d11cb3e2a02"
       }
     }
   }

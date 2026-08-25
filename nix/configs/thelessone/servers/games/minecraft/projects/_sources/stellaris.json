@@ -2,16 +2,16 @@
   "neoforge": {
     "1_21_1": {
       "latest": {
-        "name": "stellaris-1.21-neoforge-1.4.23.jar",
-        "url": "https://cdn.modrinth.com/data/ItTQpuBn/versions/3OXCvg6r/stellaris-1.21-neoforge-1.4.23.jar",
-        "sha512": "379ba0b2de7edfdbbb6a9e92d50f3345888af389675ff471fb58d1e791c8c7051f049baf8e9a7e2e60e767cd5e6b855ea5aafaaaf67ae7d1a9945a8e8f3ca581"
+        "name": "stellaris-1.21-neoforge-1.4.25.jar",
+        "url": "https://cdn.modrinth.com/data/ItTQpuBn/versions/5BraaKfR/stellaris-1.21-neoforge-1.4.25.jar",
+        "sha512": "32045825077f49d2a5e63e3197ff95878996c16a0c00adea5d185cf414f5765c46f92ee828367805eb90fd681e6613b3f1500568b2719eaccd6facac6e69ac79"
       }
     },
     "1_21": {
       "latest": {
-        "name": "stellaris-1.21-neoforge-1.4.23.jar",
-        "url": "https://cdn.modrinth.com/data/ItTQpuBn/versions/3OXCvg6r/stellaris-1.21-neoforge-1.4.23.jar",
-        "sha512": "379ba0b2de7edfdbbb6a9e92d50f3345888af389675ff471fb58d1e791c8c7051f049baf8e9a7e2e60e767cd5e6b855ea5aafaaaf67ae7d1a9945a8e8f3ca581"
+        "name": "stellaris-1.21-neoforge-1.4.25.jar",
+        "url": "https://cdn.modrinth.com/data/ItTQpuBn/versions/5BraaKfR/stellaris-1.21-neoforge-1.4.25.jar",
+        "sha512": "32045825077f49d2a5e63e3197ff95878996c16a0c00adea5d185cf414f5765c46f92ee828367805eb90fd681e6613b3f1500568b2719eaccd6facac6e69ac79"
       }
     }
   }
