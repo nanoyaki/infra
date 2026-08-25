@@ -76,6 +76,7 @@
     tangled.url = "git+https://tangled.org/tangled.org/core";
     tangled.inputs.nixpkgs.follows = "nixpkgs";
     tangled.inputs.gomod2nix.follows = "gomod2nix";
+    tangled.inputs.flake-compat.follows = "flake-compat";
     avatar-server.url = "github:nanoyaki/avatar-server";
     avatar-server.inputs = {
       nixpkgs.follows = "nixpkgs";
@@ -99,6 +100,12 @@
     nixbot.inputs.treefmt-nix.follows = "treefmt-nix";
     cloakbrowser.url = "github:CloakHQ/CloakBrowser";
     cloakbrowser.inputs.nixpkgs.follows = "nixpkgs";
+    continuwuity.url = "github:continuwuity/continuwuity/v26.8.1";
+    continuwuity.inputs = {
+      nixpkgs.follows = "nixpkgs";
+      flake-parts.follows = "flake-parts";
+      flake-compat.follows = "flake-compat";
+    };
 
     # Deduplication
     flake-compat.url = "github:NixOS/flake-compat";

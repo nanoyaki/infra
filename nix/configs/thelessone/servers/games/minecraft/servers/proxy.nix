@@ -20,6 +20,7 @@
         enable = true;
         autoStart = true;
         package = pkgs.velocityServers.velocity;
+        packageOverrides.jre_headless = pkgs.zulu25;
         jvmOpts = "-Xms1G -Xmx1G";
         stopCommand = "end";
         useDefaults = false;

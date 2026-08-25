@@ -1,3 +1,5 @@
+{ withSystem, ... }:
+
 {
   flake.nixosModules.sumire-continuwuity =
     {
@@ -231,4 +233,15 @@
         };
       };
     };
+
+  flake.overlays.continuwuity =
+    _: prev:
+
+    withSystem prev.stdenv.hostPlatform.system (
+      { inputs', ... }:
+
+      {
+        matrix-continuwuity = inputs'.continuwuity.packages.default;
+      }
+    );
 }
