@@ -1,0 +1,11 @@
+{
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "servux-fabric-1.21.11-0.9.5.jar",
+        "url": "https://cdn.modrinth.com/data/zQhsx8KF/versions/lZKJhJXh/servux-fabric-1.21.11-0.9.5.jar",
+        "sha512": "e195d64734d34e5a0665df6e70e3e2a1ffb8872b9c7106f4cfd724b84df94d6a85508e3da1d6392a75891e88d613ea00658d330e460550416bd5d8a610fa87d0"
+      }
+    }
+  }
+}

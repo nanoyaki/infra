@@ -24,7 +24,9 @@
       dmn.modded = "modded.theless.one";
       dmn.modded-train-map = "trains-modded.theless.one";
 
-      systemd.services.minecraft-server-modded-test.wantedBy = lib.mkForce [ "server-services.target" ];
+      systemd.services = lib.mkIf config.services.minecraft-servers'.servers.modded-test.enable {
+        minecraft-server-modded-test.wantedBy = lib.mkForce [ "server-services.target" ];
+      };
       services.minecraft-servers'.servers.modded-test = {
         enable = false;
 

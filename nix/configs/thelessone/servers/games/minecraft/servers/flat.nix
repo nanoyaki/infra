@@ -15,9 +15,11 @@
       prt.minecraft-server-flat = 30054;
       dmn.flat = "flat.theless.one";
 
-      systemd.services.minecraft-server-creative-flat.wantedBy = lib.mkForce [ "server-services.target" ];
+      systemd.services = lib.mkIf config.services.minecraft-servers'.servers.creative-flat.enable {
+        minecraft-server-creative-flat.wantedBy = lib.mkForce [ "server-services.target" ];
+      };
       services.minecraft-servers'.servers.creative-flat = {
-        enable = true;
+        enable = false;
         package = pkgs.fabricServers.fabric-1_21_11;
         jvmOpts = "-Xms8G -Xmx8G";
 

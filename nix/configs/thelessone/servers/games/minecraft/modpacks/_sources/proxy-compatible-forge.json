@@ -1,0 +1,1998 @@
+{
+  "neoforge": {
+    "26_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "26_1_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "26_1_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "26_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_11": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_10": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_9": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_8": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_7": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_6": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_5": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_6": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_5": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_19_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_19_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_19_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_19_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_19": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_18_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_18_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_18": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_17_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_17": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16_5": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_15_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_15_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_15": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_14_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_14_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_14_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_14_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_14": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_13_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_13_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_13": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_12_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_12_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_12": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_11_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_11_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_11": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_10_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_10_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_10": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_9_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_9_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_9_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_9_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_9": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_9": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_8": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_7": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_6": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_5": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_10": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_9": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_8": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_7": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_6": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_5": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    }
+  },
+  "forge": {
+    "26_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "26_1_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "26_1_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "26_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_11": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_10": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_9": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_8": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_7": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_6": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_5": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_6": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_5": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_20": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_19_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_19_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_19_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_19_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_19": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_18_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_18_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_18": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_17_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_17": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16_5": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_16": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_15_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_15_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_15": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_14_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_14_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_14_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_14_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_14": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_13_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_13_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_13": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_12_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_12_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_12": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_11_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_11_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_11": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_10_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_10_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_10": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_9_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_9_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_9_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_9_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_9": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_9": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_8": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_7": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_6": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_5": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8_1": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_8": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_10": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_9": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_8": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_7": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_6": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_5": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_4": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_3": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    },
+    "1_7_2": {
+      "latest": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      },
+      "1_3_0": {
+        "name": "proxy-compatible-forge-1.3.0.jar",
+        "url": "https://cdn.modrinth.com/data/vDyrHl8l/versions/uRu4jaFs/proxy-compatible-forge-1.3.0.jar",
+        "sha512": "1587b2d0f6d5397803818f138c6ae17a27e3e5cd03e2b19900672e5a5063c8b548413017e8c444428a643b69b9fd061c9d8efc9020ce9bf866549804da5e24e5"
+      }
+    }
+  }
+}

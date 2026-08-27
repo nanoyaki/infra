@@ -1,0 +1,16 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "extendedae_plus-1.6.1.jar",
+        "url": "https://cdn.modrinth.com/data/xr109llC/versions/DLFDZIVx/extendedae_plus-1.6.1.jar",
+        "sha512": "f616982f973d89268373387753c735fbbf202525473bfa01eada1d3e0d72a1bb297e882020a427615bb37ca82b2f712dd3667eabe9784e06b402e7617e5ebad3"
+      },
+      "1_6_1": {
+        "name": "extendedae_plus-1.6.1.jar",
+        "url": "https://cdn.modrinth.com/data/xr109llC/versions/DLFDZIVx/extendedae_plus-1.6.1.jar",
+        "sha512": "f616982f973d89268373387753c735fbbf202525473bfa01eada1d3e0d72a1bb297e882020a427615bb37ca82b2f712dd3667eabe9784e06b402e7617e5ebad3"
+      }
+    }
+  }
+}

@@ -68,7 +68,7 @@
                 description = ''
                   Mods to install to the server
                 '';
-                apply = value: if (value == null) then value else pkgs.linkFarmFromDrvs "mods" value;
+                apply = value: if builtins.isList value then pkgs.linkFarmFromDrvs "mods" value else value;
               };
 
               datapacks = mkOption {
@@ -135,12 +135,12 @@
                   };
 
                   mods = mkOption {
-                    type = with types; nullOr (listOf package);
+                    type = with types; nullOr (types.either (listOf package) types.package);
                     default = if config.useDefaults then cfg.serverDefaults.mods else null;
                     description = ''
                       Mods to install to the server
                     '';
-                    apply = value: if (value == null) then value else pkgs.linkFarmFromDrvs "mods" value;
+                    apply = value: if builtins.isList value then pkgs.linkFarmFromDrvs "mods" value else value;
                   };
 
                   datapacks = mkOption {

@@ -1,0 +1,11 @@
+{
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "NoChatReports-FABRIC-1.21.11-v2.17.0.jar",
+        "url": "https://cdn.modrinth.com/data/qQyHxfxd/versions/sFOP9oAo/NoChatReports-FABRIC-1.21.11-v2.17.0.jar",
+        "sha512": "2b28489841736bbe96fd24e013d74da9dc7a7a94c4a14ed24d73d1b2b0414940a4796a22bc224e52e699a95c1c45c73ca5064ef5425254720644308ffd52efa2"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "sable-neoforge-1.21.1-2.0.5.jar",
+        "url": "https://cdn.modrinth.com/data/T9PomCSv/versions/U678xqle/sable-neoforge-1.21.1-2.0.5.jar",
+        "sha512": "bf3d8c87bcc5efb99afffd50305fc978086ed48a63e106816e3a8a3901f8052f4480ea527dbd7d4003f7775ed4d020529098034f4e307aefac9cc42df2b4c19a"
+      },
+      "2_0_5_mc1_21_1": {
+        "name": "sable-neoforge-1.21.1-2.0.5.jar",
+        "url": "https://cdn.modrinth.com/data/T9PomCSv/versions/U678xqle/sable-neoforge-1.21.1-2.0.5.jar",
+        "sha512": "bf3d8c87bcc5efb99afffd50305fc978086ed48a63e106816e3a8a3901f8052f4480ea527dbd7d4003f7775ed4d020529098034f4e307aefac9cc42df2b4c19a"
+      }
+    }
+  }
+}

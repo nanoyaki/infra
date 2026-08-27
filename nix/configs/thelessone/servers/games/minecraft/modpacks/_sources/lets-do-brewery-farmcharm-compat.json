@@ -1,0 +1,16 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "letsdo-brewery-neoforge-2.1.9.jar",
+        "url": "https://cdn.modrinth.com/data/b7NV2plI/versions/vzXZ4Pak/letsdo-brewery-neoforge-2.1.9.jar",
+        "sha512": "10011c6b8064c14d142049f9532f966dd8c44e2ac40f6afb543061c4703e4db5348d29448db520c18e49dc3282f2299a006a7d05328d9a47c615376e3e487fd9"
+      },
+      "2_1_9": {
+        "name": "letsdo-brewery-neoforge-2.1.9.jar",
+        "url": "https://cdn.modrinth.com/data/b7NV2plI/versions/vzXZ4Pak/letsdo-brewery-neoforge-2.1.9.jar",
+        "sha512": "10011c6b8064c14d142049f9532f966dd8c44e2ac40f6afb543061c4703e4db5348d29448db520c18e49dc3282f2299a006a7d05328d9a47c615376e3e487fd9"
+      }
+    }
+  }
+}

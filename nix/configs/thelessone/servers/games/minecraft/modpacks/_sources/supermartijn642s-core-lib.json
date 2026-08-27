@@ -1,0 +1,28 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "supermartijn642corelib-1.1.24-neoforge-mc1.21.jar",
+        "url": "https://cdn.modrinth.com/data/rOUBggPv/versions/81s25oaA/supermartijn642corelib-1.1.24-neoforge-mc1.21.jar",
+        "sha512": "df3844f66fef9f58ab41119bd2c86096e7ca613ecc646ff910344a25d891ebd3c50267bfe2057e18f96de3bdb3fc0e4ada5aec64d97fe12865b42700dc47bb97"
+      },
+      "1_1_24_neoforge_mc1_21": {
+        "name": "supermartijn642corelib-1.1.24-neoforge-mc1.21.jar",
+        "url": "https://cdn.modrinth.com/data/rOUBggPv/versions/81s25oaA/supermartijn642corelib-1.1.24-neoforge-mc1.21.jar",
+        "sha512": "df3844f66fef9f58ab41119bd2c86096e7ca613ecc646ff910344a25d891ebd3c50267bfe2057e18f96de3bdb3fc0e4ada5aec64d97fe12865b42700dc47bb97"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "supermartijn642corelib-1.1.24-neoforge-mc1.21.jar",
+        "url": "https://cdn.modrinth.com/data/rOUBggPv/versions/81s25oaA/supermartijn642corelib-1.1.24-neoforge-mc1.21.jar",
+        "sha512": "df3844f66fef9f58ab41119bd2c86096e7ca613ecc646ff910344a25d891ebd3c50267bfe2057e18f96de3bdb3fc0e4ada5aec64d97fe12865b42700dc47bb97"
+      },
+      "1_1_24_neoforge_mc1_21": {
+        "name": "supermartijn642corelib-1.1.24-neoforge-mc1.21.jar",
+        "url": "https://cdn.modrinth.com/data/rOUBggPv/versions/81s25oaA/supermartijn642corelib-1.1.24-neoforge-mc1.21.jar",
+        "sha512": "df3844f66fef9f58ab41119bd2c86096e7ca613ecc646ff910344a25d891ebd3c50267bfe2057e18f96de3bdb3fc0e4ada5aec64d97fe12865b42700dc47bb97"
+      }
+    }
+  }
+}

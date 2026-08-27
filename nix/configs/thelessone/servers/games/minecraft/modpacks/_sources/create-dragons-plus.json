@@ -1,0 +1,16 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "CreateDragonsPlus-1.11.7b.jar",
+        "url": "https://cdn.modrinth.com/data/dzb1a5WV/versions/zQDQbNih/CreateDragonsPlus-1.11.7b.jar",
+        "sha512": "4b86f50641b95532d8662e333b1805f0938bf49d1fd9ee7bd4920dca7a4c3707e11f95d44d6a6ce250acc0d534f08ffd2a7891308d587c4d63ce63be3377ae83"
+      },
+      "1_11_7b": {
+        "name": "CreateDragonsPlus-1.11.7b.jar",
+        "url": "https://cdn.modrinth.com/data/dzb1a5WV/versions/zQDQbNih/CreateDragonsPlus-1.11.7b.jar",
+        "sha512": "4b86f50641b95532d8662e333b1805f0938bf49d1fd9ee7bd4920dca7a4c3707e11f95d44d6a6ce250acc0d534f08ffd2a7891308d587c4d63ce63be3377ae83"
+      }
+    }
+  }
+}

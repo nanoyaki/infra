@@ -1,0 +1,11 @@
+{
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "netherportalfix-fabric-1.21.11-21.11.2.jar",
+        "url": "https://cdn.modrinth.com/data/nPZr02ET/versions/D79IUl9r/netherportalfix-fabric-1.21.11-21.11.2.jar",
+        "sha512": "9e385c30418e1eb80c2f74d1e319ed5bc45a19dfaa8408fba40b8afb6b4b49dc7a7951cb06fc3b4a1679bd818073300df56740ecee8224f47334e8dd6395bb49"
+      }
+    }
+  }
+}

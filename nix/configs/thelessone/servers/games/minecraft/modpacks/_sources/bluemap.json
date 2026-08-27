@@ -1,0 +1,85 @@
+{
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "bluemap-5.14-fabric.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/71GhBvzO/bluemap-5.14-fabric.jar",
+        "sha512": "97f35f20ff148efd8f33d8ae5f5c7c412e811d30176375187ff19750a006ba6f6327d6aa30f9142f0908684e9909874b40110137f78149783851df76f42f8ba0"
+      }
+    }
+  },
+  "neoforge": {
+    "1_21_5": {
+      "latest": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      },
+      "5_7_neoforge": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      }
+    },
+    "1_21_4": {
+      "latest": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      },
+      "5_7_neoforge": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      }
+    },
+    "1_21_3": {
+      "latest": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      },
+      "5_7_neoforge": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      }
+    },
+    "1_21_2": {
+      "latest": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      },
+      "5_7_neoforge": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      }
+    },
+    "1_21_1": {
+      "latest": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      },
+      "5_7_neoforge": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      },
+      "5_7_neoforge": {
+        "name": "bluemap-5.7-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/swbUV1cr/versions/8iJcPOHJ/bluemap-5.7-neoforge.jar",
+        "sha512": "7332afbcd2389f846e2142a0937a85aec1a7c90b02876d396c701bdaccae529ef918adadca7c5e472b2f0fce2e7a614f1832f1579f310de8a4ba9b0a97114335"
+      }
+    }
+  }
+}

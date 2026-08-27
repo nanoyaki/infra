@@ -1,0 +1,28 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "enchanted-vertical-slabs-2.3.2-neoforge-mc1.21.jar",
+        "url": "https://cdn.modrinth.com/data/TG1cHkRf/versions/g9Xtkxuf/enchanted-vertical-slabs-2.3.2-neoforge-mc1.21.jar",
+        "sha512": "a5dd0fd792edca52ecb41cbc6ec669faf30bf2100a22729c1d84d88e520498079c8d37c730f68d4548fbada3cb628df07f0ffb239b8cf9d2736be641fa09f8cb"
+      },
+      "2_3_2": {
+        "name": "enchanted-vertical-slabs-2.3.2-neoforge-mc1.21.jar",
+        "url": "https://cdn.modrinth.com/data/TG1cHkRf/versions/g9Xtkxuf/enchanted-vertical-slabs-2.3.2-neoforge-mc1.21.jar",
+        "sha512": "a5dd0fd792edca52ecb41cbc6ec669faf30bf2100a22729c1d84d88e520498079c8d37c730f68d4548fbada3cb628df07f0ffb239b8cf9d2736be641fa09f8cb"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "enchanted-vertical-slabs-2.3.2-neoforge-mc1.21.jar",
+        "url": "https://cdn.modrinth.com/data/TG1cHkRf/versions/g9Xtkxuf/enchanted-vertical-slabs-2.3.2-neoforge-mc1.21.jar",
+        "sha512": "a5dd0fd792edca52ecb41cbc6ec669faf30bf2100a22729c1d84d88e520498079c8d37c730f68d4548fbada3cb628df07f0ffb239b8cf9d2736be641fa09f8cb"
+      },
+      "2_3_2": {
+        "name": "enchanted-vertical-slabs-2.3.2-neoforge-mc1.21.jar",
+        "url": "https://cdn.modrinth.com/data/TG1cHkRf/versions/g9Xtkxuf/enchanted-vertical-slabs-2.3.2-neoforge-mc1.21.jar",
+        "sha512": "a5dd0fd792edca52ecb41cbc6ec669faf30bf2100a22729c1d84d88e520498079c8d37c730f68d4548fbada3cb628df07f0ffb239b8cf9d2736be641fa09f8cb"
+      }
+    }
+  }
+}

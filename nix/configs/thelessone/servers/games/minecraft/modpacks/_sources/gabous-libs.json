@@ -1,0 +1,16 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "gaboulibs-neoforge-1.8.7.jar",
+        "url": "https://cdn.modrinth.com/data/N8aGZtvj/versions/k5aZToKe/gaboulibs-neoforge-1.8.7.jar",
+        "sha512": "0cfde81fe14999755cb46ccdd104c71cdc3df4b286da79a43f7a5ab226a7a598eaad96c74c869f91838161f2dd90685b9645fb86f9187eae427c7da96ba33367"
+      },
+      "NeoForge_1_8_7": {
+        "name": "gaboulibs-neoforge-1.8.7.jar",
+        "url": "https://cdn.modrinth.com/data/N8aGZtvj/versions/k5aZToKe/gaboulibs-neoforge-1.8.7.jar",
+        "sha512": "0cfde81fe14999755cb46ccdd104c71cdc3df4b286da79a43f7a5ab226a7a598eaad96c74c869f91838161f2dd90685b9645fb86f9187eae427c7da96ba33367"
+      }
+    }
+  }
+}

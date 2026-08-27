@@ -1,0 +1,46 @@
+{
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "player-roles-1.8.0.jar",
+        "url": "https://cdn.modrinth.com/data/Rt1mrUHm/versions/yyg5IZNd/player-roles-1.8.0.jar",
+        "sha512": "4f9d6b024a4b35638a85384faa3393fa0cb0df3af12d1bdfe9ffced80ac29707a0412bbe6ca0ccf2141b794b68ff5e4f01f3cb4b20393a053efbd40fcb2c31cd"
+      }
+    },
+    "1_21_10": {
+      "latest": {
+        "name": "player-roles-1.8.0.jar",
+        "url": "https://cdn.modrinth.com/data/Rt1mrUHm/versions/yyg5IZNd/player-roles-1.8.0.jar",
+        "sha512": "4f9d6b024a4b35638a85384faa3393fa0cb0df3af12d1bdfe9ffced80ac29707a0412bbe6ca0ccf2141b794b68ff5e4f01f3cb4b20393a053efbd40fcb2c31cd"
+      }
+    },
+    "1_21_9": {
+      "latest": {
+        "name": "player-roles-1.8.0.jar",
+        "url": "https://cdn.modrinth.com/data/Rt1mrUHm/versions/yyg5IZNd/player-roles-1.8.0.jar",
+        "sha512": "4f9d6b024a4b35638a85384faa3393fa0cb0df3af12d1bdfe9ffced80ac29707a0412bbe6ca0ccf2141b794b68ff5e4f01f3cb4b20393a053efbd40fcb2c31cd"
+      }
+    },
+    "1_21_8": {
+      "latest": {
+        "name": "player-roles-1.8.0.jar",
+        "url": "https://cdn.modrinth.com/data/Rt1mrUHm/versions/yyg5IZNd/player-roles-1.8.0.jar",
+        "sha512": "4f9d6b024a4b35638a85384faa3393fa0cb0df3af12d1bdfe9ffced80ac29707a0412bbe6ca0ccf2141b794b68ff5e4f01f3cb4b20393a053efbd40fcb2c31cd"
+      }
+    },
+    "1_21_7": {
+      "latest": {
+        "name": "player-roles-1.8.0.jar",
+        "url": "https://cdn.modrinth.com/data/Rt1mrUHm/versions/yyg5IZNd/player-roles-1.8.0.jar",
+        "sha512": "4f9d6b024a4b35638a85384faa3393fa0cb0df3af12d1bdfe9ffced80ac29707a0412bbe6ca0ccf2141b794b68ff5e4f01f3cb4b20393a053efbd40fcb2c31cd"
+      }
+    },
+    "1_21_6": {
+      "latest": {
+        "name": "player-roles-1.8.0.jar",
+        "url": "https://cdn.modrinth.com/data/Rt1mrUHm/versions/yyg5IZNd/player-roles-1.8.0.jar",
+        "sha512": "4f9d6b024a4b35638a85384faa3393fa0cb0df3af12d1bdfe9ffced80ac29707a0412bbe6ca0ccf2141b794b68ff5e4f01f3cb4b20393a053efbd40fcb2c31cd"
+      }
+    }
+  }
+}

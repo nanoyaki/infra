@@ -58,49 +58,7 @@
           ]
         );
 
-        mods = map (mod: mod.latest) (
-          with pkgs.minecraft.fabric.v1_21_11;
-          [
-            # libraries
-            architectury-api
-            cloth-config
-            yacl
-            fabric-api
-            fabric-language-kotlin
-            balm
-            cicada
-
-            # velocity
-            fabricproxy-lite
-            simple-voice-chat
-
-            # optimization
-            vmp-fabric
-            lithium
-            scalablelux
-            krypton
-            c2me-fabric
-            ferrite-core
-
-            # qol
-            no-chat-reports
-            image2map
-            bluemap
-            bluemap-sign-markers
-            discord-mc-chat
-            netherportalfix
-            do-a-barrel-roll
-            servux # for litematica, i think
-            express-carts
-            carpet
-            rei
-
-            # admin
-            player-roles
-            ledger
-            invview
-          ]
-        );
+        mods = config.services.minecraft-servers.modpacks.smp.package;
 
         files."config/discord-mc-chat.json" = {
           format = formats.json { };
@@ -227,6 +185,58 @@
       thelessone.caddy.vHost.${dmn.smp-bluemap} = {
         proxy.port = prt.smp-bluemap;
         useTailnet = true;
+      };
+
+      services.minecraft-servers.modpacks.smp = {
+        mcVersion = "1.21.11";
+        loader = "fabric";
+
+        mods = {
+          # libraries
+          architectury-api = "latest";
+          cloth-config = "latest";
+          yacl = "latest";
+          fabric-api = "latest";
+          fabric-language-kotlin = "latest";
+          balm = "latest";
+          cicada = "latest";
+
+          # velocity
+          fabricproxy-lite = "latest";
+          simple-voice-chat = "latest";
+
+          # optimization
+          vmp-fabric = "latest";
+          lithium = "latest";
+          scalablelux = "latest";
+          krypton = "latest";
+          c2me-fabric = "latest";
+          ferrite-core = "latest";
+
+          # qol
+          no-chat-reports = "latest";
+          image2map = "latest";
+          bluemap = "latest";
+          bluemap-sign-markers = "latest";
+          discord-mc-chat = "latest";
+          netherportalfix = "latest";
+          do-a-barrel-roll = "latest";
+          servux = "latest"; # for litematica, i think
+          express-carts = "latest";
+          carpet = "latest";
+          rei = "latest";
+
+          # admin
+          player-roles = "latest";
+          ledger = "latest";
+          invview = "latest";
+        };
+
+        datapacks = {
+          dungeons-and-taverns = "latest";
+          mini-blocks-datapack = "latest";
+          joshs-more-foods = "latest";
+        };
       };
     };
 }

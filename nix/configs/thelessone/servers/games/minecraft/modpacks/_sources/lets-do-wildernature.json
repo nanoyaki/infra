@@ -1,0 +1,16 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "letsdo-wildernature-neoforge-1.1.5.jar",
+        "url": "https://cdn.modrinth.com/data/AAiRU4aQ/versions/hVASh9XY/letsdo-wildernature-neoforge-1.1.5.jar",
+        "sha512": "aae0fbf63605d1e9ccd59522b897b890b21dc9b3878b3bdaafb887c034ae31877b20a38e03887476314226410e3581b2b27e89a6024dcdad6d787b9295694c31"
+      },
+      "1_1_5": {
+        "name": "letsdo-wildernature-neoforge-1.1.5.jar",
+        "url": "https://cdn.modrinth.com/data/AAiRU4aQ/versions/hVASh9XY/letsdo-wildernature-neoforge-1.1.5.jar",
+        "sha512": "aae0fbf63605d1e9ccd59522b897b890b21dc9b3878b3bdaafb887c034ae31877b20a38e03887476314226410e3581b2b27e89a6024dcdad6d787b9295694c31"
+      }
+    }
+  }
+}

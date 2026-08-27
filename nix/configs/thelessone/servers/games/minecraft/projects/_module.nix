@@ -142,29 +142,12 @@ in
     fzzy-config = defaults;
     puzzles-lib = defaults;
     potentials = defaults;
-    rpl = defaults;
-    supermartijn642s-config-lib = defaults;
-    supermartijn642s-core-lib = defaults;
     txnilib = defaults;
-    yacl = {
-      mcVersion = [
-        "1.21.11"
-        "1.21.1"
-      ];
-      version = "latest";
-      loader = [
-        "neoforge"
-        "fabric"
-      ];
-    };
-    yungs-api = defaults;
-    zeta = defaults;
     owo-lib = defaults;
     badpackets = defaults;
     patchouli = defaults;
     titanium = defaults;
     "put-a-plug-in-it!" = defaults;
-    sable = defaults;
 
     # general
     alloy-smelter = defaults;
@@ -181,22 +164,13 @@ in
     };
     leaves-be-gone = defaults;
     modern-industrialization = defaults;
-    polymorph = defaults;
-    quark = defaults;
-    rechiseled = defaults;
-    reconnectible-chains = defaults;
-    ribbits = defaults;
-    serene-seasons = defaults;
-    serene-seasons-plus = defaults;
     simply-swords = defaults;
     sound-physics-remastered = defaults;
-    stone-zone = defaults;
     towns-and-towers = defaults;
     xaeros-minimap = defaults;
     xaeros-world-map = defaults;
     jade = defaults;
     jade-addons-forge = defaults;
-    storagedrawers = defaults;
     industrial-foregoing = defaults;
     oritech = defaults;
     camerapture = defaults;
@@ -206,12 +180,9 @@ in
     express-carts = fabric-1-21-11;
 
     # sophisticated
-    sophisticated-backpacks = defaults;
     sophisticated-storage = defaults;
-    sophisticated-core = defaults;
     sophisticated-storage-in-motion = defaults;
     sophisticated-storage-create-integration = defaults;
-    sophisticated-backpacks-create-integration = defaults;
 
     # stellaris
     stellaris = defaults;
@@ -219,9 +190,7 @@ in
     create-tfmg = defaults;
 
     # world gen
-    tectonic = defaults;
     terralith-restoned = defaults;
-    terralith = defaults;
 
     # emi
     emi = defaults;
@@ -330,10 +299,8 @@ in
     create-polymer = defaults;
     create-threaded-trains = defaults;
     create-stellaris = defaults;
-    rechiseled-create = defaults;
     create-fd-dough = defaults;
     create-confectionery = defaults;
-    storage-drawers-create-compat = defaults;
     create-stock-bridge = defaults;
     create-jetpack = defaults;
     cccbridge = defaults;
@@ -833,6 +800,166 @@ in
       "latest"
       # mei
       "1.2.14"
+    ];
+    platform = mei "1.3.3";
+    polymorph = mei [
+      # default
+      "latest"
+      # mei
+      "1.1.0+1.21.1"
+    ];
+    mod-primal = mei "1.1.6";
+    quark = mei [
+      # default
+      "latest"
+      # mei
+      "4.1-482"
+    ];
+    rechiseled = mei [
+      # default
+      "latest"
+      # mei
+      "1.2.5"
+    ];
+    rechiseled-create = mei [
+      # default
+      "latest"
+      #mei
+      "1.1.1"
+    ];
+    reconnectible-chains = mei [
+      # default
+      "latest"
+      # mei
+      "2.3.2"
+    ];
+    resourceful-lib = mei "3.0.12";
+    ribbits = mei [
+      # default
+      "latest"
+      # mei
+      "1.21.1-NeoForge-4.1.6"
+    ];
+    rpl = mei [
+      # default
+      "latest"
+      # mei
+      "2.1.2"
+    ];
+    sable = mei [
+      # default
+      "latest"
+      # mei
+      "2.0.5"
+    ];
+    serene-seasons = mei [
+      # default
+      "latest"
+      # mei
+      "10.1.0.3"
+    ];
+    serene-seasons-plus = mei [
+      # default
+      "latest"
+      # mei
+      "5.1.1"
+    ];
+    sophisticated-backpacks = mei [
+      # default
+      "latest"
+      # mei
+      "3.25.78"
+    ];
+    sophisticated-backpacks-create-integration = mei [
+      # default
+      "latest"
+      # mei
+      "0.1.8"
+    ];
+    sophisticated-core = mei [
+      # default
+      "latest"
+      # mei
+      "1.4.90"
+    ];
+    stone-zone = mei [
+      # default
+      "latest"
+      # mei
+      "1.21-2.11.17"
+    ];
+    storagedrawers = mei [
+      # default
+      "latest"
+      # mei
+      "13.11.4"
+    ];
+    storage-drawers-create-compat = mei [
+      # default
+      "latest"
+      # mei
+      "1.0.1"
+    ];
+    strut-your-stuff = mei "1.3.0";
+    supermartijn642s-config-lib = mei [
+      # default
+      "latest"
+      # mei
+      "1.1.8"
+    ];
+    supermartijn642s-core-lib = mei [
+      # default
+      "latest"
+      # mei
+      "1.1.24"
+    ];
+    supplementaries = mei "1.21.1-3.9.3";
+    tectonic = mei [
+      # default
+      "latest"
+      # mei
+      "3.0.26"
+    ];
+    terrablender = mei "4.1.0.8";
+    terralith = mei [
+      # default
+      "latest"
+      # mei
+      "2.6.2"
+    ];
+    tide = mei "2.1.1";
+    twigs = mei "3.1.1";
+    underground-village = (mei "2.0") // {
+      id = "underground-village%2C-stoneholm";
+    };
+    vanillabackport = mei "1.1.7.10";
+    yacl = {
+      mcVersion = [
+        "1.21.11"
+        "1.21.1"
+      ];
+      version = [
+        # default
+        "latest"
+        # mei
+        "3.8.2+1.21.1-neoforge"
+      ];
+      loader = [
+        "neoforge"
+        "fabric"
+      ];
+    };
+    yungs-api = mei [
+      # default
+      "latest"
+      # mei
+      "1.21.1-NeoForge-5.1.8"
+    ];
+    zeta = mei [
+      # default
+      "latest"
+      # mei
+      "1.1-40"
     ];
   };
 }

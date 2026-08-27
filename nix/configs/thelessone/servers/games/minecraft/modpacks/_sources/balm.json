@@ -1,0 +1,11 @@
+{
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "balm-fabric-1.21.11-21.11.2.jar",
+        "url": "https://cdn.modrinth.com/data/MBAkmtvl/versions/B70bHBzu/balm-fabric-1.21.11-21.11.2.jar",
+        "sha512": "fa9aaa861c139aa7a539aaf7f8c34b9ab222eec6a0c5103920f9492a3724cee6ae3f6ce9b57f14d7c5b760d676d52c875b391825834e6edb2b01bd60ccf02bda"
+      }
+    }
+  }
+}

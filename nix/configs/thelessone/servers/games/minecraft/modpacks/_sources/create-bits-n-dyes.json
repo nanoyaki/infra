@@ -1,0 +1,16 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "bits_n_dyes-1.1.2.jar",
+        "url": "https://cdn.modrinth.com/data/nx0pZCi6/versions/3zsDT52a/bits_n_dyes-1.1.2.jar",
+        "sha512": "2dbf0e3d7cfdbfec6ac85aac4287a23b4ce4f8b55e9f268c1b1b1a5a5ff7dc61cb6d7f8419a491b85c294c701c91495ea682d1eaf0e97948d31f374f268676c9"
+      },
+      "1_1_2": {
+        "name": "bits_n_dyes-1.1.2.jar",
+        "url": "https://cdn.modrinth.com/data/nx0pZCi6/versions/3zsDT52a/bits_n_dyes-1.1.2.jar",
+        "sha512": "2dbf0e3d7cfdbfec6ac85aac4287a23b4ce4f8b55e9f268c1b1b1a5a5ff7dc61cb6d7f8419a491b85c294c701c91495ea682d1eaf0e97948d31f374f268676c9"
+      }
+    }
+  }
+}

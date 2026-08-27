@@ -16,9 +16,11 @@
       prt.minecraft-server-creative-vc = 24455;
       dmn.creative = "creative.theless.one";
 
-      systemd.services.minecraft-server-smp-creative.wantedBy = lib.mkForce [ "server-services.target" ];
+      systemd.services = lib.mkIf config.services.minecraft-servers'.servers.smp-creative.enable {
+        minecraft-server-smp-creative.wantedBy = lib.mkForce [ "server-services.target" ];
+      };
       services.minecraft-servers'.servers.smp-creative = {
-        enable = true;
+        enable = false;
         package = pkgs.fabricServers.fabric-1_21_11;
         jvmOpts = "-Xms8G -Xmx8G";
 

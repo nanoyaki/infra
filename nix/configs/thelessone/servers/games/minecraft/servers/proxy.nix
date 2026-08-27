@@ -21,7 +21,7 @@
         autoStart = true;
         package = pkgs.velocityServers.velocity;
         packageOverrides.jre_headless = pkgs.zulu25;
-        jvmOpts = "-Xms1G -Xmx1G";
+        jvmOpts = "-Xms1G -Xmx1G -Dvelocity.max-plugin-message-payload-size=1624985";
         stopCommand = "end";
         useDefaults = false;
 
@@ -51,20 +51,22 @@
 
             servers = {
               smp = "127.0.0.1:${toString prt.minecraft-server-smp}";
-              creative = "127.0.0.1:${toString prt.minecraft-server-creative}";
+              # creative = "127.0.0.1:${toString prt.minecraft-server-creative}";
               # lobby = "127.0.0.1:${toString prt.minecraft-server-lobby}";
-              flat = "127.0.0.1:${toString prt.minecraft-server-flat}";
-              modded = "127.0.0.1:${toString prt.minecraft-server-modded}";
+              # flat = "127.0.0.1:${toString prt.minecraft-server-flat}";
+              # modded = "127.0.0.1:${toString prt.minecraft-server-modded}";
+              chloe = "127.0.0.1:${toString prt.minecraft-server-chloe}";
 
               try = [ "smp" ];
             };
 
             forced-hosts = {
               ${dmn.self} = [ "smp" ];
-              ${dmn.creative} = [ "creative" ];
+              # ${dmn.creative} = [ "creative" ];
               # ${dmn.lobby} = [ "lobby" ];
-              ${dmn.flat} = [ "flat" ];
-              ${dmn.modded} = [ "modded" ];
+              # ${dmn.flat} = [ "flat" ];
+              # ${dmn.modded} = [ "modded" ];
+              ${dmn.chloe} = [ "chloe" ];
             };
 
             query.enabled = false;
@@ -74,5 +76,8 @@
         files."forwarding.secret" = pkgs.writeText "forwarding.secret" "@PROXY_SECRET@";
         files."server-icon.png" = "${pkgs.thelessone-minecraft-logomark}/icon.png";
       };
+
+      networking.firewall.allowedTCPPorts = [ prt.minecraft ];
+      networking.firewall.allowedUDPPorts = [ prt.minecraft ];
     };
 }

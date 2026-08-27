@@ -1,0 +1,37 @@
+{
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "cloth-config-21.11.150-fabric.jar",
+        "url": "https://cdn.modrinth.com/data/9s6osm5g/versions/EwqYsm4K/cloth-config-21.11.150-fabric.jar",
+        "sha512": "0d3e79491bd832316a8f7041d9d06399fcd18ebaba487cdc4113e8fef151d010f9cc911947373b193f273214c0f49880dd11f98b15bc5b01dbad8c05f6250ed2"
+      }
+    }
+  },
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "cloth-config-15.0.140-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/9s6osm5g/versions/izKINKFg/cloth-config-15.0.140-neoforge.jar",
+        "sha512": "aaf9b010955b8cd294e5a92f069985b18729fd5e2cf22d351f1dff9680f15488688803ec41e77e941cbde130ceb535014ca4c868047d80ab69c2d508e216654d"
+      },
+      "15_0_140_neoforge": {
+        "name": "cloth-config-15.0.140-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/9s6osm5g/versions/izKINKFg/cloth-config-15.0.140-neoforge.jar",
+        "sha512": "aaf9b010955b8cd294e5a92f069985b18729fd5e2cf22d351f1dff9680f15488688803ec41e77e941cbde130ceb535014ca4c868047d80ab69c2d508e216654d"
+      }
+    },
+    "1_21": {
+      "latest": {
+        "name": "cloth-config-15.0.140-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/9s6osm5g/versions/izKINKFg/cloth-config-15.0.140-neoforge.jar",
+        "sha512": "aaf9b010955b8cd294e5a92f069985b18729fd5e2cf22d351f1dff9680f15488688803ec41e77e941cbde130ceb535014ca4c868047d80ab69c2d508e216654d"
+      },
+      "15_0_140_neoforge": {
+        "name": "cloth-config-15.0.140-neoforge.jar",
+        "url": "https://cdn.modrinth.com/data/9s6osm5g/versions/izKINKFg/cloth-config-15.0.140-neoforge.jar",
+        "sha512": "aaf9b010955b8cd294e5a92f069985b18729fd5e2cf22d351f1dff9680f15488688803ec41e77e941cbde130ceb535014ca4c868047d80ab69c2d508e216654d"
+      }
+    }
+  }
+}

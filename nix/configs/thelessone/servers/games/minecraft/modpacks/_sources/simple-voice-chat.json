@@ -1,0 +1,11 @@
+{
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "voicechat-fabric-1.21.11-2.6.6.jar",
+        "url": "https://cdn.modrinth.com/data/9eGKb6K1/versions/u24gyVpO/voicechat-fabric-1.21.11-2.6.6.jar",
+        "sha512": "76c3ba9f08e6c269296efd17956c0ef0d2be9b9de458866134cfc575a1e3ddf19b7381a55478891ea55c4fa89b5c8507fc13d586d8357fbc6c9384e43a41405a"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "bits_n_bobs-2.2.7.jar",
+        "url": "https://cdn.modrinth.com/data/T8bvmqVZ/versions/vkYOCznD/bits_n_bobs-2.2.7.jar",
+        "sha512": "b8b73a196ca04e2a9dec9318e4f73396199639996511cbf90cccb5e0762bd97710f3a54b604884c6ee493ff3d3101109d20030f087199729491fe2f531698089"
+      },
+      "2_2_7": {
+        "name": "bits_n_bobs-2.2.7.jar",
+        "url": "https://cdn.modrinth.com/data/T8bvmqVZ/versions/vkYOCznD/bits_n_bobs-2.2.7.jar",
+        "sha512": "b8b73a196ca04e2a9dec9318e4f73396199639996511cbf90cccb5e0762bd97710f3a54b604884c6ee493ff3d3101109d20030f087199729491fe2f531698089"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "neoforge": {
+    "1_21_1": {
+      "latest": {
+        "name": "create-aeronautics-lift-patch-1.0.0.jar",
+        "url": "https://cdn.modrinth.com/data/wEWnF0xx/versions/4wzJbttd/create-aeronautics-lift-patch-1.0.0.jar",
+        "sha512": "0f04a1507d85d1899c617f81fde8ec40ede11916efb98b0cac7637e7119fc94f5e8718c987467bb9ae337db9aa0bfd2828b0ce3e1430fb37ba9c7e7307c3facb"
+      },
+      "1_0_0": {
+        "name": "create-aeronautics-lift-patch-1.0.0.jar",
+        "url": "https://cdn.modrinth.com/data/wEWnF0xx/versions/4wzJbttd/create-aeronautics-lift-patch-1.0.0.jar",
+        "sha512": "0f04a1507d85d1899c617f81fde8ec40ede11916efb98b0cac7637e7119fc94f5e8718c987467bb9ae337db9aa0bfd2828b0ce3e1430fb37ba9c7e7307c3facb"
+      }
+    }
+  }
+}

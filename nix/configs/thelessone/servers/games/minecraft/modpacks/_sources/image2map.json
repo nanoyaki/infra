@@ -1,0 +1,34 @@
+{
+  "quilt": {
+    "1_21_11-rc3": {
+      "latest": {
+        "name": "image2map-0.12.0+1.21.11.jar",
+        "url": "https://cdn.modrinth.com/data/13RpG7dA/versions/GFJiLICt/image2map-0.12.0%2B1.21.11.jar",
+        "sha512": "8f2c6916f4048c353219bb6c8c4309571cb14679cb1dd1f67b939898a663dca4bd22c5e7871d350b8d4d64cc07dd8aa1cdf67aa404c34cd3b3bb11a94fb705e7"
+      }
+    },
+    "1_21_11": {
+      "latest": {
+        "name": "image2map-0.12.0+1.21.11.jar",
+        "url": "https://cdn.modrinth.com/data/13RpG7dA/versions/GFJiLICt/image2map-0.12.0%2B1.21.11.jar",
+        "sha512": "8f2c6916f4048c353219bb6c8c4309571cb14679cb1dd1f67b939898a663dca4bd22c5e7871d350b8d4d64cc07dd8aa1cdf67aa404c34cd3b3bb11a94fb705e7"
+      }
+    }
+  },
+  "fabric": {
+    "1_21_11-rc3": {
+      "latest": {
+        "name": "image2map-0.12.0+1.21.11.jar",
+        "url": "https://cdn.modrinth.com/data/13RpG7dA/versions/GFJiLICt/image2map-0.12.0%2B1.21.11.jar",
+        "sha512": "8f2c6916f4048c353219bb6c8c4309571cb14679cb1dd1f67b939898a663dca4bd22c5e7871d350b8d4d64cc07dd8aa1cdf67aa404c34cd3b3bb11a94fb705e7"
+      }
+    },
+    "1_21_11": {
+      "latest": {
+        "name": "image2map-0.12.0+1.21.11.jar",
+        "url": "https://cdn.modrinth.com/data/13RpG7dA/versions/GFJiLICt/image2map-0.12.0%2B1.21.11.jar",
+        "sha512": "8f2c6916f4048c353219bb6c8c4309571cb14679cb1dd1f67b939898a663dca4bd22c5e7871d350b8d4d64cc07dd8aa1cdf67aa404c34cd3b3bb11a94fb705e7"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "quilt": {
+    "1_21_11": {
+      "latest": {
+        "name": "ledger-1.3.18.jar",
+        "url": "https://cdn.modrinth.com/data/LVN9ygNV/versions/d8PpCdaP/ledger-1.3.18.jar",
+        "sha512": "11095728b3db8d49c729cb143cc17f22984a7d6140307a17a96a36325f899036bba331d5e5a2a59739b10ccb9275a9ea70704c3cb330c28648480c7e5de447d0"
+      }
+    }
+  },
+  "fabric": {
+    "1_21_11": {
+      "latest": {
+        "name": "ledger-1.3.18.jar",
+        "url": "https://cdn.modrinth.com/data/LVN9ygNV/versions/d8PpCdaP/ledger-1.3.18.jar",
+        "sha512": "11095728b3db8d49c729cb143cc17f22984a7d6140307a17a96a36325f899036bba331d5e5a2a59739b10ccb9275a9ea70704c3cb330c28648480c7e5de447d0"
+      }
+    }
+  }
+}

@@ -62,6 +62,8 @@
       thelessone-scpsl
       thelessone-valheim
       thelessone-minecraft
+      thelessone-minecraft-modpacks
+      thelessone-minecraft-chloe
       thelessone-minecraftDefaults
       thelessone-minecraftWhitelist
       thelessone-minecraftBanned
