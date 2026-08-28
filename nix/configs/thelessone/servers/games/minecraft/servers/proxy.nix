@@ -21,7 +21,12 @@
         autoStart = true;
         package = pkgs.velocityServers.velocity;
         packageOverrides.jre_headless = pkgs.zulu25;
-        jvmOpts = "-Xms1G -Xmx1G -Dvelocity.max-plugin-message-payload-size=1624985";
+        jvmOpts = lib.concatStringsSep " " [
+          "-Xms1G"
+          "-Xmx1G"
+          "-Dvelocity.max-plugin-message-payload-size=1624985"
+          "-Dvelocity.max-known-packs=196"
+        ];
         stopCommand = "end";
         useDefaults = false;
 
@@ -70,6 +75,12 @@
             };
 
             query.enabled = false;
+
+            advanced = {
+              tcp-fast-open = true;
+              connection-timeout = 60000;
+              read-timeout = 60000;
+            };
           };
         };
 

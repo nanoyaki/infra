@@ -10,6 +10,8 @@
     {
       sec = {
         proxy.sopsFile = ./secrets.yaml;
+        proxy.owner = "minecraft";
+
         bot-token.sopsFile = ./secrets.yaml;
         smp-ledger-postgres-password.sopsFile = ./secrets.yaml;
       };
