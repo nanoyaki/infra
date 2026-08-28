@@ -299,6 +299,13 @@
           # Server stuff
           bluemap = "5.7-neoforge";
           neovelocity = "1.2.6";
+          krypton-fnp = "0.2.28.1-1.21.1";
+          ferrite-core = "7.0.3-neoforge";
+          lithium = "mc1.21.1-0.15.4-neoforge";
+          modernfix = "5.27.20+mc1.21.1";
+          packet-fixer = "3.3.1";
+          servercore = "1.5.19+1.21.1";
+          scalablelux = "0.3.0-alpha.0.8+1.21.1";
         };
       };
     };
