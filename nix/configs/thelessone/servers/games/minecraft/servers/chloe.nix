@@ -10,14 +10,12 @@
     let
       inherit (pkgs) formats;
       inherit (config.services.minecraft-servers.managementSystem.systemd-socket) stdinSocket;
-      inherit (config) prt dmn sec;
+      inherit (config) prt sec;
     in
 
     {
       prt.minecraft-server-chloe = 30056;
       prt.chloe-bluemap = 8036;
-
-      dmn.chloe = "chloe.theless.one";
 
       systemd.services = lib.mkIf config.services.minecraft-servers'.servers.chloe.enable {
         minecraft-server-chloe.wantedBy = lib.mkForce [ "server-services.target" ];
@@ -144,9 +142,14 @@
         };
       };
 
-      thelessone.caddy.vHost.${dmn.chloe} = {
+      thelessone.caddy.vHost."chloe-map.theless.one" = {
         proxy.port = prt.chloe-bluemap;
         useTailnet = true;
+      };
+
+      networking.firewall.interfaces.tailscale0 = {
+        allowedTCPPorts = [ prt.minecraft-server-chloe ];
+        allowedUDPPorts = [ prt.minecraft-server-chloe ];
       };
 
       services.minecraft-servers.modpacks.chloe = {
@@ -305,7 +308,6 @@
           modernfix = "5.27.20+mc1.21.1";
           packet-fixer = "3.3.1";
           servercore = "1.5.19+1.21.1";
-          scalablelux = "0.3.0-alpha.0.8+1.21.1";
         };
       };
     };

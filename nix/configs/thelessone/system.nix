@@ -67,7 +67,6 @@
       thelessone-minecraftDefaults
       thelessone-minecraftWhitelist
       thelessone-minecraftBanned
-      thelessone-minecraftProxy
       thelessone-minecraftSmp
       thelessone-minecraftCreative
       thelessone-minecraftFlat

@@ -66,6 +66,14 @@
             ];
           }
           {
+            src = [ "tag:server" ];
+            dst = [ "tag:server" ];
+            ip = [
+              "30050"
+              "30056"
+            ];
+          }
+          {
             src = [
               "contact@nanoyaki.space"
               "tag:hana"

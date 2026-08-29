@@ -51,7 +51,7 @@
           + " -XX:ThreadPriorityPolicy=1 -XX:AllocatePrefetchStyle=3";
 
         serverProperties = {
-          server-ip = "127.0.0.1";
+          server-ip = "0.0.0.0";
 
           spawn-protection = 0;
           view-distance = 12;

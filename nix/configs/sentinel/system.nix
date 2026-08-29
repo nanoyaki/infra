@@ -26,6 +26,7 @@
       sentinel-tangled
       sentinel-caddy
       sentinel-tailscale
+      sentinel-minecraft
     ];
   };
 

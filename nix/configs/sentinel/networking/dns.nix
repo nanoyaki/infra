@@ -49,6 +49,29 @@
         registrar = "porkbun-thelessone";
 
         cname.de01.value = "nanoyaki.space.";
+
+        srv = [
+          {
+            service = "minecraft";
+            protocol = "tcp";
+            port = 25565;
+            target = "de01.theless.one.";
+          }
+          {
+            subdomain = "smp";
+            service = "minecraft";
+            protocol = "tcp";
+            port = 25565;
+            target = "de01.theless.one.";
+          }
+          {
+            subdomain = "chloe";
+            service = "minecraft";
+            protocol = "tcp";
+            port = 25565;
+            target = "de01.theless.one.";
+          }
+        ];
       };
 
       programs.dnscontrol.domains."nanoyaki.space" = {

@@ -187,6 +187,11 @@
         useTailnet = true;
       };
 
+      networking.firewall.interfaces.tailscale0 = {
+        allowedTCPPorts = [ prt.minecraft-server-smp ];
+        allowedUDPPorts = [ prt.minecraft-server-smp ];
+      };
+
       services.minecraft-servers.modpacks.smp = {
         mcVersion = "1.21.11";
         loader = "fabric";
