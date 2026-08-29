@@ -39,5 +39,6 @@
       aneyiu = "fc23d182-5bbb-4349-9178-9b818249fc40";
       ash3781 = "582cec86-22e9-447f-8d69-65c4f9363534";
       CyberTari = "dc95f350-3f2f-4dc6-bc34-ae8e2b515c90";
+      Vanillacoke00 = "568fa0ce-fa11-466a-bfd7-fa58604e92e8";
     };
 }
