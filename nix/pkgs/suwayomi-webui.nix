@@ -10,9 +10,10 @@
           lib,
           stdenvNoCC,
           fetchFromGitHub,
-          fetchYarnDeps,
-          yarnConfigHook,
-          yarnInstallHook,
+          fetchPnpmDeps,
+          pnpm,
+          pnpmConfigHook,
+          pnpmBuildHook,
           nodejs_24,
           husky,
           tsx,
@@ -20,8 +21,8 @@
 
         stdenvNoCC.mkDerivation (finalAttrs: {
           pname = "suwayomi-webui";
-          version = "20260509.01";
-          revision = "3147";
+          version = "20260726.01";
+          revision = "3379";
 
           __structuredAttrs = true;
           strictDeps = true;
@@ -30,17 +31,20 @@
             owner = "Suwayomi";
             repo = "Suwayomi-WebUI";
             tag = "v${finalAttrs.version}";
-            sha256 = "sha256-CA3ttZRgUF8ISfpYyFePvP9vx17a0+ls0Bqz211qHzs=";
+            sha256 = "sha256-1eYVgoYSBX2ZHTZUXi0TN17m1UresEfdTc4Sq8rykbU=";
           };
 
-          yarnOfflineCache = fetchYarnDeps {
-            yarnLock = finalAttrs.src + "/yarn.lock";
-            hash = "sha256-GAvK4ESkbWSsCbMeC0vOekGGbzaj2X8MVhFiLk/sAV8=";
+          pnpmDeps = fetchPnpmDeps {
+            inherit (finalAttrs) pname version src;
+            inherit pnpm;
+            fetcherVersion = 4;
+            hash = "sha256-tbaNDI2kJKwriZGaSgqQAKPAB8ser53Nc6J4Jp6aqFY=";
           };
 
           nativeBuildInputs = [
-            yarnConfigHook
-            yarnInstallHook
+            pnpmConfigHook
+            pnpmBuildHook
+            pnpm
 
             nodejs_24
             husky
@@ -50,20 +54,17 @@
           postPatch = ''
             substituteInPlace package.json \
               --replace-fail "project" "suwayomi-webui"
-          '';
-
-          buildPhase = ''
-            runHook preBuild
-
-            yarn --offline setup-env-files
 
             patchShebangs node_modules/vite/bin/vite.js
-            node_modules/vite/bin/vite.js build
+          '';
 
+          preBuild = ''
+            pnpm setup-env-files
+          '';
+
+          postBuild = ''
             echo "r${finalAttrs.revision}" > build/revision
-            yarn --offline build-md5
-
-            runHook postBuild
+            pnpm build-md5
           '';
 
           installPhase = ''

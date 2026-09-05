@@ -1,5 +1,3 @@
-{ preferNewerOverlay, ... }:
-
 {
   flake.nixosModules.sumire-pocket-id =
     { lib, config, ... }:
@@ -59,37 +57,4 @@
         };
       })
     ];
-
-  perSystem =
-    { pkgs, ... }:
-
-    {
-      packages.pocket-id = pkgs.pocket-id.overrideAttrs (
-        finalAttrs: prevAttrs: {
-          version = "2.14.0";
-
-          src = pkgs.fetchFromGitHub {
-            owner = "pocket-id";
-            repo = "pocket-id";
-            tag = "v${finalAttrs.version}";
-            hash = "sha256-4BtVTfjXu/V9l4L2ucabpQXjrTBEB4cTrO4tb/oE3YU=";
-          };
-
-          frontend = prevAttrs.frontend.overrideAttrs (
-            finalAttrs: _: {
-              pnpmDeps = pkgs.fetchPnpmDeps {
-                inherit (finalAttrs) pname version src;
-                pnpm = pkgs.pnpm_10;
-                fetcherVersion = 4;
-                hash = "sha256-KswQQVz2Xw/dG21134SObM3mQAKP2IHc+UM/BX/dvrI=";
-              };
-            }
-          );
-
-          vendorHash = "sha256-SrpUgyruwbIJZ1HB6sqidbGAwzBOqKcJzR+cH9E0siw=";
-        }
-      );
-    };
-
-  flake.overlays.pocket-id = preferNewerOverlay "pocket-id";
 }

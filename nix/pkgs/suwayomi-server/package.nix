@@ -27,7 +27,7 @@
 
         stdenvNoCC.mkDerivation (finalAttrs: {
           pname = "suwayomi-server";
-          version = "2.3.2238";
+          version = "2.3.2243";
 
           strictDeps = true;
 
@@ -35,7 +35,7 @@
             owner = "Suwayomi";
             repo = "Suwayomi-Server";
             tag = "v${finalAttrs.version}";
-            hash = "sha256-VEFmHj0DTU6qN/uB6HvOFbz8Scjy6hzT8YpUTLA7MGs=";
+            hash = "sha256-QKI014c7ktf6OGB1pd7gKzVGiqBGSZjpMecn2Adu3Ik=";
           };
 
           patches = [

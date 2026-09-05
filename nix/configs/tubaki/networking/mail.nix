@@ -1,4 +1,4 @@
-{ preferNewerOverlay, inputs, ... }:
+{ withSystem, inputs, ... }:
 
 {
   flake.nixosModules.tubaki-mail =
@@ -210,17 +210,18 @@
 
     {
       packages.fail2ban = pkgs.fail2ban.overrideAttrs {
-        version = "1.1.1";
-        src = pkgs.fetchFromGitHub {
-          owner = "fail2ban";
-          repo = "fail2ban";
-          rev = "1e12c5a7c78efc00f7b9146d8f9c4e92fc19e5c1";
-          hash = "sha256-K1Rzt5S/BHIqDlwC6hKRMsUdc2ShyvPpAjMUq5Yn/uk=";
-        };
-
         patches = [ ./roundcube.patch ];
       };
     };
 
-  flake.overlays.fail2ban = preferNewerOverlay "fail2ban";
+  flake.overlays.fail2ban =
+    _: prev:
+
+    withSystem prev.stdenv.hostPlatform.system (
+      { config, ... }:
+
+      {
+        inherit (config.packages) fail2ban;
+      }
+    );
 }

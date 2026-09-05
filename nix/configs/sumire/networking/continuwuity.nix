@@ -58,15 +58,15 @@
             # Do not explicitly block federation on this port?
             # not path /_matrix/federation* /_matrix/key*
           }
-          
+
           @frontend path /home
           handle @frontend {
             rewrite /
             reverse_proxy unix/@continuwuity
           }
-          
+
           handle @https {
-            reverse_proxy unix/@continuwuity   
+            reverse_proxy unix/@continuwuity
           }
         }
 

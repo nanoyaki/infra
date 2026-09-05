@@ -14,11 +14,11 @@
             upstreamVersion = prev.${package}.version or "0.0.0";
           in
 
-          if prev.lib.versionOlder overlayVersion upstreamVersion then
+          if prev.lib.versionAtLeast upstreamVersion overlayVersion then
             builtins.warn (
               "Not using the defined overlay for package '${package}' since "
-              + "it's version (${overlayVersion}) is older than the upstream "
-              + "version (${upstreamVersion})"
+              + "it's version (${overlayVersion}) is either older or the same as "
+              + "the upstream version (${upstreamVersion})"
             ) prev.${package}
           else
             config.packages.${package};
