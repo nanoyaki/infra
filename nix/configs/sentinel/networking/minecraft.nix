@@ -84,7 +84,11 @@
               };
 
               query.enabled = false;
-              advanced.tcp-fast-open = true;
+              advanced = {
+                tcp-fast-open = true;
+                connection-timeout = 30000;
+                read-timeout = 30000;
+              };
             };
           };
 

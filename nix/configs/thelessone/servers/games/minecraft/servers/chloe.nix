@@ -235,7 +235,6 @@
           farmers-delight = "1.21.1-1.3.3";
           farmers-knives = "1.21.1-4.2.0";
           forgified-fabric-api = "0.116.15+2.3.5+1.21.1";
-          gabous-libs = "NeoForge-1.8.7";
           geckolib = "4.9.2";
           glitchcore = "2.1.0.2";
           glodium = "1.21-2.2-neoforge";
@@ -273,7 +272,6 @@
           rpl = "2.1.2";
           sable = "2.0.5+mc1.21.1";
           serene-seasons = "10.1.0.3";
-          serene-seasons-plus = "NeoForge-1.21.1-5.1.1";
           slice-and-dice = "4.3.3";
           sophisticated-backpacks = "1.21.1-3.25.78.2107";
           sophisticated-backpacks-create-integration = "1.21.1-0.1.8.134";

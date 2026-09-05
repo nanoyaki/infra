@@ -2,14 +2,16 @@
 
 {
   flake.nixosModules.thelessone-scpsl =
-    { lib, ... }:
+    { lib, config, ... }:
 
     {
       imports = [ inputs.nix-scpsl.nixosModules.default ];
 
-      systemd.services.scpsl-server-7777.wantedBy = lib.mkForce [ "server-services.target" ];
+      systemd.services = lib.mkIf config.services.scpsl-server.enable {
+        scpsl-server-7777.wantedBy = lib.mkForce [ "server-services.target" ];
+      };
       services.scpsl-server = {
-        enable = true;
+        enable = builtins.warn "update scpsl" false;
         eula = true;
         openFirewall = true;
 
