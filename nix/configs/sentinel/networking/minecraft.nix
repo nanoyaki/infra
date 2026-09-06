@@ -48,10 +48,11 @@
           managementSystem.tmux.enable = false;
           managementSystem.systemd-socket.enable = true;
 
-          symlinks."velocity.toml" = {
+          # files, so it doesn't kill itself when migrating
+          files."velocity.toml" = {
             format = pkgs.formats.toml { };
             value = {
-              config-version = "2.8";
+              config-version = "2.9";
               bind = "0.0.0.0:${toString prt.minecraft}";
               motd =
                 "<#dce0e8>T</#dce0e8><#8caaee>h</#8caaee><#dce0e8>e</#dce0e8>"
@@ -64,9 +65,16 @@
               player-info-forwarding-mode = "MODERN";
               forwarding-secret-file = "forwarding.secret";
               kick-existing-players = true;
-              ping-passthrough = "DISABLED";
               sample-players-in-ping = true;
               enable-player-address-logging = false;
+
+              ping-passthrough = {
+                version = true;
+                players = true;
+                description = true;
+                favicon = true;
+                modinfo = true;
+              };
 
               forced-hosts = {
                 "theless.one" = [ "smp" ];
@@ -86,8 +94,8 @@
               query.enabled = false;
               advanced = {
                 tcp-fast-open = true;
-                connection-timeout = 30000;
-                read-timeout = 30000;
+                connection-timeout = 60000;
+                read-timeout = 60000;
               };
             };
           };

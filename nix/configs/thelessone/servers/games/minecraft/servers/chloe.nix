@@ -58,6 +58,14 @@
 
         datapacks = null;
 
+        files."config/packetfixer.properties" = {
+          format = formats.javaProperties { };
+          value = {
+            readTimeout = "60";
+            loginTimeout = "60";
+          };
+        };
+
         symlinks = {
           "config/neovelocity-common.toml" = {
             format = formats.toml { };
