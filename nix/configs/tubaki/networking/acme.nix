@@ -43,11 +43,7 @@
         };
 
         certs."nanoyaki.space" = {
-          extraDomainNames = [
-            "*.nanoyaki.space"
-            "hanakretzer.de"
-            "*.hanakretzer.de"
-          ];
+          extraDomainNames = [ "*.nanoyaki.space" ];
           environmentFile = tpl."porkbun.env".path;
         };
 

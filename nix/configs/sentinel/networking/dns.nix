@@ -103,7 +103,14 @@
         provider = "porkbun";
         registrar = "porkbun";
 
-        a."@".address = "85.215.152.236";
+        alias."@".value = "l2vn6xe7fds8kwk9.myfritz.net.";
+        alias."*".value = "l2vn6xe7fds8kwk9.myfritz.net.";
+        txt = [
+          {
+            subdomain = "_acme-challenge";
+            value = "placeholder-cause-alias-record-causes-bugs";
+          }
+        ];
       };
     };
 }
