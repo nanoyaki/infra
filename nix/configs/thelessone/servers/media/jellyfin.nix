@@ -51,13 +51,13 @@
         postPatch = prevAttrs.postPatch or "" + ''
 
           sed -i 's/elem\.target = [^;]*/elem.target = "_self"/' \
-            src/controllers/session/login/index.js
+            src/apps/legacy/controllers/session/login/index.js
         '';
 
         postInstall =
           let
             episodePreview =
-              ''<script plugin="InPlayerEpisodePreview" version="1.5.0.0"''
+              ''<script plugin="InPlayerEpisodePreview" version="2.4.0.3"''
               + ''src="/InPlayerPreview/ClientScript" async></script>'';
           in
           prevAttrs.postInstall or ""

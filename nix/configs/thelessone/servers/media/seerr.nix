@@ -37,14 +37,14 @@
             owner = "seerr-team";
             repo = "seerr";
             tag = finalAttrs.version;
-            hash = "sha256-YPpicQlArAqWnRbUbtUYlwTJk0AGxcaeQmaYNT0vogo=";
+            hash = "sha256-eu3ITUhwQYzMPdMu0Adi/Hpu5e+ho18ye/pX/KsDaVw=";
           };
 
           pnpmDeps = pkgs.fetchPnpmDeps {
             inherit (finalAttrs) pname version src;
             pnpm = pkgs.pnpm_10.override { nodejs-slim = pkgs.nodejs_22; };
             fetcherVersion = 3;
-            hash = "sha256-7nBkeXGJfDRSvNesOjOK+Mtzp6SlBvbytyfsQl9eh/Y=";
+            hash = "sha256-bfdmNLBypcoJ79/lMRSgRKSIddQJJohcn3/dL21edog=";
           };
         }
       );

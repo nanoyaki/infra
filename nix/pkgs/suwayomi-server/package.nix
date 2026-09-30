@@ -57,7 +57,7 @@
             echo "val webviewJbrRelease = \"$WEBVIEW_VERSION\"" >> buildSrc/src/main/kotlin/Constants.kt
 
             substituteInPlace server/src/main/kotlin/suwayomi/tachidesk/server/util/WebInterfaceManager.kt \
-              --replace-fail "fetchMD5SumFor(flavor, currentVersion)" '"'"$(cat ${suwayomi-webui}/share/suwayomi-server/md5sum)"'"'
+                  --replace-fail "currentVersionMD5Sum == localMD5Sum" "true"
 
             cp -r ${suwayomi-webui}/share/suwayomi-webui webui
             chmod -R u+xw webui

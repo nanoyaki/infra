@@ -11,7 +11,7 @@
           stdenvNoCC,
           fetchFromGitHub,
           fetchPnpmDeps,
-          pnpm,
+          pnpm_11,
           pnpmConfigHook,
           pnpmBuildHook,
           nodejs_24,
@@ -36,15 +36,15 @@
 
           pnpmDeps = fetchPnpmDeps {
             inherit (finalAttrs) pname version src;
-            inherit pnpm;
+            pnpm = pnpm_11;
             fetcherVersion = 4;
-            hash = "sha256-tbaNDI2kJKwriZGaSgqQAKPAB8ser53Nc6J4Jp6aqFY=";
+            hash = "sha256-hFl9tcfQkpRYnxb1/K+c0OiRVqCEwhLgEZvuq0Tc9fA=";
           };
 
           nativeBuildInputs = [
             pnpmConfigHook
             pnpmBuildHook
-            pnpm
+            pnpm_11
 
             nodejs_24
             husky
@@ -54,25 +54,17 @@
           postPatch = ''
             substituteInPlace package.json \
               --replace-fail "project" "suwayomi-webui"
-
-            patchShebangs node_modules/vite/bin/vite.js
-          '';
-
-          preBuild = ''
-            pnpm setup-env-files
           '';
 
           postBuild = ''
-            echo "r${finalAttrs.revision}" > build/revision
-            pnpm build-md5
+            touch build/revision
           '';
 
           installPhase = ''
             runHook preInstall
 
-            mkdir -p $out/share/suwayomi-server
+            mkdir -p $out/share/suwayomi-webui
             cp -a build $out/share/suwayomi-webui
-            mv buildZip/md5sum $out/share/suwayomi-server
 
             runHook postInstall
           '';

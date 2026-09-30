@@ -304,6 +304,7 @@
           yacl = "3.8.2+1.21.1-neoforge";
           yungs-api = "1.21.1-NeoForge-5.1.8";
           zeta = "1.1-40";
+          jade = "15.10.6+neoforge";
 
           # Server stuff
           bluemap = "5.7-neoforge";

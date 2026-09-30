@@ -80,8 +80,8 @@
       thelessone-theless-dot-one
       thelessone-speedtest-tracker
       thelessone-glances
-      thelessone-firefly-iii
-      thelessone-fredy
+      # thelessone-firefly-iii
+      # thelessone-fredy
       # thelessone-nixbot
     ];
   };

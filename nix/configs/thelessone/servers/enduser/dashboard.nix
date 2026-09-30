@@ -398,14 +398,14 @@
           }
           {
             Private = [
-              {
-                Actual = rec {
-                  icon = "actual.svg";
-                  href = "https://${dmn.finances}";
-                  siteMonitor = href;
-                  description = "Finance management";
-                };
-              }
+              # {
+              #   Actual = rec {
+              #     icon = "actual.svg";
+              #     href = "https://${dmn.finances}";
+              #     siteMonitor = href;
+              #     description = "Finance management";
+              #   };
+              # }
               {
                 Tandoor = rec {
                   icon = "tandoor-recipes.svg";
