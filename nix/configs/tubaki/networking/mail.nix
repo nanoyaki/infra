@@ -119,6 +119,8 @@
             "postmaster@aslija.com"
             "abuse@theless.one"
             "postmaster@theless.one"
+            "abuse@serdexmethylpheni.date"
+            "postmaster@serdexmethylpheni.date"
           ];
           hashedPasswordFile = sec."mail/postmaster@nanoyaki.space".path;
         };
@@ -141,6 +143,10 @@
           catchAll = [
             "nanoyaki.space"
             "hanakretzer.de"
+          ];
+          aliasesRegexp = [
+            ''/^.*@nanoyaki\.space$/''
+            ''/^.*@hanakretzer\.de$/''
           ];
 
           hashedPasswordFile = sec."mail/contact@hanakretzer.de".path;
