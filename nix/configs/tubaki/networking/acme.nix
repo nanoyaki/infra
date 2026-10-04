@@ -43,7 +43,16 @@
         };
 
         certs."nanoyaki.space" = {
-          extraDomainNames = [ "*.nanoyaki.space" ];
+          extraDomainNames = [
+            "*.nanoyaki.space"
+
+            "de02.hanakretzer.de"
+            "mail.hanakretzer.de"
+            "imap.hanakretzer.de"
+            "smtp.hanakretzer.de"
+            "autoconfig.hanakretzer.de"
+            "autodiscover.hanakretzer.de"
+          ];
           environmentFile = tpl."porkbun.env".path;
         };
 

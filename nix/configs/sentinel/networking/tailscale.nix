@@ -82,6 +82,11 @@
             ip = [ "*" ];
           }
           {
+            src = [ "contact@nanoyaki.space" ];
+            dst = [ "tag:server" ];
+            ip = [ "22" ];
+          }
+          {
             src = [
               "contact@nanoyaki.space"
               "tag:hana"
